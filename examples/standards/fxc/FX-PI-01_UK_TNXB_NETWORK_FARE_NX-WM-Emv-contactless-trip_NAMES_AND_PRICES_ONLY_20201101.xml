@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== National Express West Midlands examples==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- National Express West Midlands example products Example
+
+This example shows the encoding of a simple single trip capped product,  paid for using a contactless credit card, using the National Express West Midlands example.
+
+This is a strippped down version of the full example that leaves out the tariff structure as well as all ancillary passenger information that is not material for fare pricing,  All it provides in effect is
+    (i) The fare prices,
+    (ii) The names of the  tariff and/or product elements referenced by the fare prices.
+
+National Express West Midlands EMv contactless capped
+ - pay with regular emv card
+ - 1 adult trip	£2.40
+ - 2 adult trips or more	 Capped to price of Adult Daysaver
+
+  £4.60 if you travelled before 9.30am Mon-Fri
+  £4 if you travelled after 9.30am or anytime Sat/Sun 
+
+https://nxbus.co.uk/west-midlands/contactless/
+ 
+Data is (C) National Express West Midlands 
+
+(C) Crown Copyright 2020
+Free to use under a Creative Commons license.
+  
+==================================
+
+==================================
+-->
+	<PublicationTimestamp>2020-10-28T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="any">
+		<RequestTimestamp>2020-10-28T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for TNXB products.</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2020-10-28T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+				<NetworkFilterByValue>
+					<objectReferences>
+						<OperatorRef ref="noc:TNXB"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.0" id="epd:UK:TNXB:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Trip@emv_single_trip:tnxb" dataSourceRef="tnxb:nx_west_midlands" responsibilitySetRef="tnxb:tariffs">
+			<ValidBetween>
+				<FromDate>2020-01-01T00:00:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>National Express West Midlands - Fares Example - Contactless single trip, capped</Name>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="operator_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default codespace means that actually we could leave it off all id s that belong to the tnxb: codespace. -->
+				<DefaultCodespaceRef ref="operator_data"/>
+				<DefaultDataSourceRef version="any" ref="tnxb:nx_west_midlands"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<prerequisites>
+				<CompositeFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			</prerequisites>
+			<frames>
+				<!-- ====== TNXB Operator resources -->
+				<ResourceFrame version="1.0" id="epd:UK:TNXB:ResourceFrame_UK_PI_COMMON:nx_west_midlands:tnxb" dataSourceRef="tnxb:nx_west_midlands" responsibilitySetRef="tnxb:network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP"/>
+					<codespaces>
+						<Codespace id="operator_data">
+							<Xmlns>nct</Xmlns>
+							<XmlnsUrl>http://www.nxbus.co.uk/codes</XmlnsUrl>
+							<Description>National Express West Midlands data.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<!--- The default codespace means that actually we could leave it off all id s that belong to the tnxb: codespace. -->
+						<DefaultCodespaceRef ref="operator_data"/>
+					</FrameDefaults>
+					<dataSources>
+						<DataSource id="tnxb:nx_west_midlands" version="any">
+							<Email>feedback@nxbus.co.uk</Email>
+						</DataSource>
+					</dataSources>
+					<typesOfValue>
+						<ValueSet version="any" id="tnxb:types_of_travel_documents" nameOfClass="TypeOfTravelDocument">
+							<values>
+								<TypeOfTravelDocument version="any" id="tnxb:emv_card">
+									<Name>Contactless card</Name>
+								</TypeOfTravelDocument>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="any" id="noc:TNXB">
+							<PublicCode>TNXB</PublicCode>
+							<Name>National Express West Midlands </Name>
+							<ShortName>National Express West Midlands </ShortName>
+							<TradingName>West Midlands Travel Limited</TradingName>
+							<ContactDetails>
+								<Email>info@nxbus.co.uk</Email>
+								<Phone>0121 254 7272</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>TNXB Travel Centre</BuildingName>
+								<AddressLine1>51 Bordesley Green</AddressLine1>
+								<Town>Birmingham</Town>
+								<PostCode>B9 4BZ</PostCode>
+								<PostalRegion>Birmingham</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!--  === NCT DEMAND PERIODS -->
+				<!--==== FAREs ==== -->
+				<!-- TNXB Pass  products -->
+				<FareFrame version="1.0" id="epd:UK: tnxb:FareFrame_UK_PI_FARE_PRODUCT:national_express_wm@emv_single_trip:tnxb" responsibilitySetRef="tnxb:tariffs">
+					<Name>National Express West Midlands EMV products</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="any" id="tnxb:Tariff@national_express_wm@emv_single_trip">
+							<Name>national express wm Short Hop trip</Name>
+							<documentLinks>
+								<InfoLink typeOfInfoLink="fareSheet">https://nxbus.co.uk/west-midlands/contactless/</InfoLink>
+							</documentLinks>
+							<OperatorRef version="any" ref="noc:TNXB"/>
+							<TypeOfTariffRef versionRef="fxc:v1.0" ref="fxc:flat"/>
+							<TariffBasis>flat</TariffBasis>
+							<!--- ====Fare Structure======= -->
+							<qualityStructureFactors>
+								<FareDemandFactor version="any" id="tnxb:Tariff@emv_single_trip@peak">
+									<Name>Peeak before 09:30 every weekday  not a Bank Holiday</Name>
+								</FareDemandFactor>
+								<FareDemandFactor version="any" id="tnxb:Tariff@emv_single_trip@off_peak">
+									<Name>Offpeak after 09:30 every weekday  and all day weekends and on Bank Holidays</Name>
+									<FareDemandType>offPeak</FareDemandType>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<CappedDiscountRight version="any" id="tnxb:national_express_wm@emv_capped_right">
+							<Name>West midlands - emv single capped rights</Name>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@discount@sales"/>
+							<OperatorRef version="any" ref="noc:TNXB"/>
+							<!--==== ACCESS RIGHTs ===== -->
+							<ProductType>payAsYouGoRight</ProductType>
+							<cappingRules>
+								<CappingRule version="any" id="tnxb:national_express_wm@emv_capped_right@peak">
+									<Name>Fare capping on contactless purchas -0 peak travel - day cap</Name>
+									<CappingPeriod>day</CappingPeriod>
+									<!--- NB this can reference another product -->
+								</CappingRule>
+								<CappingRule version="any" id="tnxb:national_express_wm@emv_capped_right@off_peak">
+									<Name>Fare capping on contactless purchas - off peak travel - day cap</Name>
+									<CappingPeriod>day</CappingPeriod>
+								</CappingRule>
+							</cappingRules>
+						</CappedDiscountRight>
+						<!--  Travel products  -->
+					</fareProducts>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument version="any" id="tnxb:smart_card">
+							<Name>EMV card</Name>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+					<!-- === SALES OFFER PACKAGES === -->
+					<!--    -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="tnxb:national_express_wm@emv_single_trip-SOP">
+							<Name>Short hop- single trip - Adult </Name>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<!-- === PRICES === -->
+				<FareFrame version="1.0" id="epd:UK: tnxb:FareFrame_UK_PI_FARE_PRICE:national_express_wm@emv_single_trip_2020@nested:tnxb" responsibilitySetRef="tnxb:tariffs">
+					<ValidBetween>
+						<FromDate>2020-01-01T00:00:00</FromDate>
+					</ValidBetween>
+					<Name>National Express wm  emv capped trip prices 2020</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<!--  === PRICES === -->
+					<fareTables>
+						<FareTable version="any" id="tnxb:national_express_wm@emv_single_trip_2020">
+							<Name>National Express West Midlands emv contactless trip prices</Name>
+							<specifics>
+								<TypeOfTravelDocumentRef version="any" ref="tnxb:emv_card"/>
+							</specifics>
+							<prices>
+								<SalesOfferPackagePrice version="any" id="tnxb:national_express_wm@emv_single_trip_2020">
+									<Amount>2.40</Amount>
+									<SalesOfferPackageRef version="any" ref="tnxb:national_express_wm@emv_single_trip-SOP"/>
+								</SalesOfferPackagePrice>
+								<CappingRulePrice version="any" id="rbh:national_express_wm@emv_single_trip_2020@peak">
+									<Amount>4.60</Amount>
+									<CappingRuleRef version="any" ref="tnxb:national_express_wm@emv_capped_right@peak"/>
+								</CappingRulePrice>
+								<CappingRulePrice version="any" id="rbh:national_express_wm@emv_single_trip_2020@off_peak">
+									<Amount>4.00</Amount>
+									<CappingRuleRef version="any" ref="tnxb:national_express_wm@emv_capped_right@off_peak"/>
+								</CappingRulePrice>
+							</prices>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<!--   === COMMON UK FARE RESOURCES===  -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			<codespaces>
+				<Codespace id="noc_data">
+					<Xmlns>noc</Xmlns>
+					<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+					<Description>UK national operator codes</Description>
+				</Codespace>
+				<Codespace id="epd_data">
+					<Xmlns>epd</Xmlns>
+					<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+					<Description>European Passenger Information profile data -use for UK frame names</Description>
+				</Codespace>
+				<Codespace id="fxc_metadata">
+					<Xmlns>fxc</Xmlns>
+					<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+					<Description>UK FareXChange Profile metadata</Description>
+				</Codespace>
+			</codespaces>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

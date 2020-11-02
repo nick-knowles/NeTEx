@@ -757,7 +757,20 @@
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_MB_NETWORK_FARE_Metrorider-pass_20170101.xml"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_MB_NETWORK_FARE_Metrorider-pass_basic_20170101.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_MYBUS_LINE_FARE_Line-3-trip-(p2p)_20190101.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Easyrider-anyday-carnet-pass_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Easyrider-everyday-pass_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Easyrider-everyday-pass_MINIMAL_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Easyrider-everyday-pass_NAMES_AND_PRICES_ONLY_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Easyrider-everyday-pass_PRICES_ONLY_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Grouprider-pass_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_NCT_NETWORK_FARE_NCT-Grouprider-pass_NAMES_AND_PRICES_ONLY_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_RBH_NETWORK_FARE_RBH-Robin-Hood-pass_20201028.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_RBH_NETWORK_FARE_RBH-Robin-Hood-PAYG_20201030.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_RBH_NETWORK_FARE_RBH-Robin-Hood-PAYG_NAMES_AND_PRICES_ONLY_20201030.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_TMSTR_NETWORK_FARE_Travelmaster-pass_20200315.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_TNXB_NETWORK_FARE_NX-WM-Emv-contactless-trip_20201101.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_TNXB_NETWORK_FARE_NX-WM-Emv-contactless-trip_NAMES_AND_PRICES_ONLY_20201101.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_TNXB_NETWORK_FARE_NX-WM-ShortHop-trip_20201101.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\uk_fxc_addon_HSP_plusbus.xml"/>
 					<File FilePath="examples\standards\fxc\uk_fxc_common_profile.xml"/>
 				</Folder>

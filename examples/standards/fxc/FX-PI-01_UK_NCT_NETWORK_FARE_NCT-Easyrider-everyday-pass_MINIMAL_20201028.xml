@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== Nottingham City Transport examples==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Nottingham City Transport example products Example
+
+This example shows a minimal encoding of the passes for a zonal fare system , using the Nottingham City Transport example.
+
+The example is a simplified MINIMAL   VERSION, showing just the core elementes. A full example is also available.  
+An examples are also available of further a STRIPPED DOWN version,  showing just FARE PRICES and the elements that the prices references
+
+
+This MINIMAL example leaves out all ancillary passenger information that is not material for fare pricing, such as distribution information etc, but still gives a structured description of teh following aspects of the tariff:
+    (i) the network, i.e.the   zones and operators which may be used.
+    (ii) the available time periods that can be .purchased
+    (iiii) the  product access   rights, user types , products and sales packages which can be purchased as named products with a fare price atatched to each of tehir options
+     (iv) The fare prices
+
+The Easyrider Everyday product provdes continuous, unlimited use access for aspecified period
+
+     There are two zones (a) Nottingham City Centre and (b) NCT Further
+     There are different periods: 7,14,31,93,186 days and 1year. Also an academic year for student products only.
+     There are three types of use  (a) Adult, (b) Under 19, (c) Student over 19
+
+
+https://www.nctx.co.uk/easyrider
+ 
+Data is (C) Nottingham City Transport 
+
+(C) Crown Copyright 2020
+Free to use under a Creative Commons license.
+  
+==================================
+
+==================================
+-->
+	<PublicationTimestamp>2020-10-28T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="any">
+		<RequestTimestamp>2020-10-28T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for NCT products.</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2020-10-28T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+				<NetworkFilterByValue>
+					<objectReferences>
+						<OperatorRef ref="noc:NCT"/>
+						<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+		<RequestPolicy>
+			<RequestDetail>AllWithXref</RequestDetail>
+		</RequestPolicy>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.0" id="epd:UK:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Pass@easyrider@everyday:nct" dataSourceRef="nottingham_city_transport" responsibilitySetRef="tariffs">
+			<ValidBetween>
+				<FromDate>2020-08-24T04:30:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>Nottingham City Transport - Fares Example</Name>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="naptStop_data"/>
+				<CodespaceRef ref="nptgLocality_data"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="operator_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default codespace means that  we can leave it off all id s that belong to the nct: codespace. -->
+				<DefaultCodespaceRef ref="operator_data"/>
+				<DefaultDataSourceRef version="any" ref="nottingham_city_transport"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<frames>
+				<!-- ====== NCT Operator resources -->
+				<ResourceFrame version="1.0" id="epd:UK:ResourceFrame_UK_PI_COMMON:nottingham_city_transport:nct" dataSourceRef="nottingham_city_transport" responsibilitySetRef="network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP" versionRef="fxc:v1.0"/>
+					<codespaces>
+						<Codespace id="operator_data">
+							<Xmlns>nct</Xmlns>
+							<XmlnsUrl>http://www.nctx.co.uk/codes</XmlnsUrl>
+							<Description>Nottingham City Transport data.</Description>
+						</Codespace>
+					</codespaces>
+					<dataSources>
+						<DataSource id="nottingham_city_transport" version="any">
+							<Email>feedback@nctx.co.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="any" id="noc:NCTR">
+							<PublicCode>NCTR</PublicCode>
+							<PrivateCode type="nocn">nocn:10937</PrivateCode>
+							<Name>Nottingham City Transport </Name>
+							<ShortName>Nottingham City Transport </ShortName>
+							<TradingName>Nottingham City Transport Ltd</TradingName>
+							<ContactDetails>
+								<Email>travelcentre@nctx.co.uk</Email>
+								<Phone>0115 950 60 70</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>NCT Travel Centre</BuildingName>
+								<Street>Old Market Square</Street>
+								<Town>Nottingham</Town>
+								<PostCode>NG1 2JS</PostCode>
+								<PostalRegion>Nottinghamshire</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!-- ====== Additional  Operator resources -->
+				<!--==== FAREs ==== -->
+				<!-- NCT Pass  products -->
+				<FareFrame version="1.0" id="epd:UK:FareFrame_UK_PI_FARE_NETWORK:nottingham_city_transport@zones:nct" responsibilitySetRef="network_data">
+					<Name>Nottingham City Transport network </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<!--==== Fare zones === NB These are just a guess from the map s -->
+					<fareZones>
+						<FareZone version="any" id="nct_further">
+							<Name>easyrider "further" Zone</Name>
+							<Description>easyrider further zone (includes city area zone).</Description>
+							<members>
+								<!--  TODO List of all NaPtan stops in outer zone but nor in  central cone  -->
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TTDO"/>
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TTDO"/>
+								<!--- etc etc -->
+							</members>
+							<types>
+								<TypeOfZoneRef ref="fxc:fare_zone@operator" versionRef="fxc:v1.0"/>
+							</types>
+							<ScopingMethod>explicitPeripheryStops</ScopingMethod>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<contains>
+								<TariffZoneRef version="any" ref="nct_city_area"/>
+							</contains>
+						</FareZone>
+						<FareZone version="any" id="nct_city_area">
+							<Name>Nottingham City Area</Name>
+							<members>
+								<!--  TODO List of all NaPtan stops in outer zone but nor in  central cone  -->
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TODO"/>
+								<!--- etc etc -->
+							</members>
+							<types>
+								<TypeOfZoneRef ref="fxc:fare_zone@operator" versionRef="fxc:v1.0"/>
+							</types>
+							<ParentFareZoneRef ref="nct_further"/>
+							<ScopingMethod>explicitStops</ScopingMethod>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+						</FareZone>
+					</fareZones>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@easyrider@everyday:nct" responsibilitySetRef="tariffs">
+					<Name>Nottingham City Transport easyrider everyday products</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="any" id="Tariff@easyrider@everyday">
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<TypeOfTariffRef versionRef="fxc:v1.0" ref="fxc:zonal"/>
+							<!--- ====Fare Structure======= -->
+							<timeIntervals>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@7day">
+									<Name>7 Days</Name>
+									<Duration>P7D</Duration>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@14day">
+									<Name>14 Days</Name>
+									<Duration>P14D</Duration>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@31day">
+									<Name>1 Month (31 Days)</Name>
+									<Duration>P31D</Duration>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@93day">
+									<Name>3 Months (93 Days)</Name>
+									<Duration>P93D</Duration>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@186day">
+									<Name>6 Months (186 Days)</Name>
+									<Duration>P100D</Duration>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@academic_year">
+									<Name>Academic Year</Name>
+								</TimeInterval>
+								<TimeInterval version="any" id="Tariff@easyrider_everyday@1year">
+									<Name>1 Year</Name>
+									<Duration>P1Y</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<fareStructureElements>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@access_zones">
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment id="Tariff@easyrider_everyday@access_zones" version="any" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>XOR</ValidityParameterGroupingType>
+										<validityParameters>
+											<FareZoneRef ref="nct_city_area"/>
+											<FareZoneRef ref="nct_further"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@access_operator">
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment id="Tariff@easyrider_everyday@access_operator" version="any" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>XOR</ValidityParameterGroupingType>
+										<validityParameters>
+											<OperatorRef ref="noc:NCTR"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<!-- Eligibilities -->
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@eligibility@adult">
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="1" id="Tariff@easyrider_everyday@eligibility@adult" version="any">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="adult">
+												<Name>Adult</Name>
+												<Description/>
+												<MinimumAge>19</MinimumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@eligibility@over_18_student">
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="3" id="Tariff@easyrider_everyday@eligibility@over_18_student" version="any">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="over_18_student">
+												<Name>Student over 19</Name>
+												<MaximumAge>18</MaximumAge>
+												<ProofRequired>studentCard</ProofRequired>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@eligibility@under_19">
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="2" id="Tariff@easyrider_everyday@eligibility@under_19" version="any">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="under_19">
+												<Name>Under 19</Name>
+												<MaximumAge>18</MaximumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@durations@adult">
+									<Name>Available duration combination- </Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="Tariff@easyrider_everyday@durations@over_18_student">
+									<Name>Available duration combination- </Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+										<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+									</timeIntervals>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<!--  Travel products  -->
+						<PreassignedFareProduct version="any" id="easyrider_everyday@adult">
+							<Name>Easyrider everyday-  adult</Name>
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<validableElements>
+								<ValidableElement version="any" id="easyrider_everyday@adult@travel">
+									<fareStructureElements>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@access_zones"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@eligibility@adult"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@durations@adult"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="any" id="easyrider_everyday@adult@travel" order="1">
+									<ValidableElementRef version="any" ref="easyrider_everyday@adult@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>periodPass</ProductType>
+						</PreassignedFareProduct>
+						<PreassignedFareProduct version="any" id="easyrider_everyday@over_18_student">
+							<Name>Easyrider everyday -  over_18_student</Name>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<validableElements>
+								<ValidableElement version="any" id="easyrider_everyday@over_18_student@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@access_zones"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@eligibility@over_18_student"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@durations@over_18_student"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="any" id="easyrider_everyday@over_18_student@travel" order="1">
+									<ValidableElementRef version="any" ref="easyrider_everyday@over_18_student@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>periodPass</ProductType>
+						</PreassignedFareProduct>
+						<PreassignedFareProduct version="any" id="easyrider_everyday@under_19">
+							<Name>Easyrider everyday -  under_19</Name>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<validableElements>
+								<ValidableElement version="any" id="easyrider_everyday@under_19@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@access_zones"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@eligibility@under_19"/>
+										<FareStructureElementRef version="any" ref="Tariff@easyrider_everyday@durations@adult"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="any" id="easyrider_everyday@under_19@travel" order="1">
+									<ValidableElementRef version="any" ref="easyrider_everyday@under_19@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>periodPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument version="any" id="smart_card">
+							<Name>loaded on smart card</Name>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+					<!-- === SALES OFFER PACKAGES === -->
+					<!--    -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="easyrider_everyday@adult-SOP@nct_city_area">
+							<Name>Easyrider - Everyday - adult - City zone - </Name>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@adult-SOP@nct_city_area" order="1">
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_city_area"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="easyrider_everyday@adult-SOP@nct_city_area" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@adult"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="easyrider_everyday@adult-SOP@nct_further">
+							<Name>Easyrider - Everyday Further </Name>
+							<Description>Unlimited Travel in the Nottingham further zone</Description>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@adult-SOP@nct_further" order="1">
+									<Name>Use in NCT Further zone</Name>
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_further"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="easyridereasyrider@everyday@adult-SOP-SOP@nct_further" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@adult"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="easyrider_everyday@over_18_student-SOP@nct_city_area">
+							<Name>Easyrider - Everyday - over 18 _student - City zone - </Name>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@over_18_student-SOP@nct_city_area" order="1">
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_city_area"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="easyrider_everyday@over_18_student-SOP@nct_city_area" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@over_18_student"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="easyrider_everyday@over_18_student-SOP@nct_further">
+							<Name>Easyrider - Everyday - over 18 student -  Further  zone</Name>
+							<Description>Unlimited Travel in the Nottingham further zone</Description>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@over_18_student-SOP@nct_further" order="1">
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_further"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="Pass@everyday@over_18_student-SOP@nct_further" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@over_18_student"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="easyrider_everyday@under_19-SOP@nct_city_area">
+							<Name>Easyrider - Everyday - under 19 - City zone - </Name>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@under_19-SOP@nct_city_area" order="1">
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_city_area"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="easyrider_everyday@under_19-SOP@nct_city_area" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@under_19"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="easyrider_everyday@under_19-SOP@nct_further">
+							<Name>Easyrider - Everyday - under 19 - Further zone </Name>
+							<validityParameterAssignments>
+								<GenericParameterAssignment version="any" id="easyrider_everyday@under_19-SOP@nct_further" order="1">
+									<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+									<validityParameters>
+										<FareZoneRef version="any" ref="nct_further"/>
+									</validityParameters>
+								</GenericParameterAssignment>
+							</validityParameterAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="easyrider_everyday@under_19-SOP@nct_further" order="2">
+									<TypeOfTravelDocumentRef version="any" ref="smart_card"/>
+									<PreassignedFareProductRef version="any" ref="easyrider_everyday@under_19"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<!-- === PRICES === -->
+				<FareFrame version="1.0" id="epd:UK:FareFrame_UK_PI_FARE_PRICE:nottingham_city_transport@pass@easyrider@everyday_2020+2021@nested:nct" responsibilitySetRef="tariffs">
+					<ValidBetween>
+						<FromDate>2020-01-01T00:00:00</FromDate>
+					</ValidBetween>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<fareTables>
+						<FareTable version="any" id="easyrider_everyday_2020">
+							<Name>Easyrider Fare Prices  </Name>
+							<usedIn>
+								<TariffRef version="any" ref="Tariff@easyrider@everyday"/>
+							</usedIn>
+							<includes>
+								<FareTable version="any" id="easyrider_everyday_2020@nottingham_city_area">
+									<specifics>
+										<TariffZoneRef version="any" ref="nct_city_area"/>
+									</specifics>
+									<includes>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_city_area@adult">
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@adult-SOP@nct_city_area"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@7day">
+													<Amount>18.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@14day">
+													<Amount>35.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@31day">
+													<Amount>58.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@93day">
+													<Amount>167.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@186day">
+													<Amount>314.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@academic_year">
+													<IsAllowed>false</IsAllowed>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@adult@1year">
+													<Amount>570.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student">
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@over_18_student-SOP@nct_city_area"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@7day">
+													<Amount>15.30</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@14day">
+													<Amount>29.75</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@31day">
+													<Amount>49.30</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@93day">
+													<Amount>141.95</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@186day">
+													<Amount>266.90</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@academic_year">
+													<Amount>259.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@over_18_student@1year">
+													<Amount>484.50</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_city_area@under_19">
+											<Name>Easyrider Everyday</Name>
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@under_19-SOP@nct_city_area"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@7day">
+													<Amount>9.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@14day">
+													<Amount>17.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@31day">
+													<Amount>34.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@93day">
+													<Amount>83.50</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@186day">
+													<Amount>156.50</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@academic_year">
+													<Amount>259.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_city_area@under_19@1year">
+													<Amount>293.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+									</includes>
+								</FareTable>
+								<FareTable version="any" id="easyrider_everyday_2020@nct_further">
+									<specifics>
+										<TariffZoneRef version="any" ref="nct_further"/>
+									</specifics>
+									<includes>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_further@adult">
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@adult-SOP@nct_further"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@7day">
+													<Amount>24.50</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@14day">
+													<Amount>47.25</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@31day">
+													<Amount>88.75</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@93day">
+													<Amount>255.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@186day">
+													<Amount>483.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@academic_year">
+													<IsAllowed>false</IsAllowed>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@adult@1year">
+													<Amount>856.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_further@over_18_student">
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@over_18_student-SOP@nct_further"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@7day">
+													<Amount>20.83</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@14day">
+													<Amount>40.16</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@31day">
+													<Amount>75.44</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@93day">
+													<Amount>216.75</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@186day">
+													<Amount>410.55</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@academic_year">
+													<Amount>429.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@over_18_student@1year">
+													<Amount>727.60</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="any" id="easyrider_everyday_2020@nct_further@under_19">
+											<pricesFor>
+												<SalesOfferPackageRef version="any" ref="easyrider_everyday@under_19-SOP@nct_further"/>
+											</pricesFor>
+											<prices>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@7day">
+													<Amount>15.50</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@7day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@14day">
+													<Amount>30.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@14day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@31day">
+													<Amount>60.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@31day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@93day">
+													<Amount>162.75</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@93day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@186day">
+													<Amount>323.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@186day"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@academic_year">
+													<Amount>429.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@academic_year"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="any" id="easyrider_everyday_2020@nct_further@under_19@1year">
+													<Amount>607.00</Amount>
+													<TimeIntervalRef version="any" ref="Tariff@easyrider_everyday@1year"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+									</includes>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<!--   === COMMON UK FARE RESOURCES===  -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			<codespaces>
+				<Codespace id="naptStop_data">
+					<Xmlns>naptStop</Xmlns>
+					<XmlnsUrl>http://www.naptan.org.uk/stops</XmlnsUrl>
+					<Description>UK National Public Transport Access Nodes: Stops.</Description>
+				</Codespace>
+				<Codespace id="nptgLocality_data">
+					<Xmlns>nptgLocality</Xmlns>
+					<XmlnsUrl>http://nptg.org.uk/locations</XmlnsUrl>
+					<Description>National Public Transport gazetteer locations</Description>
+				</Codespace>
+				<Codespace id="noc_data">
+					<Xmlns>noc</Xmlns>
+					<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+					<Description>UK national operator codes</Description>
+				</Codespace>
+				<Codespace id="fxc_metadata">
+					<Xmlns>fxc</Xmlns>
+					<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+					<Description>UK FareXChange Profile metadata</Description>
+				</Codespace>
+				<Codespace id="epd_data">
+					<Xmlns>epd</Xmlns>
+					<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+					<Description>European Passenger Information profile data -use for UK frame names</Description>
+				</Codespace>
+			</codespaces>
+			<frames>
+				<!-- THIS IS BOILER PLATE STUFF that allows UK Profile standised code values codes to be validated. 
+IT  CAN BE OMITTED IF EXTERNAL REFERENCES ARE USED. -->
+				<ResourceFrame id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA:FareXChange:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<typesOfValue>
+						<!-- ======== TYPES OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame Basic </Name>
+							<values>
+								<!-- === ANCILLARY  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP">
+									<Name>UK FXCP  common Local resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_CALENDAR:FXCP">
+									<Name>UK FXCP  Service calendar</Name>
+									<FrameClassRef nameOfClass="ServiceCalendarFrame"/>
+								</TypeOfFrame>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP:FXCP">
+									<Name>UK FXCP Stops: NapTAN Stop Place  and NPTG Locations Frame</Name>
+									<FrameClassRef nameOfClass="SiteFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK:FXCP">
+									<Name>UK FXCP Network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_TIMETABLE:FXCP">
+									<Name>UK FXCP Tietable: N</Name>
+									<FrameClassRef nameOfClass="TimetableFrame"/>
+								</TypeOfFrame>
+								<!-- === METADATA   ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA:FXCP">
+									<Name>UK Bus Profile common resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc::v2.4" id="fxc:Types_of_Offer_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc">
+									<Name>UK FXCP composite used to group other UKmetadta</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<!-- ======== TYPExS OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame</Name>
+							<values>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_COMMON:FXCP">
+									<Name>UK Bus Profile fare common paramaters</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP">
+									<Name>UK Bus Profile fare network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP">
+									<Name>UK FXCP Fare Porducts Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP">
+									<Name>UK FXCP Fare Prices Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Offer_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container NETWORK OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Transaction_Frame" classOfValues="TypeOfFrame">
+							<Name>Types of UK Trasnaction  Frame</Name>
+							<values>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_TRANSACTIONS:FXCP">
+									<Name>UK Bus Profile Operator sample transactions</Name>
+									<FrameClassRef nameOfClass="SalesTransactionFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<!-- ======== Code sets ========= -->
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareZone" classOfValues="TypeOfZone">
+							<Name>Types of FARE ZONE</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@operator">
+									<Name>Operator defined zone</Name>
+								</TypeOfZone>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@pass" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@period">
+									<Name>Pass for a specifed period</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@stored_value" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Epurse</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@stored_value@epurse">
+									<Name>Epurse</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_SalesOfferPackage" classOfValues="TypeOfSalesOfferPackage">
+							<Name>Types of SALES OFFER PACKAGE.</Name>
+							<values>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@operator">
+									<Name>Single operator standard product</Name>
+								</TypeOfSalesOfferPackage>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareContractEntry" classOfValues="TypeOfFareContractEntry">
+							<Name>Types of FARE CONTRACT ENTRY</Name>
+							<values>
+								<!--- ====TypeOfFareContractEntry ========= -->
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:product_purchase">
+									<Name>Purchase</Name>
+								</TypeOfFareContractEntry>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Tariff" classOfValues="TypeOfTariff">
+							<Name>Spatial Types of Tariff</Name>
+							<values>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:zonal">
+									<Name>Zonal</Name>
+								</TypeOfTariff>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareStructureElement" classOfValues="TypeOfFareStructureElement">
+							<Name>FXCP: Types of FARE STRUCTURE ELEMENT.</Name>
+							<values>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:access">
+									<Name>Access rights</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:eligibility">
+									<Name>Eligibility to purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:durations">
+									<Name>Time intervals</Name>
+								</TypeOfFareStructureElement>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_AccessRightAssignment" classOfValues="TypeOfAccessRightAssignment">
+							<Name>Types of Access Right Assignment</Name>
+							<values>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:eligible">
+									<Name>Eligible for a product or discount</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access">
+									<Name>Grants access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+				</ResourceFrame>
+				<!-- === NPTG Common fixed definitions  ===  -->
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

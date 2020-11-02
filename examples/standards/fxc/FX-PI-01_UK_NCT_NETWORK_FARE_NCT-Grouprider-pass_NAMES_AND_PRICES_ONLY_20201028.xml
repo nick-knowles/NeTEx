@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== Nottingham City Transport examples==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Nottingham City Transport example products Example
+
+This example shows the encoding of a family group pass for a zonal fare system , using the Nottingham City Transport example.
+ 
+This is a strippped down version of the full example that leaves out the tariff structure as well as all ancillary passenger information that is not material for fare pricing,  All it provides in effect is
+    (i) The fare prices,
+    (ii) The names of the  tariff and/or product elements referenced by the fare prices.
+
+
+NCT Grouprider pass:
+- A family can be up  5 person  of whom or or two can be adults.
+- There is a single product and salles offer package, with a choice of zones.
+- There are two zones NottinghamCity Centre and NCT Further.
+- The product is sold onboard as a paper ticket.
+
+
+https://www.nctx.co.uk/grouprider
+ 
+Data is (C) Nottingham City Transport 
+
+(C) Crown Copyright 2020
+Free to use under a Creative Commons license.
+  
+==================================
+
+==================================
+-->
+	<PublicationTimestamp>2020-10-28T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="any">
+		<RequestTimestamp>2020-10-28T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for NCT products.</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2020-10-28T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+				<NetworkFilterByValue>
+					<objectReferences>
+						<OperatorRef ref="noc:NCT"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+		<RequestPolicy>
+			<RequestDetail>AllWithXref</RequestDetail>
+		</RequestPolicy>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.2" id="epd:UK:NCT:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Pass@grouprider:nct" dataSourceRef="nct:nottingham_city_transport" responsibilitySetRef="nct:tariffs">
+			<ValidBetween>
+				<FromDate>2020-01-01T00:00:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>Nottingham City Transport - Fares Example</Name>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="operator_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+				<DefaultCodespaceRef ref="operator_data"/>
+				<DefaultDataSourceRef version="any" ref="nct:nottingham_city_transport"/>
+				<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<prerequisites>
+				<CompositeFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			</prerequisites>
+			<frames>
+				<!-- ====== NCT Operator resources -->
+				<ResourceFrame version="1.0" id="epd:UK:NCT:ResourceFrame_UK_PI_COMMON:nottingham_city_transport:nct" dataSourceRef="nct:nottingham_city_transport" responsibilitySetRef="nct:network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP"/>
+					<codespaces>
+						<Codespace id="operator_data">
+							<Xmlns>nct</Xmlns>
+							<XmlnsUrl>http://www.nctx.co.uk/codes</XmlnsUrl>
+							<Description>Nottingham City Transport data.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:network_data"/>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<dataSources>
+						<DataSource id="nct:nottingham_city_transport" version="any">
+							<Email>feedback@nctx.co.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="any" id="nct:tariffs">
+							<Name>Operator tariff data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="any" id="nct:tariff_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>FareManagement</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:NCTR" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="any" id="nct:network_data">
+							<Name>Operator Network data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="any" id="nct:network_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>Planning</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:NCTR" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet version="any" id="nct:brands" classOfValues="Branding">
+							<Name>Operator Branding</Name>
+							<values>
+								<Branding version="any" id="nct:nottingham_city_transport@brand">
+									<Name>Nottingham City Transport </Name>
+									<Url>https://www.nctx.co.uk/static/images/colorways/logo.png</Url>
+								</Branding>
+							</values>
+						</ValueSet>
+						<ValueSet version="any" id="nct:types_of_travel_documents" nameOfClass="TypeOfTravelDocument">
+							<values>
+								<!--- ==== ClassOfUse========= -->
+								<TypeOfTravelDocument version="any" id="nct:paper_ticket">
+									<Name>Bought on the bus with Cash</Name>
+									<Description>Paper ticket.</Description>
+									<Url>https://www.nctx.co.uk//cash-fares-detail/</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>paperTicket</MediaType>
+								</TypeOfTravelDocument>
+								<TypeOfTravelDocument version="any" id="nct:m-ticket">
+									<Name>Stored on your mobile phone as m-tickets</Name>
+									<Url>https://www.nctx.co.uk//mobile-ticket-introduction/</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>mobileApp</MediaType>
+								</TypeOfTravelDocument>
+								<TypeOfTravelDocument version="any" id="nct:smart_card">
+									<Name>loaded on   smart card t </Name>
+									<IsSmartCard>true</IsSmartCard>
+									<MediaType>smartCard</MediaType>
+									<MachineReadable>nfc</MachineReadable>
+								</TypeOfTravelDocument>
+							</values>
+						</ValueSet>
+						<ValueSet version="any" id="nct:account_types" classOfValues="TypeOfCustomerAccount">
+							<values>
+								<TypeOfCustomerAccount version="any" id="nct:m-ticket">
+									<Name>m-ticket</Name>
+								</TypeOfCustomerAccount>
+								<TypeOfCustomerAccount version="any" id="nct:smart_card">
+									<Name>Smart card</Name>
+								</TypeOfCustomerAccount>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="any" id="noc:NCTR">
+							<PublicCode>NCTR</PublicCode>
+							<PrivateCode type="nocn">nocn:10937</PrivateCode>
+							<Name>Nottingham City Transport </Name>
+							<ShortName>Nottingham City Transport </ShortName>
+							<TradingName>Nottingham City Transport Ltd</TradingName>
+							<ContactDetails>
+								<Email>travelcentre@nctx.co.uk</Email>
+								<Phone>0115 950 60 70</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>NCT Travel Centre</BuildingName>
+								<Street>Old Market Square</Street>
+								<Town>Nottingham</Town>
+								<PostCode>NG1 2JS</PostCode>
+								<PostalRegion>Nottinghamshire</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!--==== FAREs ==== -->
+				<!-- NCT Pass  products -->
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_NETWORK:nottingham_city_transport@zones:nct" responsibilitySetRef="nct:network_data">
+					<Name>Nottingham City Transport network </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<FrameDefaults>
+						<DefaultResponsibilitySetRef version="any" ref="nct:network_data"/>
+					</FrameDefaults>
+					<!--==== Fare zones === NB These are just a guess from the map s -->
+					<fareZones>
+						<FareZone version="any" id="nct:nct_further">
+							<Name>grouprider "further" Zone</Name>
+						</FareZone>
+						<FareZone version="any" id="nct:nct_city_area">
+							<Name>Nottingham City Area</Name>
+						</FareZone>
+					</fareZones>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@grouprider:nct" responsibilitySetRef="nct:tariffs">
+					<Name>Nottingham City Transport Grouprider products    </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="any" id="nct:Tariff@grouprider">
+							<!--- ====Fare Structure======= -->
+							<timeIntervals>
+								<TimeInterval version="any" id="nct:Tariff@grouprider@1day">
+									<Name>1 day</Name>
+									<EndTime>04:29:00</EndTime>
+									<DayOffset>1</DayOffset>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="any" id="nct:Tariff@grouprider@peak">
+									<Name>Peak period before 09:30 every weekday (including school holidays)e</Name>
+									<FareDemandType>peak</FareDemandType>
+								</FareDemandFactor>
+								<FareDemandFactor version="any" id="nct:Tariff@grouprider@off_peak">
+									<Name>Offpeak fter 09:30 every weekday (including school holidays) and all day weekends and on Bank Holidays</Name>
+									<FareDemandType>offPeak</FareDemandType>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<fareStructureElements>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@groups">
+									<Name>Available group tickets</Name>
+									<Description>Family ticket only for 1 day, cash or m-ticket.</Description>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:groups"/>
+									<GenericParameterAssignment id="nct:Tariff@grouprider@groups" version="any" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<GroupTicket version="any" id="nct:grouprider_family">
+												<Name>Grouprider</Name>
+												<Description>Up to 5 people. Minimum of 1 adult &amp; maximum of 2 adults.</Description>
+												<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+												<Ticketing>allOnOneTicket</Ticketing>
+												<JointCheckIn>required</JointCheckIn>
+											</GroupTicket>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<!-- === SALES OFFER PACKAGES === -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="nct:grouprider-SOP@p-ticket@nct_further">
+							<BrandingRef version="any" ref="nct:nottingham_city_transport@brand"/>
+							<Name>NCT Grouprider - paper ticket</Name>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<!--  PRICES  -->
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRICE:nottingham_city_transport@pass@grouprider_2020+2021@nested:nct" responsibilitySetRef="nct:tariffs">
+					<Name>Grouprider prices 2020</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+					</FrameDefaults>
+					<fareTables>
+						<FareTable version="any" id="nct:grouprider_2020">
+							<Name>Grouprider Fares</Name>
+							<pricesFor>
+								<SalesOfferPackageRef version="any" ref="nct:grouprider-SOP@p-ticket@nct_further"/>
+							</pricesFor>
+							<specifics>
+								<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+							</specifics>
+							<includes>
+								<FareTable version="any" id="nct:grouprider_2020@p-ticket@peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2020@p-ticket@peak@1day">
+											<Amount>10.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="any" id="nct:grouprider_2020@p-ticket@off_peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@off_peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2020@p-ticket@off_peak@1day">
+											<Amount>6.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<!--   === COMMON UK FARE RESOURCES===  -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			<codespaces>
+				<Codespace id="noc_data">
+					<Xmlns>noc</Xmlns>
+					<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+					<Description>UK national operator codes</Description>
+				</Codespace>
+				<Codespace id="epd_data">
+					<Xmlns>epd</Xmlns>
+					<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+					<Description>European Passenger Information profile data -use for UK frame names</Description>
+				</Codespace>
+				<Codespace id="fxc_metadata">
+					<Xmlns>fxc</Xmlns>
+					<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+					<Description>UK FareXChange Profile metadata</Description>
+				</Codespace>
+			</codespaces>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

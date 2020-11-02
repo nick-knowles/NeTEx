@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== Nottingham City Transport examples==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Nottingham Robin Hood PAYG card  Example
+ 
+This example shows the encoding of a capped PAY as you go product for a multioperator  zonal fare system , using the Nottingham Robin Hood example.
+
+This is a strippped down version of the full example that leaves out the tariff structure as well as all ancillary passenger information that is not material for fare pricing,  All it provides in effect is
+    (i) The fare prices,
+    (ii) The names of the  tariff and/or product elements referenced by the fare prices.
+
+The Robin hood  Pay As You Go product allows single trips with a fare zone at a flat fare for each trip, capped 
+     There is one zone 
+     The card holds prepaid stored value that can be toooped at with £5,£10, £20 and £50 amounts
+     There are different caps for single operator and multiple operator use.
+     There are three types of user  Adult/ under19, Student over19, each priced and capped differently
+  
+
+https://www.nctx.co.uk/robin_hood
+https://www.robinhoodnetwork.co.uk
+
+
+https://www.nctx.co.uk/robin_hood_payg
+ 
+Data is (C) Nottingham City Transport 
+
+(C) Crown Copyright 2020
+Free to use under a Creative Commons license.
+  
+==================================
+
+==================================
+-->
+	<PublicationTimestamp>2020-10-28T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="any">
+		<RequestTimestamp>2020-10-28T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for NCT products.</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2020-10-28T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+				<NetworkFilterByValue>
+					<objectReferences>
+						<OperatorRef ref="rbh:RBHTC"/>
+						<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+		<RequestPolicy>
+			<RequestDetail>AllWithXref</RequestDetail>
+		</RequestPolicy>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.0" id="epd:UK:rbh:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Pass@robin_hood_payg:nct" dataSourceRef="rbh:robin_hood" responsibilitySetRef="rbh:tariffs">
+			<ValidBetween>
+				<FromDate>2020-08-24T04:30:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>Nottingham City Transport - Fares Example</Name>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="operator_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+				<DefaultCodespaceRef ref="operator_data"/>
+				<DefaultDataSourceRef version="any" ref="rbh:robin_hood@zones:rbh"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<prerequisites>
+				<CompositeFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			</prerequisites>
+			<frames>
+				<!-- ====== NCT Operator resources -->
+				<ResourceFrame version="1.0" id="epd:UK:rbh:ResourceFrame_UK_PI_COMMON:robin_hood@zones:rbh" dataSourceRef="rbh:robin_hood" responsibilitySetRef="rbh:network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP"/>
+					<codespaces>
+						<Codespace id="operator_data">
+							<Xmlns>nct</Xmlns>
+							<XmlnsUrl>http://www.robinhoodnetwork.co.uk/codes</XmlnsUrl>
+							<Description>Nottingham City Transport data.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<dataSources>
+						<DataSource id="rbh:robin_hood@zones:rbh" version="any">
+							<Email>feedback@robinhoodnetwork.co.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<typesOfValue>
+						<ValueSet version="any" id="rbh:brands" classOfValues="Branding">
+							<Name>Operator Branding</Name>
+							<values>
+								<Branding version="any" id="rbh:brand">
+									<Name>Robin Hood</Name>
+									<Url>https://www.robinhoodnetwork.co.uk/static/images/colorways/logo.png</Url>
+								</Branding>
+							</values>
+						</ValueSet>
+						<ValueSet version="any" id="rbh:account_types" classOfValues="TypeOfCustomerAccount">
+							<values>
+								<TypeOfCustomerAccount version="any" id="rbh:m-ticket">
+									<Name>m-ticket</Name>
+								</TypeOfCustomerAccount>
+								<TypeOfCustomerAccount version="any" id="rbh:smart_card">
+									<Name>Smart card</Name>
+								</TypeOfCustomerAccount>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="any" id="rbh:RBHTC">
+							<PublicCode>RBH</PublicCode>
+							<Name>Robin Hood Network</Name>
+							<ShortName>Nottingham City Transport </ShortName>
+							<TradingName>Nottingham City Transport Ltd</TradingName>
+							<ContactDetails>
+								<Email>travelcentre@nctx.co.uk</Email>
+								<Phone>0115 950 60 70</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>NCT Travel Centre</BuildingName>
+								<Street>Old Market Square</Street>
+								<Town>Nottingham</Town>
+								<PostCode>NG1 2JS</PostCode>
+								<PostalRegion>Nottinghamshire</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+						<Operator version="any" id="noc:NCTR">
+							<PublicCode>NCTR</PublicCode>
+							<PrivateCode type="nocn">nocn:10937</PrivateCode>
+							<Name>Nottingham City Transport </Name>
+							<ShortName>Nottingham City Transport </ShortName>
+							<TradingName>Nottingham City Transport Ltd</TradingName>
+							<ContactDetails>
+								<Email>travelcentre@nctx.co.uk</Email>
+								<Phone>0115 950 60 70</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>NCT Travel Centre</BuildingName>
+								<Street>Old Market Square</Street>
+								<Town>Nottingham</Town>
+								<PostCode>NG1 2JS</PostCode>
+								<PostalRegion>Nottinghamshire</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+					</organisations>
+					<groupsOfOperators>
+						<GroupOfOperators version="any" id="rbh:hoodies">
+							<Name>Robin Hood operators</Name>
+							<members>
+								<OperatorRef version="any" ref="noc:NCTR">Nottingham City Transport </OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:NOCT">CT4N</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:KBUS">Kinchbus</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:NOTB">Linkbuses</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:MBOT">Marshalls</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:NEXT">NET Tram</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:EMSY">tagecoach</OperatorRef>
+								<OperatorRef versionRef="any" ref="noc:TBNT">trent barton</OperatorRef>
+								<OperatorRef versionRef="any" ref="atoc:EMR">East Midlands Railway</OperatorRef>
+								<OperatorRef versionRef="any" ref="atoc:CCT">Cross Country Trains</OperatorRef>
+							</members>
+						</GroupOfOperators>
+					</groupsOfOperators>
+				</ResourceFrame>
+				<!--==== FAREs ==== -->
+				<!-- NCT Pass  products -->
+				<FareFrame version="1.0" id="epd:UK:rbh:FareFrame_UK_PI_FARE_NETWORK:robin_hood@zones:rbh" responsibilitySetRef="rbh:network_data">
+					<Name>Nottingham City Transport network </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<!--==== Fare zones === NB These are just a guess from the map s -->
+					<fareZones>
+						<FareZone version="any" id="rbh:robin_hood_city">
+							<Name>Robin Hood zone</Name>
+							<OperatorRef version="any" ref="rbh:RBHTC"/>
+						</FareZone>
+					</fareZones>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:rbh:FareFrame_UK_PI_FARE_PRODUCT:robin_hood@payg_capped:rbh" responsibilitySetRef="rbh:tariffs">
+					<Name>Robin_hood PAYG capped products</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="any" id="rbh:Tariff@robin_hood_payg">
+							<Name>robin_hood_payg day pass - Tariff</Name>
+							<OperatorRef version="any" ref="rbh:RBHTC"/>
+							<TypeOfTariffRef versionRef="fxc:v1.0" ref="fxc:zonal"/>
+							<TariffBasis>zone</TariffBasis>
+							<!--- ====Fare Structure======= -->
+							<qualityStructureFactors>
+								<QualityStructureFactor version="any" id="rbh:Tariff@robin_hood_payg@5pounds">
+									<Name>£5 pounds top-up.</Name>
+									<Factor>5</Factor>
+								</QualityStructureFactor>
+								<QualityStructureFactor version="any" id="rbh:Tariff@robin_hood_payg@10pounds">
+									<Name>£10 pounds top-up.</Name>
+									<Factor>10</Factor>
+								</QualityStructureFactor>
+								<QualityStructureFactor version="any" id="rbh:Tariff@robin_hood_payg@20pounds">
+									<Name>£20 pounds top-up.</Name>
+									<Factor>20</Factor>
+								</QualityStructureFactor>
+								<QualityStructureFactor version="any" id="rbh:Tariff@robin_hood_payg@50pounds">
+									<Name>£50 pounds top-up.</Name>
+									<Factor>50</Factor>
+								</QualityStructureFactor>
+							</qualityStructureFactors>
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<fareStructureElements>
+								<FareStructureElement version="any" id="rbh:Tariff@robin_hood_payg@access_zones">
+									<Name>Available zones</Name>
+									<Description>single zone.</Description>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="any" id="rbh:Tariff@robin_hood_payg@access_zones" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+										<validityParameters>
+											<VehicleModes>bus tram  rail</VehicleModes>
+											<FareZoneRef version="any" ref="rbh:robin_hood_city"/>
+											<GroupOfOperatorsRef version="any" ref="rbh:hoodies"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<!-- Eligibilities -->
+								<FareStructureElement version="any" id="rbh:Tariff@robin_hood_payg@eligibility@adult">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment version="any" id="rbh:Tariff@robin_hood_payg@eligibility@adult" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="rbh:adult">
+												<Name>robin_hood_payg Adult</Name>
+												<Description/>
+												<MinimumAge>19</MinimumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="rbh:Tariff@robin_hood_payg@eligibility@over_18_student">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment version="any" id="rbh:Tariff@robin_hood_payg@eligibility@over_18_student" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="rbh:over_18_student">
+												<Name>Uni Student</Name>
+												<MaximumAge>18</MaximumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="rbh:Tariff@robin_hood_payg@eligibility@under_19">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment version="any" id="rbh:Tariff@robin_hood_payg@eligibility@under_19" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="rbh:under_19">
+												<Name>Under 19</Name>
+												<MaximumAge>18</MaximumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="rbh:Tariff@robin_hood_payg@top_ups">
+									<Name>Available zones</Name>
+									<Description>single zone.</Description>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:sale_conditions"/>
+									<qualityStructureFactors>
+										<QualityStructureFactorRef version="any" ref="rbh:Tariff@robin_hood_payg@5pounds"/>
+										<QualityStructureFactorRef version="any" ref="rbh:Tariff@robin_hood_payg@10pounds"/>
+										<QualityStructureFactorRef version="any" ref="rbh:Tariff@robin_hood_payg@20pounds"/>
+										<QualityStructureFactorRef version="any" ref="rbh:Tariff@robin_hood_payg@50pounds"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<AmountOfPriceUnitProduct version="any" id="rbh:robin_hood_payg@epurse">
+							<Name>Robin hood Smartcard </Name>
+							<OperatorRef version="any" ref="rbh:RBHTC"/>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<validableElements>
+								<ValidableElement version="1.0" id="rbh:robin_hood_payg@epurse">
+									<Name>Stored value</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="any" ref="rbh:Tariff@robin_hood_payg@top_ups"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="rbh:robin_hood_payg@epurse" order="1">
+									<ValidableElementRef version="1.0" ref="rbh:robin_hood_payg@epurse"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>storedValue</ProductType>
+						</AmountOfPriceUnitProduct>
+						<!--  Travel products  -->
+						<CappedDiscountRight version="any" id="rbh:robin_hood_payg">
+							<Name>Robin Hood  PYG - Adult</Name>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@discount@sales"/>
+							<OperatorRef version="any" ref="rbh:RBHTC"/>
+							<ProductType>payAsYouGoRight</ProductType>
+							<cappingRules>
+								<CappingRule version="any" id="rbh:robin_hood_payg@nct">
+									<Name>Unlimited journeys on NCT - day cap</Name>
+								</CappingRule>
+								<CappingRule version="any" id="rbh:robin_hood_payg@all">
+									<Name>Unlimited journeys all operators  - day cap</Name>
+								</CappingRule>
+							</cappingRules>
+						</CappedDiscountRight>
+					</fareProducts>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument version="any" id="rbh:smart_card">
+							<Name>loaded on smart card</Name>
+							<IsSmartCard>true</IsSmartCard>
+							<HasPhoto>true</HasPhoto>
+							<MediaType>smartCard</MediaType>
+							<MachineReadable>nfc</MachineReadable>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+					<!-- === SALES OFFER PACKAGES === -->
+					<!--    -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_payg@adult-SOP">
+							<Name>Robin hood PAYG card - Adult </Name>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_payg@over_18_student-SOP">
+							<Name>Robin hood PAYG card - over_18_student  </Name>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_payg@under_19-SOP">
+							<Name>Robin hood PAYG card - Under 19</Name>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:rbh:FareFrame_UK_PI_FARE_PRODUCT:robin_hood@payg_trips:rbh" responsibilitySetRef="rbh:tariffs">
+					<Name>Robin_hood PAYG trip products</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<!--==== Fare Usage Parameters ==== -->
+					<!-- === SALES OFFER PACKAGES === -->
+					<!--    -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_trip@adult-SOP">
+							<Name>Robin hood PAYG - single trip - Adult </Name>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_trip@over_18_student-SOP">
+							<Name>Robin hood PAYG - single trip - Uni Student </Name>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="any" id="rbh:robin_hood_trip@under_19-SOP">
+							<Name>Robin hood PAYG - single trip - Under 19 </Name>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<!-- === PRICES === -->
+				<FareFrame version="1.0" id="epd:UK:rbh:FareFrame_UK_PI_FARE_PRICE:robin_hood@zones:rbh@pass@robin_hood_payg@payg_2020+2021@nested:nct" responsibilitySetRef="rbh:tariffs">
+					<Name>robin_hood_payg prices 2020</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<PricingParameterSet version="any" id="rbh:robin_hood_trip">
+						<pricingRules>
+							<LimitingRule version="any" id="rbh:single_operator_cap@adult">
+								<Name>Multioperator cap  - Adult</Name>
+								<MinimumPrice>2.30</MinimumPrice>
+								<MaximumPrice>4.20</MaximumPrice>
+							</LimitingRule>
+							<LimitingRule version="any" id="rbh:single_operator_cap@over_18_student">
+								<Name>Multioperator cap - Uni student</Name>
+								<MinimumPrice>1.70</MinimumPrice>
+								<MaximumPrice>3.40</MaximumPrice>
+							</LimitingRule>
+							<LimitingRule version="any" id="rbh:single_operator_cap@under_19">
+								<Name>Multioperator cap - Under 19</Name>
+								<MinimumPrice>1.20</MinimumPrice>
+								<MaximumPrice>2.50</MaximumPrice>
+							</LimitingRule>
+							<LimitingRule version="any" id="rbh:multi_operator_cap@adult">
+								<Name>Multioperator cap  - Adult</Name>
+								<MinimumPrice>2.30</MinimumPrice>
+								<MaximumPrice>4.80</MaximumPrice>
+							</LimitingRule>
+							<LimitingRule version="any" id="rbh:multi_operator_cap@over_18_student">
+								<Name>Multioperator cap - Uni student</Name>
+								<MinimumPrice>1.70</MinimumPrice>
+								<MaximumPrice>4.20</MaximumPrice>
+							</LimitingRule>
+							<LimitingRule version="any" id="rbh:multi_operator_cap@under_19">
+								<Name>Multioperator cap - Under 19</Name>
+								<MinimumPrice>1.20</MinimumPrice>
+								<MaximumPrice>3.25</MaximumPrice>
+							</LimitingRule>
+						</pricingRules>
+					</PricingParameterSet>
+					<!--  === PRICES === -->
+					<fareTables>
+						<FareTable version="any" id="rbh:robin_hood_payg_2020">
+							<Name>Robin Hood PAYG prices</Name>
+							<usedIn>
+								<TariffRef version="any" ref="rbh:Tariff@robin_hood_payg"/>
+							</usedIn>
+							<specifics>
+								<TariffZoneRef version="any" ref="rbh:robin_hood_city"/>
+								<TypeOfTravelDocumentRef version="any" ref="rbh:smart_card"/>
+							</specifics>
+							<includes>
+								<FareTable version="any" id="rbh:robin_hood_payg_2020@adult">
+									<Name>Robin Hood PAYG prices</Name>
+									<limitations>
+										<UserProfileRef version="any" ref="rbh:adult"/>
+									</limitations>
+									<prices>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_payg_2020@adult">
+											<Amount>3.00</Amount>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_payg@adult-SOP"/>
+										</SalesOfferPackagePrice>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_trip_2020@adult">
+											<Amount>2.30</Amount>
+											<LimitingRuleRef version="any" ref="rbh:single_operator_cap@adult"/>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_trip@adult-SOP"/>
+										</SalesOfferPackagePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@adult@nct">
+											<Amount>4.20</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@nct"/>
+										</CappingRulePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@adult@all">
+											<Amount>4.80</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@all"/>
+										</CappingRulePrice>
+									</prices>
+								</FareTable>
+								<FareTable version="any" id="rbh:robin_hood_payg_2020@over_18_student">
+									<Name>Robin Hood PAYG prices</Name>
+									<limitations>
+										<UserProfileRef version="any" ref="rbh:over_18_student"/>
+									</limitations>
+									<prices>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_payg_2020@over_18_student">
+											<Amount>3.00</Amount>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_payg@over_18_student-SOP"/>
+										</SalesOfferPackagePrice>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_trip_2020@over_18_student">
+											<Amount>1.70</Amount>
+											<LimitingRuleRef version="any" ref="rbh:single_operator_cap@over_18_student"/>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_trip@over_18_student-SOP"/>
+										</SalesOfferPackagePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@over_18_student@nct">
+											<Amount>3.40</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@nct"/>
+										</CappingRulePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@over_18_student@all">
+											<Amount>4.20</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@all"/>
+										</CappingRulePrice>
+									</prices>
+								</FareTable>
+								<FareTable version="any" id="rbh:robin_hood_payg_2020@under_19">
+									<Name>Robin Hood PAYG prices</Name>
+									<limitations>
+										<UserProfileRef version="any" ref="rbh:under_19"/>
+									</limitations>
+									<prices>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_payg_2020@under_19">
+											<Amount>3.00</Amount>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_payg@under_19-SOP"/>
+										</SalesOfferPackagePrice>
+										<SalesOfferPackagePrice version="any" id="rbh:robin_hood_trip_2020@under_19">
+											<Amount>1.20</Amount>
+											<LimitingRuleRef version="any" ref="rbh:single_operator_cap@under_19"/>
+											<SalesOfferPackageRef version="any" ref="rbh:robin_hood_trip@under_19-SOP"/>
+										</SalesOfferPackagePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@under_19@nct">
+											<Amount>2.50</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@nct"/>
+										</CappingRulePrice>
+										<CappingRulePrice version="any" id="rbh:robin_hood_payg_2020@under_19@all">
+											<Amount>3.25</Amount>
+											<CappingRuleRef version="any" ref="rbh:robin_hood_payg@all"/>
+										</CappingRulePrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<!--   === COMMON UK FARE RESOURCES===  -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			<codespaces>
+				<Codespace id="noc_data">
+					<Xmlns>noc</Xmlns>
+					<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+					<Description>UK national operator codes</Description>
+				</Codespace>
+				<Codespace id="fxc_metadata">
+					<Xmlns>fxc</Xmlns>
+					<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+					<Description>UK FareXChange Profile metadata</Description>
+				</Codespace>
+				<Codespace id="epd_data">
+					<Xmlns>epd</Xmlns>
+					<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+					<Description>European Passenger Information profile data -use for UK frame names</Description>
+				</Codespace>
+			</codespaces>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

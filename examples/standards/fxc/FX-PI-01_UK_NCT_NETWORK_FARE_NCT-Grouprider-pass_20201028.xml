@@ -1,0 +1,1917 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== Nottingham City Transport examples==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- Nottingham City Transport example products Example
+
+This example shows the encoding of a family group pass for a zonal fare system , using the Nottingham City Transport example
+
+
+NCT Grouprider pass:
+- A family can be up  5 person  of whom or or two can be adults.
+- There is a single product and salles offer package, with a choice of zones.
+- There are two zones NottinghamCity Centre and NCT Further.
+- The product is sold onboard as a paper ticket.
+
+
+https://www.nctx.co.uk/grouprider
+ 
+Data is (C) Nottingham City Transport 
+
+(C) Crown Copyright 2020
+Free to use under a Creative Commons license.
+  
+==================================
+
+==================================
+-->
+	<PublicationTimestamp>2020-10-28T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="any">
+		<RequestTimestamp>2020-10-28T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for NCT products.</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2020-10-28T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+				<NetworkFilterByValue>
+					<objectReferences>
+						<OperatorRef ref="noc:NCT"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+		<RequestPolicy>
+			<RequestDetail>AllWithXref</RequestDetail>
+		</RequestPolicy>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.2" id="epd:UK:NCT:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Pass@grouprider:nct" dataSourceRef="nct:nottingham_city_transport" responsibilitySetRef="nct:tariffs">
+			<ValidBetween>
+				<FromDate>2020-01-01T00:00:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>Nottingham City Transport - Fares Example</Name>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="naptStop_data"/>
+				<CodespaceRef ref="nptgLocality_data"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="operator_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+				<DefaultCodespaceRef ref="operator_data"/>
+				<DefaultDataSourceRef version="any" ref="nct:nottingham_city_transport"/>
+				<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<prerequisites>
+				<CompositeFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			</prerequisites>
+			<frames>
+				<!-- ====== NCT Operator resources -->
+				<ResourceFrame version="1.0" id="epd:UK:NCT:ResourceFrame_UK_PI_COMMON:nottingham_city_transport:nct" dataSourceRef="nct:nottingham_city_transport" responsibilitySetRef="nct:network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP"/>
+					<codespaces>
+						<Codespace id="operator_data">
+							<Xmlns>nct</Xmlns>
+							<XmlnsUrl>http://www.nctx.co.uk/codes</XmlnsUrl>
+							<Description>Nottingham City Transport data.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<!--- The default codespace means that actually we could leave it off all id s that belong to the nct: codespace. -->
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:network_data"/>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<dataSources>
+						<DataSource id="nct:nottingham_city_transport" version="any">
+							<Email>feedback@nctx.co.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="any" id="nct:tariffs">
+							<Name>Operator tariff data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="any" id="nct:tariff_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>FareManagement</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:NCTR" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="any" id="nct:network_data">
+							<Name>Operator Network data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="any" id="nct:network_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>Planning</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:NCTR" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet version="any" id="nct:brands" classOfValues="Branding">
+							<Name>Operator Branding</Name>
+							<values>
+								<Branding version="any" id="nct:nottingham_city_transport@brand">
+									<Name>Nottingham City Transport </Name>
+									<Url>https://www.nctx.co.uk/static/images/colorways/logo.png</Url>
+								</Branding>
+							</values>
+						</ValueSet>
+						<ValueSet version="any" id="nct:types_of_travel_documents" nameOfClass="TypeOfTravelDocument">
+							<values>
+								<!--- ==== ClassOfUse========= -->
+								<TypeOfTravelDocument version="any" id="nct:paper_ticket">
+									<Name>Bought on the bus with Cash</Name>
+									<Description>Paper ticket.</Description>
+									<Url>https://www.nctx.co.uk//cash-fares-detail/</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>paperTicket</MediaType>
+								</TypeOfTravelDocument>
+								<TypeOfTravelDocument version="any" id="nct:m-ticket">
+									<Name>Stored on your mobile phone as m-tickets</Name>
+									<Url>https://www.nctx.co.uk//mobile-ticket-introduction/</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>mobileApp</MediaType>
+								</TypeOfTravelDocument>
+								<TypeOfTravelDocument version="any" id="nct:smart_card">
+									<Name>loaded on   smart card t </Name>
+									<IsSmartCard>true</IsSmartCard>
+									<MediaType>smartCard</MediaType>
+									<MachineReadable>nfc</MachineReadable>
+								</TypeOfTravelDocument>
+							</values>
+						</ValueSet>
+						<ValueSet version="any" id="nct:account_types" classOfValues="TypeOfCustomerAccount">
+							<values>
+								<TypeOfCustomerAccount version="any" id="nct:m-ticket">
+									<Name>m-ticket</Name>
+								</TypeOfCustomerAccount>
+								<TypeOfCustomerAccount version="any" id="nct:smart_card">
+									<Name>Smart card</Name>
+								</TypeOfCustomerAccount>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="any" id="noc:NCTR">
+							<PublicCode>NCTR</PublicCode>
+							<PrivateCode type="nocn">nocn:10937</PrivateCode>
+							<Name>Nottingham City Transport </Name>
+							<ShortName>Nottingham City Transport </ShortName>
+							<TradingName>Nottingham City Transport Ltd</TradingName>
+							<ContactDetails>
+								<Email>travelcentre@nctx.co.uk</Email>
+								<Phone>0115 950 60 70</Phone>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<BuildingName>NCT Travel Centre</BuildingName>
+								<Street>Old Market Square</Street>
+								<Town>Nottingham</Town>
+								<PostCode>NG1 2JS</PostCode>
+								<PostalRegion>Nottinghamshire</PostalRegion>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<OperatorActivities>passenger</OperatorActivities>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!--  === NCT DEMAND PERIODS -->
+				<ServiceCalendarFrame version="1.0" id="epd:UK:NCT:ServiceCalendarFrame_UK_PI_CALENDAR:nottingham_city_transport@demand_periods:nct">
+					<Name>Peak and offpeak periods</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_CALENDAR:FXCP"/>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultDataSourceRef ref="nct:nottingham_city_transport" version="any"/>
+						<DefaultResponsibilitySetRef ref="nct:tariffs" version="any"/>
+					</FrameDefaults>
+					<dayTypes>
+						<FareDayType version="any" id="nct:grouprider@working_day_peak">
+							<Name>Peak</Name>
+							<Description>before 09:30 every weekday (including school holidays).</Description>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Weekdays</DaysOfWeek>
+									<HolidayTypes>NotHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+							<timebands>
+								<Timeband version="any" id="nct:grouprider@peak">
+									<StartTime>04:30:00</StartTime>
+									<EndTime>09:30:00</EndTime>
+								</Timeband>
+							</timebands>
+						</FareDayType>
+						<FareDayType version="any" id="nct:grouprider@working_day_off_peak">
+							<Name>Working days off peak</Name>
+							<Description>before 09:30 every weekday (including school holidays).</Description>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Weekdays</DaysOfWeek>
+									<HolidayTypes>NotHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+							<timebands>
+								<Timeband version="any" id="nct:grouprider@off_peak">
+									<StartTime>09:30:00</StartTime>
+									<Duration>PT19H30M</Duration>
+								</Timeband>
+							</timebands>
+						</FareDayType>
+						<FareDayType version="any" id="nct:grouprider@non_workingday">
+							<Name>Other off eak</Name>
+							<Description>Any time.</Description>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Weekend</DaysOfWeek>
+								</PropertyOfDay>
+								<PropertyOfDay>
+									<DaysOfWeek>Weekdays</DaysOfWeek>
+									<HolidayTypes>AnyHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</FareDayType>
+					</dayTypes>
+				</ServiceCalendarFrame>
+				<!--==== FAREs ==== -->
+				<!-- NCT Pass  products -->
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_NETWORK:nottingham_city_transport@zones:nct" responsibilitySetRef="nct:network_data">
+					<Name>Nottingham City Transport network </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<FrameDefaults>
+						<DefaultResponsibilitySetRef version="any" ref="nct:network_data"/>
+					</FrameDefaults>
+					<prerequisites>
+						<ResourceFrameRef version="1.0" ref="epd:UK:NCT:ResourceFrame_UK_PI_COMMON:nottingham_city_transport:nct"/>
+					</prerequisites>
+					<!--==== Fare zones === NB These are just a guess from the map s -->
+					<fareZones>
+						<FareZone version="any" id="nct:nct_further">
+							<Name>grouprider "further" Zone</Name>
+							<Description>grouprider further zone (includes city area zone).</Description>
+							<members>
+								<!--  TODO List of all NaPtan stops in outer zone but nor in  central cone  -->
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TTDO"/>
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TTDO"/>
+								<!--- etc etc -->
+							</members>
+							<types>
+								<TypeOfZoneRef ref="fxc:fare_zone@operator" version="fxc:v1.0"/>
+							</types>
+							<projections>
+								<!-- includes the following nptg localities -->
+								<!--  TODO List of allNPTG localities in outer z  ne but nor in  central cone  -->
+								<TopographicProjectionRef versionRef="nptg:v2.4" ref="nptgLocality:E00TODO">East Leake</TopographicProjectionRef>
+								<TopographicProjectionRef versionRef="nptg:2.4" ref="nptgLocality:E00TODO">Southwell</TopographicProjectionRef>
+								<!-- TO DO add all NPTG Locality references -->
+							</projections>
+							<Presentation>
+								<ColourName>SkyBlue</ColourName>
+								<TextColourName>DarkBlue</TextColourName>
+							</Presentation>
+							<ZoneTopology>nested</ZoneTopology>
+							<ScopingMethod>explicitPeripheryStops</ScopingMethod>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<contains>
+								<TariffZoneRef version="any" ref="nct:nct_city_area"/>
+							</contains>
+						</FareZone>
+						<FareZone version="any" id="nct:nct_city_area">
+							<Name>Nottingham City Area</Name>
+							<members>
+								<!--  TODO List of all NaPtan stops in outer zone but nor in  central cone  -->
+								<ScheduledStopPointRef versionRef="naptanStop:v2.4" ref="naptStop:4400TODO"/>
+								<!--- etc etc -->
+							</members>
+							<types>
+								<TypeOfZoneRef ref="fxc:fare_zone@operator" version="fxc:v1.0"/>
+							</types>
+							<projections>
+								<!-- includes the following nptg localities -->
+								<!--  TODO List of allNPTG localities in outer z  ne but nor in  central cone  -->
+								<TopographicProjectionRef versionRef="nptg:v2.4" ref="nptgLocality:E00TODO">Nottingham city centre</TopographicProjectionRef>
+								<!-- MORE TO DO -->
+							</projections>
+							<Presentation>
+								<ColourName>PaleBlue</ColourName>
+								<TextColourName>DarkBlue</TextColourName>
+							</Presentation>
+							<ParentFareZoneRef ref="nct:nct_further"/>
+							<ZoneTopology>nested</ZoneTopology>
+							<ScopingMethod>explicitStops</ScopingMethod>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+						</FareZone>
+					</fareZones>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@grouprider:nct" responsibilitySetRef="nct:tariffs">
+					<Name>Nottingham City Transport Grouprider products    </Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:NCT:FareFrame_UK_PI_FARE_NETWORK:nottingham_city_transport@zones:nct"/>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:NCT:ServiceCalendarFrame_UK_PI_CALENDAR:nottingham_city_transport@demand_periods:nct"/>
+					</prerequisites>
+					<notices>
+						<Notice version="any" id="nct:grouprider_family">
+							<Text>Grouprider can be used by up to 5 people, where there has to be at least 1 adult (19 and over) and no more than two adults. A Grouprider can be used by 2 adults travelling together without any children too. All customers who board together on a Grouprider ticket, should alight together at the same stop.</Text>
+						</Notice>
+					</notices>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="any" id="nct:Tariff@grouprider">
+							<validityConditions>
+								<ValidBetween>
+									<FromDate>2019-01-01T00:00:00Z</FromDate>
+								</ValidBetween>
+							</validityConditions>
+							<Name>Grouprider day pass - Tariff</Name>
+							<Description>All day family group pass.</Description>
+							<documentLinks>
+								<InfoLink typeOfInfoLink="fareSheet">https://www.nctx.co.uk/grouprider</InfoLink>
+							</documentLinks>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<TypeOfTariffRef versionRef="fxc:v1.0" ref="fxc:zonal"/>
+							<!--- ====Fare Structure======= -->
+							<timeIntervals>
+								<TimeInterval version="any" id="nct:Tariff@grouprider@1day">
+									<Name>1 day</Name>
+									<EndTime>04:29:00</EndTime>
+									<DayOffset>1</DayOffset>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="any" id="nct:Tariff@grouprider@peak">
+									<validityConditions>
+										<AvailabilityCondition version="any" id="nct:Tariff@grouprider@peak">
+											<dayTypes>
+												<FareDayTypeRef version="any" ref="nct:grouprider@working_day_peak"/>
+											</dayTypes>
+										</AvailabilityCondition>
+									</validityConditions>
+									<Name>Peak period before 09:30 every weekday (including school holidays)e</Name>
+									<FareDemandType>peak</FareDemandType>
+								</FareDemandFactor>
+								<FareDemandFactor version="any" id="nct:Tariff@grouprider@off_peak">
+									<validityConditions>
+										<AvailabilityCondition version="any" id="nct:Tariff@grouprider@off_peak">
+											<dayTypes>
+												<FareDayTypeRef version="any" ref="nct:grouprider@working_day_off_peak"/>
+												<FareDayTypeRef version="any" ref="nct:grouprider@non_workingday"/>
+											</dayTypes>
+										</AvailabilityCondition>
+									</validityConditions>
+									<Name>Offpeak fter 09:30 every weekday (including school holidays) and all day weekends and on Bank Holidays</Name>
+									<FareDemandType>offPeak</FareDemandType>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<fareStructureElements>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@access_zones">
+									<Name>Available zones</Name>
+									<Description>single zone.</Description>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment id="nct:Tariff@grouprider@access_zones" version="any" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+										<validityParameters>
+											<FareZoneRef version="any" ref="nct:nct_further"/>
+											<OperatorRef ref="noc:NCTR"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="1" id="nct:Tariff@grouprider@eligibility" version="any">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfile version="any" id="nct:adult">
+												<Name>Grouprider Adult</Name>
+												<MinimumAge>19</MinimumAge>
+											</UserProfile>
+											<UserProfile version="any" id="nct:under_19">
+												<Name>Group rider under 18</Name>
+												<MaximumAge>18</MaximumAge>
+											</UserProfile>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@groups">
+									<Name>Available group tickets</Name>
+									<Description>Family ticket only for 1 day, cash or m-ticket.</Description>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:groups"/>
+									<GenericParameterAssignment id="nct:Tariff@grouprider@groups" version="any" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<GroupTicket version="any" id="nct:grouprider_family">
+												<Name>Grouprider</Name>
+												<Description>Up to 5 people. Minimum of 1 adult &amp; maximum of 2 adults.</Description>
+												<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+												<companionProfiles>
+													<CompanionProfile version="any" id="nct:family@adult">
+														<UserProfileRef version="any" ref="nct:adult"/>
+														<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+														<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+													</CompanionProfile>
+													<CompanionProfile version="any" id="nct:family@child">
+														<UserProfileRef version="any" ref="nct:under_19"/>
+														<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+														<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+													</CompanionProfile>
+												</companionProfiles>
+												<Ticketing>allOnOneTicket</Ticketing>
+												<JointCheckIn>required</JointCheckIn>
+											</GroupTicket>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@durations">
+									<Name>Available duration combination- </Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@demand_periods">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access_when"/>
+									<validityParameterAssignments>
+										<GenericParameterAssignment order="1" id="nct:Tariff@grouprider@demand_periods" version="any">
+											<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access_when"/>
+											<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+										</GenericParameterAssignment>
+										<GenericParameterAssignment order="2" id="nct:Tariff@grouprider@demand_periods" version="any">
+											<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access_when"/>
+											<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@off_peak"/>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</FareStructureElement>
+								<FareStructureElement version="any" id="nct:Tariff@grouprider@travel_conditions">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:travel_conditions"/>
+									<GenericParameterAssignment version="any" order="1" id="nct:Tariff@grouprider@travel@conditions">
+										<Name>Conditions:  repeated use</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<UsageValidityPeriod version="any" id="nct:Tariff@grouprider@validity_period">
+												<UsageEnd>endOfFareDay</UsageEnd>
+											</UsageValidityPeriod>
+											<Transferability version="any" id="nct:Tariff@grouprider@transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="any" id="nct:Tariff@grouprider@frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<Interchanging version="any" id="nct:Tariff@grouprider@interchange">
+												<CanInterchange>true</CanInterchange>
+											</Interchanging>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<!--==== Other Products ==== -->
+						<PreassignedFareProduct version="any" id="nct:grouprider">
+							<Name>Network Group Rider Off Peak</Name>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@period"/>
+							<OperatorRef version="any" ref="noc:NCTR"/>
+							<ConditionSummary>
+								<FareStructureType>zonalFare</FareStructureType>
+								<TariffBasis>zone</TariffBasis>
+								<GoesOnCard>false</GoesOnCard>
+								<IsPersonal>true</IsPersonal>
+								<RequiresPhoto>false</RequiresPhoto>
+								<HasOperatorRestrictions>specifiedOperatorOnly</HasOperatorRestrictions>
+								<HasTravelTimeRestrictions>true</HasTravelTimeRestrictions>
+								<CanBreakJourney>true</CanBreakJourney>
+								<IsRefundable>true</IsRefundable>
+							</ConditionSummary>
+							<validableElements>
+								<ValidableElement version="any" id="nct:grouprider@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="any" ref="nct:Tariff@grouprider@access_zones"/>
+										<FareStructureElementRef version="any" ref="nct:Tariff@grouprider@groups"/>
+										<FareStructureElementRef version="any" ref="nct:Tariff@grouprider@durations"/>
+										<FareStructureElementRef version="any" ref="nct:Tariff@grouprider@demand_periods"/>
+										<FareStructureElementRef version="any" ref="nct:Tariff@grouprider@travel_conditions"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="any" id="nct:grouprider@travel" order="1">
+									<ValidableElementRef version="any" ref="nct:grouprider@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>periodPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<!-- === SALES OFFER PACKAGES === -->
+					<salesOfferPackages>
+						<SalesOfferPackage version="any" id="nct:grouprider-SOP@p-ticket@nct_further">
+							<BrandingRef version="any" ref="nct:nottingham_city_transport@brand"/>
+							<Name>NCT Grouprider - paper ticket</Name>
+							<Description>Unlimited Travel in the Nottingham ARea.</Description>
+							<Url>https://www.nctx.co.uk/grouprider</Url>
+							<noticeAssignments>
+								<NoticeAssignment version="any" id="nct:grouprider-SOP@p-ticket@grouprider_family" order="2">
+									<NoticeRef version="any" ref="nct:grouprider_family"/>
+									<Mark>*</Mark>
+								</NoticeAssignment>
+							</noticeAssignments>
+							<TypeOfSalesOfferPackageRef versionRef="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<distributionAssignments>
+								<DistributionAssignment version="any" id="nct:grouprider-SOP@p-ticket@onBoard" order="2">
+									<Name>Onboard</Name>
+									<Description>Pay for  ticket  onboard</Description>
+									<DistributionChannelRef versionRef="fxc:v1.0" ref="fxc:on_board"/>
+									<DistributionChannelType>onBoard</DistributionChannelType>
+									<TicketingServiceFacilityList>purchase</TicketingServiceFacilityList>
+									<PaymentMethods>cashAndCard</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:collect_on_board" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="any" id="nct:grouprider-SOP@p-ticket@nct_further" order="1">
+									<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+									<PreassignedFareProductRef version="any" ref="nct:grouprider"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<!--  PRICES  -->
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRICE:nottingham_city_transport@pass@grouprider_2020+2021@nested:nct" responsibilitySetRef="nct:tariffs">
+					<ValidBetween>
+						<FromDate>2019-01-01T00:00:00</FromDate>
+						<ToDate>2020-12-31T24:00:00</ToDate>
+					</ValidBetween>
+					<Name>Grouprider prices 2020</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:NCT:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@grouprider:nct"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="any" id="nct:grouprider_2020">
+							<Name>Grouprider Fares</Name>
+							<pricesFor>
+								<SalesOfferPackageRef version="any" ref="nct:grouprider-SOP@p-ticket@nct_further"/>
+							</pricesFor>
+							<usedIn>
+								<TariffRef version="any" ref="nct:Tariff@grouprider"/>
+							</usedIn>
+							<specifics>
+								<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+							</specifics>
+							<includes>
+								<FareTable version="any" id="nct:grouprider_2020@p-ticket@peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2020@p-ticket@peak@1day">
+											<Amount>10.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="any" id="nct:grouprider_2020@p-ticket@off_peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@off_peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2020@p-ticket@off_peak@1day">
+											<Amount>6.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+				<FareFrame version="1.2" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRICE:nottingham_city_transport@pass@grouprider_2021+@nested:nct" responsibilitySetRef="nct:tariffs">
+					<ValidBetween>
+						<FromDate>2021-01-02T00:00:00</FromDate>
+					</ValidBetween>
+					<Name>Grouprider prices 2020</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:NCT:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@grouprider:nct"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="any" id="nct:grouprider_2021">
+							<Name>Grouprider Fares</Name>
+							<pricesFor>
+								<SalesOfferPackageRef version="any" ref="nct:grouprider-SOP@p-ticket@nct_further"/>
+							</pricesFor>
+							<usedIn>
+								<TariffRef version="any" ref="nct:Tariff@grouprider"/>
+							</usedIn>
+							<specifics>
+								<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+							</specifics>
+							<includes>
+								<FareTable version="any" id="nct:groupridergrouprider_2021@p-ticket@peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2021@p-ticket@peak@1day">
+											<Amount>10.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="any" id="nct:grouprider_2021@p-ticket@off_peak">
+									<pricesFor>
+										<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@off_peak"/>
+									</pricesFor>
+									<prices>
+										<TimeIntervalPrice version="any" id="nct:grouprider_2021@p-ticket@off_peak@1day">
+											<Amount>6.00</Amount>
+											<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+										</TimeIntervalPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+				<!--  PRICES  
+The nested fare price organisation shown above is more efficient for large tables. 
+					Here we show that it is also possoible present prices as a flat table simialr to a traditional spreadsheet-->
+				<FareFrame version="1.0" id="epd:UK:NCT:FareFrame_UK_PI_FARE_PRICE:nottingham_city_transport@pass@grouprider_2020+2021@flattened:nct" responsibilitySetRef="nct:tariffs">
+					<ValidBetween>
+						<FromDate>2019-01-01T00:00:00</FromDate>
+						<ToDate>2020-12-31T24:00:00</ToDate>
+					</ValidBetween>
+					<Name>Grouprider prices 2020</Name>
+					<Description>The nested fare price organisation shown above is more efficient for large tables. 
+					Here we show that it is also possible  to present prices as a flat table simialr to a traditional spreadsheet</Description>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="operator_data"/>
+						<DefaultResponsibilitySetRef version="any" ref="nct:tariffs"/>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:NCT:FareFrame_UK_PI_FARE_PRODUCT:nottingham_city_transport@pass@grouprider:nct"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="any" id="nct:grouprider_2020@flattened">
+							<Name>Grouprider Fares</Name>
+							<usedIn>
+								<TariffRef version="any" ref="nct:Tariff@grouprider"/>
+							</usedIn>
+							<cells>
+								<Cell version="any" id="nct:grouprider_2020@p-ticket@peak@1day" order="1">
+									<CellPrice>
+										<Amount>10.00</Amount>
+									</CellPrice>
+									<SalesOfferPackageRef version="any" ref="nct:grouprider-SOP@p-ticket@nct_further"/>
+									<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+									<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+									<TariffZoneRef version="any" ref="nct:nct_further"/>
+									<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+								</Cell>
+								<Cell version="any" id="nct:grouprider_2020@p-ticket@off_peak@1day" order="2">
+									<CellPrice>
+										<Amount>6.00</Amount>
+									</CellPrice>
+									<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+									<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@off_peak"/>
+									<TariffZoneRef version="any" ref="nct:nct_further"/>
+									<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+								</Cell>
+							</cells>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<CompositeFrame id="nctT:pass_transaction_examples" version="1.0" responsibilitySetRef="nct:transaction_data" dataSourceRef="nct:nottingham_city_transport">
+			<!-- ===============
+This Shows sample Purchases For explabation only - not in scope for farexchange data 
+ Sales Transactions would normally be exchanged separately from the reference data on whoich they are based.
+
+The example is intended to show how a choice of specifc parameterscan be made to price and validate a specific ticket .
+ Note that an electronic representation as say stored in an application on a device can be described as a CUSTOMER PURCHASE PACKAGE (not shown here)
+-->
+			<prerequisites>
+				<CompositeFrameRef version="1.2" ref="epd:UK:NCT:CompositeFrame_UK_PI_NETWORK_FARE_OFFER:Pass@grouprider:nct"/>
+			</prerequisites>
+			<frames>
+				<SalesTransactionFrame version="1.0" id="nctT:SampleTransactions">
+					<Name> Sample Transactions</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_TRANSACTIONS:FXCP"/>
+					<codespaces>
+						<CodespaceRef ref="operator_data"/>
+						<Codespace id="nct_transactions">
+							<Xmlns>nctT</Xmlns>
+							<XmlnsUrl>http://www.nctx.co.uk//transactions</XmlnsUrl>
+							<Description>NCT transaction data.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="nct_transactions"/>
+					</FrameDefaults>
+					<fareContracts>
+						<FareContract version="any" id="nctT:Anon001@trans002">
+							<Name>Grouprider zone Paper pass for Cash</Name>
+							<CustomerRef versionRef="any" ref="nctT:Anon"/>
+							<fareContractEntries>
+								<SalesTransaction version="any" id="nctT:Anon001@trans002@purchase_pass">
+									<Name>Buy Grouprider Zone Day pass Cash ticket</Name>
+									<Date>2020-10-28T01:07:00</Date>
+									<TypeOfFareContractEntryRef versionRef="fxc:v1.0" ref="fxc:on_board_purchase"/>
+									<Amount>6.00</Amount>
+									<PaymentMethod>cash</PaymentMethod>
+									<travelSpecifications>
+										<OfferedTravelSpecification version="any" id="nctT:Anon001@trans002@purchase_pass">
+											<Date>2020-10-28T01:07:00</Date>
+											<TypeOfFareContractEntryRef versionRef="fxc:v1.0" ref="fxc:on_board_purchase"/>
+											<SalesTransactionRef version="any" ref="nctT:Anon001@trans002@purchase_pass"/>
+											<TimeIntervalPriceRef version="any" ref="nct:grouprider_2020@p-ticket@off_peak@1day"/>
+											<Amount>6.00</Amount>
+											<StartOfValidity>2020-10-28T01:07:00</StartOfValidity>
+											<specificParameterAssignments>
+												<SpecificParameterAssignment version="any" order="1" id="nctT:Anon001@trans002@purchase_pass">
+													<Name>NCT Grouprider</Name>
+													<ValidableElementRef version="any" ref="nct:grouprider@travel"/>
+													<PreassignedFareProductRef version="any" ref="nct:grouprider"/>
+													<SalesOfferPackageRef version="any" ref="nct:grouprider-SOP@p-ticket@nct_further"/>
+													<limitations>
+														<GroupTicketRef version="any" ref="nct:grouprider_family"/>
+													</limitations>
+													<validityParameters>
+														<OperatorRef version="any" ref="noc:NCTR"/>
+														<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+														<TariffZoneRef version="any" ref="nct:nct_further"/>
+														<DistributionChannelRef versionRef="fxc:v1.0" ref="fxc:on_board"/>
+														<TypeOfTravelDocumentRef version="any" ref="nct:paper_ticket"/>
+													</validityParameters>
+													<TimeIntervalRef version="any" ref="nct:Tariff@grouprider@1day"/>
+													<FareDemandFactorRef version="any" ref="nct:Tariff@grouprider@peak"/>
+												</SpecificParameterAssignment>
+											</specificParameterAssignments>
+										</OfferedTravelSpecification>
+									</travelSpecifications>
+									<travelDocuments>
+										<TravelDocumentRef versionRef="EXTERNAL" ref="nctT:T97656452"/>
+									</travelDocuments>
+									<CollectionNote>Have a nice day</CollectionNote>
+									<OrganisationalUnitRef versionRef="EXTERNAL" ref="MbtSales"/>
+									<RetailDeviceRef versionRef="EXTERNAL" ref="nct:4534"/>
+								</SalesTransaction>
+							</fareContractEntries>
+						</FareContract>
+					</fareContracts>
+				</SalesTransactionFrame>
+			</frames>
+		</CompositeFrame>
+		<!--   === COMMON UK FARE RESOURCES===  THIS IS BOILER PLATE STUFF that allows UK Profile standised code values codes to be validated. 
+IT  CAN BE OMITTED IF EXTERNAL REFERENCES ARE USED. -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+			<ValidBetween>
+				<FromDate>2019-05-01T00:00:00</FromDate>
+				<ToDate>2022-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>UK FXCP Passenger Information Profile common resources</Name>
+			<Description>The values can be used to validate UK Profile standised code values codes to be validated. automatically, 
+This entire frame can be ommitted if the corerct  external references are used (but then they will not be validated)</Description>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc"/>
+			<codespaces>
+				<Codespace id="naptStop_data">
+					<Xmlns>naptStop</Xmlns>
+					<XmlnsUrl>http://www.naptan.org.uk/stops</XmlnsUrl>
+					<Description>UK National Public Transport Access Nodes: Stops.</Description>
+				</Codespace>
+				<Codespace id="noc_data">
+					<Xmlns>noc</Xmlns>
+					<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+					<Description>UK national operator codes</Description>
+				</Codespace>
+			</codespaces>
+			<FrameDefaults>
+				<DefaultCodespaceRef ref="fxc_metadata"/>
+				<DefaultDataSourceRef versionRef="fxc:v1.0" ref="fxc:dft" />
+				<DefaultResponsibilitySetRef versionRef="fxc:v1.0"  ref="fxc:FXC_metadata"/>
+			</FrameDefaults>
+			<frames>
+				<!-- === Profile Frame Types ===  -->
+				<ResourceFrame id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA_FRAMES:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>UK FXCP  Fare profile Frame types and codepaces</Name>
+					<codespaces>
+						<Codespace id="fxc_metadata">
+							<Xmlns>fxc</Xmlns>
+							<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+							<Description>UK FareXChange Profile metadata</Description>
+						</Codespace>
+						<Codespace id="epd_data">
+							<Xmlns>epd</Xmlns>
+							<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+							<Description>European Passenger Information profile data -use for UK frame names</Description>
+						</Codespace>
+					</codespaces>
+					<dataSources>
+						<DataSource id="fxc:dft" version="fxc:v1.0">
+							<Email>standards@netex.org.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="fxc:v1.0" id="fxc:FXC_metadata">
+							<Name>Common</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="fxc:v1.0" id="fxc:FXC_metadata:DfT">
+									<DataRoleType>creates distributes</DataRoleType>
+									<StakeholderRoleType>DataRegistrar</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="nptg:DfT" versionRef="nptg:v2.1"/>
+									<ResponsibleAreaRef ref="nptgUkRegion:GB" versionRef="nptg:v2.1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<!-- ======== TYPE S OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame Basic </Name>
+							<values>
+								<!-- === ANCILLARY  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP">
+									<Name>UK FXCP  common Local resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_CALENDAR:FXCP">
+									<Name>UK FXCP  Service calendar</Name>
+									<FrameClassRef nameOfClass="ServiceCalendarFrame"/>
+								</TypeOfFrame>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP:FXCP">
+									<Name>UK FXCP Stops: NapTAN Stop Place  and NPTG Locations Frame</Name>
+									<FrameClassRef nameOfClass="SiteFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK:FXCP">
+									<Name>UK FXCP Network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_TIMETABLE:FXCP">
+									<Name>UK FXCP Tietable: N</Name>
+									<FrameClassRef nameOfClass="TimetableFrame"/>
+								</TypeOfFrame>
+								<!-- === METADATA   ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA:FXCP">
+									<Name>UK Bus Profile common resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc::v2.4" id="fxc:Types_of_Offer_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP:fxc">
+									<Name>UK FXCP composite used to group other UKmetadta</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<!-- ======== TYPE S OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame</Name>
+							<values>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_COMMON:FXCP">
+									<Name>UK Bus Profile fare common paramaters</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP">
+									<Name>UK Bus Profile fare network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP">
+									<Name>UK FXCP Fare Porducts Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP">
+									<Name>UK FXCP Fare Prices Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Offer_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container NETWORK OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Transaction_Frame" classOfValues="TypeOfFrame">
+							<Name>Types of UK Trasnaction  Frame</Name>
+							<values>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_TRANSACTIONS:FXCP">
+									<Name>UK Bus Profile Operator sample transactions</Name>
+									<FrameClassRef nameOfClass="SalesTransactionFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+				</ResourceFrame>
+				<!-- ====COMMON UK PI Profile  RESOURCEs:  META DATA - COULD BE EXTERNALISED ===== ============ -->
+				<!-- === FareXChange  Common fixed definitions  ===  -->
+				<FareFrame id="fxc:UK:DFT:FareFrame_UK_PI_METADATA:FareXChange:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>FXCP Values for Farexchange</Name>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="fxc_metadata"/>
+						<DefaultDataSourceRef versionRef="fxc:v1.0" ref="fxc:dft" />
+						<DefaultResponsibilitySetRef versionRef="fxc:v1.0"  ref="fxc:FXC_metadata"/>
+					</FrameDefaults>
+					<PricingParameterSet id="fxc:Common_Resources" version="fxc:v1.0">
+						<priceUnits>
+							<PriceUnit id="fxc:GBP" version="fxc:v1.0">
+								<Name>Pound Sterling</Name>
+								<PrivateCode>&#163;</PrivateCode>
+								<Precision>2</Precision>
+							</PriceUnit>
+							<PriceUnit id="fxc:EUR" version="fxc:v1.0">
+								<Name>Euro</Name>
+								<PrivateCode>&#8364;</PrivateCode>
+								<Precision>2</Precision>
+							</PriceUnit>
+						</priceUnits>
+					</PricingParameterSet>
+					<geographicalUnits>
+						<GeographicalUnit id="fxc:mi" version="fxc:v1.0">
+							<Name>Distance Unit Miles</Name>
+						</GeographicalUnit>
+						<GeographicalUnit id="fxc:km" version="fxc:v1.0">
+							<Name>Distance Unit Kilometres</Name>
+						</GeographicalUnit>
+						<GeographicalUnit id="fxc:unit_stage" version="fxc:v1.0">
+							<Name>Distance Unit Stage</Name>
+						</GeographicalUnit>
+					</geographicalUnits>
+					<!-- === USAGE PARAMETERS === -->
+					<usageParameters>
+						<UserProfile version="fxc:v1.0" id="fxc:adult">
+							<Name>Adult</Name>
+							<TypeOfConcessionRef versionRef="fxc:v1.0" ref="fxc:none"/>
+							<UserType>adult</UserType>
+							<DiscountBasis>none</DiscountBasis>
+							<companionProfiles>
+								<CompanionProfile version="fxc:v1.0" id="fxc:adult@infant">
+									<UserProfileRef ref="fxc:infant" version="fxc:v1.0"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:child">
+							<Name>Child</Name>
+							<TypeOfConcessionRef versionRef="fxc:v1.0" ref="fxc:child"/>
+							<UserType>child</UserType>
+							<MinimumAge>5</MinimumAge>
+							<MaximumAge>15</MaximumAge>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:infant">
+							<Name>Infant</Name>
+							<Description>Up to three children under 5 years of age, accompanied by a fare paying adult or child passenger, and not occupying a seat, may travel free of charge on the Company&#x2019;s services.</Description>
+							<prices>
+								<UsageParameterPrice version="fxc:v1.0" id="fxc:infant">
+									<Amount>0</Amount>
+								</UsageParameterPrice>
+							</prices>
+							<TypeOfConcessionRef versionRef="fxc:v1.0" ref="fxc:infant"/>
+							<UserType>infant</UserType>
+							<MinimumAge>0</MinimumAge>
+							<MaximumAge>4</MaximumAge>
+							<DiscountBasis>free</DiscountBasis>
+							<companionProfiles>
+								<CompanionProfile id="fxc:infant@adult" version="fxc:v1.0">
+									<UserProfileRef ref="fxc:adult" version="fxc:v1.0"/>
+									<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>1</MaximumNumberOfPersons>
+									<DiscountBasis>none</DiscountBasis>
+								</CompanionProfile>
+							</companionProfiles>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:student">
+							<Name>Student</Name>
+							<TypeOfConcessionRef versionRef="fxc:v1.0" ref="fxc:student"/>
+							<UserType>student</UserType>
+							<ProofRequired>membershipCard</ProofRequired>
+							<DiscountBasis>discount</DiscountBasis>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:senior">
+							<Name>Senior</Name>
+							<TypeOfConcessionRef versionRef="fxc:v1.0" ref="fxc:child"/>
+							<UserType>senior</UserType>
+							<MinimumAge>60</MinimumAge>
+						</UserProfile>
+					</usageParameters>
+					<!-- ====CHANNELS -->
+					<distributionChannels>
+						<DistributionChannel id="fxc:online" version="fxc:v1.0">
+							<ShortName>Internet sales</ShortName>
+							<alternativeNames>
+								<AlternativeName order="1" id="fxc:online_de" version="fxc:v1.0">
+									<Name lang="de">Internetverkauf</Name>
+								</AlternativeName>
+								<AlternativeName order="1" id="fxc:online_fr" version="fxc:v1.0">
+									<Name lang="fr">A vendre par l'internet</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<DistributionChannelType>online</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:online_subscription" version="fxc:v1.0">
+							<ShortName>online autonatic subscription to renew</ShortName>
+							<DistributionChannelType>online</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:at_stop" version="fxc:v1.0">
+							<ShortName>In station sale by machine, counter or payg</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:self_service_ticket_machine" version="fxc:v1.0">
+							<ShortName>Automatic Ticket Machine</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:pay_as_you_go_device" version="fxc:v1.0">
+							<ShortName>Pay as you go device - eg smartcard</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:at_counter" version="fxc:v1.0">
+							<ShortName>Ticket counter sale</ShortName>
+							<alternativeNames>
+								<AlternativeName order="1" id="fxc:at_counter_de" version="fxc:v1.0">
+									<Name lang="de">Schalter</Name>
+								</AlternativeName>
+								<AlternativeName order="1" id="fxc:at_counter_fr" version="fxc:v1.0">
+									<Name lang="fr">A vendre par le guichet</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<DistributionChannelType>atStop</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:on_board" version="fxc:v1.0">
+							<ShortName>on_board</ShortName>
+							<DistributionChannelType>onBoard</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:call_centre" version="fxc:v1.0">
+							<ShortName>Call Centre</ShortName>
+							<DistributionChannelType>telephone</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:operator_travel_shop" version="fxc:v1.0">
+							<ShortName>Operator Travel Shop</ShortName>
+							<DistributionChannelType>telephone</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:travel_agent" version="fxc:v1.0">
+							<ShortName>Travel Agent</ShortName>
+							<DistributionChannelType>agency</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:employee_organisation" version="fxc:v1.0">
+							<ShortName>Employee Organisation</ShortName>
+							<DistributionChannelType>other</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:statutory_organisation" version="fxc:v1.0">
+							<ShortName>Statutory Organisation</ShortName>
+							<DistributionChannelType>other</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+					</distributionChannels>
+					<fulfilmentMethods>
+						<FulfilmentMethod id="fxc:collect_on_board" version="fxc:v1.0">
+							<Name>Collect on board</Name>
+							<FulfilmentMethodType>conductor</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:hand_written_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_from_machine" version="fxc:v1.0">
+							<Name>Collect from machine</Name>
+							<FulfilmentMethodType>ticketMachine</FulfilmentMethodType>
+							<RequiresBookingReference>true</RequiresBookingReference>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_at_counter" version="fxc:v1.0">
+							<Name>Collect at counter</Name>
+							<FulfilmentMethodType>ticketOffice</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:hand_written_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_from_agent" version="fxc:v1.0">
+							<Name>Travel agent issues ticket directly</Name>
+							<FulfilmentMethodType>agent</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:electronic_document" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:mobile_app" version="fxc:v1.0">
+							<Name>Mobile App</Name>
+							<FulfilmentMethodType>mobileApp</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:mobile_app_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:self_print" version="fxc:v1.0">
+							<Name>Self Print</Name>
+							<FulfilmentMethodType>selfprint</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:self_print_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:electronic_document" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:online_propagation" version="fxc:v1.0">
+							<Name>Online propagation</Name>
+							<FulfilmentMethodType>validator</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:mobile_app_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:email" version="fxc:v1.0">
+							<Name>EMAIL</Name>
+							<FulfilmentMethodType>email</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:self_print_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:post" version="fxc:v1.0">
+							<Name>Send ticket by post</Name>
+							<FulfilmentMethodType>post</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:courier" version="fxc:v1.0">
+							<Name>Send ticket by courier</Name>
+							<FulfilmentMethodType>other</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+					</fulfilmentMethods>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument id="fxc:distribution_channel_dependent" version="fxc:v1.0">
+							<Name>Depends on channel used</Name>
+							<MediaType>other</MediaType>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:printed_ticket" version="fxc:v1.0">
+							<Name>Printed Ticket</Name>
+							<MediaType>paperTicket</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:hand_written_ticket" version="fxc:v1.0">
+							<Name>Hand written ticket</Name>
+							<MediaType>paperTicket</MediaType>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:magstripe_printed_ticket" version="fxc:v1.0">
+							<Name>Printed Ticket with magnetic Stripe</Name>
+							<MediaType>paperTicket</MediaType>
+							<MachineReadable>magneticStrip</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:self_print_ticket" version="fxc:v1.0">
+							<MediaType>selfPrintPaperTicket</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:pass" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>barCode</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:mobile_app_ticket" version="fxc:v1.0">
+							<MediaType>mobileApp</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:smart_card" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>chip</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:electronic_document" version="fxc:v1.0">
+							<MediaType>none</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:membership_card" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>none</MachineReadable>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+				</FareFrame>
+				<ResourceFrame id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA:FareXChange:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>FXCP - Fare profile  metadata</Name>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="fxc_metadata"/>
+						<DefaultDataSourceRef versionRef="fxc:v1.0" ref="fxc:dft" />
+						<DefaultResponsibilitySetRef versionRef="fxc:v1.0"  ref="fxc:FXC_metadata"/>
+						<DefaultLocale>
+							<TimeZoneOffset>0</TimeZoneOffset>
+							<TimeZone>GMT</TimeZone>
+							<SummerTimeZoneOffset>+1</SummerTimeZoneOffset>
+							<SummerTimeZone>BST</SummerTimeZone>
+							<DefaultLanguage>en</DefaultLanguage>
+						</DefaultLocale>
+						<DefaultLocationSystem>WGS84</DefaultLocationSystem>
+						<DefaultSystemOfUnits>SiKilometresAndMetres</DefaultSystemOfUnits>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<versions>
+						<Version id="fxc:v1.0" version="any">
+							<ValidBetween>
+								<FromDate>2019-01-01T01:01:01Z</FromDate>
+							</ValidBetween>
+							<Description>FXC version 2.1</Description>
+							<VersionType>baseline</VersionType>
+						</Version>
+					</versions>
+					<typesOfValue>
+						<!-- ======== Code sets ========= -->
+						<ValueSet version="fxc:v1.0" id="fxc:PointsOfInterest_Classifications" classOfValues="PointOfInterestClassification">
+							<Name>Types of POI</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<PointOfInterestClassification version="fxc:v1.0" id="fxc:operator_travel_shop">
+									<Name>Travel Shop</Name>
+								</PointOfInterestClassification>
+								<PointOfInterestClassification version="fxc:v1.0" id="fxc:tourist_information_centre">
+									<Name>Tourist Information Centre</Name>
+								</PointOfInterestClassification>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareZone" classOfValues="TypeOfZone">
+							<Name>Types of FARE ZONE</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@operator">
+									<Name>Operator defined zone</Name>
+								</TypeOfZone>
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@multi_operator">
+									<Name>MultiOperator defined zone</Name>
+								</TypeOfZone>
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@concessionary">
+									<Name>Concessionary scheme zone</Name>
+								</TypeOfZone>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_ProductCategory" classOfValues="TypeOfProductCategory">
+							<Name>Types of PRODUCT CATEGORY</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:urban_bus">
+									<Name>Urban Bus</Name>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:rural_bus">
+									<Name>Rural Bus</Name>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:park_and_ride">
+									<Name>Rural Bus</Name>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:PurposesOfGrouping" classOfValues="PurposeOfGrouping">
+							<Name>Purposes of Grouping</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<PurposeOfGrouping version="fxc:v1.0" id="fxc:route_exclusion">
+									<Name>Routes to be ommitted</Name>
+								</PurposeOfGrouping>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:ChargingMoments" classOfValues="ChargingMoment">
+							<Name>Types of CHARGING MOMENT</Name>
+							<values>
+								<!--- ==== TypeOfChargingMoment ========= -->
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment">
+									<Name>Prepaid</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@pay_as_you_go">
+									<Name>Prepaid - pay as you go</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@bundled">
+									<Name>Prepaid - paid along with a base product</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@free">
+									<Name>Prepaid - free issue</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc::post_payment">
+									<Name>Postpaid</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc::post_payment_periodic">
+									<Name>Postpaid</Name>
+								</ChargingMoment>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@trip" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Trip</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@trip@short_hop">
+									<Name>Short hop fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@trip@single">
+									<Name>Single fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:era:standard_product@trip@time_limited">
+									<Name>Time Limited fare</Name>
+								</TypeOfFareProduct>
+								<!--- Special -->
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:special_product@trip@period_return">
+									<Name>Period return fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:era:special_produc@trip@day_return">
+									<Name>Day retirn fare</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@pass" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@day">
+									<Name>day pass - till end of fare day</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@24H">
+									<Name>24H from time of activation</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@period">
+									<Name>Pass for a specifed period</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@carnet" classOfValues="TypeOfFareProduct">
+							<Name>Types Of FARE PRODUC- Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@carnet@trips">
+									<Name>Carnet of trips.</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@carnet@days">
+									<Name>Carnet of 1 day' passes.</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@discount" classOfValues="TypeOfFareProduct">
+							<Name>Types Of FARE PRODUCT - Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@discount@sales">
+									<Name>Sales discount righty</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@discount@usage">
+									<Name>Usage discount rights</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@stored_value" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Epurse</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@stored_value@epurse">
+									<Name>Epurse</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_SalesOfferPackage" classOfValues="TypeOfSalesOfferPackage">
+							<Name>Types of SALES OFFER PACKAGE.</Name>
+							<values>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@all_operators">
+									<Name>Product is standard and supported by all operators</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@multi_operator">
+									<Name>Product is standrad and supported by all operators</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@operator">
+									<Name>Single operator standard product</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:special_product@operator">
+									<Name>Single operator special product</Name>
+								</TypeOfSalesOfferPackage>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Classes_of_Use" classOfValues="ClassOfUse">
+							<Name>Types of CLASS OF USE.</Name>
+							<values>
+								<!--- ====ClassOfUse ========= -->
+								<ClassOfUse version="fxc:v1.0" id="fxc:first">
+									<Name>First Class</Name>
+								</ClassOfUse>
+								<ClassOfUse version="fxc:v1.0" id="fxc:second">
+									<Name>Second Class</Name>
+								</ClassOfUse>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Projection" classOfValues="TypeOfProjection">
+							<Name>Types of PROJECTION</Name>
+							<values>
+								<!--- ====ClassOfUse ========= -->
+								<TypeOfProjection version="fxc:v1.0" id="fxc:tariff_zone_border">
+									<Name>The boundary stops for a fare_zone</Name>
+								</TypeOfProjection>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareContractEntry" classOfValues="TypeOfFareContractEntry">
+							<Name>Types of FARE CONTRACT ENTRY</Name>
+							<values>
+								<!--- ====TypeOfFareContractEntry ========= -->
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:product_purchase">
+									<Name>Purchase</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:product_refund">
+									<Name>Refund</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:online_purchase">
+									<Name>Online Purchase</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:on_board_purchase">
+									<Name>Cash Purchase</Name>
+								</TypeOfFareContractEntry>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Concession" classOfValues="TypeOfConcession">
+							<Name>Types of CONCESSION</Name>
+							<values>
+								<!--- ====TypeOfConcession method========= -->
+								<TypeOfConcession version="fxc:v1.0" id="fxc:none">
+									<Name>Adult</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:infant">
+									<Name>Infant</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:child">
+									<Name>Child</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:youth">
+									<Name>Youth</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:school_pupil">
+									<Name>School pupil</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:student">
+									<Name>Student</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:young_adult">
+									<Name>Youth</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:senior">
+									<Name>Senior</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:registered_disabled">
+									<Name>Registered disabled</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:animal">
+									<Name>Animal</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:social">
+									<Name>Social</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:statutory">
+									<Name>Statutory</Name>
+								</TypeOfConcession>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Tariff" classOfValues="TypeOfTariff">
+							<Name>Spatial Types of Tariff</Name>
+							<values>
+								<!--- ====Types OfTariff ========= -->
+								<TypeOfTariff version="fxc:v1.0" id="fxc:Distance_kilometers">
+									<Name>Kilometer Distance Kilometers</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:flat">
+									<Name>Flat</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:point_to_point">
+									<Name>Point to point</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:zone_to_zone">
+									<Name>Zone to Zone</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:zonal">
+									<Name>Zonal</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:section">
+									<Name>Section</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:banded">
+									<Name>Section</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:stored_value">
+									<Name>Stored value</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:discount">
+									<Name>Discount value</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:multitrip">
+									<Name>Multitrip carnet</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:identity_card">
+									<Name>SIdentity</Name>
+								</TypeOfTariff>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareStructureElement" classOfValues="TypeOfFareStructureElement">
+							<Name>FXCP: Types of FARE STRUCTURE ELEMENT.</Name>
+							<values>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:access">
+									<Name>Access rights</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:access_when">
+									<Name>Fare demand :peak /off peak etc access rights to use or travel during some period</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:accepted_by">
+									<Name>Accepted by operator</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:eligibility">
+									<Name>Eligibility to purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:groups">
+									<Name>Group tickets available</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:durations">
+									<Name>Time intervals</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:prerequisites">
+									<Name>Defines required entitlements</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:entitles">
+									<Name>Gives right to other products</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:sale_conditions">
+									<Name>Defines a condition or restriction on purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:travel_conditions">
+									<Name>Condition on use</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:carnet_units">
+									<Name>Specifies units for purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:outlets">
+									<Name>Specifies where a purchase can be made</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:quotas">
+									<Name>Quota applies</Name>
+								</TypeOfFareStructureElement>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_AccessRightAssignment" classOfValues="TypeOfAccessRightAssignment">
+							<Name>Types of Access Right Assignment</Name>
+							<values>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:eligible">
+									<Name>Eligible for a product or discount</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access">
+									<Name>Grants access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:cannot_access">
+									<Name>Revokes access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:must_access">
+									<Name>Requires access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access_when">
+									<Name>Grants access rights to use or travel during some period</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access_if_purchased">
+									<Name>Right defines a property that may be Accessed if purchased</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_use_with_type_of_travel_document">
+									<Name>Right defines tyoe travel document condition</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:condition_of_use">
+									<Name>Defines a condition or restriction on use</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:condition_of_sale">
+									<Name>Defines a condition or restriction on purchase</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase">
+									<Name>Gives right to purchase</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase_when">
+									<Name>Specifies when a purchase can be made</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase_where">
+									<Name>Specifies where a purchase can be made</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:gives_entitlement">
+									<Name>Gives right to other products</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:prerequisites">
+									<Name>Requires right to other products</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:penalties">
+									<Name>Penalties for misuuse</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_use_to_pay_for">
+									<Name>Gives ability to purchase automatically using</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:payment_schedules">
+									<Name>Specifices if subscription or single payment</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:reservation_condition">
+									<Name>Indicates need for reservation</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:distribution_channel_restriction">
+									<Name>Constrains availability for distribution by a channel</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:use_before">
+									<Name>Takes properties from group package</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:quota_applies">
+									<Name>Quota applies</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:promotion_applies">
+									<Name>Promotion applies</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:validity_chaining">
+									<Name>Quota applies</Name>
+								</TypeOfAccessRightAssignment>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<!-- ========Operators ========== -->
+					<organisations>
+						<GeneralOrganisation version="fxc:v1.0" id="fxc:DfT">
+							<Name>Department for Transport</Name>
+							<ShortName>DfT</ShortName>
+							<OrganisationType>statutoryBody</OrganisationType>
+						</GeneralOrganisation>
+						<!-- === UIC RUs ==== -->
+						<Operator version="fxc:v1.0" id="uic:operator:1170">
+							<PublicCode>ATOC</PublicCode>
+							<Name>Association of Train Operating Companies Limited</Name>
+							<ShortName>UIC</ShortName>
+							<ValidityPeriod>
+								<FromDate>2001-01-01T00:00:00Z</FromDate>
+								<ToDate>2020-01-01T00:00:00Z</ToDate>
+							</ValidityPeriod>
+							<CountryRef ref="uk" refPrincipality="iso3166-2:GB-UKM"/>
+						</Operator>
+						<Operator version="fxc:v1.0" id="uicStation_Management:0070">
+							<PublicCode>NR</PublicCode>
+							<Name>Network Rail Limited</Name>
+							<ShortName>Network Rail</ShortName>
+							<ValidityPeriod>
+								<FromDate>2003-09-22T00:00:00Z</FromDate>
+								<ToDate>2020-01-01T00:00:00Z</ToDate>
+							</ValidityPeriod>
+							<CountryRef ref="uk" refPrincipality="iso3166-2:GB-UKM"/>
+						</Operator>
+					</organisations>
+					<groupsOfEntities>
+						<Layer version="fxc:v1.0" id="fxc:fare_network+fare_products+fare_prices">
+							<Name>Fares and fare prices</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_network">
+							<Name>Fares networks</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_products">
+							<Name>Fares ad fare prices</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_prices">
+							<Name>Fares and fare prices</Name>
+						</Layer>
+					</groupsOfEntities>
+				</ResourceFrame>
+				<!-- === NPTG Common fixed definitions  ===  -->
+				<ResourceFrame version="nptg:v2.1" id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA:NPTG:nptg" responsibilitySetRef="nptg:NPTG_metadata" dataSourceRef="nptg:dft">
+					<ValidBetween>
+						<FromDate>2004-01-01T00:00:00</FromDate>
+					</ValidBetween>
+					<Name>Static code values for UK NPTG data</Name>
+					<Description>This frame contains code  valuesused to validate the NPTG  </Description>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA:FXCP"/>
+					<codespaces>
+						<Codespace id="nptg_metadata">
+							<Xmlns>nptg</Xmlns>
+							<XmlnsUrl>http://www.nptg.org.uk/nptg</XmlnsUrl>
+							<Description>UK National Public Transport gazetteer     fixed codes.   .</Description>
+						</Codespace>
+						<Codespace id="nptgLocality_data">
+							<Xmlns>nptgLocality</Xmlns>
+							<XmlnsUrl>http://nptg.org.uk/locations</XmlnsUrl>
+							<Description>National Public Transport gazetteer locations</Description>
+						</Codespace>
+						<Codespace id="nptgTariffZone_data">
+							<Xmlns>nptgTariffZone</Xmlns>
+							<XmlnsUrl>http://nptg.org.uk/tariffZones</XmlnsUrl>
+							<Description>National Public Transport gazetteer plus bus zones</Description>
+						</Codespace>
+						<Codespace id="nptgAdminArea_data">
+							<Xmlns>nptgAdminArea</Xmlns>
+							<XmlnsUrl>http://www.nptg.org.uk/adminAreas</XmlnsUrl>
+							<Description>UK National Public Transport gazetteer. Codes of administrative areas, are unique within the UK.</Description>
+						</Codespace>
+					</codespaces>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="nptg_metadata"/>
+						<DefaultDataSourceRef ref="nptg:dft" version="nptg:v2.1"/>
+						<DefaultResponsibilitySetRef ref="nptg:NPTG_metadata" version="nptg:v2.1"/>
+					</FrameDefaults>
+					<versions>
+						<Version id="nptg:v2.1" version="any">
+							<Description>NPTG version 2.1</Description>
+							<VersionType>baseline</VersionType>
+						</Version>
+					</versions>
+					<dataSources>
+						<DataSource id="nptg:dft" version="nptg:v2.1">
+							<Email>standards@nptg.org.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="nptg:v2.1" id="nptg:NPTG_metadata">
+							<Name>Common</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="nptg:v2.1" id="nptg:NPTG_metadata">
+									<DataRoleType>creates distributes</DataRoleType>
+									<StakeholderRoleType>DataRegistrar</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="nptg:DfT" version="nptg:v2.1"/>
+									<ResponsibleAreaRef ref="nptgUkRegion:GB" nameOfRefClass="TransportAdministrativeZone" versionRef="0" xsi:type="TransportAdministrativeZoneRefStructure">UK</ResponsibleAreaRef>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="nptg:v2.1" id="nptg:NPTG_data">
+							<Name>Common</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="nptg:v2.1" id="nptg:NPTG_data">
+									<DataRoleType>creates distributes</DataRoleType>
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="nptg:DfT" version="nptg:v2.1"/>
+									<ResponsibleAreaRef ref="nptg:UK">TODO</ResponsibleAreaRef>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<!-- ==== Fixed values == -->
+					<typesOfValue>
+						<!-- ====Frame Types   TODO MERGE FRAME TYPES INTO FXC PI frame types== -->
+						<ValueSet version="nptg:v2.1" id="nptg:UK_NPTG_profile@Types_of_frame" classOfValues="TypeOfFrame">
+							<Name>Types of frame for UK NKTG profile</Name>
+							<values>
+								<TypeOfFrame version="nptg:v2.1" id="nptg:UK_NPTG_profile_payload">
+									<Name>NPTG Locations and  Tariff Zones Frame</Name>
+									<FrameClassRef nameOfClass="SiteeFrame"/>
+									<ModificationSet>all</ModificationSet>
+								</TypeOfFrame>
+								<TypeOfFrame version="nptg:v2.1" id="nptg:UK_NPTG_profile_admin_context">
+									<Name>NPTG Admin areas for NPTG </Name>
+									<ModificationSet>all</ModificationSet>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<!-- ==== Fixed values == -->
+						<ValueSet version="nptg:v2.1" id="nptg:UK_NPTG_profile@Place_types" classOfValues="TypeOfPlace">
+							<Name>NPTG Place Types   s</Name>
+							<values>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@Lo">
+									<Name>NPTG Source Loc  = Lo</Name>
+								</TypeOfPlace>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@Co">
+									<Name>NPTG Source Loc  = Co</Name>
+								</TypeOfPlace>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@Pa">
+									<Name>NPTG Source Loc  = Pa</Name>
+								</TypeOfPlace>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@ar">
+									<Name>NPTG Source Loc  = ar</Name>
+								</TypeOfPlace>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@Add">
+									<Name>NPTG Source Loc  = Add</Name>
+								</TypeOfPlace>
+								<TypeOfPlace version="nptg:v2.1" id="nptg:SourceLocalityType@U">
+									<Name>NPTG Source Loc  = U</Name>
+								</TypeOfPlace>
+							</values>
+						</ValueSet>
+						<ValueSet version="nptg:v2.1" id="nptg:UK_NPTG_profile@Organisation_part_types" classOfValues="TypeOfZone">
+							<Name>NPTG Organisation Part Types   s</Name>
+							<values>
+								<TypeOfZone version="nptg:v2.1" id="nptg:UkRegion">
+									<Name>An NPTG Region</Name>
+								</TypeOfZone>
+								<TypeOfZone version="nptg:v2.1" id="nptg:AdministrativeArea@National">
+									<Name>An NPTG Administrative Area with National scope (e.g. 910, 920 etc)</Name>
+								</TypeOfZone>
+								<TypeOfZone version="nptg:v2.1" id="nptg:AdministrativeArea@Local">
+									<Name>An NPTG Administrative Area with Local scope</Name>
+								</TypeOfZone>
+								<TypeOfZone version="nptg:v2.1" id="nptg:UkDistrict">
+									<Name>An NPTG District</Name>
+								</TypeOfZone>
+								<TypeOfZone version="nptg:v2.1" id="nptg:UkLocality">
+									<Name>An NPTG Locality</Name>
+								</TypeOfZone>
+								<TypeOfZone version="nptg:v2.1" id="nptg:PlusBusZone">
+									<Name>An PlusBus Tariff Zone</Name>
+								</TypeOfZone>
+							</values>
+						</ValueSet>
+						<ValueSet version="nptg:v2.1" id="nptg:UK_NPTG_profile@Sms_codes" classOfValues="TypeOfCodespaceAssignment">
+							<Name>NPTG Codespace Assignment Types</Name>
+							<values>
+								<TypeOfCodespaceAssignment version="nptg:v2.1" id="nptg:naptan_prefix">
+									<Name>NPTG Stop prefix</Name>
+								</TypeOfCodespaceAssignment>
+								<TypeOfCodespaceAssignment version="nptg:v2.1" id="nptg:naptan_sms">
+									<Name>NPTG  Stop SMS prefix</Name>
+								</TypeOfCodespaceAssignment>
+								<TypeOfCodespaceAssignment version="nptg:v2.1" id="nptg:naptan_cleardown">
+									<Name>NPTG  stop cleardown range  </Name>
+								</TypeOfCodespaceAssignment>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!---  DFT  -->
+						<GeneralOrganisation id="nptg:DfT" modification="new" status="active" responsibilitySetRef="nptg:NPTG" version="nptg:v2.1">
+							<Name>Department for Transport</Name>
+						</GeneralOrganisation>
+					</organisations>
+				</ResourceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
