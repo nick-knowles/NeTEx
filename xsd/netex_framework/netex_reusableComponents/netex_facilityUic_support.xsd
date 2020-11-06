@@ -65,7 +65,7 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="xsd:normalizedString">
 			<xsd:enumeration value="tariffCommunVoyageurs"/>
-			<xsd:enumeration value="allIInclusivePrice"/>
+			<xsd:enumeration value="allInclusivePrice"/>
 			<xsd:enumeration value="eastWestTariff"/>
 			<xsd:enumeration value="trainWithTcvAndMarketPrice"/>
 			<xsd:enumeration value="noPublishedTariff"/>
