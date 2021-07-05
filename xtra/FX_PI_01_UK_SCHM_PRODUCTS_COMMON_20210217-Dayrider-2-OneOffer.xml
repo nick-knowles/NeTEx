@@ -1,0 +1,2549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PublicationDelivery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex  ../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex">
+	<!--  
+
+    Extracted from the fukk SCHM_ORDUCTS_COMMON FILE  
+
+    This is just a simple reorganisation of the elements  to make more modular  
+   very crude - One offer per frame /
+ 
+
+ (a)  Place each TARRIF  / PRODUCT  and SALES OFFER PACKAGE  in a us own frame
+
+ (b) Correct the price to be a sales package price (And nit a DISTANCE MATRIX ELEMENT PRICE)
+
+  (C) simplify the prce table   to be SALES OFFER PACkAGE,  since there is a different package for each price
+
+ 
+-->
+	<PublicationTimestamp>2021-02-17T15:23:16.7219644Z</PublicationTimestamp>
+	<ParticipantRef>SCHM</ParticipantRef>
+	<Description>Products</Description>
+	<dataObjects>
+		<CompositeFrame version="1.1" id="epd:UK:SCSO:CompositeFrame:UK_PI_NETWORK_OFFER:Products:op" dataSourceRef="op:src" responsibilitySetRef="op:tariff_data">
+			<ValidBetween>
+				<FromDate>2021-02-02T00:00:00Z</FromDate>
+			</ValidBetween>
+			<Name>Products for SCSO</Name>
+			<Description>Set of SCSO fare products.</Description>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_OFFER:FXCP"/>
+			<codespaces>
+				<CodespaceRef ref="epd_data"/>
+				<CodespaceRef ref="fxc_metadata"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="naptStop_data"/>
+				<CodespaceRef ref="op_data"/>
+			</codespaces>
+			<FrameDefaults>
+				<DefaultCodespaceRef ref="op_data"/>
+				<DefaultDataSourceRef version="1.0" ref="op:src"/>
+				<DefaultResponsibilitySetRef version="1.0" ref="op:tariff_data"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<prerequisites>
+				<CompositeFrameRef version="1.0" ref="epd:UK:SCSO:CompositeFrame:UK_PI_METADATA_OFFER:Products:op"/>
+				<CompositeFrameRef versionRef="1.0" ref="epd:UK:SCSO:CompositeFrame:UK_PI_NETWORK_OFFER:Network_Data:op"/>
+			</prerequisites>
+			<frames>
+				<ResourceFrame version="1.0" id="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op" dataSourceRef="op:src">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP"/>
+					<codespaces>
+						<Codespace id="epd_data">
+							<Xmlns>epd</Xmlns>
+							<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+							<Description>European Passenger Information profile data -use for UK frame names</Description>
+						</Codespace>
+						<Codespace id="fxc_metadata">
+							<Xmlns>fxc_metadata</Xmlns>
+							<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+							<Description>UK FareXChange Profile metadata</Description>
+						</Codespace>
+						<Codespace id="naptStop_data">
+							<Xmlns>naptStop</Xmlns>
+							<XmlnsUrl>http://www.naptan.org.uk/stops</XmlnsUrl>
+							<Description>UK National Public Transport Access Nodes: Stops.</Description>
+						</Codespace>
+						<Codespace id="noc_data">
+							<Xmlns>noc</Xmlns>
+							<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+							<Description>UK national operator codes</Description>
+						</Codespace>
+						<Codespace id="op_data">
+							<Xmlns>op</Xmlns>
+							<XmlnsUrl>http://www.stagecoachbus.com/regional-help-and-contact/south</XmlnsUrl>
+							<Description>Operator Data</Description>
+						</Codespace>
+					</codespaces>
+					<dataSources>
+						<DataSource version="1.0" id="op:src">
+							<Email>south.enquiries@stagecoachbus.com</Email>
+						</DataSource>
+					</dataSources>
+					<responsibilitySets>
+						<ResponsibilitySet version="1.0" id="op:tariff_data">
+							<Name>Operator Tariffs</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="1.0" id="op:tariff_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>FareManagement</StakeholderRoleType>
+									<ResponsibleOrganisationRef version="1.0" ref="noc:SCHM"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="1.0" id="op:network_data">
+							<Name>Operator Network data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="1.0" id="op:network_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>Planning</StakeholderRoleType>
+									<ResponsibleOrganisationRef version="1.0" ref="noc:SCHM"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="1.0" id="op:metadata">
+							<Name>Operator Metadata</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="1.0" id="op:metadata@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>Planning</StakeholderRoleType>
+									<ResponsibleOrganisationRef version="1.0" ref="noc:SCHM"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<organisations>
+						<Operator version="1.0" id="noc:SCHM">
+							<PublicCode>SCHM</PublicCode>
+							<PrivateCode>137728</PrivateCode>
+							<Name>Stagecoach South</Name>
+							<ShortName>Stagecoach South</ShortName>
+							<TradingName>Stagecoach (South) Ltd</TradingName>
+							<ContactDetails>
+								<Phone>03451210190</Phone>
+								<Url>http://www.stagecoachbus.com/regional-help-and-contact/south</Url>
+							</ContactDetails>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<Street>The Bus Station, Southgate, Chichester PO19 2DQ</Street>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+							<CustomerServiceContactDetails>
+								<Email>south.enquiries@stagecoachbus.com</Email>
+							</CustomerServiceContactDetails>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_NETWORK:Products:op" dataSourceRef="op:src" responsibilitySetRef="op:network_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<prerequisites>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+					</prerequisites>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products_DAYRIDER_B'STOKE_GROUP:op" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op"/>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+						<ResourceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op"/>
+					</prerequisites>
+					<fareZones>
+					<!--- added -->
+						<FareZone id="basingstoke" version="1.0"><Name>Basingstoke</Name><ShortName>B'STOKE</ShortName></FareZone>
+					</fareZones>
+					<tariffs>
+						<Tariff version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP">
+							<Name>Basingstoke group dayrider peak</Name>
+							<TariffBasis>flat</TariffBasis>
+							<timeIntervals>
+								<TimeInterval version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Pass@1_Day">
+									<Name>1 Day</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Demand">
+									<validityConditions>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Condition@day_type@Weekday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Weekday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@day_type@Weekday_04:00:00@00:00:00-03:59:59">
+													<Name>00:00:00-03:59:59</Name>
+													<StartTime>00:00:00</StartTime>
+													<EndTime>03:59:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@day_type@Weekday_04:00:00@04:00:00-08:54:59">
+													<Name>04:00:00-08:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>08:54:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@day_type@Weekday_04:00:00@08:55:00-09:24:59">
+													<Name>08:55:00-09:24:59</Name>
+													<StartTime>08:55:00</StartTime>
+													<EndTime>09:24:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+									</validityConditions>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:conditions_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel@Transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel@Frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<UsageValidityPeriod version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel@Validity">
+												<ValidityPeriodType>dayPass</ValidityPeriodType>
+												<UsageEnd>endOfFareDay</UsageEnd>
+												<ActivationMeans>noneRequired</ActivationMeans>
+											</UsageValidityPeriod>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Durations">
+									<Name>Pass durations</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Pass@1_Day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Availability">
+									<Name>Timebands for travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<qualityStructureFactors>
+										<FareDemandFactorRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Demand"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Eligibility" order="1">
+										<Name>Eligibility</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+											<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Groups">
+									<Name>Group Tickets</Name>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Groups" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<limitations>
+											<GroupTicketRef version="1.0" ref="group_ticket@pass@DAYRIDER_B'STOKE_GROUP"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Access_Lines">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_GROUP@Access_Lines" order="1">
+										<Name>Lines</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<LineRef versionRef="1.0" ref="Line_8002@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8002@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8100@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8123@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8909@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Inbound"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="pass@DAYRIDER_B'STOKE_GROUP">
+							<Name>Basingstoke group dayrider peak</Name>
+							<Description>Valid at all times in the Basingstoke area. See Terms &amp; Conditions for full information.</Description>
+							<typesOfFareProduct>
+								<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							</typesOfFareProduct>
+							<OperatorRef version="1.0" ref="noc:SCHM">noc:137728</OperatorRef>
+							<validableElements>
+								<ValidableElement version="1.0" id="pass@DAYRIDER_B'STOKE_GROUP@Access">
+									<Name>Pass</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Eligibility"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Conditions_of_travel"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Groups"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Access_Lines"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Availability"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_GROUP@Durations"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="pass@DAYRIDER_B'STOKE_GROUP" order="1">
+									<ValidableElementRef version="1.0" ref="pass@DAYRIDER_B'STOKE_GROUP@Access"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<salesOfferPackages>
+						<SalesOfferPackage version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_GROUP@paperOnBus">
+							<Name>Basingstoke group dayrider peak - Onboard (paper ticket)</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_GROUP@paperOnBus@onBoard" order="1">
+									<DistributionChannelType>onBoard</DistributionChannelType>
+									<PaymentMethods>cash contactlessPaymentCard</PaymentMethods>
+									<FulfilmentMethodRef version="1.0" ref="Fulfilment@collectOnBoard"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_GROUP@paperOnBus@paperTicket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="TravelDocument@paperTicket"/>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_GROUP"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products_DAYRIDER_B'STOKE_CHILD:op" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op"/>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+						<ResourceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op"/>
+					</prerequisites>
+					<tariffs>
+						<Tariff version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD">
+							<Name>Basingstoke dayrider</Name>
+							<TariffBasis>flat</TariffBasis>
+							<timeIntervals>
+								<TimeInterval version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Pass@1_Day">
+									<Name>1 Day</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Demand">
+									<validityConditions>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Condition@day_type@Public_Holiday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Public_Holiday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Condition@day_type@Sunday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Sunday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Sunday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Condition@day_type@Saturday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Saturday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Saturday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Condition@day_type@Weekday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Weekday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Weekday_04:00:00@04:00:00-08:54:59">
+													<Name>04:00:00-08:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>08:54:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Weekday_04:00:00@08:55:00-09:24:59">
+													<Name>08:55:00-09:24:59</Name>
+													<StartTime>08:55:00</StartTime>
+													<EndTime>09:24:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@day_type@Weekday_04:00:00@09:25:00-18:54:59">
+													<Name>09:25:00-18:54:59</Name>
+													<StartTime>09:25:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+									</validityConditions>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:conditions_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel@Transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel@Frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<UsageValidityPeriod version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel@Validity">
+												<ValidityPeriodType>dayPass</ValidityPeriodType>
+												<UsageEnd>endOfFareDay</UsageEnd>
+												<ActivationMeans>noneRequired</ActivationMeans>
+											</UsageValidityPeriod>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Durations">
+									<Name>Pass durations</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Pass@1_Day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Availability">
+									<Name>Timebands for travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<qualityStructureFactors>
+										<FareDemandFactorRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Demand"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Eligibility" order="1">
+										<Name>Eligibility</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Access_Lines">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_CHILD@Access_Lines" order="1">
+										<Name>Lines</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<LineRef versionRef="1.0" ref="Line_8002@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8002@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8100@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8123@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7009@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7020@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9852@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8909@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6072@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6072@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6071@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6070@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6070@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6071@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6471@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6470@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6470@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Outbound"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="pass@DAYRIDER_B'STOKE_CHILD">
+							<Name>Basingstoke dayrider</Name>
+							<Description>Please see full T&amp;Cs before purchasing to check this ticket is valid for your journey.</Description>
+							<typesOfFareProduct>
+								<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							</typesOfFareProduct>
+							<OperatorRef version="1.0" ref="noc:SCHM">noc:137728</OperatorRef>
+							<validableElements>
+								<ValidableElement version="1.0" id="pass@DAYRIDER_B'STOKE_CHILD@Access">
+									<Name>Pass</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Eligibility"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Conditions_of_travel"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Access_Lines"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Availability"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_CHILD@Durations"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="pass@DAYRIDER_B'STOKE_CHILD" order="1">
+									<ValidableElementRef version="1.0" ref="pass@DAYRIDER_B'STOKE_CHILD@Access"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<salesOfferPackages>
+						<SalesOfferPackage version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_CHILD@paperOnBus">
+							<Name>Basingstoke dayrider - Onboard (paper ticket)</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_CHILD@paperOnBus@onBoard" order="1">
+									<DistributionChannelType>onBoard</DistributionChannelType>
+									<PaymentMethods>cash contactlessPaymentCard</PaymentMethods>
+									<FulfilmentMethodRef version="1.0" ref="Fulfilment@collectOnBoard"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_CHILD@paperOnBus@paperTicket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="TravelDocument@paperTicket"/>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_CHILD"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products:op_AYRIDER_B'STOKE_YP" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op"/>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+						<ResourceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op"/>
+					</prerequisites>
+					<tariffs>
+						<Tariff version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP">
+							<Name>Basingstoke dayrider</Name>
+							<TariffBasis>flat</TariffBasis>
+							<timeIntervals>
+								<TimeInterval version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Pass@1_Day">
+									<Name>1 Day</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Demand">
+									<validityConditions>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Condition@day_type@Weekday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Weekday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Weekday_04:00:00@04:00:00-08:54:59">
+													<Name>04:00:00-08:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>08:54:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Weekday_04:00:00@08:55:00-09:24:59">
+													<Name>08:55:00-09:24:59</Name>
+													<StartTime>08:55:00</StartTime>
+													<EndTime>09:24:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Weekday_04:00:00@09:25:00-18:54:59">
+													<Name>09:25:00-18:54:59</Name>
+													<StartTime>09:25:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Condition@day_type@Saturday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Saturday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Saturday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Condition@day_type@Sunday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Sunday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Sunday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Condition@day_type@Public_Holiday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@day_type@Public_Holiday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+									</validityConditions>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:conditions_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel@Transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel@Frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<UsageValidityPeriod version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel@Validity">
+												<ValidityPeriodType>dayPass</ValidityPeriodType>
+												<UsageEnd>endOfFareDay</UsageEnd>
+												<ActivationMeans>noneRequired</ActivationMeans>
+											</UsageValidityPeriod>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Durations">
+									<Name>Pass durations</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Pass@1_Day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Availability">
+									<Name>Timebands for travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<qualityStructureFactors>
+										<FareDemandFactorRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Demand"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Eligibility" order="1">
+										<Name>Eligibility</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="UserProfile@Young_person"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Access_Lines">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_YP@Access_Lines" order="1">
+										<Name>Lines</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<LineRef versionRef="1.0" ref="Line_8002@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8002@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8123@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8909@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Outbound"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="pass@DAYRIDER_B'STOKE_YP">
+							<Name>Basingstoke dayrider</Name>
+							<Description>Please see full T&amp;Cs before purchasing to check this ticket is valid for your journey.</Description>
+							<typesOfFareProduct>
+								<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							</typesOfFareProduct>
+							<OperatorRef version="1.0" ref="noc:SCHM">noc:137728</OperatorRef>
+							<validableElements>
+								<ValidableElement version="1.0" id="pass@DAYRIDER_B'STOKE_YP@Access">
+									<Name>Pass</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Eligibility"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Conditions_of_travel"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Access_Lines"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Availability"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_YP@Durations"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="pass@DAYRIDER_B'STOKE_YP" order="1">
+									<ValidableElementRef version="1.0" ref="pass@DAYRIDER_B'STOKE_YP@Access"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<salesOfferPackages>
+						<SalesOfferPackage version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_YP@paperOnBus">
+							<Name>Basingstoke dayrider - Onboard (paper ticket)</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_YP@paperOnBus@onBoard" order="1">
+									<DistributionChannelType>onBoard</DistributionChannelType>
+									<PaymentMethods>cash contactlessPaymentCard</PaymentMethods>
+									<FulfilmentMethodRef version="1.0" ref="Fulfilment@collectOnBoard"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_YP@paperOnBus@paperTicket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="TravelDocument@paperTicket"/>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_YP"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products:op_DAYRIDER_B'STOKE_ADULT" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op"/>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+						<ResourceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op"/>
+					</prerequisites>
+					<tariffs>
+						<Tariff version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT">
+							<Name>Basingstoke dayrider</Name>
+							<TariffBasis>flat</TariffBasis>
+							<timeIntervals>
+								<TimeInterval version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Pass@1_Day">
+									<Name>1 Day</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Demand">
+									<validityConditions>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Condition@day_type@Weekday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Weekday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Weekday_04:00:00@04:00:00-08:54:59">
+													<Name>04:00:00-08:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>08:54:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Weekday_04:00:00@08:55:00-09:24:59">
+													<Name>08:55:00-09:24:59</Name>
+													<StartTime>08:55:00</StartTime>
+													<EndTime>09:24:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Weekday_04:00:00@09:25:00-18:54:59">
+													<Name>09:25:00-18:54:59</Name>
+													<StartTime>09:25:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Condition@day_type@Saturday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Saturday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Saturday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Condition@day_type@Public_Holiday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Public_Holiday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Condition@day_type@Sunday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Sunday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@day_type@Sunday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+									</validityConditions>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:conditions_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel@Transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel@Frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<UsageValidityPeriod version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel@Validity">
+												<ValidityPeriodType>dayPass</ValidityPeriodType>
+												<UsageEnd>endOfFareDay</UsageEnd>
+												<ActivationMeans>noneRequired</ActivationMeans>
+											</UsageValidityPeriod>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Durations">
+									<Name>Pass durations</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Pass@1_Day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Availability">
+									<Name>Timebands for travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<qualityStructureFactors>
+										<FareDemandFactorRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Demand"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Eligibility" order="1">
+										<Name>Eligibility</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Access_Lines">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_ADULT@Access_Lines" order="1">
+										<Name>Lines</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<LineRef versionRef="1.0" ref="Line_8002@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8002@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8100@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8123@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7009@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7020@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9852@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8909@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8602@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8622@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6072@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6074@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6074@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6075@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6075@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6072@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6071@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6070@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6041@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6041@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6070@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6071@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6520@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6520@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6538@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6538@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6471@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6470@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6470@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5039@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5039@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5040@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5040@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5081@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5139@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5139@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5239@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5239@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5690@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5690@Inbound"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="pass@DAYRIDER_B'STOKE_ADULT">
+							<Name>Basingstoke dayrider</Name>
+							<Description>Please see full T&amp;Cs before purchasing to check this ticket is valid for your journey.</Description>
+							<typesOfFareProduct>
+								<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							</typesOfFareProduct>
+							<OperatorRef version="1.0" ref="noc:SCHM">noc:137728</OperatorRef>
+							<validableElements>
+								<ValidableElement version="1.0" id="pass@DAYRIDER_B'STOKE_ADULT@Access">
+									<Name>Pass</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Eligibility"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Conditions_of_travel"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Access_Lines"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Availability"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_ADULT@Durations"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="pass@DAYRIDER_B'STOKE_ADULT" order="1">
+									<ValidableElementRef version="1.0" ref="pass@DAYRIDER_B'STOKE_ADULT@Access"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<salesOfferPackages>
+						<SalesOfferPackage version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_ADULT@paperOnBus">
+							<Name>Basingstoke dayrider - Onboard (paper ticket)</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_ADULT@paperOnBus@onBoard" order="1">
+									<DistributionChannelType>onBoard</DistributionChannelType>
+									<PaymentMethods>cash contactlessPaymentCard</PaymentMethods>
+									<FulfilmentMethodRef version="1.0" ref="Fulfilment@collectOnBoard"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_ADULT@paperOnBus@paperTicket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="TravelDocument@paperTicket"/>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_ADULT"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products_DAYRIDER_B'STOKE_AD_APP:op" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ServiceCalendarFrameRef version="1.0" ref="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op"/>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+						<ServiceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ServiceFrame:UK_PI_NETWORK:Network_Data:op"/>
+						<ResourceFrameRef versionRef="1.0" ref="epd:UK:SCSO:ResourceFrame:UK_PI_COMMON:Products:op"/>
+					</prerequisites>
+					<tariffs>
+						<Tariff version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP">
+							<Name>Basingstoke dayrider</Name>
+							<TariffBasis>flat</TariffBasis>
+							<timeIntervals>
+								<TimeInterval version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Pass@1_Day">
+									<Name>1 Day</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<qualityStructureFactors>
+								<FareDemandFactor version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Demand">
+									<validityConditions>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Condition@day_type@Public_Holiday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Public_Holiday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Condition@day_type@Sunday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Sunday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Sunday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Condition@day_type@Saturday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Saturday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Saturday_04:00:00@04:00:00-18:54:59">
+													<Name>04:00:00-18:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+										<AvailabilityCondition version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Condition@day_type@Weekday_04:00:00">
+											<IsAvailable>true</IsAvailable>
+											<dayTypes>
+												<DayTypeRef version="1.0" ref="day_type@Weekday_04:00:00"/>
+											</dayTypes>
+											<timebands>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Weekday_04:00:00@04:00:00-08:54:59">
+													<Name>04:00:00-08:54:59</Name>
+													<StartTime>04:00:00</StartTime>
+													<EndTime>08:54:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Weekday_04:00:00@08:55:00-09:24:59">
+													<Name>08:55:00-09:24:59</Name>
+													<StartTime>08:55:00</StartTime>
+													<EndTime>09:24:59</EndTime>
+												</Timeband>
+												<Timeband version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@day_type@Weekday_04:00:00@09:25:00-18:54:59">
+													<Name>09:25:00-18:54:59</Name>
+													<StartTime>09:25:00</StartTime>
+													<EndTime>18:54:59</EndTime>
+												</Timeband>
+											</timebands>
+										</AvailabilityCondition>
+									</validityConditions>
+								</FareDemandFactor>
+							</qualityStructureFactors>
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel">
+									<Name>Conditions of travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:condition_of_use"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel" order="1">
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:conditions_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel@Transferability">
+												<Name>Ticket is not transferable</Name>
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel@Frequency">
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<UsageValidityPeriod version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel@Validity">
+												<ValidityPeriodType>dayPass</ValidityPeriodType>
+												<UsageEnd>endOfFareDay</UsageEnd>
+												<ActivationMeans>noneRequired</ActivationMeans>
+											</UsageValidityPeriod>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Durations">
+									<Name>Pass durations</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:durations"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Pass@1_Day"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Availability">
+									<Name>Timebands for travel</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+									<qualityStructureFactors>
+										<FareDemandFactorRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Demand"/>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Eligibility">
+									<Name>Eligible user types</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Eligibility" order="1">
+										<Name>Eligibility</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:eligible"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Access_Lines">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef versionRef="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment version="1.0" id="Tariff@DAYRIDER_B'STOKE_AD_APP@Access_Lines" order="1">
+										<Name>Lines</Name>
+										<TypeOfAccessRightAssignmentRef versionRef="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<LineRef versionRef="1.0" ref="Line_8001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8100@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8123@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8023@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8006@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8008@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8010@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8011@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8012@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8014@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8022@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7007@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7009@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7010@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7011@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7012@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7076@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7085@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7107@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7113@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7068@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7068@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7013@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7015@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_7017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_7020@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9164@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9164@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9461@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9461@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9607@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9661@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9661@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9662@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9662@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9663@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9663@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9851@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9861@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9852@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8657@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8909@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8656@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8965@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_8613@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_8655@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9001@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9001@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9063@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9064@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9064@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9066@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9066@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9067@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9067@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9086@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9095@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9096@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9063@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9062@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9062@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9061@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9003@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9007@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9046@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9046@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_9061@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_9016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6074@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6074@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6075@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6075@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6083@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6084@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6087@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6041@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6041@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6046@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6403@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6503@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6520@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6520@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6523@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6538@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6538@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6404@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6405@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6412@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6417@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6418@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6441@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6019@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5032@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5033@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5039@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5039@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5040@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5040@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5081@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5139@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5139@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5239@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5239@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5479@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6018@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6005@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6006@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6014@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6015@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6016@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6016@Inbound"/>
+											<LineRef versionRef="1.0" ref="Line_6017@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_6004@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5690@Outbound"/>
+											<LineRef versionRef="1.0" ref="Line_5690@Inbound"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="pass@DAYRIDER_B'STOKE_AD_APP">
+							<Name>Basingstoke dayrider</Name>
+							<Description>Please see full T&amp;Cs before purchasing to check this ticket is valid for your journey.</Description>
+							<typesOfFareProduct>
+								<TypeOfFareProductRef versionRef="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							</typesOfFareProduct>
+							<OperatorRef version="1.0" ref="noc:SCHM">noc:137728</OperatorRef>
+							<validableElements>
+								<ValidableElement version="1.0" id="pass@DAYRIDER_B'STOKE_AD_APP@Access">
+									<Name>Pass</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Eligibility"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Conditions_of_travel"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Access_Lines"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Availability"/>
+										<FareStructureElementRef version="1.0" ref="Tariff@DAYRIDER_B'STOKE_AD_APP@Durations"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="pass@DAYRIDER_B'STOKE_AD_APP" order="1">
+									<ValidableElementRef version="1.0" ref="pass@DAYRIDER_B'STOKE_AD_APP@Access"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayPass</ProductType>
+						</PreassignedFareProduct>
+					</fareProducts>
+					<salesOfferPackages>
+						<SalesOfferPackage version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp">
+							<Name>Basingstoke dayrider - Mobile App</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp@mobileDevice" order="1">
+									<DistributionChannelType>mobileDevice</DistributionChannelType>
+									<PaymentMethods>creditCard debitCard</PaymentMethods>
+									<FulfilmentMethodRef version="1.0" ref="Fulfilment@mobileApp"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp@mobileApp" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="TravelDocument@mobileApp"/>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_AD_APP"/>
+									<validityParameterAssignments>
+										<GenericParameterAssignment version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp@mobileApp" order="1">
+											<limitations>
+												<UsageValidityPeriod version="1.0" id="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp@mobileApp@hanging">
+													<UsageTrigger>purchase</UsageTrigger>
+													<UsageEnd>productExpiry</UsageEnd>
+													<StandardDuration>P3M</StandardDuration>
+													<ActivationMeans>noneRequired</ActivationMeans>
+												</UsageValidityPeriod>
+											</limitations>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRICE:Products:op" dataSourceRef="op:src" responsibilitySetRef="op:tariff_data">
+<Name>ALternative represenattion of prices as flat cells </Name>					
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRODUCT:Products_DAYRIDER_B'STOKE_GROUP:op"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="1.0" id="fareTable@pass@DAYRIDER_B'STOKE_GROUP">
+							<Name>DAYRIDER  </Name>
+							<prices>
+								<SalesOfferPackagePrice version="1.0" id="price@pass@DAYRIDER_B'STOKE_GROUP">
+									<Amount>9</Amount>
+									<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_GROUP@paperOnBus"/>
+								</SalesOfferPackagePrice>
+								<SalesOfferPackagePrice version="1.0" id="price@pass@DAYRIDER_B'STOKE_YP">
+									<Amount>4</Amount>
+									<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_YP@paperOnBus"/>
+								</SalesOfferPackagePrice>
+								<SalesOfferPackagePrice version="1.0" id="price@pass@DAYRIDER_B'STOKE_ADULT">
+									<Amount>4.6</Amount>
+									<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_ADULT@paperOnBus"/>
+								</SalesOfferPackagePrice>
+								<SalesOfferPackagePrice version="1.0" id="price@pass@DAYRIDER_B'STOKE_AD_APP">
+									<Amount>4.4</Amount>
+									<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp"/>
+								</SalesOfferPackagePrice>
+							</prices>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_FARE_PRICE:Products_FLAT:op" dataSourceRef="op:src" responsibilitySetRef="op:tariff_data">
+					<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<FrameDefaults>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="1.0" id="flat@pass@DAYRIDER">
+							<cells>
+								<Cell version="1.0" id="pass@DAYRIDER_B'STOKE_GROUP" order="1">
+									<SalesOfferPackagePrice version="1.0" id="pass@DAYRIDER_B'STOKE_GROUP">
+										<Amount>9</Amount>
+										<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_GROUP@paperOnBus"/>
+									</SalesOfferPackagePrice>
+									<PreassignedFareProductRef version="1.0" ref="pass@DAYRIDER_B'STOKE_GROUP"/>
+									<GroupTicketRef version="1.0" ref="group_ticket@pass@DAYRIDER_B'STOKE_GROUP"/>
+									<TariffZoneRef version="1.0" ref="basingstoke"/>
+								</Cell>
+								<Cell version="1.0" id="pass@DAYRIDER_B'STOKE_YP" order="1">
+									<SalesOfferPackagePrice version="1.0" id="pass@DAYRIDER_B'STOKE_YP">
+										<Amount>4</Amount>
+										<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_YP@paperOnBus"/>
+									</SalesOfferPackagePrice>
+									<UserProfileRef version="1.0" ref="UserProfile@Young_person"/>
+									<TariffZoneRef version="1.0" ref="basingstoke"/>
+								</Cell>
+								<Cell version="1.0" id="pass@DAYRIDER_B'STOKE_ADULT" order="1">
+									<SalesOfferPackagePrice version="1.0" id="pass@DAYRIDER_B'STOKE_ADULT">
+										<Amount>4.6</Amount>
+										<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_ADULT@paperOnBus"/>
+									</SalesOfferPackagePrice>
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<TariffZoneRef version="1.0" ref="basingstoke"/>
+								</Cell>
+								<Cell version="1.0" id="pass@DAYRIDER_B'STOKE_AD_APP" order="1">
+									<SalesOfferPackagePrice version="1.0" id="pass@DAYRIDER_B'STOKE_AD_APP">
+										<Amount>4.4</Amount>
+										<SalesOfferPackageRef version="1.0" ref="SOP@pass@DAYRIDER_B'STOKE_AD_APP@mobileApp"/>
+									</SalesOfferPackagePrice>
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<TariffZoneRef version="1.0" ref="basingstoke"/>
+								</Cell>
+							</cells>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+				<ServiceCalendarFrame version="1.0" id="epd:UK:SCSO:ServiceCalendarFrame:UK_PI_CALENDAR:Products:op">
+					<dayTypes>
+						<DayType version="1.0" id="day_type@Public_Holiday">
+							<Name>Public Holiday</Name>
+							<properties>
+								<PropertyOfDay>
+									<HolidayTypes>AnyHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Public_Holiday_04:00:00">
+							<Name>Public Holiday</Name>
+							<EarliestTime>04:00:00</EarliestTime>
+							<DayLength>PT24H</DayLength>
+							<properties>
+								<PropertyOfDay>
+									<HolidayTypes>AnyHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Sunday">
+							<Name>Sunday</Name>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Sunday</DaysOfWeek>
+									<HolidayTypes>NotWorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Sunday_04:00:00">
+							<Name>Sunday</Name>
+							<EarliestTime>04:00:00</EarliestTime>
+							<DayLength>PT24H</DayLength>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Sunday</DaysOfWeek>
+									<HolidayTypes>NotWorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Saturday">
+							<Name>Saturday</Name>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Saturday</DaysOfWeek>
+									<HolidayTypes>NotWorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Saturday_04:00:00">
+							<Name>Saturday</Name>
+							<EarliestTime>04:00:00</EarliestTime>
+							<DayLength>PT24H</DayLength>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Saturday</DaysOfWeek>
+									<HolidayTypes>NotWorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Weekday">
+							<Name>Weekday</Name>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Monday Tuesday Wednesday Thursday Friday</DaysOfWeek>
+									<HolidayTypes>WorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+						<DayType version="1.0" id="day_type@Weekday_04:00:00">
+							<Name>Weekday</Name>
+							<EarliestTime>04:00:00</EarliestTime>
+							<DayLength>PT24H</DayLength>
+							<properties>
+								<PropertyOfDay>
+									<DaysOfWeek>Monday Tuesday Wednesday Thursday Friday</DaysOfWeek>
+									<HolidayTypes>WorkingDay</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+					</dayTypes>
+					<dayTypeAssignments>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@01/01/2020" order="1">
+							<Name>01/01/2020</Name>
+							<Date>2020-01-01</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@10/04/2020" order="1">
+							<Name>10/04/2020</Name>
+							<Date>2020-04-10</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@13/04/2020" order="1">
+							<Name>13/04/2020</Name>
+							<Date>2020-04-13</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@08/05/2020" order="1">
+							<Name>08/05/2020</Name>
+							<Date>2020-05-08</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@25/05/2020" order="1">
+							<Name>25/05/2020</Name>
+							<Date>2020-05-25</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@31/08/2020" order="1">
+							<Name>31/08/2020</Name>
+							<Date>2020-08-31</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@25/12/2020" order="1">
+							<Name>25/12/2020</Name>
+							<Date>2020-12-25</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@28/12/2020" order="1">
+							<Name>28/12/2020</Name>
+							<Date>2020-12-28</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday@01/01/2021" order="1">
+							<Name>01/01/2021</Name>
+							<Date>2021-01-01</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@01/01/2020" order="1">
+							<Name>01/01/2020</Name>
+							<Date>2020-01-01</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@10/04/2020" order="1">
+							<Name>10/04/2020</Name>
+							<Date>2020-04-10</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@13/04/2020" order="1">
+							<Name>13/04/2020</Name>
+							<Date>2020-04-13</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@08/05/2020" order="1">
+							<Name>08/05/2020</Name>
+							<Date>2020-05-08</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@25/05/2020" order="1">
+							<Name>25/05/2020</Name>
+							<Date>2020-05-25</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@31/08/2020" order="1">
+							<Name>31/08/2020</Name>
+							<Date>2020-08-31</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@25/12/2020" order="1">
+							<Name>25/12/2020</Name>
+							<Date>2020-12-25</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@28/12/2020" order="1">
+							<Name>28/12/2020</Name>
+							<Date>2020-12-28</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment version="1.0" id="day_type@Public_Holiday_04:00:00@01/01/2021" order="1">
+							<Name>01/01/2021</Name>
+							<Date>2021-01-01</Date>
+							<DayTypeRef version="1.0" ref="day_type@Public_Holiday_04:00:00"/>
+						</DayTypeAssignment>
+					</dayTypeAssignments>
+				</ServiceCalendarFrame>
+			</frames>
+		</CompositeFrame>
+		<CompositeFrame version="1.0" id="epd:UK:SCSO:CompositeFrame:UK_PI_METADATA_OFFER:Products:op" dataSourceRef="op:src" responsibilitySetRef="op:metadata">
+			<Name>Common resources for SCSO</Name>
+			<Description>Set of SCSO profile metadata.</Description>
+			<TypeOfFrameRef versionRef="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP"/>
+			<frames>
+				<FareFrame version="1.0" id="epd:UK:SCSO:FareFrame:UK_PI_METADATA:Products:op" dataSourceRef="op:src" responsibilitySetRef="op:metadata">
+					<usageParameters>
+						<UserProfile version="1.0" id="UserProfile@Young_person">
+							<Name>Young person</Name>
+							<UserType>anyone</UserType>
+						</UserProfile>
+						<UserProfile version="1.0" id="UserProfile@Student">
+							<Name>Student</Name>
+							<UserType>anyone</UserType>
+						</UserProfile>
+						<UserProfile version="1.0" id="UserProfile@Concession">
+							<Name>Concession</Name>
+							<UserType>anyone</UserType>
+						</UserProfile>
+						<UserProfile version="1.0" id="UserProfile@Child">
+							<Name>Child</Name>
+							<UserType>anyone</UserType>
+						</UserProfile>
+						<UserProfile version="1.0" id="UserProfile@Adult">
+							<Name>Adult</Name>
+							<UserType>anyone</UserType>
+						</UserProfile>
+						<GroupTicket version="1.0" id="group_ticket@pass@SHUTTLE_GROUP_DAY">
+							<Name>Centre Shuttle group day ticket</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SHUTTLE_GROUP_DAY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SHUTTLE_GROUP_DAY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@SHUTTLE_FAMILY_DAY">
+							<Name>Centre Shuttle family day ticket</Name>
+							<MaximumNumberOfPersons>6</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SHUTTLE_FAMILY_DAY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SHUTTLE_FAMILY_DAY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP">
+							<Name>Basingstoke group dayrider off peak</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GRP_APP">
+							<Name>Basingstoke group dayrider peak</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GRP_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GRP_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GROUP">
+							<Name>Basingstoke group dayrider peak</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GROUP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'STOKE_GROUP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP_APP">
+							<Name>Basingstoke group dayrider off peak</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_GRP_OP_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAM_APP">
+							<Name>Havant family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAM_APP">
+							<Name>Portsmouth family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAM_APP">
+							<Name>South Hants family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAM_APP">
+							<Name>Winchester family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAM_APP">
+							<Name>Worthing family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@trip@SHUTTLE_ANVIL_RETURN">
+							<Name>Anvil Return</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@trip@SHUTTLE_ANVIL_RETURN@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@trip@SHUTTLE_ANVIL_RETURN@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAMILY">
+							<Name>Blackwater Valley family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@WILTS_ROVER_FAMILY">
+							<Name>Family Wilts DayRover</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@WILTS_ROVER_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@WILTS_ROVER_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DISCOVERY_FAMILY">
+							<Name>Discovery Family day ticket</Name>
+							<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DISCOVERY_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DISCOVERY_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAMILY">
+							<Name>Blackwater Valley family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY">
+							<Name>Gold family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAMILY">
+							<Name>South Hants family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_S'HANTS_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAMILY">
+							<Name>Worthing family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WORTHING_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAMILY">
+							<Name>Winchester family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_WINCH_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAMILY">
+							<Name>Portsmouth family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_P'MOUTH_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAMILY">
+							<Name>Havant family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_HAVANT_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAMILY">
+							<Name>Brighton family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAMILY">
+							<Name>Andover family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAMILY@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAMILY@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY_17PR">
+							<Name>Gold family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY_17PR@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAMILY_17PR@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAM_APP">
+							<Name>Andover family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_ANDOVER_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAM_APP">
+							<Name>Blackwater Valley family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_B'WATER_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAM_APP">
+							<Name>Brighton family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_BRIGHTON_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAM_APP">
+							<Name>Blackwater Valley family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@SOUTH_DAYRIDER_BW_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAM_APP">
+							<Name>Gold family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAM_APP@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRIDER_GOLD_FAM_APP@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_FAM_OP_PRO">
+							<Name>Basingstoke family dayrider</Name>
+							<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_FAM_OP_PRO@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@pass@DAYRDR_B'STOKE_FAM_OP_PRO@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+						<GroupTicket version="1.0" id="group_ticket@trip@1700_AD_SGL_-_CH_-_LN">
+							<Name>Single</Name>
+							<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="group_ticket@trip@1700_AD_SGL_-_CH_-_LN@Child">
+									<UserProfileRef version="1.0" ref="UserProfile@Child"/>
+									<MinimumNumberOfPersons>3</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="group_ticket@trip@1700_AD_SGL_-_CH_-_LN@Adult">
+									<UserProfileRef version="1.0" ref="UserProfile@Adult"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>1</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+					</usageParameters>
+					<fulfilmentMethods>
+						<FulfilmentMethod version="1.0" id="Fulfilment@collectOnBoard">
+							<Name>Collect on board</Name>
+							<FulfilmentMethodType>conductor</FulfilmentMethodType>
+						</FulfilmentMethod>
+						<FulfilmentMethod version="1.0" id="Fulfilment@collectAtCounter">
+							<Name>Collect at counter</Name>
+							<FulfilmentMethodType>ticketOffice</FulfilmentMethodType>
+						</FulfilmentMethod>
+						<FulfilmentMethod version="1.0" id="Fulfilment@post">
+							<Name>Send ticket by post</Name>
+							<FulfilmentMethodType>post</FulfilmentMethodType>
+						</FulfilmentMethod>
+						<FulfilmentMethod version="1.0" id="Fulfilment@onlinePropagation">
+							<Name>Online propagation</Name>
+							<FulfilmentMethodType>validator</FulfilmentMethodType>
+						</FulfilmentMethod>
+						<FulfilmentMethod version="1.0" id="Fulfilment@mobileApp">
+							<Name>Mobile App</Name>
+							<FulfilmentMethodType>mobileApp</FulfilmentMethodType>
+						</FulfilmentMethod>
+					</fulfilmentMethods>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument version="1.0" id="TravelDocument@paperTicket">
+							<Name>Printed Ticket</Name>
+							<MediaType>paperTicket</MediaType>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument version="1.0" id="TravelDocument@smartCard">
+							<Name>Smart Card Ticket</Name>
+							<MediaType>smartCard</MediaType>
+							<MachineReadable>nfc</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument version="1.0" id="TravelDocument@mobileApp">
+							<Name>Stored on your mobile phone as m-tickets</Name>
+							<MediaType>mobileApp</MediaType>
+							<MachineReadable>barCode</MachineReadable>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

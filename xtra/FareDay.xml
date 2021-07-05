@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-2"?>
+<PublicationDelivery version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<PublicationTimestamp>2018-04-01T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!--- =============== RESULTS =========== -->
+	<dataObjects>
+		<ServiceCalendarFrame version="any" id="tlx:Calendar">
+			<dayTypes>
+				<FareDayType version="any" id="tlx:Normal">
+					<Name>Every day</Name>
+					<Description>ANy time</Description>
+					<EarliestTime>00:02:30</EarliestTime>
+					<DayLength>P1D</DayLength>
+					<properties>
+						<PropertyOfDay>
+							<DaysOfWeek>Everyday</DaysOfWeek>
+							<HolidayTypes>AnyDay</HolidayTypes>
+						</PropertyOfDay>
+					</properties>
+				</FareDayType>
+			</dayTypes>
+		</ServiceCalendarFrame>
+		<FareFrame version="any" id="tlx:Trilex@Calendar">
+			<usageParameters>
+				<UsageValidityPeriod version="any" id="tlx:Normal">
+					<Name>Every day</Name>
+					<UsageTrigger>activation</UsageTrigger>
+					<UsageEnd>endOfFareDay</UsageEnd>
+				</UsageValidityPeriod>
+				<PurchaseWindow version="any" id="tlx:Normal">
+					<PurchaseWhen>dayOfTravelOnly</PurchaseWhen> 
+					<LatestTime>00:02:30</LatestTime>
+				</PurchaseWindow>
+			</usageParameters>
+		</FareFrame>
+	</dataObjects>
+</PublicationDelivery>
