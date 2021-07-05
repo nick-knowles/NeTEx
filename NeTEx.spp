@@ -872,6 +872,9 @@
 						<File FilePath="examples\standards\norway\validity\submodel-AvailabilityConditionUnavailable.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\norway\validity\submodel-ValidBetween.xml" HomeFolder="Yes"/>
 					</Folder>
+					<Folder FolderName="fares">
+						<File FilePath="examples\standards\norway\fares\Entur-CappedFares.xml" HomeFolder="Yes"/>
+					</Folder>
 					<File FilePath="xsd\netex_framework\netex_reusableComponents\netex_all_objects_reusableComponents.xsd" HomeFolder="Yes"/>
 				</Folder>
 				<Folder FolderName="txc">
