@@ -19,6 +19,8 @@
 							  Deposit required.
 						   SALES PACKAGES  (a) mobile app for preregistered users only.
 
+       NOTE THis exam-pel incldue sboth product and transaction data - in teh real world transaction data would be in a  separate data exchange
+
 (C) CEN 2021
 -->
 	<PublicationTimestamp>2020-12-17T09:30:47.0Z</PublicationTimestamp>
@@ -27,7 +29,7 @@
 	<PublicationRequest version="1.0">
 		<RequestTimestamp>2020-12-17T09:30:46.0Z</RequestTimestamp>
 		<ParticipantRef>SYS002</ParticipantRef>
-		<Description>Request for Metrobike 1  tariff</Description>
+		<Description>Request for CYcle Sharing  tariff</Description>
 		<topics>
 			<NetworkFrameTopic>
 				<selectionValidityConditions>

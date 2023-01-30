@@ -176,9 +176,9 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<accommodations>
 												<Accommodation version="any" id="1@63">
 													<FareClass>secondClass</FareClass>
-													<!-- 63 TafTsi B.4.9039: 63	Second-class, couchette, four-bed, C4		-->
+													<!-- 63 TapTsi B.4.9039: 63	Second-class, couchette, four-bed, C4		-->
 													<AccommodationFacility>couchette</AccommodationFacility>
-													<!-- T2 TafTsi B.4.9039:  2	First-class sleepers -->
+													<!-- T2 TapTsi B.4.9039:  2	First-class sleepers -->
 													<CouchetteFacility>C4</CouchetteFacility>
 												</Accommodation>
 											</accommodations>
@@ -188,9 +188,9 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<accommodations>
 												<Accommodation version="any" id="1@S11">
 													<FareClass>firstClass</FareClass>
-													<!-- S11 TafTsi B.4.9039: 11	First-class sleeper, single		-->
+													<!-- S11 TapTsi B.4.9039: 11	First-class sleeper, single		-->
 													<AccommodationFacility>singleSleeper</AccommodationFacility>
-													<!-- 2 TafTsi B.4.9039:  2	First-class sleepers -->
+													<!-- 2 TapTsi B.4.9039:  2	First-class sleepers -->
 												</Accommodation>
 											</accommodations>
 										</ServiceFacilitySet>
@@ -198,27 +198,27 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="S27"/>
 											<AssistanceFacilityList>wheechairAssistance</AssistanceFacilityList>
 											<MobilityFacilityList>onboardAssistance</MobilityFacilityList>
-											<!-- S27 TafTSI B4.7161: 27 Disabled Services for disabled persons -->
+											<!-- S27 TapTsi B4.7161: 27 Disabled Services for disabled persons -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F4">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F48">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F48"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F48 TafTsi B.4.9039: 48	Family compartment -->
+											<!-- F48 TapTsi B.4.9039: 48	Family compartment -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F5">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F9">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F9"/>
 											<CateringFacilityList>restaurant</CateringFacilityList>
-											<!-- F9 TafTsi B.4.9039: 9	Restaurant-->
+											<!-- F9 TapTsi B.4.9039: 9	Restaurant-->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@R13">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="R13"/>
@@ -367,9 +367,9 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<ServiceFacilitySet version="any" id="1@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R13"/>
 									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R13 TafTsi B.4.7037: 13	Reservation compulsory -->
+									<!--	R13 TapTsi B.4.7037: 13	Reservation compulsory -->
 									<UicProductCharacteristicList>allIInclusivePrice</UicProductCharacteristicList>
-									<!-- Tariff 2: Taf TSI B4.7139: 2	(Global price) All inclusive tariff -->
+									<!-- Tariff 2: TapTsi B4.7139: 2	(Global price) All inclusive tariff -->
 								</ServiceFacilitySet>
 							</facilities>
 							<UicOperatingPeriod id="1" version="any">
@@ -1087,9 +1087,9 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<accommodations>
 												<Accommodation version="any" id="3@005434124+005434124@63">
 													<FareClass>secondClass</FareClass>
-													<!-- 63 TafTsi B.4.9039: 63	Second-class, couchette, four-bed, C4		-->
+													<!-- 63 TapTsi B.4.9039: 63	Second-class, couchette, four-bed, C4		-->
 													<AccommodationFacility>couchette</AccommodationFacility>
-													<!-- T2 TafTsi B.4.9039:  2	First-class sleepers -->
+													<!-- T2 TapTsi B.4.9039:  2	First-class sleepers -->
 													<CouchetteFacility>C4</CouchetteFacility>
 												</Accommodation>
 											</accommodations>
@@ -1097,7 +1097,7 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@F47">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F47"/>
 											<PassengerCommsFacilityList>powerSupplySockets</PassengerCommsFacilityList>
-											<!-- F47  TafTsi B.4.9039: 47	Bar -->
+											<!-- F47  TapTsi B.4.9039: 47	Bar -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@F21">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F21"/>
@@ -1107,22 +1107,22 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@28">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F28"/>
 											<MobilityFacilityList>suitableForWheelchairs</MobilityFacilityList>
-											<!-- F28  TafTsi B.4.9039: 28	Wheelchair access -->
+											<!-- F28  TapTsi B.4.9039: 28	Wheelchair access -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@F4">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@F45">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F45"/>
 											<PassengerCommsFacilityList>powerSupplySockets</PassengerCommsFacilityList>
-											<!-- F45  TafTsi B.4.9039: 45	Power supply -->
+											<!-- F45  TapTsi B.4.9039: 45	Power supply -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="3@005434124+005434124@F5">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -1286,9 +1286,9 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<ServiceFacilitySet version="any" id="3@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R11"/>
 									<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
-									<!-- R11 TafTsi B.4.7037: 11	Reservation possible -->
+									<!-- R11 TapTsi B.4.7037: 11	Reservation possible -->
 									<UicProductCharacteristicList>tariffCommunVoyageurs</UicProductCharacteristicList>
-									<!-- Tariff 1 Taf TSI B4.7139: 	1	TCV -->
+									<!-- Tariff 1 TapTsi B4.7139: 	1	TCV -->
 								</ServiceFacilitySet>
 							</facilities>
 							<UicOperatingPeriod id="3" version="any">
@@ -1390,38 +1390,38 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="4@E84">
 											<otherFacilities>
 												<TypeOfEquipmentRef versionRef="EXTERNAL" ref="84"/>
-												<!--	Equipment 84  TafTsi B.4.9039: 	TODO - 84  NB  Work Around as cannot set Product code  on part -->
+												<!--	Equipment 84  TapTsi B.4.9039: 	TODO - 84  NB  Work Around as cannot set Product code  on part -->
 											</otherFacilities>
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@F106">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F106"/>
 											<LuggageCarriageFacilityList>vehicleTransport</LuggageCarriageFacilityList>
-											<!--	F106 TafTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
+											<!--	F106 TapTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@F20">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F20"/>
 											<NuisanceFacilityList>noSmoking</NuisanceFacilityList>
-											<!--	F20 TafTsi B.4.9039: 	20	Non-smoker service -->
+											<!--	F20 TapTsi B.4.9039: 	20	Non-smoker service -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@F26">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F26"/>
 											<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
-											<!-- F26 TafTsi B.4.9039: 26	Bicycle transport -->
+											<!-- F26 TapTsi B.4.9039: 26	Bicycle transport -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@F5">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 	5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 	5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@F72"> 
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F72 TafTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+											<!-- F72 TapTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="4@TSF">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="TSF"/>
 											<UicTrainRate>specialFare</UicTrainRate>
-											<!-- T SF TafTsi B.4.5263:	SF	Special fare -->
+											<!-- T SF TapTsi B.4.5263:	SF	Special fare -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -1485,29 +1485,29 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<ServiceFacilitySet version="any" id="4@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R19"/>
 									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R19 TafTsi B.4.7037: 	19	No reservation -->
+									<!--	R19 TapTsi B.4.7037: 	19	No reservation -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
 								<CheckConstraint version="any" id="4@006070001@vehicle_loading">
 									<PlaceRef version="any" ref="uic:007944700"/>
 									<CheckProcess>vehicleLoading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	loading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	loading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="4@007944707@vehicle_loading">
 									<PlaceRef version="any" ref="uic:007944707"/>
 									<CheckProcess>vehicleLoading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	loading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	loading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="4@007944707@vehicle_unloading">
 									<PlaceRef version="any" ref="uic:007944707"/>
 									<CheckProcess>vehicleUnloading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	unloading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	unloading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="4@007944712@vehicle_unloading">
 									<PlaceRef version="any" ref="uic:007944712"/>
 									<CheckProcess>vehicleUnloading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	unloading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	unloading -->
 								</CheckConstraint>
 							</checkConstraints>
 							<UicOperatingPeriod id="4" version="any">
@@ -1689,22 +1689,22 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="5@F106">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F106"/>
 											<LuggageCarriageFacilityList>vehicleTransport</LuggageCarriageFacilityList>
-											<!--	F106 TafTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
+											<!--	F106 TapTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="5@F4">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="5@F5">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="5@F72">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F72 TafTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+											<!-- F72 TapTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -1725,7 +1725,7 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="5@F9">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F9"/>
 											<CateringFacilityList>restaurant</CateringFacilityList>
-											<!-- F9 TafTsi B.4.9039: 9	Restaurant-->
+											<!-- F9 TapTsi B.4.9039: 9	Restaurant-->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -2005,7 +2005,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<ServiceFacilitySet version="any" id="5@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="11"/>
 									<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
-									<!--	R11 TafTsi B.4.7037: 	11	  reservation possible -->
+									<!--	R11 TapTsi B.4.7037: 	11	  reservation possible -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
@@ -2062,7 +2062,7 @@ ID	Stop_number	Service	Relation	Transfer_time	Certainty
 						<ServiceJourneyInterchange version="any" id="5+2135">
 							<StaySeated>false</StaySeated>
 							<ConnectionCertainty>normallyGuaranteed</ConnectionCertainty> 
-							<!--  	taf tsi B.4.4049 - Name: Certainty description code: x02 normally guaranteed   -->
+							<!--  	TapTsi B.4.4049 - Name: Certainty description code: x02 normally guaranteed   -->
 							<MinimumTransferTime>PT4M</MinimumTransferTime>
 							<!--  relationship: (  7 = timing between services) -->
 							<FromPointRef version="any" ref="uic:008014008"/>
@@ -2170,23 +2170,23 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 								<ServiceFacilitySet version="any" id="6@F26">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F26"/>
 									<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
-									<!-- F26 TafTsi B.4.9039: 26	Bicycle transport -->
+									<!-- F26 TapTsi B.4.9039: 26	Bicycle transport -->
 								</ServiceFacilitySet>
 								<ServiceFacilitySet version="any" id="6@F5">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 									<FareClasses>secondClass</FareClasses>
-									<!-- F5 TafTsi B.4.9039: 	5	Second-class seats -->
+									<!-- F5 TapTsi B.4.9039: 	5	Second-class seats -->
 								</ServiceFacilitySet>
 								<ServiceFacilitySet version="any" id="6@F72">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 									<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-									<!--	F72 TafTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+									<!--	F72 TapTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 								</ServiceFacilitySet>
 								<!-- FRom  SKPUPD_TRAIN -->
 								<ServiceFacilitySet version="any" id="6@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="19"/>
 									<ServiceReservationFacilityList>reservationsCompulsory</ServiceReservationFacilityList>
-									<!--	R19 TafTsi B.4.7037: 	19	No reservation -->
+									<!--	R19 TapTsi B.4.7037: 	19	No reservation -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
@@ -2441,7 +2441,7 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tariff_in_equipment		
 7	1	14			122	 -->
 									<BrandingRef versionRef="EXTERNAL" ref="122"/>
-									<!--	Equipment 122  TafTsi B.4.7009: 122- 	Interregional  nb wORKAROUND - 9  -->
+									<!--	Equipment 122  TapTsi B.4.7009: 122- 	Interregional  nb wORKAROUND - 9  -->
 									<Description>1-14</Description>
 									<ParentJourneyRef version="any" ref="1"/>
 									<MainPartRef version="any" ref="7@008101003+005513862"/>
@@ -2468,21 +2468,21 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
  -->
 										<ServiceFacilitySet version="any" id="7@005513862+005341638@E122">
 											<BrandingRef  versionRef="EXTERNAL" ref="122"/>
-											<!--	Equipment 122  TafTsi B.4.7009: 122- 	Interregional  nb wORKAROUND - 9  -->
+											<!--	Equipment 122  TapTsi B.4.7009: 122- 	Interregional  nb wORKAROUND - 9  -->
 											<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
-											<!--	R11 TafTsi B.4.7037: 	11	  reservation possible -->
+											<!--	R11 TapTsi B.4.7037: 	11	  reservation possible -->
 											<UicProductCharacteristicList>trainWithTcvAndMarketPrice</UicProductCharacteristicList>
-											<!--	Tariff 4  TafTsi B.4.7139: 	 4	Train with TCV and Market Price -->
+											<!--	Tariff 4  TapTsi B.4.7139: 	 4	Train with TCV and Market Price -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="7@005513862+005341638@F5">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 	5	SecoNd-class seats -->
+											<!-- F5 TapTsi B.4.9039: 	5	SecoNd-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="7@005513862+005341638@F72">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!--	F72 TafTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  TapTSI Mapping -->
+											<!--	F72 TapTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  TapTSI Mapping -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>

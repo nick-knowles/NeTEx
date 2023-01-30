@@ -37,44 +37,22 @@ UIC_Code1	UIC_Code2	Duration	Duration_Unit	13	6_footPath_or_14_Hierarchy	Attribu
 	<Description>UIC Location data example</Description>
 	<!--- =============== RESULTS =========== -->
 	<dataObjects>
-		<ResourceFrame version="1" id="TSDUPD-example_UIC- Operators)">
-			<Name>Operators referenced in this data set.  NOte this could be dropped an external references used</Name>
-			<codespaces>
-				<Codespace id="uic_cs">
-					<Xmlns>uic</Xmlns>
-					<XmlnsUrl>http://www.uic.org/</XmlnsUrl>
-					<Description>UIC data</Description>
-				</Codespace>
-			</codespaces>
-			<!--- =======FRAME DEFAULTS======== -->
-			<FrameDefaults>
-				<DefaultCodespaceRef ref="uic_cs"/>
-			</FrameDefaults>
-			<organisations>
-				<Operator version="any" id="uic:0064">
-				</Operator>
-				<Operator version="any" id="uic:0083">
-				</Operator>
-				<Operator version="any" id="uic:0086">
-				</Operator>
-				<Operator version="any" id="uic:1180">
-				</Operator>
-				<Operator version="any" id="uic:1187">
-				</Operator>
-			</organisations>
-		</ResourceFrame>
 		<CompositeFrame version="1" id="TSDUPD-example_PIEDIMULERA">
 			<Description>Draft example to map a TSDUPD location  PIEDIMULERA   into NeTEx.</Description>
 			<!--Function_Code	UIC_Code	Location_Name	Location_Short_Name	Latitude	Longitude	Valid_From	Valid_To	Default_Transfert_Time	Country	Timezone1	Timezone2	Reservation_Code 
 29	008300003	PIEDIMULERA	PIEDIMULERA	460128N	081540E	2021-10-07	2999-12-31	0005	IT	CET	1	008300014 -->
 			<!--- ======= CODESPACEs======== -->
 			<codespaces>
+				<Codespace id="uic_cs">
+					<Xmlns>uic</Xmlns>
+					<XmlnsUrl>http://www.uic.org/</XmlnsUrl>
+					<Description>UIC data</Description>
+				</Codespace>
 				<Codespace id="op4_cs">
 					<Xmlns>op4_cs</Xmlns>
 					<XmlnsUrl>http://www.operator.it/</XmlnsUrl>
 					<Description>Operator data</Description>
 				</Codespace>
-				<CodespaceRef ref="uic_cs"/>
 			</codespaces>
 			<!--- =======FRAME DEFAULTS======== -->
 			<FrameDefaults>
@@ -93,10 +71,15 @@ UIC_Code1	UIC_Code2	Duration	Duration_Unit	13	6_footPath_or_14_Hierarchy	Attribu
 							<Name>PIEDIMULERA</Name>
 							<!-- IFT+X02+PIEDIMULERA' -->
 							<ShortName>PIEDIMULERA </ShortName>
+							<types>
+								<!-- Narrative - We can  retain the UIC classifcation code -->
+								<!-- ALS+29+-->
+								<TypeOfZoneRef versionRef="EXTERNAL" ref="29"/>
+							</types>
 							<Centroid>
 								<Location>
-									<Longitude>+46.0128</Longitude>
-									<Latitude>+08.1540</Latitude>
+									<!-- ALS+29+008300003:PIEDIMULERA+460128N+081540E' -->
+									<gml:pos srsName="WGS84-degsecNE">+460128   +081540</gml:pos>
 								</Location>
 							</Centroid>
 							<PostalAddress version="any" id="uic:008600683">
@@ -104,11 +87,11 @@ UIC_Code1	UIC_Code2	Duration	Duration_Unit	13	6_footPath_or_14_Hierarchy	Attribu
 								<CountryRef ref="it"/>
 							</PostalAddress>
 							<Locale>
-								<!-- TIZ+CET:1' -->
-								<TimeZoneOffset>-1</TimeZoneOffset>
+								<!-- TIZ+CET:1 -->
+								<TimeZoneOffset>1</TimeZoneOffset>
 								<TimeZone>CET</TimeZone>
 							</Locale>
-							<OperatorRef version="any" ref="uic:0083"/>
+							<OperatorRef versionRef="EXTERNAL" ref="uic:0083"/>
 							<TransportMode>rail</TransportMode>
 							<tariffZones>
 								<TariffZoneRef versionRef="EXTERNAL" ref="008300014"/>
@@ -128,29 +111,18 @@ UIC_Code1	UIC_Code2	Duration	Duration_Unit	13	6_footPath_or_14_Hierarchy	Attribu
 							</ValidBetween>
 							<Name lang="it">PIEDIMULERA</Name>
 							<Location>
-								<Longitude>+46.0128</Longitude>
-								<Latitude>+08.1540</Latitude>
+								<gml:pos srsName="WGS84-degsecNE">+460128   +081540</gml:pos>
 							</Location>
+							<types>
+								<!-- ALS+29+-->
+								<TypeOfPointRef versionRef="EXTERNAL" ref="29"/>
+							</types>
 							<tariffZones>
 								<!-- RFR+X01:008300014' -->
 								<TariffZoneRef version="any" ref="uic:008300014"/>
 							</tariffZones>
 							<ShortName>PIEDIMULERA</ShortName>
 							<StopType>railStation</StopType>
-							<CountryRef ref="it"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008300004">
-							<ValidBetween>
-								<FromDate>2016-04-29T00:00:00</FromDate>
-								<ToDate>2999-12-31T24:00:00</ToDate>
-							</ValidBetween>
-							<Name lang="it">PIEVE VERGONTE</Name>
-							<tariffZones>
-								<TariffZoneRef version="any" ref="uic:008300014"/>
-							</tariffZones>
-							<ShortName>PIEVE VERGONTE</ShortName>
-							<StopType>railStation</StopType>
-							<!-- CNY+IT' -->
 							<CountryRef ref="it"/>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
@@ -176,25 +148,25 @@ UIC_Code1	UIC_Code2	Duration	Duration_Unit	13	6_footPath_or_14_Hierarchy	Attribu
 						</SiteConnection>
 						<Connection version="any" id="008300003+008300004" dataSourceRef="uic:1183">
 							<!-- RFR+AWN:008300004'
-MES+40:MIN'
-RLS+13+6'
-PRD+:::101:71+1187*1180' -->
+							MES+40:MIN'
+							RLS+13+6'
+							PRD+:::101:71+1187*1180' -->
 							<ValidBetween>
 								<FromDate>2016-04-29T00:00:00</FromDate>
 								<ToDate>2999-12-31T24:00:00</ToDate>
 							</ValidBetween>
-							<Name>Default internal transfers  Piedimulera</Name>
+							<Name>Default   transfers  Piedimulera to Pieve Vergonte </Name>
 							<TransferDuration>
 								<DefaultDuration>PT40M</DefaultDuration>
 							</TransferDuration>
-							<BothWays>true</BothWays>
+							<BothWays>false</BothWays>
 							<From>
 								<TransportMode>rail</TransportMode>
 								<ScheduledStopPointRef version="any" ref="uic:008300003">Piedimulera</ScheduledStopPointRef>
 							</From>
 							<To>
 								<TransportMode>rail</TransportMode>
-								<ScheduledStopPointRef version="any" ref="uic:008300004">Pieve Vergonte</ScheduledStopPointRef>
+								<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008300004">Pieve Vergonte</ScheduledStopPointRef>
 							</To>
 						</Connection>
 					</connections>
@@ -211,27 +183,28 @@ PRD+:::101:71+1187*1180' -->
 							<!-- RFR+AWN:008300004'  -->
 							<ConnectionRef version="any" ref="008300003+008300004"/>
 							<Planned>true</Planned>
-							<MinimumTransferTime>PT34M</MinimumTransferTime>
 							<!-- MES+40:MIN' 
-PRD+:::101:71+1187*1180' -->
-							<MaximumTransferTime>PT40M</MaximumTransferTime>
+							PRD+:::101:71+1187*1180' -->
+							<MinimumTransferTime>PT40M</MinimumTransferTime>
 							<!-- PRD+:::101:71+1187*1180' -->
 							<FeederFilter>
-								<OperatorRef version="any" ref="uic:1187"/>
+								<OperatorRef versionRef="EXTERNAL" ref="uic:1187"/>
 								<!-- TO ADD
 								<TypeOfServiceRef  versionRef="EXTERNAL" ref="101">101 Night Train</TypeOfServiceRef>  -->
 								<LineInDirectionRef>
 									<LineRef versionRef="EXTERNAL" ref="101"/>
 									<!--Hack Workaround -->
 								</LineInDirectionRef>
+								<ScheduledStopPointRef version="any" ref="uic:008300003">Piedimulera</ScheduledStopPointRef>
 							</FeederFilter>
 							<DistributorFilter>
-								<OperatorRef version="any" ref="uic:1180"/>
+								<OperatorRef versionRef="EXTERNAL" ref="uic:1180"/>
 								<!--	<TypeOfServiceRef  versionRef="EXTERNAL" ref="71">71 High Speed Train</TypeOfServiceRef>  -->
 								<LineInDirectionRef>
 									<LineRef versionRef="EXTERNAL" ref="71"/>
 									<!--Hack Workaround -->
 								</LineInDirectionRef>
+								<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008300004">Pieve Vergonte</ScheduledStopPointRef>
 							</DistributorFilter>
 						</InterchangeRule>
 					</interchangeRules>

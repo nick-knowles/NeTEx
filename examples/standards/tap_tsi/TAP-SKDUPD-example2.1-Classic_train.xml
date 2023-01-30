@@ -79,79 +79,8 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 				<DefaultCodespaceRef ref="op_cs"/>
 			</FrameDefaults>
 			<frames>
-				<ServiceFrame version="any" id="uic:SKDUPD_example_1_Classic_train">
-					<!--- comment: THESE STOP DECLARATIONS COULD BE EXTERNAL as in a TSDUPD location , they are here so as to be able to define names
-			  to make the example easier to follow  and to show how data can be cross validated for referential integrity -->
-					<Name>Location / Station SKDUPD_Classic Train example in NeTex. Declaration of stops </Name>
-					<scheduledStopPoints>
-						<ScheduledStopPoint version="any" id="uic:001002326">
-							<Name lang="fi">Helsinki</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000010">
-							<Name lang="fi">Pasil</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000018">
-							<Name lang="fi">Tikkurila</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000100">
-							<Name lang="fi">Lahti</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000480">
-							<Name lang="fi">Kouvola</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000495">
-							<Name lang="fi">Lapeenranta</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000499">
-							<Name lang="fi">Joutseno</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000603">
-							<Name lang="fi">Station Imatra</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000507">
-							<Name lang="fi">Simpele</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000510">
-							<Name lang="fi">Parikkala</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000966">
-							<Name lang="fi">Kehsalahti</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000453">
-							<Name lang="fi">Kitee</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:001000460">
-							<Name lang="fi">Joensu</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="fi"/>
-						</ScheduledStopPoint>
-					</scheduledStopPoints>
-				</ServiceFrame>
 				<TimetableFrame version="any" id="SKDUPD_example_1_Classic_train">
-					<Name>Uic Example of a very simple train timetable</Name>
+					<Name>Uic Example of a simple train timetable</Name>
 					<VehicleModes>rail</VehicleModes>
 					<vehicleJourneys>
 						<DatedServiceJourney version="any" id="1" changed="2022-01-26T09:51:00" dataSourceRef="uic:0060">
@@ -162,9 +91,10 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 							<Name>Classic Train</Name>
 							<TransportMode>rail</TransportMode>
 							<TransportSubmode>
+								<!-- NB submode is chosen from a translate table from PDT type -->
 								<RailSubmode>longDistance</RailSubmode>
 							</TransportSubmode>
-										<!-- PDT++:::63:::' --> 
+							<!-- PDT++:::63:::' -->
 							<TypeOfProductCategoryRef versionRef="EXTERNAL" ref="63">Intercity</TypeOfProductCategoryRef>
 							<TypeOfServiceRef versionRef="EXTERNAL" ref="9">Intercity</TypeOfServiceRef>
 							<!-- TapTsi B.4.7009   	9 Intercity    -->
@@ -193,28 +123,15 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 1	1	13	F48			
 1	1	13	F5			
 1	1	13	F9		-->
-										<ServiceFacilitySet version="any" id="1@63">
-											<!-- PDT++:::63:::' -->
-											<TypeOfFacilityRef versionRef="EXTERNAL" ref="63"/>
-											<accommodations>
-												<Accommodation version="any" id="1@63">
-													<FareClass>secondClass</FareClass>
-													<!-- 63 TafTsi B.4.9039: 63	Second-class, couchette, four-bed, C4		-->
-													<AccommodationFacility>couchette</AccommodationFacility>
-													<!-- T2 TafTsi B.4.9039:  2	First-class sleepers -->
-													<CouchetteFacility>C4</CouchetteFacility>
-												</Accommodation>
-											</accommodations>
-										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@S11">
 											<!-- ASD+11' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="S11"/>
 											<accommodations>
 												<Accommodation version="any" id="1@S11">
 													<FareClass>firstClass</FareClass>
-													<!-- S11 TafTsi B.4.9039: 11	First-class sleeper, single		-->
+													<!-- S11 TapTsi B.4.9039: 11	First-class sleeper, single		-->
 													<AccommodationFacility>singleSleeper</AccommodationFacility>
-													<!-- 2 TafTsi B.4.9039:  2	First-class sleepers -->
+													<!-- 2 TapTsi B.4.9039:  2	First-class sleepers -->
 												</Accommodation>
 											</accommodations>
 										</ServiceFacilitySet>
@@ -223,37 +140,37 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="S27"/>
 											<AssistanceFacilityList>wheechairAssistance</AssistanceFacilityList>
 											<MobilityFacilityList>onboardAssistance</MobilityFacilityList>
-											<!-- S27 TafTSI B4.7161: 27 Disabled Services for disabled persons -->
+											<!-- S27 TapTsi B4.7161: 27 Disabled Services for disabled persons -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F4">
 											<!-- SER+4'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F48">
 											<!-- SER+48' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F48"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F48 TafTsi B.4.9039: 48	Family compartment -->
+											<!-- F48 TapTsi B.4.9039: 48	Family compartment -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F5">
 											<!-- SER+5'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@F9">
 											<!-- SER+9' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F9"/>
 											<CateringFacilityList>restaurant</CateringFacilityList>
-											<!-- F9 TafTsi B.4.9039: 9	Restaurant-->
+											<!-- F9 TapTsi B.4.9039: 9	Restaurant-->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="1@R13">
 											<!-- PRD+1:13:2:9:::Classic train+0010'  -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="R13"/>
 											<ServiceReservationFacilityList>reservationsCompulsory</ServiceReservationFacilityList>
-											<!-- R13 TafTsi B.4.7037I mapping 13	Reservation compulsory	-->
+											<!-- R13 TapTsi B.4.7037I mapping 13	Reservation compulsory	-->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -277,9 +194,6 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<Call version="any" id="1" order="1">
 									<!-- POR+001002326+*0657+' -->
 									<ScheduledStopPointRef version="any" ref="uic:001002326">Helsinki</ScheduledStopPointRef>
-									<Arrival>
-										<ForAlighting>false</ForAlighting>
-									</Arrival>
 									<Departure>
 										<Time>06:57:00</Time>
 									</Departure>
@@ -400,19 +314,16 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 									<Arrival>
 										<Time>11:41:00</Time>
 									</Arrival>
-									<Departure>
-										<ForBoarding>false</ForBoarding>
-									</Departure>
 								</Call>
 							</calls>
 							<facilities>
 								<!-- FRom  SKPUPD_TRAIN -->
 								<ServiceFacilitySet version="any" id="1@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R13"/>
-									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R13 TafTsi B.4.7037: 13	Reservation compulsory -->
+									<ServiceReservationFacilityList>reservationsCompulsory</ServiceReservationFacilityList>
+									<!--	R13 TapTsi B.4.7037: 13	Reservation compulsory -->
 									<UicProductCharacteristicList>allIInclusivePrice</UicProductCharacteristicList>
-									<!-- Tariff 2: Taf TSI B4.7139: 2	(Global price) All inclusive tariff -->
+									<!-- Tariff 2: TapTsi B4.7139: 2	(Global price) All inclusive tariff -->
 								</ServiceFacilitySet>
 							</facilities>
 							<UicOperatingPeriod id="1" version="any">
@@ -430,6 +341,77 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 						</TrainNumber>
 					</trainNumbers>
 				</TimetableFrame>
+				<ServiceFrame version="any" id="uic:SKDUPD_example_1_Classic_train">
+					<!--- comment: THESE STOP DECLARATIONS COULD BE EXTERNAL as in a TSDUPD location , they are here so as to be able to define names
+			  to make the example easier to follow  and to show how data can be automatically  cross validated for referential integrity  by the XML validator-->
+					<Name>Location / Station SKDUPD_Classic Train example in NeTex. Declaration of stops </Name>
+					<scheduledStopPoints>
+						<ScheduledStopPoint version="any" id="uic:001002326">
+							<Name lang="fi">Helsinki</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000010">
+							<Name lang="fi">Pasil</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000018">
+							<Name lang="fi">Tikkurila</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000100">
+							<Name lang="fi">Lahti</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000480">
+							<Name lang="fi">Kouvola</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000495">
+							<Name lang="fi">Lapeenranta</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000499">
+							<Name lang="fi">Joutseno</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000603">
+							<Name lang="fi">Station Imatra</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000507">
+							<Name lang="fi">Simpele</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000510">
+							<Name lang="fi">Parikkala</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000966">
+							<Name lang="fi">Kehsalahti</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000453">
+							<Name lang="fi">Kitee</Name>
+							<StopType>railStation</StopType>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint version="any" id="uic:001000460">
+							<Name lang="fi">Joensu</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="fi"/>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+				</ServiceFrame>
 			</frames>
 		</CompositeFrame>
 		<!-- == COACH GROUP  == -->

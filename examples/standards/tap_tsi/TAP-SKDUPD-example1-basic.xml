@@ -224,9 +224,9 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 								<ServiceFacilitySet version="any" id="1@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R11"/>
 									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R11 TafTsi B.4.7037: 11	Reservation possible -->
+									<!--	R11 TapTsi B.4.7037: 11	Reservation possible -->
 									<UicProductCharacteristicList>tariffCommunVoyageurs</UicProductCharacteristicList>
-									<!-- Tariff 1 Taf TSI B4.7139: 	1	TCV -->
+									<!-- Tariff 1 TapTsi B4.7139: 	1	TCV -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
@@ -307,7 +307,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 							<!--					POR+006070013+0445:::1*0400:::1+3*3+17' 
 						RFR+AUE:60'     
 						RLS+13+7'     		(13 = disconnect, 7 = timing between services) 
-						TCE+30+X02'  (taf tsi B.4.4049 -  x02 normally guaranteed  ) -->
+						TCE+30+X02'  (TapTsi B.4.4049 -  x02 normally guaranteed  ) -->
 							<StaySeated>false</StaySeated>
 							<ConnectionCertainty>normallyGuaranteed</ConnectionCertainty>
 							<!-- 	TCE+30+X02'  -->

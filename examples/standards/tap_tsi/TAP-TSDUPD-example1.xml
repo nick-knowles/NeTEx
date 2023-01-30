@@ -4,13 +4,14 @@
  x Profile: TSDUPD  Location Data Example  1
 =============
 This Example shows an example of  encoding a TAPTSI Location TSDUPD file  in NeTEx XML.
-Additional 'Narrative' comments are included 
+Additional 'Narrative' comments are included to explain how NeTEx approaches    representing and.or organising data items.
 
 Overall comment:
-  A TAPTSI Location may correspond to two separate concepts in NeTEx - a SCHEDULED STOP POINT(timetable stop)  and a STOP PLACE (Physical STop)
+
+  A TAPTSI Location may correspond to two separate concepts in NeTEx - a SCHEDULED STOP POINT(timetable stop)  and a STOP PLACE (Physical Stop)
 
 The following is the EDIFACT tag stream, with Transmodel / Netex Equivalents shown on the right
- The same EDIFACT tags are also embedded as comments in this example adjacent to their NeTEx equivalents
+(The same EDIFACT tags are also embedded as comments in this example adjacent to their NeTEx equivalents).
 				
 ALS+29+007300101:Piraeus+375656N+233833E’    TM: STOP PLACE/ SCHEDULED STOP POINT  ID + Name + Coordinates 
                                                    ALS 29+ STOP PLACE TYPE = RAilway STation
@@ -37,23 +38,24 @@ PRD+::::::0006+*1073’						TM: DEFAULT  CONNECTION by OPERATOR + Time ?
 PRD+:::53:::0007’                          TM: SITE CONNECTION by MODE  + Time?
 PRD+::::::0005+1073’ 						TM: DEFAULT  CONNECTION by OPERATOR +  5m Time ?
 
-PRD+:::68:84::0009+1073*1180’  			   TM: INTERCHANGE RULE  bu MODE, Operator/Operator  +  9M transferTime
+PRD+:::68:84::0009+1073*1180’  			   TM: INTERCHANGE RULE  by MODE, Operator/Operator  +  9M transferTime
                                                   NB CURRENTLY HAVE TO USE WORKAROUND
 
-RFR+X01:007300101’						 TM: TARIFF ZONE
+RFR+X01:007300101’						      TM: TARIFF ZONE
 
 RFR+AWN:007350001’							TM:     CONNECTION + transfer time 
-MES+8:MIN’
-RLS+13+6’										Walk
+MES+8:MIN’                                              CONNECTION + MinimumTransferTime
+RLS+13+6’									Walk       nature of coonection
 
-	PRD+:::53:54+1186*X292’
+PRD+:::53:54+1186*X292’ 
 SER+21’									TM  facilty /accessibilty   or ACcessibility Assessment
 SER+28’
 
 RFR+AWN:007350001’						TM:  CONNECTION  with time
 RLS+13+14'  
 
-==============================
+-->
+	<!--==============================
 These lists show some of the codes that are used. 
 European Railway Agency  Explanation of codes
 ERA/TD/2012-16/INT Annex B.50 of TAP TSI Page 40-41
@@ -93,7 +95,7 @@ RLS Relationship
 		RLS+13+6'	There is a (pedestrian) connection from x   to y in context
 
 SER Facility information 
-  TafTsi B.4..9039
+  TapTsi B.4..9039
 	Value	Name
 	2	First-class sleepers
 	3	Standard class sleepers
@@ -144,7 +146,7 @@ SER Facility information
 	104	Tram connection
 	105	2nd Class couchette five beds C5
  
-taf tsi B.4.4049 - Name: Certainty description code
+TapTsi B.4.4049 - Name: Certainty description code
 X01 Connection guaranteed  
 X02 Connection normally guaranteed
 X03 Connection not guaranteed  
@@ -249,7 +251,7 @@ TapTsi B.4.7009
 			<!--- =======FRAME DEFAULTS======== -->
 			<FrameDefaults>
 				<!-- Narrative: This codespace will be assumed for all elements that do not declare one -->
-				<DefaultCodespaceRef ref="op_cs"></DefaultCodespaceRef>
+				<DefaultCodespaceRef ref="op_cs"/>
 			</FrameDefaults>
 			<frames>
 				<SiteFrame version="any" id="TSDUPD-example">
@@ -278,11 +280,15 @@ TapTsi B.4.7009
 							<Name>Piraeus</Name>
 							<!-- IFT+X02+Piraeus’ -->
 							<ShortName>Piraeus</ShortName>
+							<types>
+								<!-- Narrative - We can  retain the UIC classifcation code -->
+								<!-- ALS+29+-->
+								<TypeOfZoneRef versionRef="EXTERNAL" ref="29"/>
+							</types>
 							<Centroid>
 								<Location>
 									<!-- ALS+29+007300101:Piraeus+375656N+233833E’   -->
-									<Longitude>+23.3833</Longitude>
-									<Latitude>+37.5656</Latitude>
+									<gml:pos srsName="WGS84-degsecNE">+375656  +233833</gml:pos>
 								</Location>
 							</Centroid>
 							<AccessibilityAssessment version="any" id="uic:007300101">
@@ -349,9 +355,13 @@ TapTsi B.4.7009
 							<!-- 	IFT+X02+Piraeus’ -->
 							<Location>
 								<!-- ALS+29+007300101:Piraeus+375656N+233833E’ -->
-								<Longitude>+23.3833</Longitude>
-								<Latitude>+37.5656</Latitude>
+								<gml:pos srsName="WGS84-degsecNE">+375656   +233833</gml:pos>
 							</Location>
+							<types>
+								<!-- Narrative - We can  retain the UIC classifcation code -->
+								<!-- ALS+29+-->
+								<TypeOfPointRef versionRef="EXTERNAL" ref="29"/>
+							</types>
 							<tariffZones>
 								<!-- Narrative: Assigns Piereas to a tariff zone that has can be used as a reservation code 
                                   A tariff zone can be shared with other stops. ( If it was just an alias code for the individual stop -->
@@ -404,9 +414,9 @@ TapTsi B.4.7009
 							</To>
 						</DefaultConnection>
 						<DefaultConnection version="any" id="007300101@urban_rail">
-						<!-- Narrative : if this is general default for any station, use  DEFAULT CONNECTION 
+							<!-- Narrative : if this is general default for any station, use  DEFAULT CONNECTION 
                               If specific to Piraeus use a SITE CONNECTION or INTERCHANGE RULE  - se e below-->
-                               <!-- NB mode is  not alwAYS  equivalent to PRODUCT    COULD BE IMPROVED -->
+							<!-- NB mode is  not alwAYS  equivalent to PRODUCT    COULD BE IMPROVED -->
 							<Name>Default internal transfer duration for   for intercity</Name>
 							<Description>CHECK - MAY BE WRONG INTERPRETATION</Description>
 							<TransferDuration>

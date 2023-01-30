@@ -307,8 +307,8 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 									<!-- ODI+005434124*005457076+1*15' -->
 									<ParentJourneyRef version="any" ref="41"/>
 									<MainPartRef version="any" ref="41@005434124+005434124"/>
-									<FromStopPointRef version="any" ref="uic:005434124"/>
-									<ToStopPointRef version="any" ref="uic:005434124"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:005434124"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:005434124"/>
 									<StartTime>06:57:00</StartTime>
 									<EndTime>09:55:00</EndTime>
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
@@ -326,7 +326,7 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<!-- ASD+47'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F47"/>
 											<PassengerCommsFacilityList>powerSupplySockets</PassengerCommsFacilityList>
-											<!-- F47  TafTsi B.4.9039: 47	Bar -->
+											<!-- F47  TapTsi B.4.9039: 47	Bar -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="41@005434124+005434124@F21">
 											<!-- SER+21'-->
@@ -338,25 +338,25 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 											<!-- SER+28'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F28"/>
 											<MobilityFacilityList>suitableForWheelchairs</MobilityFacilityList>
-											<!-- F28  TafTsi B.4.9039: 28	Wheelchair access -->
+											<!-- F28  TapTsi B.4.9039: 28	Wheelchair access -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="41@005434124+005434124@F4">
 											<!-- SER+4' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="41@005434124+005434124@F45">
 											<!-- SER+45'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F45"/>
 											<PassengerCommsFacilityList>powerSupplySockets</PassengerCommsFacilityList>
-											<!-- F45  TafTsi B.4.9039: 45	Power supply -->
+											<!-- F45  TapTsi B.4.9039: 45	Power supply -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="41@005434124+005434124@F5">
 											<!-- SER+5'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -382,20 +382,18 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<Call version="any" id="41" order="1">
 									<!-- POR+005434124+*0636+'
 MES+0:MTR'	-->
-									<ScheduledStopPointRef version="any" ref="uic:005434124">Bohumin</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434124">Bohumin</ScheduledStopPointRef>
+									<!-- Narrative: Distance is declared on link -->
 									<OnwardServiceLinkRef version="any" ref="005434124+005434364"/>
-									<Arrival>
-										<ForAlighting>false</ForAlighting>
-									</Arrival>
 									<Departure>
 										<Time>06:36:00</Time>
 									</Departure>
 								</Call>
 								<Call version="any" id="41" order="2">
 									<!-- POR+005434364+0642*0644+'
-MES+8700:MTR'	POR+005434364+0642*0644+'
 MES+8700:MTR' -->
-									<ScheduledStopPointRef version="any" ref="uic:005434364">Ostrava Hlavni Nadrazi</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434364">Ostrava Hlavni Nadrazi</ScheduledStopPointRef>
+									<!-- Narrative: Distance is declared on link -->
 									<OnwardServiceLinkRef version="any" ref="005434364+005434434"/>
 									<Arrival>
 										<Time>06:42:00</Time>
@@ -407,7 +405,7 @@ MES+8700:MTR' -->
 								<Call version="any" id="41" order="41">
 									<!-- POR+005434434+0650*0652+'
 									MES+14000:MTR' -->
-									<ScheduledStopPointRef version="any" ref="uic:005434434">Ostrava Svinov</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434434">Ostrava Svinov</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434434+005434694"/>
 									<Arrival>
 										<Time>06:50:00</Time>
@@ -418,8 +416,8 @@ MES+8700:MTR' -->
 								</Call>
 								<Call version="any" id="41" order="4">
 									<!-- POR+005434694+0701*0702+'
-MES+31200:MTR' -->
-									<ScheduledStopPointRef version="any" ref="uic:005434694">Studenka</ScheduledStopPointRef>
+									MES+31200:MTR' -->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434694">Studenka</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434694+005434804"/>
 									<Arrival>
 										<Time>07:01:00</Time>
@@ -430,8 +428,8 @@ MES+31200:MTR' -->
 								</Call>
 								<Call version="any" id="41" order="5">
 									<!--POR+005434804+0708*0709+'
-MES+43200:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005434804">Suchdol Nad Ordrou</ScheduledStopPointRef>
+									MES+43200:MTR'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434804">Suchdol Nad Ordrou</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434804+005433722"/>
 									<Arrival>
 										<Time>07:08:00</Time>
@@ -442,8 +440,8 @@ MES+43200:MTR'-->
 								</Call>
 								<Call version="any" id="41" order="6">
 									<!-- POR+005433722+0722*0723+'
-MES+64100:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005433722">Hranice Na Morave</ScheduledStopPointRef>
+									MES+64100:MTR'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005433722">Hranice Na Morave</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005433722+005434662"/>
 									<Arrival>
 										<Time>07:22:00</Time>
@@ -454,8 +452,8 @@ MES+64100:MTR'-->
 								</Call>
 								<Call version="any" id="41" order="7">
 									<!-- POR+005434662+0739*0744+'
-MES+92400:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005434662">Prerov</ScheduledStopPointRef>
+										MES+92400:MTR'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434662">Prerov</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434662+005434362"/>
 									<Arrival>
 										<Time>07:39:00</Time>
@@ -466,8 +464,8 @@ MES+92400:MTR'-->
 								</Call>
 								<Call version="any" id="41" order="8">
 									<!-- POR+005434362+0758*0800+'
-MES+114700:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005434362">Olomouc Hlavni Nadrazi</ScheduledStopPointRef>
+										MES+114700:MTR'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434362">Olomouc Hlavni Nadrazi</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434362+005433312"/>
 									<Arrival>
 										<Time>07:58:00</Time>
@@ -478,8 +476,8 @@ MES+114700:MTR'-->
 								</Call>
 								<Call version="any" id="41" order="9">
 									<!-- POR+005433312++'
-MES+135700:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005433312">Cervenka</ScheduledStopPointRef>
+									MES+135700:MTR'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005433312">Cervenka</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005433312+005434282"/>
 									<Arrival>
 										<!-- TRF+4' does not stop-->
@@ -492,8 +490,8 @@ MES+135700:MTR'-->
 								</Call>
 								<Call version="any" id="41" order="10">
 									<!-- POR+005434282++'
-MES+148400:MTR' -->
-									<ScheduledStopPointRef version="any" ref="uic:005434282">Mohelnice</ScheduledStopPointRef>
+							MES+148400:MTR' -->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005434282">Mohelnice</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005434282+005435502"/>
 									<Arrival>
 										<!-- TRF+4' does not stop-->
@@ -507,7 +505,7 @@ MES+148400:MTR' -->
 								<Call version="any" id="41" order="11">
 									<!-- POR+005435502+0821*0822+'
 MES+160200:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005435502">Zabreh Na Morave</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005435502">Zabreh Na Morave</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005435502+005453613"/>
 									<Arrival>
 										<Time>08:21:00</Time>
@@ -519,7 +517,7 @@ MES+160200:MTR'-->
 								<Call version="any" id="41" order="12">
 									<!-- POR+005453613+0934*0935+'
 MES+259300:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005453613">Pardubice Hlavni Nadrazi</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005453613">Pardubice Hlavni Nadrazi</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005453613+005453414"/>
 									<Arrival>
 										<Time>09:34:00</Time>
@@ -531,7 +529,7 @@ MES+259300:MTR'-->
 								<Call version="any" id="41" order="14">
 									<!-- POR+005453414+0954*0955+'
 MES+301300:MTR'-->
-									<ScheduledStopPointRef version="any" ref="uic:005453414">Kolin</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005453414">Kolin</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005453414+005457176"/>
 									<Arrival>
 										<Time>09:54:00</Time>
@@ -544,10 +542,11 @@ MES+301300:MTR'-->
 									<!-- POR+005457176+1032*1032+'
 MES+358000:MTR'
 TRF+2'-->
-									<ScheduledStopPointRef version="any" ref="uic:005457176">Praha-Libin</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005457176">Praha-Libin</ScheduledStopPointRef>
 									<OnwardServiceLinkRef version="any" ref="005457176+005457076"/>
 									<Arrival>
 										<Time>10:32:00</Time>
+										<ForAlighting>true</ForAlighting>
 									</Arrival>
 									<Departure>
 										<Time>10:32:00</Time>
@@ -558,13 +557,10 @@ TRF+2'-->
 								<Call version="any" id="41" order="16">
 									<!-- POR+005457076+1039+'
 MES+363700:MTR'			-->
-									<ScheduledStopPointRef version="any" ref="uic:005457076">Praha Hlavni Nadrazin</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:005457076">Praha Hlavni Nadrazin</ScheduledStopPointRef>
 									<Arrival>
 										<Time>10:39:00</Time>
 									</Arrival>
-									<Departure>
-										<ForBoarding>false</ForBoarding>
-									</Departure>
 								</Call>
 							</calls>
 							<facilities>
@@ -572,9 +568,9 @@ MES+363700:MTR'			-->
 								<ServiceFacilitySet version="any" id="41@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R11"/>
 									<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
-									<!-- R11 TafTsi B.4.7037: 11	Reservation possible -->
+									<!-- R11 TapTsi B.4.7037: 11	Reservation possible -->
 									<UicProductCharacteristicList>tariffCommunVoyageurs</UicProductCharacteristicList>
-									<!-- Tariff 1 Taf TSI B4.7139: 	1	TCV -->
+									<!-- Tariff 1 TapTsi B4.7139: 	1	TCV -->
 								</ServiceFacilitySet>
 							</facilities>
 							<UicOperatingPeriod id="41" version="any">

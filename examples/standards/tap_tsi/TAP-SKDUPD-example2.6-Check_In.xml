@@ -63,50 +63,31 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 				<DefaultCodespaceRef ref="op6_cs"/>
 			</FrameDefaults>
 			<frames>
-				<ServiceFrame version="any" id="SKDUPD_example_6_CheckIn">
-					<scheduledStopPoints>
-						<ScheduledStopPoint version="any" id="uic:008600824">
-							<Name lang="dk">Nyekoebing G</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="dk"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008600830">
-							<Name lang="dk">Gedser Faerge</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="dk"/>
-						</ScheduledStopPoint>
-					</scheduledStopPoints>
-				</ServiceFrame>
+			 
 				<TimetableFrame version="any" id="SKDUPD_example_6CheckIn">
 					<vehicleJourneys>
-						<DatedServiceJourney version="any" id="6" changed="2022-01-26T09:51:00" dataSourceRef="uic:0060">
+						<DatedServiceJourney version="any" id="74000015" changed="2022-01-26T09:51:00" dataSourceRef="uic:0060">
 							<!-- PRD+74000015:::32:::Check in+X284' -->
 							<!-- SKPUPD_TRAIN
 ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	not_used	Reservation_system	First_day	Last_day	Operation_days	Second_service_number
 6	74000015			32	Check in	X284			2022-01-29	2022-04-16	100000010000001000000100000010000001000000100000010000001000000100000010000001	
 	-->
 							<Name>Check In</Name>
-							<TransportMode>bus</TransportMode>
-							<TransportSubmode>
-								<BusSubmode>expressBus</BusSubmode>
-							</TransportSubmode>
-							<TypeOfServiceRef versionRef="EXTERNAL" ref="32">bus</TypeOfServiceRef>
 							<!--  TapTsi B.4.7009   	32 Bus -->
+							<TransportMode>bus</TransportMode>
+							<TypeOfServiceRef versionRef="EXTERNAL" ref="32">bus</TypeOfServiceRef>
 							<DepartureTime>08:06:00</DepartureTime>
 							<OperatorRef versionRef="EXTERNAL" ref="uic:X284">Movia</OperatorRef>
-							<trainNumbers>
-								<TrainNumberRef ref="74000015"/>
-							</trainNumbers>
 							<calls>
 								<!-- SKPUPD_POR
 ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	Platform_arrival	Platform_departure	Stop_property	Traffic_restriction	Distance	Loading_vehicles	Unloading_vehicles	check_out	check_in
 6	1	008600824			0806					1				803
 6	2	008600830	0846							2				
   -->
-								<Call version="any" id="6" order="1">
+								<Call version="any" id="74000015" order="1">
 									<!-- POR+008600824+*0806+'
 ASD+44::0803'  -->
-									<ScheduledStopPointRef version="any" ref="uic:008600824">Nyekoebing G</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL"  ref="uic:008600824">Nyekoebing G</ScheduledStopPointRef>
 									<Arrival>
 										<!-- TRF+1'  Boarding only -->
 										<ForAlighting>false</ForAlighting>
@@ -114,13 +95,13 @@ ASD+44::0803'  -->
 									<Departure>
 										<Time>08:06:00</Time>
 									</Departure>
-									<!-- Narrative: GAP can com pute from CHECK CONSTRAINT -->
-									<!-- ASD+44::0803' -->
+									<!-- Narrative: GAP can compute from CHECK CONSTRAINT -->
+									<!-- ASD+44::0803'     TAPTSI B.7161  (44 Check-in Time)	 -->
 									<Note>Check in time 0803</Note>
 								</Call>
-								<Call version="any" id="6" order="2">
+								<Call version="any" id="74000015" order="2">
 									<!-- POR+008600830+0846+'  -->
-									<ScheduledStopPointRef version="any" ref="uic:008600830">Gedser Faerge</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL"  ref="uic:008600830">Gedser Faerge</ScheduledStopPointRef>
 									<Arrival>
 										<Time>08:46:00</Time>
 									</Arrival>
@@ -141,40 +122,37 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 									<!-- SER+26' -->
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F26"/>
 									<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
-									<!-- F26 TafTsi B.4.9039: 26	Bicycle transport -->
+									<!-- F26 TapTsi B.4.9039: 26 = Bicycle transport -->
 								</ServiceFacilitySet>
 								<ServiceFacilitySet version="any" id="6@F5">
 									<!-- SER+5'  -->
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 									<FareClasses>secondClass</FareClasses>
-									<!-- F5 TafTsi B.4.9039: 	5	Second-class seats -->
+									<!-- F5 TapTsi B.4.9039: 	5 = Second-class seats -->
 								</ServiceFacilitySet>
 								<ServiceFacilitySet version="any" id="6@F72">
 									<!-- SER+72'  -->
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 									<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-									<!--	F72 TafTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+									<!--	F72 TapTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 								</ServiceFacilitySet>
 								<!-- FRom  SKPUPD_TRAIN -->
-								<ServiceFacilitySet version="any" id="6@reservation">
-									<TypeOfFacilityRef versionRef="EXTERNAL" ref="19"/>
-									<ServiceReservationFacilityList>reservationsCompulsory</ServiceReservationFacilityList>
-									<!--	R19 TafTsi B.4.7037: 	19	No reservation -->
-								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
 								<CheckConstraint version="any" id="6@008600824@checkin">
 									<!-- POR+008600824+*0806+'
-ASD+44::0803'  -->
-									<PlaceRef version="any" ref="uic:008600824"/>
+									ASD+44::0803'  -->
+									<PlaceRef versionRef="EXTERNAL"   ref="uic:008600824"/>
+								 <!-- NB TODO NeTEx Should have explicit checkin enum  value. Missing. Use 'Boarding' for temporary workaround  -->
 									<CheckProcess>boarding</CheckProcess>
 									<delays>
 										<CheckConstraintDelay version="any" id="6@008600824@checkin">
-											<Name>Checking minimum duration</Name>
+											<!-- Narrative: we  can compute this by subtracting 08:03 from 08:06  = 3 Minutes  -->
+											<Name>Check in minimum duration</Name>
 											<MinimumLikelyDelay>PT3M</MinimumLikelyDelay>
 										</CheckConstraintDelay>
 									</delays>
-									<!-- NB TODO NeTEx Should have checkin value. Missing. Use 'Boarding' for temporary workaround  -->
+					
 								</CheckConstraint>
 							</checkConstraints>
 							<UicOperatingPeriod id="6" version="any">

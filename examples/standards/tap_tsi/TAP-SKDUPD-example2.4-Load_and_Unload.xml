@@ -75,30 +75,7 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 				<DefaultCodespaceRef ref="op4_cs"/>
 			</FrameDefaults>
 			<frames>
-				<ServiceFrame version="any" id="SKDUPD_example_4_Load_and_Unload">
-					<scheduledStopPoints>
-						<ScheduledStopPoint version="any" id="uic:007944700">
-							<Name lang="si">Nova Gorica</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:007944704">
-							<Name lang="si">Anhovo</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:007944707">
-							<Name lang="si">Most Na Soci</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:007944711">
-							<Name lang="si">Podbrido</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:007944712">
-							<Name lang="si">Bohinstra Bistrica</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-					</scheduledStopPoints>
-				</ServiceFrame>
+			
 				<TimetableFrame version="any" id="SKDUPD_example_4_Load_and_Unload">
 					<VehicleModes>rail</VehicleModes>
 					<vehicleJourneys>
@@ -108,11 +85,13 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 ID	Service_number	Reservation	Tariff	Service_Mode Service_Name Service_Provider not_used Reservation_system	First_day	Last_day Operation_days	Second_service_number
 4	850	19			Load unload	1179			2021-12-12	2022-09-04	 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111	 -->
 							<Name>Classic Train</Name>
+									<!-- PDT++:::84:::' -->
 							<TransportMode>rail</TransportMode>
+							
 							<TransportSubmode>
 								<RailSubmode>regionalRail</RailSubmode>
 							</TransportSubmode>
-							<!-- PDT++:::84:::' -->
+					
 							<TypeOfProductCategoryRef versionRef="EXTERNAL" ref="84">Regional</TypeOfProductCategoryRef>
 							<!-- ( TapTsi B.4.7009  84 regional train)		-->
 							<TypeOfServiceRef versionRef="EXTERNAL" ref="37">train</TypeOfServiceRef>
@@ -126,8 +105,8 @@ ID	Service_number	Reservation	Tariff	Service_Mode Service_Name Service_Provider 
 									<!-- ODI+007944700*007944712+1*5' -->
 									<ParentJourneyRef version="any" ref="850"/>
 									<MainPartRef version="any" ref="850@007944700+007944712"/>
-									<FromStopPointRef version="any" ref="uic:007944700"/>
-									<ToStopPointRef version="any" ref="uic:007944712"/>
+									<FromStopPointRef versionRef="External" ref="uic:007944700"/>
+									<ToStopPointRef versionRef="External" ref="uic:007944712"/>
 									<StartTime>06:32:00</StartTime>
 									<EndTime>08:27:00</EndTime>
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
@@ -144,38 +123,38 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="850@F106">
 											<!-- SER+106' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F106"/>
-											<LuggageCarriageFacilityList>vehicleTransport</LuggageCarriageFacilityList>
-											<!--	F106 TafTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
+										
+										 	<!--	F106 TapTsi B.4.9039: 	F106 = Vaccinated, tested, recovered rule applies on trains, valid proof must be presented  -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="850@F20">
 											<!-- SER+20'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F20"/>
 											<NuisanceFacilityList>noSmoking</NuisanceFacilityList>
-											<!--	F20 TafTsi B.4.9039: 	20	Non-smoker service -->
+											<!--	F20 TapTsi B.4.9039: 	20	Non-smoker service -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="850@F26">
 											<!-- SER+26'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F26"/>
 											<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
-											<!-- F26 TafTsi B.4.9039: 26	Bicycle transport -->
+											<!-- F26 TapTsi B.4.9039: 26	Bicycle transport -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="850@F5">
 											<!-- SER+5' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 	5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 	5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="850@F72">
 											<!-- SER+72' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F72 TafTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+											<!-- F72 TapTsi B.4.9039:	(72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="850@TSF">
 											<!-- TFF+SF' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="TSF"/>
 											<UicTrainRate>specialFare</UicTrainRate>
-											<!-- T SF TafTsi B.4.5263:	SF	Special fare -->
+											<!-- T SF TapTsi B.4.5263:	SF	Special fare -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -190,19 +169,16 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 4	5	007944712	0827										ASD+9   -->
 								<Call version="any" id="850" order="1">
 									<!-- POR+007944700+*0632+'
-ASD+7' -->
-									<ScheduledStopPointRef version="any" ref="uic:007944700">Nova Gorica</ScheduledStopPointRef>
-									<Arrival>
-										<ForAlighting>false</ForAlighting>
-									</Arrival>
+										ASD+7' -->
+									<ScheduledStopPointRef versionRef="External" ref="uic:007944700">Nova Gorica</ScheduledStopPointRef>
+			 
 									<Departure>
 										<Time>06:32:00</Time>
 									</Departure>
 								</Call>
 								<Call version="any" id="850" order="2">
-									<!-- POR+007944704+0651*0652+'
-  -->
-									<ScheduledStopPointRef version="any" ref="uic:007944704">Anhovoi</ScheduledStopPointRef>
+									<!-- POR+007944704+0651*0652+'   -->
+									<ScheduledStopPointRef versionRef="External" ref="uic:007944704">Anhovoi</ScheduledStopPointRef>
 									<Arrival>
 										<Time>06:51:00</Time>
 									</Arrival>
@@ -212,10 +188,9 @@ ASD+7' -->
 								</Call>
 								<Call version="any" id="850" order="3">
 									<!-- POR+007944707+0711*0745+'
-ASD+7'
-ASD+9'
- -->
-									<ScheduledStopPointRef version="any" ref="uic:007944707">Most Na Soci</ScheduledStopPointRef>
+										ASD+7'
+										ASD+9'  -->
+									<ScheduledStopPointRef versionRef="External" ref="uic:007944707">Most Na Soci</ScheduledStopPointRef>
 									<Arrival>
 										<Time>07:11:00</Time>
 									</Arrival>
@@ -225,7 +200,7 @@ ASD+9'
 								</Call>
 								<Call version="any" id="850" order="4">
 									<!-- POR+007944711+0812*0817+'  -->
-									<ScheduledStopPointRef version="any" ref="uic:007944711">Podbrido</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="External" ref="uic:007944711">Podbrido</ScheduledStopPointRef>
 									<Arrival>
 										<Time>08:12:00</Time>
 									</Arrival>
@@ -235,14 +210,12 @@ ASD+9'
 								</Call>
 								<Call version="any" id="850" order="5">
 									<!-- POR+007944712+0827+'
-ASD+9' -->
-									<ScheduledStopPointRef version="any" ref="uic:007944712">Bohinstra Bistrica</ScheduledStopPointRef>
+									ASD+9' -->
+									<ScheduledStopPointRef versionRef="External" ref="uic:007944712">Bohinstra Bistrica</ScheduledStopPointRef>
 									<Arrival>
 										<Time>08:27:00</Time>
 									</Arrival>
-									<Departure>
-										<ForBoarding>false</ForBoarding>
-									</Departure>
+					 
 								</Call>
 							</calls>
 							<facilities>
@@ -250,37 +223,37 @@ ASD+9' -->
 								<ServiceFacilitySet version="any" id="850@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R19"/>
 									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R19 TafTsi B.4.7037: 	19	No reservation -->
+									<!--	R19 TapTsi B.4.7037: 	19	No reservation -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
 								<CheckConstraint version="any" id="850@007944700@vehicle_loading">
 									<!--	POR+007944700+*0632+'
-ASD+7' -->
+											ASD+7' -->
 									<PlaceRef version="any" ref="uic:007944700"/>
 									<CheckProcess>vehicleLoading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	loading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	loading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="850@007944707@vehicle_loading">
 									<!--	POR+007944707+0711*0745+'
-ASD+7'  -->
+											ASD+7'  -->
 									<PlaceRef version="any" ref="uic:007944707"/>
 									<CheckProcess>vehicleLoading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	loading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	loading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="850@007944707@vehicle_unloading">
 									<!--	POR+007944707+0711*0745+'
-ASD+9' -->
+											ASD+9' -->
 									<PlaceRef version="any" ref="uic:007944707"/>
 									<CheckProcess>vehicleUnloading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	unloading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	unloading -->
 								</CheckConstraint>
 								<CheckConstraint version="any" id="850@007944712@vehicle_unloading">
-									<!--			POR+007944712+0827+'
-ASD+9' -->
+									<!--	POR+007944712+0827+'
+											ASD+9' -->
 									<PlaceRef version="any" ref="uic:007944712"/>
 									<CheckProcess>vehicleUnloading</CheckProcess>
-									<!-- 	ASD+7 TafTsi  B.4.3039.	unloading -->
+									<!-- 	ASD+7 TapTsi  B.4.3039.	unloading -->
 								</CheckConstraint>
 							</checkConstraints>
 							<UicOperatingPeriod id="850" version="any">

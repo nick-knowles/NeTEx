@@ -1,0 +1,2764 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- ==== KernowExample ==== -->
+<PublicationDelivery version="1.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd" xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--==== Kernow capped fare products Example ====
+
+This example shows the encoding of  simple  pay as you go  capped  bus fares.
+ Base d on web page at
+https:/www.firstbus.co.uk/cornwall/tickets
+ 
+Data is (C) First Buses plc
+Created from a web page
+ 
+(C) NJSK 2022
+Free to use under a Creative Commons license.
+  
+==================================
+I. Simple 
+
+A. Kernow  Offerings
+
+A.1 Singles & Return Trips.  Distance based - 5 levels of journey length
+
+Individual Trips made within the same day in a are a capped to Cornwall day  pass rates.  Capping is only available for the electronic ticket (paid for with mobile app or emv card) for adults
+ 
+1.2 Trip  Tariff structure: Prices depend on  number stages within overall zone
+
+		Adult 			Under 19
+    Single	Return	Single	Return
+1	£1.60	£2.40	£1.00	£1.50     short
+2	£2.00	£3.00	£1.40	£2.10
+3	£2.60	£3.90	£1.80	£2.70
+4	£3.00	£4.50	£2.20	£3.30
+5	£3.50	£5.00	£2.70	$4.00     long
+
+What is not apparent from the fare table published online is how trips between any two points are judged as long or short
+We gloss over this point in this example, but note the following. 
+
+The journey length  might be encoded either using a point to point fare table using a DISTANCE MATRIX ELEMENT  between every stop pair, Or by using fare stages along the specified  routes (in which case the lines and stages need to be specified).  This example does not actually implement either approach - detail that still needs to be provided in order for a journey planner to be able to proice a journey.
+
+
+A.2  Passes: giving  Unlimited travel through all of Cornwall  for a specified period (1D, 7D, 1W)
+
+		Adult 	Under 19	family
+1 day 	£05.00	£04.00	£10
+7 day	£30.00	£15.20	£40
+30 day	£80.00	£45.00
+
+NB These are not capped
+
+A.3  Passes: Unlimted travel in a Local Town zone  for a specified period
+
+Towns (Bodmin, Cambourne, Falmouth, Halyle, Helston, Newquay, Penzanze, Redruth, St Austell, St Ives, Truro
+
+		Adult 	Under 19	 
+1 day 	£2.50	£01.50	 
+7 day	£10.00	£06.00 
+30 day	£40.00	£22.50
+
+Successive purchases of day passes within a given week are Capped to week  pass rates
+
+A.4 Carnet product 
+
+There is also a separate carnet product
+
+A.4.1 ALl Cornwall Carnet of day passes
+ bundle of  day passes 
+	Adult 	Under 19	
+5	£20		£13
+20	£89		£54
+
+A.4.2 Local Town Zone  Carnet of day passes
+ bundle of  day passes 
+	Adult 	Under 19	
+5	£10		£6
+20	£40		£24
+
+ 
+1.3. Ticket materialisations:  		paper ticket ,   mobile app , bank card		 
+
+1.4. User eligibility
+	There are separate prices for
+ 
+ User Profiles: Adult;  Young Person .
+   Family Groupo ticket availabel for All cornwall pass
+
+::::::::::::::::
+1.7 Sales Channels
+
+ Single tickets: can by onboard on online  app with m ticket 
+ mticket can be bought with mobile app or emv onboard
+ 
+ 
+ 
+1.6. Prices 
+ 
+1.6.1 There are separate prices for adult and young people 
+ 
+-->
+	<!-- IMPLEMENTATION
+
+========================================================================================================
+II. IMPLEMENTATION  
+
+A.1 Trips  
+
+A.1.1 Tariff for trips
+  a) GEOGRAPHICAL INTERVALs for five different journey  lengths
+  b)  FARE STRUCTURE ELEMENT: eligibility;  USER PROFILES adult, young_person
+  c)  FARE STRUCTURE ELEMENTs: access;  single  , return trips
+
+A.1.2 Trip FARE PRODUCTs
+  a) PREASSIGNED FARE PRODUCT for SINGLE TRIP,  with  single_trip VALIDABLE ELEMENT
+  b) PREASSIGNED FARE PRODUCT for RETURN TRIP with  separate outbound  and return  VALIDABLE ELEMENTs
+
+  c) CAPPED DISCOUNT RIGHT for trip to limit to day pass price
+
+A.1.3. Trip SALES OFFER PACKAGEs.  If capping applies, the CAPPED DISCOUNT RIGHT is bundled in.
+ a) SALES OFFER PACKAGE paper ticket  for single_trip+     (not capped as cash/ paper)   
+ b) SALES OFFER PACKAGE  m-ticket, for single_trip   +  CAPPED DISCOUNT RIGHT  
+ c) SALES OFFER PACKAGE paper ticket  for Return trip +      (not capped as cash / paper)  
+ d) SALES OFFER PACKAGE  m-ticket, for Return trip +  CAPPED DISCOUNT RIGHT 
+
+A.1.4 Trip FARE PRICES 
+   a)   SALES OFFER PACKAGE (Single )  x USER PROFILEs x GEOGRAPHICAL INTERVALs
+   b)   SALES OFFER PACKAGE (Return )  x USER PROFILEs x GEOGRAPHICAL INTERVALs
+    c)  CAPPING LIMIT 
+
+
+A.2 Passes 
+ 
+A.2.1 Tariff for pass
+   a) FARE STRUCTURE ELEMENTS for ALL CORNWALL, ZONE
+   b FARE STRUCTURE ELEMENTS for Local ZOnes
+   c) TIME INTERVALs for 1D, 7D, 1M
+   d)  FARE STRUCTURE ELE+MENT: eligibility USER PROFILES adult, young_person GROUP TICKET: family
+
+A.1.2 Pass FARE PRODUCTs
+  a) PREASSIGNED FARE PRODUCT for All Cornwall Pass,  with All Cornwall pass VALIDABLE ELEMENT 
+  b) PREASSIGNEDFARE PRODUCT for Local zone  Cornwall Pass,  with local  pass VALIDABLE ELEMENT 
+  c) CAPPED DISCOUNT RIGHT for local pass to limit to week pass price
+
+A.1.3. Pass SALES OFFER PACKAGEs.  If capping applies, the CAPPED DISCOUNT RIGHT is is bundled in.
+ a) SALES OFFER PACKAGE paper ticket  for all cornwall pass       
+ b) SALES OFFER PACKAGE  m-ticket, for all cornwall pass   
+ c) SALES OFFER PACKAGE paper ticket  for local zone pass     (not capped as paper)  
+ d) SALES OFFER PACKAGE  m-ticket, for local zone pass   +  CAPPED DISCOUNT RIGHT  for day pass  
+
+A.1.4 Pass FARE PRICES  FARE TABLES with
+   a)   SALES OFFER PACKAGE (All Cornwall)  x USER PROFILEs x TIME INTERVALs
+   b)   SALES OFFER PACKAGE (LOcal zone )s  x USER PROFILEs x TIME INTERVALs
+    c)  CAPPING LIMITs to week pass
+
+
+A.3 Carnet of day Passes 
+
+A.2.1 Tariff for carnet 
+   a) QUALITY STRUCTURE ELEMENTs for 5 and 20 units 
+   b)  FARE STRUCTURE ELE+MENT: eligibility USER PROFILES adult, young_person 
+
+A.1.2 Carnet FARE PRODUCTs
+  a) AMOUNT OF PRICE UNIT product for All Cornwall Carnet ,  with All Cornwall Carnet VALIDABLE ELEMENT 
+  b) AMOUNT OF PRICE UNIT product for Local zone  Cornwall Pass,  with local zone  Carnet VALIDABLE ELEMENT  
+
+A.1.3. Carnet SALES OFFER PACKAGEs.  If capping applies, the CAPPED DISCOUNT RIGHT is is bundled in.
+ a) SALES OFFER PACKAGE paper ticket  for all cornwall Cranet       
+ b) SALES OFFER PACKAGE  m-ticket, for all cornwall Cranet   
+ c) SALES OFFER PACKAGE paper ticket  for local zone Cranet  
+ d) SALES OFFER PACKAGE  m-ticket, for local zone Cranet
+
+A.1.4 Carnet FARE PRICES. FARE TABLES with
+    a)   SALES OFFER PACKAGE (All Cornwall)  x USER PROFILE x QUALITY STRUCTURE ELEMENTs 
+   b)   SALES OFFER PACKAGE (LOcal zone )  x USER PROFILE x QUALITY STRUCTURE ELEMENTs  
+==================================
+-->
+	<PublicationTimestamp>2022-12-17T09:30:47.0Z</PublicationTimestamp>
+	<ParticipantRef>SYS001</ParticipantRef>
+	<!-- ======WHAT WAS REQUESTED ========== -->
+	<PublicationRequest version="1.0">
+		<RequestTimestamp>2022-12-17T09:30:46.0Z</RequestTimestamp>
+		<ParticipantRef>SYS002</ParticipantRef>
+		<Description>Request for KernowFares</Description>
+		<topics>
+			<NetworkFrameTopic>
+				<selectionValidityConditions>
+					<AvailabilityCondition version="any" id="r1">
+						<FromDate>2021-02-01T00:00:00Z</FromDate>
+					</AvailabilityCondition>
+				</selectionValidityConditions>
+				<NetworkFilterByValue>
+					<LayerRef ref="fxc:fareNetwork_fareProducts_farePrices"/>
+					<objectReferences>
+						<ZoneRef version="1.0" ref="krn:Cornwall"/>
+					</objectReferences>
+				</NetworkFilterByValue>
+			</NetworkFrameTopic>
+		</topics>
+		<RequestPolicy>
+			<RequestDetail>AllWithXref</RequestDetail>
+		</RequestPolicy>
+	</PublicationRequest>
+	<PublicationRefreshInterval>P1M</PublicationRefreshInterval>
+	<Description>Fares for Cornwall</Description>
+	<!-- =============== RESULTS =========== -->
+	<dataObjects>
+		<CompositeFrame version="1.0" id="epd:UK:FRST_KRN:CompositeFrame_UK_PI_LINE_FARE_OFFER:Products@Trip@Cornwall:krn" dataSourceRef="krn:Cornwall" responsibilitySetRef="krn:tariffs">
+			<ValidBetween>
+				<FromDate>2022-11-01T00:00:00</FromDate>
+			</ValidBetween>
+			<Name>Kernow Capped Fare Example </Name>
+			<Description>This is an example showing how one might encode a simple capped bus fare  in NeTEx.</Description>
+			<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="naptStop_data"/>
+				<CodespaceRef ref="nptgLocality_data"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="krn_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default means that actually we could leave off all id s that belong to the krn: namespace. -->
+				<DefaultCodespaceRef ref="krn_data"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<frames>
+				<!-- First Cornwall Trip Products -->
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Trip@Cornwall:krn">
+					<Name>Kernow Trip  Fares - products</Name>
+					<Description>This is an example showing how one might encode the trip products for of the Kernow trip fare table in NeTEx.</Description>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ResourceFrameRef version="1.0" ref="epd:UK:FRST_KRN:ResourceFrame_UK_PI_COMMON:FRST_KRN:krn">Uses Operator</ResourceFrameRef>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_NETWORK:Pass@Cornwall:krn"/>
+					</prerequisites>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="1.0" id="krn:Tariff@Cornwall_distance@Trip">
+							<validityConditions>
+								<ValidBetween>
+									<FromDate>2021-02-01T00:00:00Z</FromDate>
+									<ToDate>2022-10-01T00:00:00Z</ToDate>
+								</ValidBetween>
+							</validityConditions>
+							<Name>Cornwall Distance based fares - Tariff</Name>
+							<Description>Cornwall tariff distance fare</Description>
+							<documentLinks>
+								<InfoLink typeOfInfoLink="other">https://www.firstbus.co.uk/cornwall/tickets</InfoLink>
+							</documentLinks>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<TypeOfTariffRef version="fxc:v1.0" ref="fxc:banded"/>
+							<TariffBasis>distance</TariffBasis>
+							<!--- ====Fare Structure======= -->
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<geographicalIntervals>
+								<GeographicalInterval version="1.0" id="krn:short">
+									<Name>Very Short Journey</Name>
+									<NumberOfUnits>1</NumberOfUnits>
+								</GeographicalInterval>
+								<GeographicalInterval version="1.0" id="krn:quite_short">
+									<Name>Quite Short  Journey</Name>
+									<NumberOfUnits>1</NumberOfUnits>
+								</GeographicalInterval>
+								<GeographicalInterval version="1.0" id="krn:medium">
+									<Name>Medium Journey</Name>
+									<NumberOfUnits>3</NumberOfUnits>
+								</GeographicalInterval>
+								<GeographicalInterval version="1.0" id="krn:quite_long">
+									<Name>Quite  Long Journey</Name>
+									<NumberOfUnits>4</NumberOfUnits>
+								</GeographicalInterval>
+								<GeographicalInterval version="1.0" id="krn:long">
+									<Name>Very long Journey</Name>
+									<NumberOfUnits>5</NumberOfUnits>
+								</GeographicalInterval>
+							</geographicalIntervals>
+							<fareStructureElements>
+								<FareStructureElement id="krn:Tariff@Cornwall_distance@Trip@access_modes" version="1.0">
+									<Name>Available modes</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@access_modes" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<VehicleModes>bus</VehicleModes>
+											<FareZoneRef version="1.0" ref="krn:Cornwall"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement id="krn:Tariff@Cornwall_distance@Trip@access_journey_length" version="1.0">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<validityParameterAssignments>
+										<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@short" version="1.0">
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GenericParameterAssignment>
+										<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@quite_short" version="1.0">
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_short"/>
+										</GenericParameterAssignment>
+										<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@medium" version="1.0">
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+											<GeographicalIntervalRef version="1.0" ref="krn:medium"/>
+										</GenericParameterAssignment>
+										<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@quite_long" version="1.0">
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_long"/>
+										</GenericParameterAssignment>
+										<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@Trip@long" version="1.0">
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+											<GeographicalIntervalRef version="1.0" ref="krn:long"/>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="krn:Tariff@Cornwall_distance@Trip@eligibility">
+									<Name>eligible user types</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall_distance@eligibility" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<!--- ===ELIGIBILITY USAGE PARAMETERS ========= -->
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+											<UserProfileRef version="1.0" ref="krn:young_person"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<!-- ==  -->
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<!--==== Trip Products ==== -->
+						<PreassignedFareProduct version="1.0" id="krn:Cornwall_distance@single_trip">
+							<Name>Cornwall single trip</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@trip@single"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<TariffBasis>distance</TariffBasis>
+								<IsPersonal>true</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:Cornwall_distance@single_trip@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_journey_length"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@eligibility"/>
+									</fareStructureElements>
+									<validityParameterAssignments>
+										<GenericParameterAssignment version="1.0" order="1" id="krn:Cornwall_distance@single_trip@travel@conditions">
+											<Name>Non transferable, single use</Name>
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:condition_of_use"/>
+											<LimitationGroupingType>AND</LimitationGroupingType>
+											<limitations>
+												<Transferability version="1.0" id="krn:Cornwall_distance@single_trip@travel@condition@transferability">
+													<CanTransfer>false</CanTransfer>
+												</Transferability>
+												<RoundTrip version="1.0" id="krn:Cornwall_distance@single_trip@travel@condition@direction">
+													<Name>Single Trip</Name>
+													<TripType>single</TripType>
+												</RoundTrip>
+												<FrequencyOfUse version="1.0" id="krn:Cornwall_distance@single_trip@travel@condition@frequency">
+													<Name>One trip no transfers</Name>
+													<FrequencyOfUseType>single</FrequencyOfUseType>
+												</FrequencyOfUse>
+												<Interchanging version="1.0" id="krn:Cornwall_distance@single_trip@travel@condition@interchange">
+													<CanInterchange>false</CanInterchange>
+												</Interchanging>
+											</limitations>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:Cornwall_distance@single_trip" order="1">
+									<ValidableElementRef version="1.0" ref="krn:Cornwall_distance@single_trip@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>singleTrip</ProductType>
+						</PreassignedFareProduct>
+						<PreassignedFareProduct version="1.0" id="krn:Cornwall_distance@return_trip">
+							<Name>Cornwall single trip</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@trip@single"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<TariffBasis>distance</TariffBasis>
+								<IsPersonal>true</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:Cornwall_distance@return_trip@travel@outbound">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_journey_length"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@eligibility"/>
+									</fareStructureElements>
+									<validityParameterAssignments>
+										<GenericParameterAssignment version="1.0" order="1" id="krn:Cornwall_distance@return_trip@travel@outbound">
+											<Name>Non transferable, return  use</Name>
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:condition_of_use"/>
+											<LimitationGroupingType>AND</LimitationGroupingType>
+											<limitations>
+												<Transferability version="1.0" id="krn:Cornwall_distance@return_trip@travel@outbound@transferability">
+													<CanTransfer>false</CanTransfer>
+												</Transferability>
+												<RoundTrip version="1.0" id="krn:Cornwall_distance@return_trip@travel@condition@direction">
+													<Name>return Trip outbound leg</Name>
+													<TripType>returnOut</TripType>
+												</RoundTrip>
+												<Interchanging version="1.0" id="krn:Cornwall_distance@return_trip@travel@outbound@interchange">
+													<CanInterchange>false</CanInterchange>
+												</Interchanging>
+												<UsageValidityPeriod version="1.0" id="krn:Cornwall_distance@return_trip@travel@outbound@validity">
+													<UsageTrigger>activation</UsageTrigger>
+													<UsageEnd>endOfFareDay</UsageEnd>
+												</UsageValidityPeriod>
+											</limitations>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</ValidableElement>
+								<ValidableElement version="1.0" id="krn:Cornwall_distance@return_trip@travel@inbound">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@access_journey_length"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall_distance@Trip@eligibility"/>
+									</fareStructureElements>
+									<validityParameterAssignments>
+										<GenericParameterAssignment version="1.0" order="1" id="krn:Cornwall_distance@return_trip@travel@inbound">
+											<Name>Non transferable, return  use</Name>
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:condition_of_use"/>
+											<LimitationGroupingType>AND</LimitationGroupingType>
+											<limitations>
+												<Transferability version="1.0" id="krn:Cornwall_distance@return_trip@travel@inbound@transferability">
+													<CanTransfer>false</CanTransfer>
+												</Transferability>
+												<RoundTrip version="1.0" id="krn:Cornwall_distance@return_trip@travel@inbound@direction">
+													<Name>return Trip outbound leg</Name>
+													<TripType>returnBack</TripType>
+												</RoundTrip>
+												<Interchanging version="1.0" id="krn:Cornwall_distance@return_trip@travel@inbound@interchange">
+													<CanInterchange>false</CanInterchange>
+												</Interchanging>
+												<UsageValidityPeriod version="1.0" id="krn:Cornwall_distance@return_trip@travel@inbound@validity">
+													<UsageTrigger>endOutboundRide</UsageTrigger>
+													<UsageEnd>endOfFareDay</UsageEnd>
+												</UsageValidityPeriod>
+											</limitations>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:Cornwall_distance@return_trip" order="1">
+									<ValidableElementRef version="1.0" ref="krn:Cornwall_distance@return_trip@travel@outbound"/>
+								</AccessRightInProduct>
+								<AccessRightInProduct version="1.0" id="krn:Cornwall_distance@return_trip" order="2">
+									<ValidableElementRef version="1.0" ref="krn:Cornwall_distance@return_trip@travel@inbound"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>dayReturnTrip</ProductType>
+						</PreassignedFareProduct>
+						<!--==== Capping Products ==== -->
+						<CappedDiscountRight version="1.0" id="krn:Tap_and_cap@trip">
+							<Name>Tap &amp; Cap - daily</Name>
+							<Description> single fares are capped to day pass price</Description>
+							<Url>https://www.firstbus.co.uk/cornwall/tickets/tap-cap</Url>
+							<cappingRules>
+								<CappingRule version="1.0" id="krn:Tap_and_cap@single_trip@daily_limit">
+									<Name>Day cap singles to price of  day pass </Name>
+									<Description>Caps   trip purchases to price of an all Cornwall  day pass,   </Description>
+									<CappingPeriod>day</CappingPeriod>
+									<PreassignedFareProductRef version="1.0" ref="krn:all_Cornwall@pass"/>
+									<ValidableElementRef version="1.0" ref="krn:Cornwall_distance@single_trip@travel"/>
+									<GenericParameterAssignment version="1.0" id="krn:Tap_and_cap@single_trip@daily_limit" order="1">
+										<Name>limit a single trip adult to one day </Name>
+										<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@single_trip"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+										</limitations>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+									</GenericParameterAssignment>
+								</CappingRule>
+								<CappingRule version="1.0" id="krn:Tap_and_cap@return_trip@daily_limit">
+									<Name>Day cap returns to price of  all Cornwall day pass </Name>
+									<Description>Caps   trip purchases to price of a day pass,   </Description>
+									<CappingPeriod>day</CappingPeriod> 
+									<ValidableElementRef version="1.0" ref="krn:Cornwall_distance@return_trip@travel@outbound"/>
+									<GenericParameterAssignment version="1.0" id="krn:Tap_and_cap@return_trip@daily_limit" order="1">
+										<Name>limit a return trip adult to one day </Name>
+										<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@return_trip"/>
+										<limitations>
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+										</limitations>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+									</GenericParameterAssignment>
+								</CappingRule>
+							</cappingRules>
+						</CappedDiscountRight>
+					</fareProducts>
+					<!-- === SALES OFFER PACKAGES === -->
+					<salesOfferPackages>
+						<!-- SINGLE -->
+						<SalesOfferPackage version="1.0" id="krn:Cornwall_distance@single_trip-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>KernowTrip Fare - p-ticket</Name>
+							<Description>Single trip on section fare</Description>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<ConditionSummary>
+								<IsPersonal>false</IsPersonal>
+								<CanBreakJourney>false</CanBreakJourney>
+							</ConditionSummary>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:Cornwall_distance@single_trip-SOP@p-ticket" order="1">
+									<Name>Onboard</Name>
+									<Description>Pay for ticket onboard</Description>
+									<DistributionChannelRef ref="fxc:on_board" version="fxc:v1.0"/>
+									<PaymentMethods>   cash  </PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:collect_on_board" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@single_trip-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@single_trip"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:Cornwall_distance@single_trip-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Kernow- m-ticket</Name>
+							<ConditionSummary>
+								<IsPersonal>true</IsPersonal>
+								<CanBreakJourney>false</CanBreakJourney>
+							</ConditionSummary>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:Cornwall_distance@single_trip-SOP@m-ticket" order="1">
+									<Name>Mobile app</Name>
+									<Description>Pay for ticket online with  mobile app </Description>
+									<DistributionChannelRef version="fxc:v1.0" ref="fxc:online"/>
+									<PaymentMethods>mobilePhone creditCard debitCard  contactlessPaymentCard epayDevice</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:mobile_app" version="fxc:v1.0"/>
+								</DistributionAssignment>
+								<DistributionAssignment version="1.0" id="krn:Cornwall_distance@single_trip-SOP@m-ticket@contactless" order="2">
+									<Name>Contactless</Name>
+									<Description>Pay for ticket   with contactless </Description>
+									<DistributionChannelRef version="fxc:v1.0" ref="fxc:on_board"/>
+									<PaymentMethods>contactlessPaymentCard</PaymentMethods>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@single_trip-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@single_trip"/>
+								</SalesOfferPackageElement>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@single_trip-SOP@m-ticket@cap" order="2">
+									<Name>Cap purchase price to day pass</Name>
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<CappedDiscountRightRef version="1.0" ref="krn:Tap_and_cap@day_pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<!-- RETURN -->
+						<SalesOfferPackage version="1.0" id="krn:Cornwall_distance@return_trip-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>KernowTrip Fare - p-ticket</Name>
+							<Description>return trip on section fare</Description>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<ConditionSummary>
+								<IsPersonal>false</IsPersonal>
+								<CanBreakJourney>true</CanBreakJourney>
+							</ConditionSummary>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:Cornwall_distance@return_trip-SOP@p-ticket" order="1">
+									<Name>Onboard</Name>
+									<Description>Pay for ticket onboard</Description>
+									<DistributionChannelRef ref="fxc:on_board" version="fxc:v1.0"/>
+									<PaymentMethods>   cash  </PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:collect_on_board" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@return_trip-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@return_trip"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:Cornwall_distance@return_trip-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Kernow- m-ticket</Name>
+							<ConditionSummary>
+								<IsPersonal>true</IsPersonal>
+								<CanBreakJourney>true</CanBreakJourney>
+							</ConditionSummary>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:Cornwall_distance@return_trip-SOP@m-ticket" order="1">
+									<Name>Mobile app</Name>
+									<Description>Pay for ticket online with emc card or mobile payment </Description>
+									<DistributionChannelRef version="fxc:v1.0" ref="fxc:online"/>
+									<PaymentMethods>mobilePhone creditCard debitCard  contactlessPaymentCard epayDevice</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:mobile_app" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@return_trip-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@return_trip"/>
+								</SalesOfferPackageElement>
+								<SalesOfferPackageElement version="1.0" id="krn:Cornwall_distance@return_trip-SOP@m-ticket@cap" order="2">
+									<Name>Cap purchase price to day pass</Name>
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<CappedDiscountRightRef version="1.0" ref="krn:Tap_and_cap@day_pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+					<!--==== Fare Prices ==== -->
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRICE:Trip@Cornwall:krn">
+					<Name>Kernow  ("Distance Based") Trip Fare - Prices</Name>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Trip@Cornwall:krn"/>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Pass@Cornwall:krn"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="1.0" id="krn:Cornwall_distance@single">
+							<Name>KernowZ2Z Trip Fare for Line 26</Name>
+							<Description>
+									Adult 			Under 19
+    Single	Return	Single	Return
+1	£1.60	£2.40	£1.00	£1.50
+2	£2.00	£3.00	£1.40	£2.10
+3	£2.60	£3.90	£1.80	£2.70
+4	£3.00	£4.50	£2.2	£3.30
+5	£3.50	£5.00	£2.70	$4.00</Description>
+							<pricesFor>
+								<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@single_trip"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:Cornwall_distance@single_trip-SOP@p-ticket"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:Cornwall_distance@single_trip-SOP@m-ticket"/>
+							</pricesFor>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<includes>
+								<FareTable version="1.0" id="krn:Cornwall_distance@single_@adult">
+									<Name>Single trip Adult   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:adult"/>
+									</limitations>
+									<prices>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@adult@short">
+											<Amount>1.60</Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@adult@quite_short">
+											<Amount>2.00 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@adult@medium">
+											<Amount>2.60 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:medium"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@adult@quite_long">
+											<Amount>3.00 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_long"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@adult@long">
+											<Amount>3.50 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:long"/>
+										</GeographicalIntervalPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="1.0" id="krn:Cornwall_distance@single_@young_person">
+									<Name>Single trip young_person   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:young_person"/>
+									</limitations>
+									<prices>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@young_person@short">
+											<Amount>1.00</Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@young_person@quite_short">
+											<Amount>1.40 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@young_person@medium">
+											<Amount>1.80 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:medium"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@young_person@quite_long">
+											<Amount>2.20 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_long"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:single@young_person@long">
+											<Amount>2.70 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:long"/>
+										</GeographicalIntervalPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+						<FareTable version="1.0" id="krn:Cornwall_distance@return">
+							<Name>KernowZ2Z Trip Fare for Line 26</Name>
+							<Description>
+									Adult 			Under 19
+    return_	Return	return_	Return
+1	£1.60	£2.40	£1.00	£1.50
+2	£2.00	£3.00	£1.40	£2.10
+3	£2.60	£3.90	£1.80	£2.70
+4	£3.00	£4.50	£2.2	£3.30
+5	£3.50	£5.00	£2.70	$4.00</Description>
+							<pricesFor>
+								<PreassignedFareProductRef version="1.0" ref="krn:Cornwall_distance@return_trip"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:Cornwall_distance@return_trip-SOP@p-ticket"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:Cornwall_distance@return_trip-SOP@m-ticket"/>
+							</pricesFor>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<includes>
+								<FareTable version="1.0" id="krn:Cornwall_distance@return_@adult">
+									<Name>return_ trip Adult   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:adult"/>
+									</limitations>
+									<prices>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@adult@short">
+											<Amount>2.40</Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@adult@quite_short">
+											<Amount>3.00 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@adult@medium">
+											<Amount>3.90 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:medium"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@adult@quite_long">
+											<Amount>4.50 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_long"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@adult@long">
+											<Amount>5.00 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:long"/>
+										</GeographicalIntervalPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="1.0" id="krn:Cornwall_distance@return_@young_person">
+									<Name>return_ trip young_person   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:young_person"/>
+									</limitations>
+									<prices>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@young_person@short">
+											<Amount>1.50</Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@young_person@quite_short">
+											<Amount>2.10 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:short"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@young_person@medium">
+											<Amount>2.70 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:medium"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@young_person@quite_long">
+											<Amount>3.30 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:quite_long"/>
+										</GeographicalIntervalPrice>
+										<GeographicalIntervalPrice version="1.0" id="krn:return_@young_person@long">
+											<Amount>4.00 </Amount>
+											<GeographicalIntervalRef version="1.0" ref="krn:long"/>
+										</GeographicalIntervalPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+						<FareTable version="1.0" id="krn:tap_and_cap@trip">
+							<Name>Fare caps for Tap and cap</Name>
+							<Description>Capping trip to all day pass	£5   </Description>
+							<pricesFor>
+								<CappedDiscountRightRef version="1.0" ref="krn:Tap_and_cap@trip"/>
+							</pricesFor>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<limitations>
+								<UserProfileRef version="1.0" ref="krn:adult"/>
+							</limitations>
+							<prices>
+								<CappingRulePrice version="1.0" id="krn:Tap_and_cap@single_trip">
+									<Name>Cap based on dailiy pass price</Name>
+									<Amount>5.0</Amount>
+									<TimeIntervalPriceRef version="1.0" ref="krn:all_Cornwall@pass@adult@1D"/>
+									<CappingRuleRef version="1.0" ref="krn:Tap_and_cap@single_trip@daily_limit"/>
+								</CappingRulePrice>
+								<CappingRulePrice version="1.0" id="krn:Tap_and_cap@return_trip">
+									<Amount>5.0</Amount>
+									<TimeIntervalPriceRef version="1.0" ref="krn:all_Cornwall@pass@adult@1D"/>
+									<CappingRuleRef version="1.0" ref="krn:Tap_and_cap@return_trip@daily_limit"/>
+								</CappingRulePrice>
+							</prices>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+			</frames>
+		</CompositeFrame>
+		<!-- ====COMMON UK PI Profile  RESOURCEs:  META DATA - COULD BE EXTERNALISED ===== ============ -->
+		<CompositeFrame version="1.0" id="epd:UK:FRST_KRN:CompositeFrame_UK_PI_LINE_FARE_OFFER:Products@Pass@Cornwall:krn" dataSourceRef="krn:Cornwall" responsibilitySetRef="krn:tariffs">
+			<ValidBetween>
+				<FromDate>2022-11-01T00:00:00</FromDate>
+			</ValidBetween>
+			<Name>Kernow Capped Fare Example </Name>
+			<Description>This is an example showing how one might encode a simple capped bus fare  in NeTEx.</Description>
+			<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_FARE_OFFER:FXCP"/>
+			<!--==== CODESPACEs ==== -->
+			<codespaces>
+				<CodespaceRef ref="naptStop_data"/>
+				<CodespaceRef ref="nptgLocality_data"/>
+				<CodespaceRef ref="noc_data"/>
+				<CodespaceRef ref="krn_data"/>
+			</codespaces>
+			<!--==== FRAME DEFAULTS ==== -->
+			<FrameDefaults>
+				<!--- The default means that actually we could leave off all id s that beolng to the krn: namespace. -->
+				<DefaultCodespaceRef ref="krn_data"/>
+				<DefaultCurrency>GBP</DefaultCurrency>
+			</FrameDefaults>
+			<frames>
+				<!-- First Cornwall Pass Products -->
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_NETWORK:Pass@Cornwall:krn">
+					<Name>Pass   - Network</Name>
+					<Description>This is an example showing how one might encode the network for zonal pass fares  </Description>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP"/>
+					<fareZones>
+						<FareZone version="1.0" id="krn:Cornwall">
+							<Name>all Cornwall</Name>
+							<ZoneTopology>overlapping</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Bodmin">
+							<Name>Bodmin</Name>
+							<members>
+								<!-- TO DO ADD STOPS -->
+								<ScheduledStopPointRef versionRef="any" ref="naptanStop:3290YYA00178"> e</ScheduledStopPointRef>
+							</members>
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Cambourne">
+							<Name>Cambourne</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Falmouth">
+							<Name>Falmouth</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Hayle">
+							<Name>Hayle</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Helston">
+							<Name>Helstono</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Newquay">
+							<Name>Newquay</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Penzanze">
+							<Name>Penzanze</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Redruth">
+							<Name>Redruth</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:St_Austell">
+							<Name>St Austell</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:St_Ives">
+							<Name>St Ives</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+						<FareZone version="1.0" id="krn:Truro">
+							<Name>Truro</Name>
+							<!-- TO DO ADD STOPS -->
+							<ParentFareZoneRef version="1.0" ref="krn:Cornwall"/>
+							<ZoneTopology>nested</ZoneTopology>
+						</FareZone>
+					</fareZones>
+					<!--====Tariff Structure ==== -->
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Pass@Cornwall:krn">
+					<Name>Kernow Zonal Pass Fares - products</Name>
+					<Description>This is an example showing how one might encode the pass product part of the Kernow fare table in NeTEx.</Description>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ResourceFrameRef version="1.0" ref="epd:UK:FRST_KRN:ResourceFrame_UK_PI_COMMON:FRST_KRN:krn">Uses Operator</ResourceFrameRef>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_NETWORK:Pass@Cornwall:krn"/>
+					</prerequisites>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="1.0" id="krn:Tariff@Cornwall@pass">
+							<validityConditions>
+								<ValidBetween>
+									<FromDate>2021-02-01T00:00:00Z</FromDate>
+									<ToDate>2022-10-01T00:00:00Z</ToDate>
+								</ValidBetween>
+							</validityConditions>
+							<Name>Cornwall Zona pass fares - Tariff</Name>
+							<documentLinks>
+								<InfoLink typeOfInfoLink="other">https://www.firstbus.co.uk/cornwall/tickets</InfoLink>
+							</documentLinks>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<TypeOfTariffRef version="fxc:v1.0" ref="fxc:zonal"/>
+							<TariffBasis>zone</TariffBasis>
+							<!--- ====Fare Structure======= -->
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<timeIntervals>
+								<TimeInterval version="1.0" id="krn:Cornwall@pass@1D">
+									<Name>One dayy</Name>
+									<Duration>P1D</Duration>
+								</TimeInterval>
+								<TimeInterval version="1.0" id="krn:Cornwall@pass@7D">
+									<Name>7 Days</Name>
+									<Duration>P7D</Duration>
+								</TimeInterval>
+								<TimeInterval version="1.0" id="krn:Cornwall@pass@1M">
+									<Name>One Month</Name>
+									<Duration>P1M</Duration>
+								</TimeInterval>
+							</timeIntervals>
+							<fareStructureElements>
+								<FareStructureElement id="krn:Tariff@Cornwall@pass@access_modes" version="1.0">
+									<Name>Available modes</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall@pass@access_modes" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<VehicleModes>bus</VehicleModes>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement id="krn:Tariff@Cornwall@pass@access@all" version="1.0">
+									<Name>Available zones</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall@pass@access@all" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<FareZoneRef version="1.0" ref="krn:Cornwall"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement id="krn:Tariff@Cornwall@pass@access@local" version="1.0">
+									<Name>Available zones</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall@pass@access@local" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:can_access"/>
+										<ValidityParameterGroupingType>OR</ValidityParameterGroupingType>
+										<validityParameters>
+											<FareZoneRef version="1.0" ref="krn:Bodmin"/>
+											<FareZoneRef version="1.0" ref="krn:Cambourne"/>
+											<FareZoneRef version="1.0" ref="krn:Falmouth"/>
+											<FareZoneRef version="1.0" ref="krn:Hayle"/>
+											<FareZoneRef version="1.0" ref="krn:Helston"/>
+											<FareZoneRef version="1.0" ref="krn:Newquay"/>
+											<FareZoneRef version="1.0" ref="krn:Penzanze"/>
+											<FareZoneRef version="1.0" ref="krn:Redruth"/>
+											<FareZoneRef version="1.0" ref="krn:St_Austell"/>
+											<FareZoneRef version="1.0" ref="krn:St_Ives"/>
+											<FareZoneRef version="1.0" ref="krn:Truro"/>
+										</validityParameters>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<FareStructureElement id="krn:Tariff@Cornwall@pass@durations" version="1.0">
+									<Name>Available periods</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:access"/>
+									<timeIntervals>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1M"/>
+									</timeIntervals>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="krn:Tariff@Cornwall@pass@eligibility">
+									<Name>eligible user types</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall@pass@eligibility" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<!--- ===ELIGIBILITY USAGE PARAMETERS ========= -->
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+											<UserProfileRef version="1.0" ref="krn:young_person"/>
+											<GroupTicketRef version="1.0" ref="krn:family"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<!-- ==  -->
+								<FareStructureElement id="krn:Tariff@Cornwall@pass@conditions_of_use" version="1.0">
+									<Name>Available lines</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:travel_conditions"/>
+									<GenericParameterAssignment version="1.0" order="1" id="krn:Cornwall@pass@conditions_of_use">
+										<Name>Non transferable, repeated use </Name>
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:condition_of_use"/>
+										<LimitationGroupingType>AND</LimitationGroupingType>
+										<limitations>
+											<Transferability version="1.0" id="krn:Cornwall@pass@conditions_of_use@transferability">
+												<CanTransfer>false</CanTransfer>
+											</Transferability>
+											<FrequencyOfUse version="1.0" id="krn:Cornwall@pass@conditions_of_usen@frequency">
+												<Name>Repeated use</Name>
+												<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+											</FrequencyOfUse>
+											<Interchanging version="1.0" id="krn:Cornwall@pass@conditions_of_use@interchange">
+												<CanInterchange>true</CanInterchange>
+											</Interchanging>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<PreassignedFareProduct version="1.0" id="krn:all_Cornwall@pass">
+							<Name>Cornwall Period Pass</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<TariffBasis>zone</TariffBasis>
+								<IsPersonal>true</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:all_Cornwall@pass@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access@all"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@durations"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@eligibility"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@conditions_of_use"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:all_Cornwall@pass" order="1">
+									<ValidableElementRef version="1.0" ref="krn:all_Cornwall@pass@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>singleTrip</ProductType>
+						</PreassignedFareProduct>
+						<PreassignedFareProduct version="1.0" id="krn:local_Cornwall@pass">
+							<Name>Cornwall Local  Period Pass</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<ChargingMomentType>beforeTravel</ChargingMomentType>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@pass@day"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<TariffBasis>zone</TariffBasis>
+								<IsPersonal>true</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:local_Cornwall@pass@travel">
+									<Name>Unlimited rides available for specifed periods</Name>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access@local"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@durations"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@eligibility"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@conditions_of_use"/>
+									</fareStructureElements>
+									<validityParameterAssignments>
+										<GenericParameterAssignment version="1.0" order="1" id="krn:local_Cornwall@pass@travel">
+											<Name>Non transferable, rpeated use </Name>
+											<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:condition_of_use"/>
+											<LimitationGroupingType>AND</LimitationGroupingType>
+											<limitations>
+												<Transferability version="1.0" id="krn:local_Cornwall@pass@travel@transferability">
+													<CanTransfer>false</CanTransfer>
+												</Transferability>
+												<FrequencyOfUse version="1.0" id="krn:local_Cornwall@pass@travel@frequency">
+													<Name>Repeated use</Name>
+													<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+												</FrequencyOfUse>
+											</limitations>
+										</GenericParameterAssignment>
+									</validityParameterAssignments>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:local_Cornwall@pass" order="1">
+									<ValidableElementRef version="1.0" ref="krn:local_Cornwall@pass@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>singleTrip</ProductType>
+						</PreassignedFareProduct>
+						<CappedDiscountRight version="1.0" id="krn:Tap_and_cap@day_pass">
+							<Name>Tap &amp; Cap -  Weekly</Name>
+							<Description> Dap Passes are capped to  week price</Description>
+							<Url>https://www.firstbus.co.uk/cornwall/tickets/tap-cap</Url>
+							<cappingRules>
+								<CappingRule version="1.0" id="krn:Tap_and_cap@day_pass@weekly_limit">
+									<Name>Cap day passes to price of week pass </Name>
+									<CappingPeriod>week</CappingPeriod>
+									<PreassignedFareProductRef version="1.0" ref="krn:all_Cornwall@pass"/>
+									<ValidableElementRef version="1.0" ref="krn:local_Cornwall@pass@travel"/>
+									<GenericParameterAssignment version="1.0" id="krn:Tap_and_cap@day_pass@weekly_limit" order="1">
+										<limitations>
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+										</limitations>
+										<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+									</GenericParameterAssignment>
+								</CappingRule>
+							</cappingRules>
+						</CappedDiscountRight>
+					</fareProducts>
+					<!-- === SALES OFFER PACKAGES === -->
+					<salesOfferPackages>
+						<!-- CORNWALL PASS -->
+						<SalesOfferPackage version="1.0" id="krn:all_Cornwall@pass-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>All Cornwall pass - p-ticket</Name>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:all_Cornwall@pass-SOP@p-ticket" order="1">
+									<Name>Onboard</Name>
+									<Description>Pay for ticket onboard</Description>
+									<DistributionChannelRef ref="fxc:on_board" version="fxc:v1.0"/>
+									<PaymentMethods>cash contactlessPaymentCard creditCard debitCard</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:collect_on_board" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:all_Cornwall@pass-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:all_Cornwall@pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:all_Cornwall@pass-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>All COrnwall pass - m-ticket</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:all_Cornwall@pass-SOP@m-ticket" order="1">
+									<Name>Mobile app</Name>
+									<Description>Pay for ticket online with emc card or mobile payment </Description>
+									<DistributionChannelRef version="fxc:v1.0" ref="fxc:online"/>
+									<PaymentMethods>mobilePhone creditCard debitCard  contactlessPaymentCard epayDevice</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:mobile_app" version="fxc:v1.0"/>
+								</DistributionAssignment>
+								<DistributionAssignment version="1.0" id="krn:all_Cornwall@pass-SOP@subscribe" order="2">
+									<Name>Onboard</Name>
+									<Description>Auto subscribe to renew</Description>
+									<DistributionChannelRef ref="fxc:online_subscription" version="fxc:v1.0"/>
+									<PaymentMethods>directDebit</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:mobile_app" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:all_Cornwall@pass-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:all_Cornwall@pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<!-- Local PASS -->
+						<SalesOfferPackage version="1.0" id="krn:local_Cornwall@pass-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Cornwall Local town zone  pass e - p-ticket</Name>
+							<Description>Single trip on section fare</Description>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<distributionAssignments>
+								<DistributionAssignmentRef version="1.0" ref="krn:all_Cornwall@pass-SOP@p-ticket" order="1"/>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:local_Cornwall@pass-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:local_Cornwall@pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:local_Cornwall@pass-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Kernow- m-ticket</Name>
+							<distributionAssignments>
+								<DistributionAssignmentRef version="1.0" ref="krn:all_Cornwall@pass-SOP@m-ticket" order="1"/>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:local_Cornwall@pass-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<PreassignedFareProductRef version="1.0" ref="krn:local_Cornwall@pass"/>
+								</SalesOfferPackageElement>
+								<SalesOfferPackageElement version="1.0" id="krn:local_Cornwall@pass-SOP@m-ticket@cap" order="2">
+									<Name>Cap purchase price of successive day pass to week pass</Name>
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<CappedDiscountRightRef version="1.0" ref="krn:Tap_and_cap@day_pass"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+					<!--==== Fare Prices ==== -->
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:carnet@Cornwall:krn">
+					<Name>Kernow Zone to Zone Fares - products</Name>
+					<Description>This is an example showing how one might encode the product part of the Kernow carnet products in NeTEx.</Description>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP"/>
+					<prerequisites>
+						<ResourceFrameRef version="1.0" ref="epd:UK:FRST_KRN:ResourceFrame_UK_PI_COMMON:FRST_KRN:krn">Uses Operator</ResourceFrameRef>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Pass@Cornwall:krn"/>
+					</prerequisites>
+					<!--====Tariff Structure ==== -->
+					<tariffs>
+						<Tariff version="1.0" id="krn:Tariff@Cornwall@carnet">
+							<validityConditions>
+								<ValidBetween>
+									<FromDate>2021-02-01T00:00:00Z</FromDate>
+									<ToDate>2022-10-01T00:00:00Z</ToDate>
+								</ValidBetween>
+							</validityConditions>
+							<Name>Cornwall Carnet fares - Tariff</Name>
+							<documentLinks>
+								<InfoLink typeOfInfoLink="other">https://www.firstbus.co.uk/cornwall/tickets</InfoLink>
+							</documentLinks>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<TypeOfTariffRef version="fxc:v1.0" ref="fxc:zonal"/>
+							<TariffBasis>zone</TariffBasis>
+							<!--- ====Fare Structure======= -->
+							<!-- ==FARE STRUCTURE ELEMENTS -->
+							<fareStructureElements>
+								<FareStructureElement version="1.0" id="krn:Tariff@Cornwall@carnet@units">
+									<Name>eligible user types</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:eligibility"/>
+									<qualityStructureFactors>
+										<QualityStructureFactor version="1.0" id="krn:Tariff@Cornwall@carnet@units@5">
+											<Name>Bundle of 5</Name>
+											<Value>5</Value>
+										</QualityStructureFactor>
+										<QualityStructureFactor version="1.0" id="krn:Tariff@Cornwall@carnet@units@20">
+											<Name>Bundle of 5</Name>
+											<Value>20</Value>
+										</QualityStructureFactor>
+									</qualityStructureFactors>
+								</FareStructureElement>
+								<FareStructureElement version="1.0" id="krn:Tariff@Cornwall@carnet@eligibility">
+									<Name>eligible user types</Name>
+									<TypeOfFareStructureElementRef version="fxc:v1.0" ref="fxc:eligibility"/>
+									<GenericParameterAssignment order="1" id="krn:Tariff@Cornwall@carnet@eligibility" version="1.0">
+										<TypeOfAccessRightAssignmentRef version="fxc:v1.0" ref="fxc:eligible"/>
+										<LimitationGroupingType>XOR</LimitationGroupingType>
+										<limitations>
+											<!--- ===ELIGIBILITY USAGE PARAMETERS ========= -->
+											<UserProfileRef version="1.0" ref="krn:adult"/>
+											<UserProfileRef version="1.0" ref="krn:young_person"/>
+										</limitations>
+									</GenericParameterAssignment>
+								</FareStructureElement>
+								<!-- ==  -->
+							</fareStructureElements>
+						</Tariff>
+					</tariffs>
+					<!--==== Fare Usage Parameters ==== -->
+					<!--==== Fare Product ==== -->
+					<fareProducts>
+						<AmountOfPriceUnitProduct version="1.0" id="krn:all_Cornwall@carnet">
+							<Name>Grab a bundle:  carnet of day passes - ALl COrnwall</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@carnet@passes"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<IsPersonal>false</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:all_Cornwall@carnet@travel">
+									<Name>Day pass carnet options</Name>
+									<Description>Five day passes.</Description>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access@all"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@carnet@eligibility"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:all_Cornwall@carnet@travel" order="1">
+									<ValidableElementRef version="1.0" ref="krn:all_Cornwall@pass@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>passCarnet</ProductType>
+						</AmountOfPriceUnitProduct>
+						<AmountOfPriceUnitProduct version="1.0" id="krn:local_Cornwall@carnet">
+							<Name>Grab a bundle:  carnet of day passes - ALl COrnwall</Name>
+							<ChargingMomentRef version="fxc:v1.0" ref="fxc:prepayment"/>
+							<TypeOfFareProductRef version="fxc:v1.0" ref="fxc:standard_product@carnet@passes"/>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<ConditionSummary>
+								<IsPersonal>false</IsPersonal>
+								<IsRefundable>true</IsRefundable>
+								<HasDiscountedFares>true</HasDiscountedFares>
+							</ConditionSummary>
+							<!--==== VALIDABLE ELEMENTs ==== -->
+							<validableElements>
+								<ValidableElement version="1.0" id="krn:local_Cornwall@carnet@travel">
+									<Name>Day pass carnet options</Name>
+									<Description>Five day passes.</Description>
+									<fareStructureElements>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access_modes"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@pass@access@local"/>
+										<FareStructureElementRef version="1.0" ref="krn:Tariff@Cornwall@carnet@eligibility"/>
+									</fareStructureElements>
+								</ValidableElement>
+							</validableElements>
+							<!--==== ACCESS RIGHTs ===== -->
+							<accessRightsInProduct>
+								<AccessRightInProduct version="1.0" id="krn:local_Cornwall@carnet@travel" order="1">
+									<ValidableElementRef version="1.0" ref="krn:local_Cornwall@pass@travel"/>
+								</AccessRightInProduct>
+							</accessRightsInProduct>
+							<ProductType>passCarnet</ProductType>
+						</AmountOfPriceUnitProduct>
+					</fareProducts>
+					<!-- === SALES OFFER PACKAGES === -->
+					<salesOfferPackages>
+						<!-- CORNWALL carnet -->
+						<SalesOfferPackage version="1.0" id="krn:all_Cornwall@carnet-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>All Cornwall carnet - p-ticket</Name>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:all_Cornwall@carnet-SOP@p-ticket" order="1">
+									<Name>Onboard</Name>
+									<Description>Pay for ticket onboard</Description>
+									<DistributionChannelRef ref="fxc:on_board" version="fxc:v1.0"/>
+									<PaymentMethods>cash contactlessPaymentCard creditCard debitCard</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:collect_on_board" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:all_Cornwall@carnet-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<AmountOfPriceUnitProductRef version="1.0" ref="krn:all_Cornwall@carnet"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:all_Cornwall@carnet-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>All COrnwall carnet - m-ticket</Name>
+							<distributionAssignments>
+								<DistributionAssignment version="1.0" id="krn:all_Cornwall@carnet-SOP@m-ticket" order="1">
+									<Name>Mobile app</Name>
+									<Description>Pay for ticket online with emc card or mobile payment </Description>
+									<DistributionChannelRef version="fxc:v1.0" ref="fxc:online"/>
+									<PaymentMethods>mobilePhone creditCard debitCard  contactlessPaymentCard epayDevice</PaymentMethods>
+									<FulfilmentMethodRef ref="fxc:mobile_app" version="fxc:v1.0"/>
+								</DistributionAssignment>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:all_Cornwall@carnet-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<AmountOfPriceUnitProductRef version="1.0" ref="krn:all_Cornwall@carnet"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<!-- Local carnet -->
+						<SalesOfferPackage version="1.0" id="krn:local_Cornwall@carnet-SOP@p-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Cornwall Local town zone  carnet e - p-ticket</Name>
+							<Description>Single trip on section fare</Description>
+							<TypeOfSalesOfferPackageRef version="fxc:v1.0" ref="fxc:standard_product@operator"/>
+							<distributionAssignments>
+								<DistributionAssignmentRef version="1.0" ref="krn:all_Cornwall@carnet-SOP@p-ticket" order="1"/>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:local_Cornwall@carnet-SOP@p-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:paper-ticket"/>
+									<AmountOfPriceUnitProductRef version="1.0" ref="krn:local_Cornwall@carnet"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+						<SalesOfferPackage version="1.0" id="krn:local_Cornwall@carnet-SOP@m-ticket">
+							<BrandingRef version="1.0" ref="krn:FKRN@brand"/>
+							<Name>Kernow- m-ticket</Name>
+							<distributionAssignments>
+								<DistributionAssignmentRef version="1.0" ref="krn:all_Cornwall@carnet-SOP@m-ticket" order="1"/>
+							</distributionAssignments>
+							<salesOfferPackageElements>
+								<SalesOfferPackageElement version="1.0" id="krn:local_Cornwall@carnet-SOP@m-ticket" order="1">
+									<TypeOfTravelDocumentRef version="1.0" ref="krn:m-ticket"/>
+									<AmountOfPriceUnitProductRef version="1.0" ref="krn:local_Cornwall@carnet"/>
+								</SalesOfferPackageElement>
+							</salesOfferPackageElements>
+						</SalesOfferPackage>
+					</salesOfferPackages>
+					<!--==== Fare Prices ==== -->
+				</FareFrame>
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRICE:Pass@Cornwall:krn">
+					<Name>Kernow Zonal Pass Fare - Prices</Name>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP"/>
+					<prerequisites>
+						<FareFrameRef version="1.0" ref="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_PRODUCT:Pass@Cornwall:krn"/>
+					</prerequisites>
+					<fareTables>
+						<FareTable version="1.0" id="krn:Cornwall@pass">
+							<Name>Cornwall Pass Fare prices</Name>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<includes>
+								<FareTable version="1.0" id="krn:all_Cornwall@pass">
+									<Name>All Cornwall Pass Fare prices</Name>
+									<Description>
+							Passes  Unlimited travel
+		Adult 	Under 19	family
+1 day 	£05.00	£04.00	£10
+7 day	£30.00	£15.20	£40
+30 day	£80.00	£45.00</Description>
+									<pricesFor>
+										<PreassignedFareProductRef version="1.0" ref="krn:all_Cornwall@pass"/>
+										<SalesOfferPackageRef version="1.0" ref="krn:all_Cornwall@pass-SOP@p-ticket"/>
+										<SalesOfferPackageRef version="1.0" ref="krn:all_Cornwall@pass-SOP@m-ticket"/>
+									</pricesFor>
+									<includes>
+										<FareTable version="1.0" id="krn:all_Cornwall@pass@adult">
+											<Name>Day Pass all Cornwall Adult   prices</Name>
+											<limitations>
+												<UserProfileRef version="1.0" ref="krn:adult"/>
+											</limitations>
+											<prices>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@adult@1D">
+													<Amount>5.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@adult@7D">
+													<Amount>30.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@adult@1M">
+													<Amount>80.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1M"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="1.0" id="krn:all_Cornwall@pass@young_person">
+											<Name>Day Pass all Cornwall young_person   prices</Name>
+											<limitations>
+												<UserProfileRef version="1.0" ref="krn:young_person"/>
+											</limitations>
+											<prices>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@young_person@1D">
+													<Amount>4.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@young_person@7D">
+													<Amount>13.50</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:all_Cornwall@pass@young_person@1M">
+													<Amount>45.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1M"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+									</includes>
+								</FareTable>
+								<FareTable version="1.0" id="krn:local_Cornwall@pass">
+									<Name>All Cornwall Pass Fare prices</Name>
+									<Description>
+		Adult 	Under 19	 
+1 day 	£2.50	£01.50	 
+7 day	£10.00	£06.00 
+30 day	£40.00	£22.50</Description>
+									<pricesFor>
+										<PreassignedFareProductRef version="1.0" ref="krn:local_Cornwall@pass"/>
+										<SalesOfferPackageRef version="1.0" ref="krn:local_Cornwall@pass-SOP@p-ticket"/>
+										<SalesOfferPackageRef version="1.0" ref="krn:local_Cornwall@pass-SOP@m-ticket"/>
+									</pricesFor>
+									<includes>
+										<FareTable version="1.0" id="krn:local_Cornwall@pass@adult">
+											<Name>Day Pass Local Adult   prices</Name>
+											<limitations>
+												<UserProfileRef version="1.0" ref="krn:adult"/>
+											</limitations>
+											<prices>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@adult@1D">
+													<Amount>2.50</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@adult@7D">
+													<Amount>1</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@adult@1M">
+													<Amount>40.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1M"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+										<FareTable version="1.0" id="krn:local_Cornwall@pass@young_person">
+											<Name>Day Pass Local  young_person   prices</Name>
+											<limitations>
+												<UserProfileRef version="1.0" ref="krn:young_person"/>
+											</limitations>
+											<prices>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@young_person@1D">
+													<Amount>1.50</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@young_person@7D">
+													<Amount>6.00</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@7D"/>
+												</TimeIntervalPrice>
+												<TimeIntervalPrice version="1.0" id="krn:local_Cornwall@pass@young_person@1M">
+													<Amount>22.50</Amount>
+													<TimeIntervalRef version="1.0" ref="krn:Cornwall@pass@1M"/>
+												</TimeIntervalPrice>
+											</prices>
+										</FareTable>
+									</includes>
+								</FareTable>
+							</includes>
+						</FareTable>
+						<FareTable version="1.0" id="krn:Tap_and_cap@day_pass">
+							<Name>Tap &amp; cap  trip Adult   prices</Name>
+							<pricesFor>
+								<CappedDiscountRightRef version="1.0" ref="krn:Tap_and_cap@day_pass"/>
+							</pricesFor>
+							<OperatorRef version="1.0" ref="noc:FKRN">noc:136365</OperatorRef>
+							<limitations>
+								<UserProfileRef version="1.0" ref="krn:adult"/>
+							</limitations>
+							<prices>
+								<CappingRulePrice version="1.0" id="krn:Tap_and_cap@day_pass">
+									<Name>Capping price is based on Weekly pass price</Name>
+									<Amount>20.0</Amount>
+									<TimeIntervalPriceRef version="1.0" ref="krn:all_Cornwall@pass@adult@7D"/>
+									<CappingRuleRef version="1.0" ref="krn:Tap_and_cap@day_pass@weekly_limit"/>
+								</CappingRulePrice>
+							</prices>
+						</FareTable>
+						<FareTable version="1.0" id="krn:all_Cornwall@carnet">
+							<Name>All Cornwall Carnet of day Passs Fare prices</Name>
+							<Description>ALl Cornwall Carnet of day passes 
+	Adult 	Under 19	
+5	£20		£13
+20	£80		£54</Description>
+							<pricesFor>
+								<AmountOfPriceUnitProductRef version="1.0" ref="krn:all_Cornwall@carnet"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:all_Cornwall@carnet-SOP@p-ticket"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:all_Cornwall@carnet-SOP@m-ticket"/>
+							</pricesFor>
+							<includes>
+								<FareTable version="1.0" id="krn:all_Cornwall@carnet@adult">
+									<Name>Carnet of day passes   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:adult"/>
+									</limitations>
+									<prices>
+										<QualityStructureFactorPrice version="1.0" id="krn:all_Cornwall@carnet@adult@5">
+											<Amount>20.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@5"/>
+										</QualityStructureFactorPrice>
+										<QualityStructureFactorPrice version="1.0" id="krn:all_Cornwall@carnet@adult@20">
+											<Amount>80.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@20"/>
+										</QualityStructureFactorPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="1.0" id="krn:all_Cornwall@carnet@young_person">
+									<Name>Carnet of day passes   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:young_person"/>
+									</limitations>
+									<prices>
+										<QualityStructureFactorPrice version="1.0" id="krn:all_Cornwall@carnet@young_person@5">
+											<Amount>13.50</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@5"/>
+										</QualityStructureFactorPrice>
+										<QualityStructureFactorPrice version="1.0" id="krn:all_Cornwall@carnet@young_person@20">
+											<Amount>54.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@20"/>
+										</QualityStructureFactorPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+						<FareTable version="1.0" id="krn:local_Cornwall@carnet">
+							<Name>Local zone Carnet of day Passs Fare prices</Name>
+							<Description>
+Local Town Zone  Carnet of day passes 
+	Adult 	Under 19	
+5	£10		£6
+20	£40		£24</Description>
+							<pricesFor>
+								<AmountOfPriceUnitProductRef version="1.0" ref="krn:local_Cornwall@carnet"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:local_Cornwall@carnet-SOP@p-ticket"/>
+								<SalesOfferPackageRef version="1.0" ref="krn:local_Cornwall@carnet-SOP@m-ticket"/>
+							</pricesFor>
+							<includes>
+								<FareTable version="1.0" id="krn:local_Cornwall@carnet@adult">
+									<Name>Carnet  Local Carnet of day passes   prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:adult"/>
+									</limitations>
+									<prices>
+										<QualityStructureFactorPrice version="1.0" id="krn:local_Cornwall@carnet@adult@5">
+											<Amount>10.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@5"/>
+										</QualityStructureFactorPrice>
+										<QualityStructureFactorPrice version="1.0" id="krn:local_Cornwall@carnet@adult@20">
+											<Amount>40.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@20"/>
+										</QualityStructureFactorPrice>
+									</prices>
+								</FareTable>
+								<FareTable version="1.0" id="krn:local_Cornwall@carnet@young_person">
+									<Name>Carnet of local zone day passes - young persons    prices</Name>
+									<limitations>
+										<UserProfileRef version="1.0" ref="krn:young_person"/>
+									</limitations>
+									<prices>
+										<QualityStructureFactorPrice version="1.0" id="krn:local_Cornwall@carnet@young_person@5">
+											<Amount>6.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@5"/>
+										</QualityStructureFactorPrice>
+										<QualityStructureFactorPrice version="1.0" id="krn:local_Cornwall@carnet@young_person@20">
+											<Amount>24.00</Amount>
+											<QualityStructureFactorRef version="1.0" ref="krn:Tariff@Cornwall@carnet@units@20"/>
+										</QualityStructureFactorPrice>
+									</prices>
+								</FareTable>
+							</includes>
+						</FareTable>
+					</fareTables>
+				</FareFrame>
+				<!-- First Cornwall Network and common resources -->
+				<FareFrame version="1.0" id="epd:UK:FRST_KRN:FareFrame_UK_PI_FARE_COMMON:FRST_KRN:krn">
+					<Name>Kernowcommon parameters</Name>
+					<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_COMMON:FXCP"/>
+					<prerequisites>
+						<FareFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:FareFrame_UK_PI_METADATA:FareXChange:fxc">for types of concession</FareFrameRef>
+					</prerequisites>
+					<!--==== Pricing Parameters ====-->
+					<usageParameters>
+						<!--- ===ELIGIBILITY USAGE PARAMETERS ========= -->
+						<UserProfile version="1.0" id="krn:adult">
+							<Name>Adult</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:none"/>
+							<DiscountBasis>none</DiscountBasis>
+						</UserProfile>
+						<UserProfile version="1.0" id="krn:young_person">
+							<Name>Young person</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:child"/>
+							<MinimumAge>4</MinimumAge>
+							<MaximumAge>18</MaximumAge>
+							<DiscountBasis>discount</DiscountBasis>
+						</UserProfile>
+						<GroupTicket version="1.0" id="krn:family">
+							<Name>Family</Name>
+							<Description>two adults travelling together or a family or group of up to five (with a maximum of two adults aged 20+ </Description>
+							<MaximumNumberOfPersons>5</MaximumNumberOfPersons>
+							<companionProfiles>
+								<CompanionProfile version="1.0" id="krn:family@adult">
+									<UserProfileRef version="1.0" ref="krn:adult"/>
+									<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+								</CompanionProfile>
+								<CompanionProfile version="1.0" id="krn:family@young_person">
+									<UserProfileRef version="1.0" ref="krn:young_person"/>
+									<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>4</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</GroupTicket>
+					</usageParameters>
+					<!-- === SALES OFFER PACKAGES === -->
+				</FareFrame>
+				<ResourceFrame version="1.0" id="epd:UK:FRST_KRN:ResourceFrame_UK_PI_COMMON:FRST_KRN:krn" dataSourceRef="krn:first_cornwall" responsibilitySetRef="krn:network_data">
+					<Name>Operator specific common resources</Name>
+					<TypeOfFrameRef ref="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP" version="fxc:v1.0"/>
+					<codespaces>
+						<Codespace id="naptStop_data">
+							<Xmlns>naptStop</Xmlns>
+							<XmlnsUrl>http://www.naptan.org.uk/stops</XmlnsUrl>
+							<Description>UK National Public Transport Access Nodes: Stops.</Description>
+						</Codespace>
+						<Codespace id="nptgLocality_data">
+							<Xmlns>nptgLocality</Xmlns>
+							<XmlnsUrl>http://nptg.org.uk/locations</XmlnsUrl>
+							<Description>National Public Transport gazetteer locations</Description>
+						</Codespace>
+						<Codespace id="noc_data">
+							<Xmlns>noc</Xmlns>
+							<XmlnsUrl>http://www.traveline.co.uk/noc</XmlnsUrl>
+							<Description>UK national operator codes</Description>
+						</Codespace>
+						<Codespace id="krn_data">
+							<Xmlns>krn</Xmlns>
+							<XmlnsUrl>https://www.firstbus.co.uk/cornwall/</XmlnsUrl>
+							<Description>Firstgroup data</Description>
+						</Codespace>
+					</codespaces>
+					<dataSources>
+						<DataSource id="krn:first_cornwall" version="1.0">
+							<Email>feedback@firstgroup.com</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="1.0" id="krn:tariffs">
+							<Name>Tariffs</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="1.0" id="krn:tariff_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>FareManagement</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:FKRN" version="1.0"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet version="1.0" id="krn:network_data">
+							<Name>Network data</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="1.0" id="krn:network_data@creates">
+									<DataRoleType>creates</DataRoleType>
+									<StakeholderRoleType>Planning</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="noc:FKRN" version="1.0"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet version="1.0" id="krn:Branding" classOfValues="Branding">
+							<Name>Operator Branding</Name>
+							<values>
+								<Branding version="1.0" id="krn:FKRN@brand">
+									<Name>First</Name>
+									<Url>https://www.firstgroup.com/sites/all/themes/custom/fg2015/assets/img/branding/first-bus-logo.svg</Url>
+								</Branding>
+							</values>
+						</ValueSet>
+						<ValueSet version="1.0" id="krn:TypeOfTravelDocument" nameOfClass="TypeOfTravelDocument">
+							<values>
+								<!--- ==== ClassOfUse========= -->
+								<TypeOfTravelDocument version="1.0" id="krn:paper-ticket">
+									<Name>Bought on the bus with Cash</Name>
+									<Description>Paper ticket</Description>
+									<Url>https://www.firstgroup.com/buy-ticket/contactless-payments</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>paperTicket</MediaType>
+								</TypeOfTravelDocument>
+								<TypeOfTravelDocument version="1.0" id="krn:m-ticket">
+									<Name>Stored on your mobile phone as m-tickets</Name>
+									<Url>https://www.firstgroup.com/buy-ticket/mtickets-faqs</Url>
+									<IsSmartCard>false</IsSmartCard>
+									<MediaType>mobileApp</MediaType>
+								</TypeOfTravelDocument>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!--==== Operators ==== -->
+						<Operator version="1.0" id="noc:FKRN">
+							<PublicCode>FKRN</PublicCode>
+							<PrivateCode type="nocn">nocn:136365</PrivateCode>
+							<Name>First Cornwall</Name>
+							<ShortName>First</ShortName>
+							<TradingName>FirstGroup plc</TradingName>
+							<OrganisationType>operator</OrganisationType>
+							<Address>
+								<Street>395 King Street</Street>
+								<Town>Aberdeen</Town>
+								<PostCode>AB24 5RP</PostCode>
+							</Address>
+							<PrimaryMode>bus</PrimaryMode>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+			</frames>
+		</CompositeFrame>
+		<!-- ====COMMON UK PI Profile  RESOURCEs:  META DATA - COULD BE EXTERNALISED ===== ============ -->
+		<CompositeFrame id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:common">
+			<ValidBetween>
+				<FromDate>2015-02-01T00:00:00</FromDate>
+				<ToDate>2020-12-31T12:00:00</ToDate>
+			</ValidBetween>
+			<Name>UK Bus Profile common resources</Name>
+			<TypeOfFrameRef version="fxc:v1.0" ref="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP"/>
+			<FrameDefaults>
+				<DefaultCodespaceRef ref="fxc_metadata"/>
+				<DefaultDataSourceRef ref="fxc:dft" version="fxc:v1.0"/>
+				<DefaultResponsibilitySetRef ref="fxc:FXC_metadata" version="fxc:v1.0"/>
+			</FrameDefaults>
+			<frames>
+				<!-- === Profile Frame Types ===  -->
+				<ResourceFrame id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA_FRAMES:FXCP:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>UK FXCP  Fare profile Frame types and codepaces</Name>
+					<codespaces>
+						<Codespace id="fxc_metadata">
+							<Xmlns>fxc</Xmlns>
+							<XmlnsUrl>netex.org.uk/fxc</XmlnsUrl>
+							<Description>UK FareXChange Profile metadata</Description>
+						</Codespace>
+						<Codespace id="epd_data">
+							<Xmlns>epd</Xmlns>
+							<XmlnsUrl>http://fnetex-cen.eu/epd</XmlnsUrl>
+							<Description>European Passenger Information profile data -use for UK frame names</Description>
+						</Codespace>
+					</codespaces>
+					<dataSources>
+						<DataSource id="fxc:dft" version="fxc:v1.0">
+							<Email>standards@netex.org.uk</Email>
+						</DataSource>
+					</dataSources>
+					<!-- ========Responsibility Sets========== -->
+					<responsibilitySets>
+						<ResponsibilitySet version="fxc:v1.0" id="fxc:FXC_metadata">
+							<Name>Common</Name>
+							<roles>
+								<ResponsibilityRoleAssignment version="fxc:v1.0" id="fxc:FXC_metadata:DfT">
+									<DataRoleType>creates distributes</DataRoleType>
+									<StakeholderRoleType>DataRegistrar</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="nptg:DfT" versionRef="nptg:v2.1"/>
+									<ResponsibleAreaRef ref="nptgUkRegion:GB" versionRef="nptg:v2.1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<!-- ======== TYPE S OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame Basic </Name>
+							<values>
+								<!-- === ANCILLARY  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_COMMON:FXCP">
+									<Name>UK FXCP  common Local resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_CALENDAR:FXCP">
+									<Name>UK FXCP  Service calendar</Name>
+									<FrameClassRef nameOfClass="ServiceCalendarFrame"/>
+								</TypeOfFrame>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP:FXCP">
+									<Name>UK FXCP Stops: NapTAN Stop Place  and NPTG Locations Frame</Name>
+									<FrameClassRef nameOfClass="SiteFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK:FXCP">
+									<Name>UK FXCP Network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_TIMETABLE:FXCP">
+									<Name>UK FXCP Tietable: N</Name>
+									<FrameClassRef nameOfClass="TimetableFrame"/>
+								</TypeOfFrame>
+								<!-- === METADATA   ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA:FXCP">
+									<Name>UK Bus Profile common resources</Name>
+									<FrameClassRef nameOfClass="ResourceFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc::v2.4" id="fxc:Types_of_Offer_Frame_Basic" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_METADATA_OFFER:FXCP">
+									<Name>UK FXCP composite used to group other UKmetadta</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<!-- ======== TYPE S OF   FRAME========= -->
+						<ValueSet version="fxc:1.0" id="fxc:Types_of_Specific_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of FXC Specific  Frame</Name>
+							<values>
+								<!-- === PAYLOAD  ==== -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_COMMON:FXCP">
+									<Name>UK Bus Profile fare common paramaters</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_NETWORK:FXCP">
+									<Name>UK Bus Profile fare network</Name>
+									<FrameClassRef nameOfClass="ServiceFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRODUCT:FXCP">
+									<Name>UK FXCP Fare Porducts Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_PRICE:FXCP">
+									<Name>UK FXCP Fare Prices Frame</Name>
+									<FrameClassRef nameOfClass="FareFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Offer_Frame_for_Fares" classOfValues="TypeOfFrame">
+							<Name>Types of UK Offer Frame</Name>
+							<values>
+								<!-- === COMPOSITE ====  -->
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_STOP_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container STOP OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_LINE_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container LINE OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_NETWORK_FARE_OFFER:FXCP">
+									<Name>UK FXCP   composite container NETWORK OFFER</Name>
+									<FrameClassRef nameOfClass="CompositeFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Transaction_Frame" classOfValues="TypeOfFrame">
+							<Name>Types of UK Trasnaction  Frame</Name>
+							<values>
+								<TypeOfFrame version="fxc:v1.0" id="fxc:UK:DFT:TypeOfFrame_UK_PI_FARE_TRANSACTIONS:FXCP">
+									<Name>UK Bus Profile Operator sample transactions</Name>
+									<FrameClassRef nameOfClass="SalesTransactionFrame"/>
+								</TypeOfFrame>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+				</ResourceFrame>
+				<!-- === FareXChange  Common fixed definitions  ===  -->
+				<FareFrame id="fxc:UK:DFT:FareFrame_UK_PI_METADATA:FareXChange:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>FXCP Values for Farexchange</Name>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="fxc_metadata"/>
+						<DefaultDataSourceRef ref="fxc:dft" version="fxc:v1.0"/>
+						<DefaultResponsibilitySetRef ref="fxc:FXC_metadata" version="fxc:v1.0"/>
+					</FrameDefaults>
+					<PricingParameterSet id="fxc:Common_Resources" version="fxc:v1.0">
+						<priceUnits>
+							<PriceUnit id="fxc:GBP" version="fxc:v1.0">
+								<Name>Pound Sterling</Name>
+								<PrivateCode>&#163;</PrivateCode>
+								<Precision>2</Precision>
+							</PriceUnit>
+							<PriceUnit id="fxc:EUR" version="fxc:v1.0">
+								<Name>Euro</Name>
+								<PrivateCode>&#8364;</PrivateCode>
+								<Precision>2</Precision>
+							</PriceUnit>
+						</priceUnits>
+					</PricingParameterSet>
+					<geographicalUnits>
+						<GeographicalUnit id="fxc:mi" version="fxc:v1.0">
+							<Name>Distance Unit Miles</Name>
+						</GeographicalUnit>
+						<GeographicalUnit id="fxc:km" version="fxc:v1.0">
+							<Name>Distance Unit Kilometres</Name>
+						</GeographicalUnit>
+						<GeographicalUnit id="fxc:unit_stage" version="fxc:v1.0">
+							<Name>Distance Unit Stage</Name>
+						</GeographicalUnit>
+					</geographicalUnits>
+					<!-- === USAGE PARAMETERS === -->
+					<usageParameters>
+						<UserProfile version="fxc:v1.0" id="fxc:adult">
+							<Name>Adult</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:none"/>
+							<UserType>adult</UserType>
+							<DiscountBasis>none</DiscountBasis>
+							<companionProfiles>
+								<CompanionProfile version="fxc:v1.0" id="fxc:adult@infant">
+									<UserProfileRef ref="fxc:infant" version="fxc:v1.0"/>
+									<MinimumNumberOfPersons>0</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+								</CompanionProfile>
+							</companionProfiles>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:child">
+							<Name>Child</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:child"/>
+							<UserType>child</UserType>
+							<MinimumAge>5</MinimumAge>
+							<MaximumAge>15</MaximumAge>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:infant">
+							<Name>Infant</Name>
+							<Description>Up to three children under 5 years of age, accompanied by a fare paying adult or child passenger, and not occupying a seat, may travel free of charge on the Company&#x2019;s services.</Description>
+							<prices>
+								<UsageParameterPrice version="fxc:v1.0" id="fxc:infant">
+									<Amount>0</Amount>
+								</UsageParameterPrice>
+							</prices>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:infant"/>
+							<UserType>infant</UserType>
+							<MinimumAge>0</MinimumAge>
+							<MaximumAge>4</MaximumAge>
+							<DiscountBasis>free</DiscountBasis>
+							<companionProfiles>
+								<CompanionProfile id="fxc:infant@adult" version="fxc:v1.0">
+									<UserProfileRef ref="fxc:adult" version="fxc:v1.0"/>
+									<MinimumNumberOfPersons>1</MinimumNumberOfPersons>
+									<MaximumNumberOfPersons>1</MaximumNumberOfPersons>
+									<DiscountBasis>none</DiscountBasis>
+								</CompanionProfile>
+							</companionProfiles>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:student">
+							<Name>Student</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:student"/>
+							<UserType>student</UserType>
+							<ProofRequired>membershipCard</ProofRequired>
+							<DiscountBasis>discount</DiscountBasis>
+						</UserProfile>
+						<UserProfile version="fxc:v1.0" id="fxc:senior">
+							<Name>Senior</Name>
+							<TypeOfConcessionRef version="fxc:v1.0" ref="fxc:child"/>
+							<UserType>senior</UserType>
+							<MinimumAge>60</MinimumAge>
+						</UserProfile>
+					</usageParameters>
+					<!-- ====CHANNELS -->
+					<distributionChannels>
+						<DistributionChannel id="fxc:online" version="fxc:v1.0">
+							<ShortName>Internet sales</ShortName>
+							<alternativeNames>
+								<AlternativeName order="1" id="fxc:online_de" version="fxc:v1.0">
+									<Name lang="de">Internetverkauf</Name>
+								</AlternativeName>
+								<AlternativeName order="1" id="fxc:online_fr" version="fxc:v1.0">
+									<Name lang="fr">A vendre par l'internet</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<DistributionChannelType>online</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:online_subscription" version="fxc:v1.0">
+							<ShortName>online automatic subscription to renew</ShortName>
+							<DistributionChannelType>online</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:at_stop" version="fxc:v1.0">
+							<ShortName>In station sale by machine, counter or payg</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:self_service_ticket_machine" version="fxc:v1.0">
+							<ShortName>Automatic Ticket Machine</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:pay_as_you_go_device" version="fxc:v1.0">
+							<ShortName>Pay as you go device - eg smartcard</ShortName>
+							<DistributionChannelType>atStop</DistributionChannelType>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:at_counter" version="fxc:v1.0">
+							<ShortName>Ticket counter sale</ShortName>
+							<alternativeNames>
+								<AlternativeName order="1" id="fxc:at_counter_de" version="fxc:v1.0">
+									<Name lang="de">Schalter</Name>
+								</AlternativeName>
+								<AlternativeName order="1" id="fxc:at_counter_fr" version="fxc:v1.0">
+									<Name lang="fr">A vendre par le guichet</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<DistributionChannelType>atStop</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:on_board" version="fxc:v1.0">
+							<ShortName>on_board</ShortName>
+							<DistributionChannelType>onBoard</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:call_centre" version="fxc:v1.0">
+							<ShortName>Call Centre</ShortName>
+							<DistributionChannelType>telephone</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:operator_travel_shop" version="fxc:v1.0">
+							<ShortName>Operator Travel Shop</ShortName>
+							<DistributionChannelType>telephone</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:travel_agent" version="fxc:v1.0">
+							<ShortName>Travel Agent</ShortName>
+							<DistributionChannelType>agency</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:employee_organisation" version="fxc:v1.0">
+							<ShortName>Employee Organisation</ShortName>
+							<DistributionChannelType>other</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+						<DistributionChannel id="fxc:statutory_organisation" version="fxc:v1.0">
+							<ShortName>Statutory Organisation</ShortName>
+							<DistributionChannelType>other</DistributionChannelType>
+							<IsObligatory>false</IsObligatory>
+						</DistributionChannel>
+					</distributionChannels>
+					<fulfilmentMethods>
+						<FulfilmentMethod id="fxc:collect_on_board" version="fxc:v1.0">
+							<Name>Collect on board</Name>
+							<FulfilmentMethodType>conductor</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:hand_written_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_from_machine" version="fxc:v1.0">
+							<Name>Collect from machine</Name>
+							<FulfilmentMethodType>ticketMachine</FulfilmentMethodType>
+							<RequiresBookingReference>true</RequiresBookingReference>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_at_counter" version="fxc:v1.0">
+							<Name>Collect at counter</Name>
+							<FulfilmentMethodType>ticketOffice</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:hand_written_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:collect_from_agent" version="fxc:v1.0">
+							<Name>Travel agent issues ticket directly</Name>
+							<FulfilmentMethodType>agent</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:electronic_document" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:mobile_app" version="fxc:v1.0">
+							<Name>Mobile App</Name>
+							<FulfilmentMethodType>mobileApp</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:mobile_app_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:self_print" version="fxc:v1.0">
+							<Name>Self Print</Name>
+							<FulfilmentMethodType>selfprint</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:self_print_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:electronic_document" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:online_propagation" version="fxc:v1.0">
+							<Name>Online propagation</Name>
+							<FulfilmentMethodType>validator</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:mobile_app_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:email" version="fxc:v1.0">
+							<Name>EMAIL</Name>
+							<FulfilmentMethodType>email</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:self_print_ticket" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:post" version="fxc:v1.0">
+							<Name>Send ticket by post</Name>
+							<FulfilmentMethodType>post</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+						<FulfilmentMethod id="fxc:courier" version="fxc:v1.0">
+							<Name>Send ticket by courier</Name>
+							<FulfilmentMethodType>other</FulfilmentMethodType>
+							<typesOfTravelDocument>
+								<TypeOfTravelDocumentRef ref="fxc:printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:magstripe_printed_ticket" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:pass" version="fxc:v1.0"/>
+								<TypeOfTravelDocumentRef ref="fxc:smart_card" version="fxc:v1.0"/>
+							</typesOfTravelDocument>
+						</FulfilmentMethod>
+					</fulfilmentMethods>
+					<typesOfTravelDocuments>
+						<TypeOfTravelDocument id="fxc:distribution_channel_dependent" version="fxc:v1.0">
+							<Name>Depends on channel used</Name>
+							<MediaType>other</MediaType>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:printed_ticket" version="fxc:v1.0">
+							<Name>Printed Ticket</Name>
+							<MediaType>paperTicket</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:hand_written_ticket" version="fxc:v1.0">
+							<Name>Hand written ticket</Name>
+							<MediaType>paperTicket</MediaType>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:magstripe_printed_ticket" version="fxc:v1.0">
+							<Name>Printed Ticket with magnetic Stripe</Name>
+							<MediaType>paperTicket</MediaType>
+							<MachineReadable>magneticStrip</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:self_print_ticket" version="fxc:v1.0">
+							<MediaType>selfPrintPaperTicket</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:pass" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>barCode</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:mobile_app_ticket" version="fxc:v1.0">
+							<MediaType>mobileApp</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:smart_card" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>chip</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:electronic_document" version="fxc:v1.0">
+							<MediaType>none</MediaType>
+							<MachineReadable>ocr</MachineReadable>
+						</TypeOfTravelDocument>
+						<TypeOfTravelDocument id="fxc:membership_card" version="fxc:v1.0">
+							<MediaType>card</MediaType>
+							<MachineReadable>none</MachineReadable>
+						</TypeOfTravelDocument>
+					</typesOfTravelDocuments>
+				</FareFrame>
+				<ResourceFrame id="fxc:UK:DFT:ResourceFrame_UK_PI_METADATA:FareXChange:fxc" version="fxc:v1.0" responsibilitySetRef="fxc:FXC_metadata" dataSourceRef="fxc:dft">
+					<Name>FXCP - Fare profile  metadata</Name>
+					<FrameDefaults>
+						<DefaultCodespaceRef ref="fxc_metadata"/>
+						<DefaultDataSourceRef ref="fxc:dft" version="fxc:v1.0"/>
+						<DefaultResponsibilitySetRef ref="fxc:FXC_metadata" version="fxc:v1.0"/>
+						<DefaultLocale>
+							<TimeZoneOffset>0</TimeZoneOffset>
+							<TimeZone>GMT</TimeZone>
+							<SummerTimeZoneOffset>+1</SummerTimeZoneOffset>
+							<SummerTimeZone>BST</SummerTimeZone>
+							<DefaultLanguage>en</DefaultLanguage>
+						</DefaultLocale>
+						<DefaultLocationSystem>WGS84</DefaultLocationSystem>
+						<DefaultSystemOfUnits>SiKilometresAndMetres</DefaultSystemOfUnits>
+						<DefaultCurrency>GBP</DefaultCurrency>
+					</FrameDefaults>
+					<versions>
+						<Version id="fxc:v1.0" version="any">
+							<ValidBetween>
+								<FromDate>2019-01-01T01:01:01Z</FromDate>
+							</ValidBetween>
+							<Description>FXC version 2.1</Description>
+							<VersionType>baseline</VersionType>
+						</Version>
+					</versions>
+					<typesOfValue>
+						<!-- ======== Code sets ========= -->
+						<ValueSet version="fxc:v1.0" id="fxc:PointsOfInterest_Classifications" classOfValues="PointOfInterestClassification">
+							<Name>Types of POI</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<PointOfInterestClassification version="fxc:v1.0" id="fxc:operator_travel_shop">
+									<Name>Travel Shop</Name>
+								</PointOfInterestClassification>
+								<PointOfInterestClassification version="fxc:v1.0" id="fxc:tourist_information_centre">
+									<Name>Tourist Information Centre</Name>
+								</PointOfInterestClassification>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareZone" classOfValues="TypeOfZone">
+							<Name>Types of FARE ZONE</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@operator">
+									<Name>Operator defined zone</Name>
+								</TypeOfZone>
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@multi_operator">
+									<Name>MultiOperator defined zone</Name>
+								</TypeOfZone>
+								<TypeOfZone version="fxc:v1.0" id="fxc:fare_zone@concessionary">
+									<Name>Concessionary scheme zone</Name>
+								</TypeOfZone>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_ProductCategory" classOfValues="TypeOfProductCategory">
+							<Name>Types of PRODUCT CATEGORY</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:urban_bus">
+									<Name>Urban Bus</Name>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:rural_bus">
+									<Name>Rural Bus</Name>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory version="fxc:v1.0" id="fxc:park_and_ride">
+									<Name>Rural Bus</Name>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:PurposesOfGrouping" classOfValues="PurposeOfGrouping">
+							<Name>Purposes of Grouping</Name>
+							<values>
+								<!--- ====Type of Product category ========= -->
+								<PurposeOfGrouping version="fxc:v1.0" id="fxc:route_exclusion">
+									<Name>Routes to be ommitted</Name>
+								</PurposeOfGrouping>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:ChargingMoments" classOfValues="ChargingMoment">
+							<Name>Types of CHARGING MOMENT</Name>
+							<values>
+								<!--- ==== TypeOfChargingMoment ========= -->
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment">
+									<Name>Prepaid</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@pay_as_you_go">
+									<Name>Prepaid - pay as you go</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@bundled">
+									<Name>Prepaid - paid along with a base product</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc:prepayment@free">
+									<Name>Prepaid - free issue</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc::post_payment">
+									<Name>Postpaid</Name>
+								</ChargingMoment>
+								<ChargingMoment version="fxc:v1.0" id="fxc::post_payment_periodic">
+									<Name>Postpaid</Name>
+								</ChargingMoment>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@trip" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Trip</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@trip@short_hop">
+									<Name>Short hop fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@trip@single">
+									<Name>Single fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:era:standard_product@trip@time_limited">
+									<Name>Time Limited fare</Name>
+								</TypeOfFareProduct>
+								<!--- Special -->
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:special_product@trip@period_return">
+									<Name>Period return fare</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:era:special_produc@trip@day_return">
+									<Name>Day retirn fare</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@pass" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@day">
+									<Name>day pass - till end of fare day</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@24H">
+									<Name>24H from time of activation</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@pass@period">
+									<Name>Pass for a specifed period</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@carnet" classOfValues="TypeOfFareProduct">
+							<Name>Types Of FARE PRODUC- Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@carnet@trips">
+									<Name>Carnet of trips.</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@carnet@days">
+									<Name>Carnet of 1 day' passes.</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@discount" classOfValues="TypeOfFareProduct">
+							<Name>Types Of FARE PRODUCT - Pass</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@discount@sales">
+									<Name>Sales discount righty</Name>
+								</TypeOfFareProduct>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@discount@usage">
+									<Name>Usage discount rights</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareProduct@stored_value" classOfValues="TypeOfFareProduct">
+							<Name>Types of FARE PRODUCT - Epurse</Name>
+							<values>
+								<TypeOfFareProduct version="fxc:v1.0" id="fxc:standard_product@stored_value@epurse">
+									<Name>Epurse</Name>
+								</TypeOfFareProduct>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_SalesOfferPackage" classOfValues="TypeOfSalesOfferPackage">
+							<Name>Types of SALES OFFER PACKAGE.</Name>
+							<values>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@all_operators">
+									<Name>Product is standard and supported by all operators</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@multi_operator">
+									<Name>Product is standrad and supported by all operators</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:standard_product@operator">
+									<Name>Single operator standard product</Name>
+								</TypeOfSalesOfferPackage>
+								<TypeOfSalesOfferPackage version="fxc:v1.0" id="fxc:special_product@operator">
+									<Name>Single operator special product</Name>
+								</TypeOfSalesOfferPackage>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Classes_of_Use" classOfValues="ClassOfUse">
+							<Name>Types of CLASS OF USE.</Name>
+							<values>
+								<!--- ====ClassOfUse ========= -->
+								<ClassOfUse version="fxc:v1.0" id="fxc:first">
+									<Name>First Class</Name>
+								</ClassOfUse>
+								<ClassOfUse version="fxc:v1.0" id="fxc:second">
+									<Name>Second Class</Name>
+								</ClassOfUse>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Projection" classOfValues="TypeOfProjection">
+							<Name>Types of PROJECTION</Name>
+							<values>
+								<!--- ====ClassOfUse ========= -->
+								<TypeOfProjection version="fxc:v1.0" id="fxc:tariff_zone_border">
+									<Name>The boundary stops for a fare_zone</Name>
+								</TypeOfProjection>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareContractEntry" classOfValues="TypeOfFareContractEntry">
+							<Name>Types of FARE CONTRACT ENTRY</Name>
+							<values>
+								<!--- ====TypeOfFareContractEntry ========= -->
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:product_purchase">
+									<Name>Purchase</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:product_refund">
+									<Name>Refund</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:online_purchase">
+									<Name>Online Purchase</Name>
+								</TypeOfFareContractEntry>
+								<TypeOfFareContractEntry version="fxc:v1.0" id="fxc:on_board_purchase">
+									<Name>Cash Purchase</Name>
+								</TypeOfFareContractEntry>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Concession" classOfValues="TypeOfConcession">
+							<Name>Types of CONCESSION</Name>
+							<values>
+								<!--- ====TypeOfConcession method========= -->
+								<TypeOfConcession version="fxc:v1.0" id="fxc:none">
+									<Name>Adult</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:infant">
+									<Name>Infant</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:child">
+									<Name>Child</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:youth">
+									<Name>Youth</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:school_pupil">
+									<Name>School pupil</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:student">
+									<Name>Student</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:young_adult">
+									<Name>Youth</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:senior">
+									<Name>Senior</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:registered_disabled">
+									<Name>Registered disabled</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:animal">
+									<Name>Animal</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:social">
+									<Name>Social</Name>
+								</TypeOfConcession>
+								<TypeOfConcession version="fxc:v1.0" id="fxc:statutory">
+									<Name>Statutory</Name>
+								</TypeOfConcession>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_Tariff" classOfValues="TypeOfTariff">
+							<Name>Spatial Types of Tariff</Name>
+							<values>
+								<!--- ====Types OfTariff ========= -->
+								<TypeOfTariff version="fxc:v1.0" id="fxc:Distance_kilometers">
+									<Name>Kilometer Distance Kilometers</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:flat">
+									<Name>Flat</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:point_to_point">
+									<Name>Point to point</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:zone_to_zone">
+									<Name>Zone to Zone</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:zonal">
+									<Name>Zonal</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:section">
+									<Name>Section</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:banded">
+									<Name>Section</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:stored_value">
+									<Name>Stored value</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:discount">
+									<Name>Discount value</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:multitrip">
+									<Name>Multitrip carnet</Name>
+								</TypeOfTariff>
+								<TypeOfTariff version="fxc:v1.0" id="fxc:identity_card">
+									<Name>SIdentity</Name>
+								</TypeOfTariff>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_FareStructureElement" classOfValues="TypeOfFareStructureElement">
+							<Name>FXCP: Types of FARE STRUCTURE ELEMENT.</Name>
+							<values>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:access">
+									<Name>Access rights</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:access_when">
+									<Name>Fare demand :peak /off peak etc access rights to use or travel during some period</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:accepted_by">
+									<Name>Accepted by operator</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:eligibility">
+									<Name>Eligibility to purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:groups">
+									<Name>Group tickets available</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:durations">
+									<Name>Time intervals</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:intervals">
+									<Name>Time intervals</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:prerequisites">
+									<Name>Defines required entitlements</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:entitles">
+									<Name>Gives right to other products</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:sale_conditions">
+									<Name>Defines a condition or restriction on purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:travel_conditions">
+									<Name>Condition on use</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:validity">
+									<Name>Validity</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:carnet_units">
+									<Name>Specifies units for purchase</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:outlets">
+									<Name>Specifies where a purchase can be made</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:quotas">
+									<Name>Quotas</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:steps">
+									<Name>Steps in sequence</Name>
+								</TypeOfFareStructureElement>
+								<TypeOfFareStructureElement version="fxc:v1.0" id="fxc:payment_schedules">
+									<Name>Payment Schedules</Name>
+								</TypeOfFareStructureElement>
+							</values>
+						</ValueSet>
+						<ValueSet version="fxc:v1.0" id="fxc:Types_of_AccessRightAssignment" classOfValues="TypeOfAccessRightAssignment">
+							<Name>Types of Access Right Assignment</Name>
+							<values>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:eligible">
+									<Name>Eligible for a product or discount</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access">
+									<Name>Grants access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:cannot_access">
+									<Name>Revokes access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:must_access">
+									<Name>Requires access rights to use or travel on</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access_when">
+									<Name>Grants access rights to use or travel during some period</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_access_if_purchased">
+									<Name>Right defines a property that may be Accessed if purchased</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_use_with_type_of_travel_document">
+									<Name>Right defines tyoe travel document condition</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:condition_of_use">
+									<Name>Defines a condition or restriction on use</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:condition_of_sale">
+									<Name>Defines a condition or restriction on purchase</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase">
+									<Name>Gives right to purchase</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase_when">
+									<Name>Specifies when a purchase can be made</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_purchase_where">
+									<Name>Specifies where a purchase can be made</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:gives_entitlement">
+									<Name>Gives right to other products</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:prerequisites">
+									<Name>Requires right to other products</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:penalties">
+									<Name>Penalties for misuuse</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:can_use_to_pay_for">
+									<Name>Gives ability to purchase automatically using</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:payment_schedules">
+									<Name>Specifices if subscription or single payment</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:reservation_condition">
+									<Name>Indicates need for reservation</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:distribution_channel_restriction">
+									<Name>Constrains availability for distribution by a channel</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:use_before">
+									<Name>Takes properties from group package</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:quota_applies">
+									<Name>Quota applies</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:promotion_applies">
+									<Name>Promotion applies</Name>
+								</TypeOfAccessRightAssignment>
+								<TypeOfAccessRightAssignment version="fxc:v1.0" id="fxc:validity_chaining">
+									<Name>Quota applies</Name>
+								</TypeOfAccessRightAssignment>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<!-- ========Operators ========== -->
+					<organisations>
+						<GeneralOrganisation version="fxc:v1.0" id="fxc:DfT">
+							<Name>Department for Transport</Name>
+							<ShortName>DfT</ShortName>
+							<OrganisationType>statutoryBody</OrganisationType>
+						</GeneralOrganisation>
+						<!-- === UIC RUs ==== -->
+						<Operator version="fxc:v1.0" id="uic:operator:1170">
+							<PublicCode>ATOC</PublicCode>
+							<Name>Association of Train Operating Companies Limited</Name>
+							<ShortName>UIC</ShortName>
+							<ValidityPeriod>
+								<FromDate>2001-01-01T00:00:00Z</FromDate>
+								<ToDate>2020-01-01T00:00:00Z</ToDate>
+							</ValidityPeriod>
+							<CountryRef ref="uk" refPrincipality="iso3166-2:GB-UKM"/>
+						</Operator>
+						<Operator version="fxc:v1.0" id="uicStation_Management:0070">
+							<PublicCode>NR</PublicCode>
+							<Name>Network Rail Limited</Name>
+							<ShortName>Network Rail</ShortName>
+							<ValidityPeriod>
+								<FromDate>2003-09-22T00:00:00Z</FromDate>
+								<ToDate>2020-01-01T00:00:00Z</ToDate>
+							</ValidityPeriod>
+							<CountryRef ref="uk" refPrincipality="iso3166-2:GB-UKM"/>
+						</Operator>
+					</organisations>
+					<groupsOfEntities>
+						<Layer version="fxc:v1.0" id="fxc:fare_network+fare_products+fare_prices">
+							<Name>Fares and fare prices</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_network">
+							<Name>Fares networks</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_products">
+							<Name>Fares ad fare prices</Name>
+						</Layer>
+						<Layer version="fxc:v1.0" id="fxc:fare_prices">
+							<Name>Fares and fare prices</Name>
+						</Layer>
+					</groupsOfEntities>
+				</ResourceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

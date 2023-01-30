@@ -34,16 +34,16 @@ POR+008008094+2332*2334+17*17'
 POR+008010316+2346*2348+13*13'
 POR+008010184+2358*0000:::1+6*6'
 POR+008010179+0008*0009+5*5'
-POR+008010053+0021+8*'
-ODI+008500010*008010053+1*16'
+POR+TapTsix02+0021+8*'
+ODI+008500010*TapTsix02+1*16'
 PDT++:::51:::'
-ODI+008500010*008010053+1*16'
+ODI+008500010*TapTsix02+1*16'
 SER+106'
-ODI+008500010*008010053+1*16'
+ODI+008500010*TapTsix02+1*16'
 SER+4'
-ODI+008500010*008010053+1*16'
+ODI+008500010*TapTsix02+1*16'
 SER+5'
-ODI+008500010*008010053+1*16'
+ODI+008500010*TapTsix02+1*16'
 SER+72'
 ODI+008500010*008015458+1*11'
 SER+9'
@@ -87,104 +87,8 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 				<DefaultCodespaceRef ref="op5_cs"/>
 			</FrameDefaults>
 			<frames>
-				<ServiceFrame version="any" id="uic:SKDUPD_example_5_Interchange">
-					<!--- comment: THESE STOP DECLARATIONS COULD BE EXTERNAL as in a TSDUPD location , they are here so as to be able to define names -->
-					<scheduledStopPoints>
-						<ScheduledStopPoint version="any" id="uic:008500010">
-							<Name lang="de">BASEL SBB</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="ch"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008500090">
-							<Name lang="de">BASEL BAD</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="ch"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008014350">
-							<Name lang="de">FREIBURG/BREISGAU HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="ch"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008014309">
-							<Name lang="de">OFFENBURG</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008014277">
-							<Name lang="de">BADEN BADEN</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008014228">
-							<Name lang="de">KARLSRUHE HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008014008">
-							<Name lang="de">MANNHEIM HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008061676">
-							<Name lang="de">FRANKFURT (M) FLUGHAFEN FERNBF HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008015588">
-							<Name lang="de">SIEGBURG-BONNF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008015458">
-							<Name lang="de">KOELN HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008008094">
-							<Name lang="de">DUSSELDORF HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008010316">
-							<Name lang="de">DUISBURG HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008010184">
-							<Name lang="de">ESSEN HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008010179">
-							<Name lang="de">BOCHUM HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="uic:008010053">
-							<Name lang="de">DORTMUND HBF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="de"/>
-						</ScheduledStopPoint>
-					</scheduledStopPoints>
-				</ServiceFrame>
-				<FareFrame version="any" id="uic:SKDUPD_example_5_Interchange">
-					<Name>Border points are noted for fares</Name>
-					<borderPoints>
-						<BorderPoint version="any" id="uic:008014431_border">
-							<Name lang="de">BASEL BAD BF</Name>
-						</BorderPoint>
-					</borderPoints>
-					<fareScheduledStopPoints>
-						<FareScheduledStopPoint version="any" id="uic:008014431">
-							<Name lang="de">BASEL BAD BF</Name>
-							<StopType>railStation</StopType>
-							<CountryRef ref="ch"/>
-							<BorderPointRef version="any" ref="uic:008014431_border"/>
-						</FareScheduledStopPoint>
-					</fareScheduledStopPoints>
-				</FareFrame>
-				<TimetableFrame version="any" id="SKDUPD_example_5_Interchange">
-					<VehicleModes>rail</VehicleModes>
+				<TimetableFrame version="any" id="SKDUPD_example_5_Interchange"> 
+				<VehicleModes>rail</VehicleModes>
 					<vehicleJourneys>
 						<DatedServiceJourney version="any" id="100" changed="2022-01-26T09:51:00" dataSourceRef="uic:0060">
 							<!-- PRD+100:11::8:::Interchange+1180' -->
@@ -205,15 +109,16 @@ ID	Service_number	Reservation	Tariff	Service_Mode	Service_Name	Service_Provider	
 								<TrainNumberRef version="any" ref="100"/>
 							</trainNumbers>
 							<parts>
-								<JourneyPart version="any" id="100@008500010+008010053" order="1">
-									<!-- ODI+008500010*008010053+1*16' -->
+								<JourneyPart version="any" id="100@008500010+TapTsix02" order="1">
+									<!-- ODI+008500010*TapTsix02+1*16' -->
 									<Description>Stops 1 -16</Description>
 									<ParentJourneyRef version="any" ref="5"/>
-									<MainPartRef version="any" ref="100@008500010+008010053"/>
-									<FromStopPointRef version="any" ref="uic:008500010"/>
-									<ToStopPointRef version="any" ref="uic:008010053"/>
+									<MainPartRef version="any" ref="100@008500010+TapTsix02"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:008500010"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:TapTsix02"/>
 									<StartTime>19:13:00</StartTime>
-									<EndTime>23:11:00</EndTime>
+									<EndTime>00:21:00</EndTime>
+									<EndTimeDayOffset>1</EndTimeDayOffset>
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
 									<facilities>
 										<!-- SKDUPD_ODI
@@ -233,26 +138,25 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="100@F106">
 											<!-- SER+106' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F106"/>
-											<LuggageCarriageFacilityList>vehicleTransport</LuggageCarriageFacilityList>
-											<!--	F106 TafTsi B.4.9039: 	TODO -  NB Code Not Defined Motorrail?  -->
+											<!--	F106 TapTsi B.4.9039: 	F106 = Vaccinated, tested, recovered rule applies on trains, valid proof must be presented .   NB GAP there is not currently a NeETx enum , can still specify an external code-->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="100@F4">
 											<!-- SER+4' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F4"/>
 											<FareClasses>firstClass</FareClasses>
-											<!-- F4 TafTsi B.4.9039: 4	First-class seats -->
+											<!-- F4 TapTsi B.4.9039: 4	First-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="100@F5">
 											<!-- SER+5'-->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F5"/>
 											<FareClasses>secondClass</FareClasses>
-											<!-- F5 TafTsi B.4.9039: 5	Second-class seats -->
+											<!-- F5 TapTsi B.4.9039: 5	Second-class seats -->
 										</ServiceFacilitySet>
 										<ServiceFacilitySet version="any" id="100@F72">
 											<!-- SER+72' -->
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F72"/>
 											<AccommodationFacilityList>familyCarriage</AccommodationFacilityList>
-											<!-- F72 TafTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
+											<!-- F72 TapTsi B.4.9039: (72)  family carriage?      NB TO NOT LISTED IN  B.4.9039 -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -261,9 +165,9 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 SER+9' -->
 									<Description>Stops 1-11</Description>
 									<ParentJourneyRef version="any" ref="5"/>
-									<MainPartRef version="any" ref="100@008500010+008010053"/>
-									<FromStopPointRef version="any" ref="uic:008500010"/>
-									<ToStopPointRef version="any" ref="uic:008010053"/>
+									<MainPartRef version="any" ref="100@008500010+TapTsix02"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:008500010"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:TapTsix02"/>
 									<StartTime>19:13:00</StartTime>
 									<EndTime>23:04:00</EndTime>
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
@@ -275,7 +179,7 @@ ID	FromStopNumber	ToStopNumber	ASD_or_SER	Reservation_in_equipment	Equipment	Tar
 										<ServiceFacilitySet version="any" id="100@F9">
 											<TypeOfFacilityRef versionRef="EXTERNAL" ref="F9"/>
 											<CateringFacilityList>restaurant</CateringFacilityList>
-											<!-- F9 TafTsi B.4.9039: 9	Restaurant-->
+											<!-- F9 TapTsi B.4.9039: 9	Restaurant-->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -298,11 +202,11 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 5	13	008010316	2346		2348		13	13					
 5	14	008010184	2358		0000	1	6	6					
 5	15	008010179	0008		0009		5	5					
-5	16	008010053	0021				8						
+5	16	TapTsix02	0021				8						
 	-->
 								<Call version="any" id="100" order="1">
 									<!--POR+008500010+*1913+*11'-->
-									<ScheduledStopPointRef version="any" ref="uic:008500010">BASEL SBB</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008500010">BASEL SBB</ScheduledStopPointRef>
 									<Arrival>
 										<ForAlighting>false</ForAlighting>
 									</Arrival>
@@ -315,7 +219,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="2">
 									<!--POR+008500090+++17' -->
-									<ScheduledStopPointRef version="any" ref="uic:008500090">BASEL BAD</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008500090">BASEL BAD</ScheduledStopPointRef>
 									<Arrival>
 										<!-- TRF+4'    pass through-->
 										<ForAlighting>false</ForAlighting>
@@ -328,7 +232,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="3">
 									<!--POR+008014431+1919*1922+4*4+17'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014431">BASEL BAD BF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014431">BASEL BAD BF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>19:19:00</Time>
 										<QuayAssignmentView>
@@ -347,7 +251,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="4">
 									<!--POR+008014350+1954*1955+1*1'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014350">FREIBURG/BREISGAU HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014350">FREIBURG/BREISGAU HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>19:54:00</Time>
 										<QuayAssignmentView>
@@ -365,7 +269,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="5">
 									<!--POR+008014309+2024*2026+3*3'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014309">OFFENBURG</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014309">OFFENBURG</ScheduledStopPointRef>
 									<Arrival>
 										<Time>20:24:00</Time>
 										<QuayAssignmentView>
@@ -383,7 +287,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="6">
 									<!--POR+008014277+2040*2041+4*4'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014277">BADEN_BADEN</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014277">BADEN_BADEN</ScheduledStopPointRef>
 									<Arrival>
 										<Time>20:40:00</Time>
 										<QuayAssignmentView>
@@ -401,7 +305,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="7">
 									<!--POR+008014228+2059*2101+'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014228">KARLSRUHE HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014228">KARLSRUHE HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>20:59:00</Time>
 									</Arrival>
@@ -411,7 +315,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="8">
 									<!--POR+008014008+2135*2137+3*3' RFR+AUE:590'  RLS+13+7' TCE+4+X02'-->
-									<ScheduledStopPointRef version="any" ref="uic:008014008">MANNHEIM HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014008">MANNHEIM HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>21:35:00</Time>
 										<QuayAssignmentView>
@@ -429,7 +333,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="9">
 									<!--POR+008061676+2210*2212+Fern 6*Fern 6'-->
-									<ScheduledStopPointRef version="any" ref="uic:008061676">FRANKFURT(M) FLUGHAFEN FERNBF HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008061676">FRANKFURT(M) FLUGHAFEN FERNBF HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>22:10:00</Time>
 										<QuayAssignmentView>
@@ -447,7 +351,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="10">
 									<!--POR+008015588+2247*2248+3*3'-->
-									<ScheduledStopPointRef version="any" ref="uic:008015588">SIEGBURG-BONNF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008015588">SIEGBURG-BONNF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>22:47:00</Time>
 										<QuayAssignmentView>
@@ -465,7 +369,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="11">
 									<!--POR+008015458+2304*2311+5*5' RFR+AUE:2210' RLS+13+7' TCE+4+X02'-->
-									<ScheduledStopPointRef version="any" ref="uic:008015458">KOELN HBF </ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008015458">KOELN HBF </ScheduledStopPointRef>
 									<Arrival>
 										<Time>23:04:00</Time>
 										<QuayAssignmentView>
@@ -483,7 +387,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="12">
 									<!--POR+008008094+2332*2334+17*17'-->
-									<ScheduledStopPointRef version="any" ref="uic:008008094">DUSSELDORF HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008008094">DUSSELDORF HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>23:32:00</Time>
 										<QuayAssignmentView>
@@ -502,7 +406,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="13">
 									<!--POR+008010316+2346*2348+13*13'-->
-									<ScheduledStopPointRef version="any" ref="uic:008010316">DUISBURG HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008010316">DUISBURG HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>23:46:00</Time>
 										<QuayAssignmentView>
@@ -520,7 +424,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="14">
 									<!--POR+008010184+2358*0000:::1+6*6'-->
-									<ScheduledStopPointRef version="any" ref="uic:008010184">ESSEN HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008010184">ESSEN HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>23:58:00</Time>
 										<QuayAssignmentView>
@@ -539,7 +443,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								</Call>
 								<Call version="any" id="100" order="15">
 									<!--POR+008010179+0008*0009+5*5'-->
-									<ScheduledStopPointRef version="any" ref="uic:008010179">BOCHUM HBF</ScheduledStopPointRef>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008010179">BOCHUM HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>00:08:00</Time>
 										<DayOffset>1</DayOffset>
@@ -558,13 +462,13 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 									</Departure>
 								</Call>
 								<Call version="any" id="100" order="16">
-									<!--POR+008010053+0021+8*'-->
-									<ScheduledStopPointRef version="any" ref="uic:008010053">DORTMUND HBF</ScheduledStopPointRef>
+									<!--POR+TapTsix02+0021+8*'-->
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:TapTsix02">DORTMUND HBF</ScheduledStopPointRef>
 									<Arrival>
 										<Time>00:21:00</Time>
 										<DayOffset>1</DayOffset>
 										<QuayAssignmentView>
-											<QuayRef versionRef="EXTERNAL" ref="008010053@8"/>
+											<QuayRef versionRef="EXTERNAL" ref="@8"/>
 											<Label>8</Label>
 										</QuayAssignmentView>
 									</Arrival>
@@ -578,17 +482,19 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 								<ServiceFacilitySet version="any" id="100@reservation">
 									<TypeOfFacilityRef versionRef="EXTERNAL" ref="11"/>
 									<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
-									<!--	R11 TafTsi B.4.7037: 	11	  reservation possible -->
+									<!--	R11 TapTsi B.4.7037: 	11	  reservation possible -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
 								<CheckConstraint version="any" id="7@008500090@ch">
+									<!-- Narrative: This information is not explicity in MERITS but could be inferred -->
 									<!-- POR+008500090+++17' -->
 									<Name lang="hu">NICKELSDORF GRENZE</Name>
 									<PlaceRef version="any" ref="uic:008500090">NICKELSDORF GRENZE</PlaceRef>
 									<CheckProcess>outgoingPassportControl</CheckProcess>
 								</CheckConstraint>
 								<CheckConstraint version="any" id="7@008014431@db">
+									<!-- Narrative: This information is not explicity in MERITS but could be inferred -->
 									<!-- POR+008014431+1919*1922+4*4+17'		 -->
 									<PlaceRef version="any" ref="uic:008014431">BASEL BAD BF</PlaceRef>
 									<CheckProcess>incomingPassportControl</CheckProcess>
@@ -614,7 +520,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 						<VehicleJourneyStopAssignment version="any" id="100@008014008">
 							<!-- POR+008014008+2135*2137+3*3' -->
 							<Name>Indicates platform to go to for   train</Name>
-							<ScheduledStopPointRef version="any" ref="uic:008014008"/>
+							<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008014008"/>
 							<Quay version="any" id="008014008@3">
 								<Name>Platform 3</Name>
 								<PublicCode>3</PublicCode>
@@ -624,7 +530,7 @@ ID	Stop_number	UIC	Arrival_time	Arrival_offset	Departure_time	Departure_offset	P
 						</VehicleJourneyStopAssignment>
 						<VehicleJourneyStopAssignment version="any" id="100@11008015458">
 							<Name>Indicates platform to go to for   train</Name>
-							<ScheduledStopPointRef version="any" ref="uic:008015458"/>
+							<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:008015458"/>
 							<Quay version="any" id="008015458@5">
 								<Name>Platform 5</Name>
 								<PublicCode>5</PublicCode>
@@ -644,7 +550,7 @@ ID	Stop_number	Service	Relation	Transfer_time	Certainty
 							<!-- RLS+13+7'
 TCE+4+X02'  -->
 							<ConnectionCertainty>normallyGuaranteed</ConnectionCertainty>
-							<!--  	taf tsi B.4.4049 - Name: Certainty description code: x02 normally guaranteed   -->
+							<!--  	TapTsi B.4.4049 - Name: Certainty description code: x02 normally guaranteed   -->
 							<MinimumTransferTime>PT4M</MinimumTransferTime>
 							<!--  relationship: (  7 = timing between services) -->
 							<FromPointRef version="any" ref="uic:008014008"/>
@@ -660,8 +566,8 @@ RFR+AUE:2210' -->
 							<StaySeated>false</StaySeated>
 							<!-- TCE+4+X02' 
 							 TCE+4+X02'  -->
-							<ConnectionCertainty>guaranteed</ConnectionCertainty>
-							<!--  	        X04 Guaranteed  -->
+							<ConnectionCertainty>normallyGuaranteed</ConnectionCertainty>
+							<!--  	TapTsi B.4.4049    X02 Guaranteed  -->
 							<MinimumTransferTime>PT4M</MinimumTransferTime>
 							<!-- (  7 = timing between services) -->
 							<FromPointRef version="any" ref="uic:008015458"/>
@@ -672,6 +578,25 @@ RFR+AUE:2210' -->
 						</ServiceJourneyInterchange>
 					</journeyInterchanges>
 				</TimetableFrame>
+				<FareFrame version="any" id="uic:SKDUPD_example_5_Interchange">
+					<Name>Border points are noted for fares</Name>
+					<borderPoints>
+						<BorderPoint version="any" id="uic:008014431_border">
+							<!-- POR+008014431+1919*1922+4*4+17' -->
+							<Name lang="de">BASEL BAD BF</Name>
+						</BorderPoint>
+					</borderPoints>
+					<fareScheduledStopPoints>
+						<FareScheduledStopPoint version="any" id="uic:008014431">
+							<!-- Narrative: this links the scheduled stop point to the border point -->
+							<!-- POR+008014431+1919*1922+4*4+17' -->
+							<Name lang="de">BASEL BAD BF</Name>
+							<StopType>railStation</StopType>
+							<CountryRef ref="ch"/>
+							<BorderPointRef version="any" ref="uic:008014431_border"/>
+						</FareScheduledStopPoint>
+					</fareScheduledStopPoints>
+				</FareFrame>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

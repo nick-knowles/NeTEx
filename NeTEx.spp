@@ -826,6 +826,11 @@
 						<Folder FolderName="Other">
 							<File FilePath="examples\standards\tap_tsi\Other\Netex_tap_trainhotel_SalesPackage_2.xml" HomeFolder="Yes"/>
 							<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example1-basic.xml" HomeFolder="Yes"/>
+							<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.2-Coach_group_complex.xml" HomeFolder="Yes"/>
+							<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.xml" HomeFolder="Yes"/>
+							<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.1-Hilleroed_complex.xml" HomeFolder="Yes"/>
+							<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.4-Paris-complex.xml" HomeFolder="Yes"/>
+							<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.xml" HomeFolder="Yes"/>
 						</Folder>
 						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example1.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.1-Classic_train.xml" HomeFolder="Yes"/>
@@ -835,13 +840,11 @@
 						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.5-Interchange.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.6-Check_In.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.7-Tariff_and_Reservation.xml" HomeFolder="Yes"/>
-						<File FilePath="examples\standards\tap_tsi\TAP-SKDUPD-example2.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example1.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.1-Hilleroed.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.2-Milano.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.3-Piedmont.xml" HomeFolder="Yes"/>
 						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.4-Paris.xml" HomeFolder="Yes"/>
-						<File FilePath="examples\standards\tap_tsi\TAP-TSDUPD-example2.xml" HomeFolder="Yes"/>
 					</Folder>
 				</Folder>
 				<Folder FolderName="norway">
@@ -927,6 +930,7 @@
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_MB_NETWORK_FARE_Metrorider-pass_basic_20170101.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_MYBUS_LINE_FARE_Line-3-trip-(p2p)_20190101.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_TMSTR_NETWORK_FARE_Travelmaster-pass_20200315.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-02_UK_KRN_NETWORK-FARE_Kernow-capped-(P2P)_2022-01-01.xml"/>
 					<File FilePath="examples\standards\fxc\uk_fxc_addon_HSP_plusbus.xml"/>
 					<File FilePath="examples\standards\fxc\uk_fxc_common_profile.xml"/>
 				</Folder>
@@ -946,6 +950,9 @@
 				</Folder>
 				<Folder FolderName="gbfs">
 					<File FilePath="examples\standards\gbfs\Netex_gbfs_exm1.xml" HomeFolder="Yes"/>
+				</Folder>
+				<Folder FolderName="IT-FARES">
+					<File FilePath="examples\standards\it\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2022-10-19-b-nk8.xml" HomeFolder="Yes"/>
 				</Folder>
 			</Folder>
 		</Folder>
@@ -988,5 +995,6 @@
 		<File FilePath="xsd\netex_part_2\part2_frames\netex_timetableFrame_version.xsd"/>
 		<File FilePath="xsd\netex_part_2\part2_frames\netex_vehicleScheduleFrame_version.xsd"/>
 	</Folder>
+	<File FilePath="examples\standards\fxc\FX-PI-02_UK_KRN_NETWORK-FARE_Kernow-capped-(P2P)_2022-01-01.xml" HomeFolder="Yes"/>
 	<File FilePath="README.md" HomeFolder="Yes"/>
 </Project>

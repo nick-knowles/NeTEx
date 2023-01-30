@@ -3,9 +3,11 @@
 	<!--  P  SKDUPD  Timetable Data Example  
 =============
 This Example shows an example of  encoding a TapTsi Timetable SKDUPD file in MERITS format   as NeTEx XML.
-Additional 'Narrative' comments are included 
+See the file EDIFACT SKDUPD explained.pptx for a brief explanation of skdupd format
 
-The   TAPTSI MERITS EDIFACT input data stream is given here , With some comments on teh NETEX equivalents on teh right
+Additional 'Narrative' comments are included within the XML to give an indcation how NeTEx organise data..
+
+The   TAPTSI MERITS EDIFACT input data stream is given here , With some comments on the NeTEx equivalents on the right
 
 PRD+3:11:1:3:::ALPHA TANGO+0060**80'		 | TM DATED SERVICE JOURNEY provided by OPERATOR .	
 															3: ID  
@@ -15,7 +17,7 @@ PRD+3:11:1:3:::ALPHA TANGO+0060**80'		 | TM DATED SERVICE JOURNEY provided by OP
                                                             ALPHA TANGO  : SERVICE JOURNEY . Name
                                                             0060  :  OPERATOR
                                                             80   :  REFERENCE FUNCTION b.4.1153 Reservation  Company  Identification different 
-                                                                    RESPONSIBILITY ROLE
+                                                                    RESPONSIBILITY ROLE ASSIGNMENT
 RFR+AVI:33'										TM TRAIN NUMBER for reservation.
 
 ROP+273:2021-08-23/2021-08-28::101111’	        NeTEx UIC VALIDITY CONDITION
@@ -26,9 +28,9 @@ POR+006070001+*0503+*1+5'						TM CALL (or POINT IN JOURNEY PATTERN  + PASSING T
 															*1  :  DEPARTURE QUAY Label
 															 5 = Property ??
                                                     (POR+UIC+ARRIVAL::OFFSET_A*DEPARTURE::OFFSET_D+PLATFORM_A*PLATFORM_D+PROPERTY)
-ASD+7'					Loading of vehicles  	TM CHECK CONSTRAINT   
-ASD+44::0453'			(44 Check-in Time)		TM CHECK CONSTRAINT       ?GAP?  Passenger Check in time for specific service
-TRF+1’					TRF+1 boarding only
+ASD+7'					 TAPTSI B.7161  (7 Loading of vehicles ) 	TM CHECK CONSTRAINT   
+ASD+44::0453'			 TAPTSI B.7161 (44 Check-in Time)		TM CHECK CONSTRAINT       ?GAP?  Passenger Check in time for specific service
+TRF+1’					  TRF+1 = boarding only
 
 POR+006070013+0445:::1*0400:::1+3*3+17'        TM CALL etc as above                                           
 
@@ -40,12 +42,11 @@ POR+006070013+0445:::1*0400:::1+3*3+17'        TM CALL etc as above
 												   	         +3  ARRIVAL  QUAY Label
 												         	17 denotes Border Point		 CHECK CONSTRAINT 	and or BORDER POINT
 MES+190:KMT'										TM  SERVICE LINK         Static? , or can use OnwardServiceLink /LinkView/Distance
-ASD+9'                          	9 Restaurant	     TM JOURNEY PART	+ FACILITY SET	CateringFacilityList>restaura 
+ASD+9'                     TAPTSI B.7161    (9 = Restaurant) 	     TM JOURNEY PART	+ FACILITY SET	CateringFacilityList>restaura 
 																				<PassengerCommsFacilityList>telephone powerSockets
-ASD+44::0330'					(44 Check-in Time)					TM CHECK CONSTRAINT       ?GAP?  Passenger Actual Check in time for specific service
-TRF+1’					TRF+1 boarding only
-ASD+45:0505'					(45 Check-out Time)					TM CHECK CONSTRAINT       ?GAP?  Passenger Check in time for specific service
-TRF+4'      			TRF+4 does not stop             USes passing time with non stop times instead ?
+ASD+44::0330'			 TAPTSI B.7161  (44 Check-in Time)					TM CHECK CONSTRAINT       ?GAP?  Passenger Actual Check in time for specific service
+ASD+45:0505'			 TAPTSI B.7161 (45 Check-out Time)					TM CHECK CONSTRAINT       ?GAP?  Passenger Check in time for specific service
+TRF+4'      			TRF+4 = does not stop             USes passing time with non stop times instead ?
 
 RFR+AUE:02'     									 			TM JOURNEY MEETING
 RLS+13+8'    					(8 = joining to, 13 = disconnect)   <Reason>joining</Reason>
@@ -60,33 +61,35 @@ TCE+10+1'                                                     Netex 	<MinimumTra
 						
 RFR+AUE:60'														TM   SERVICE JOURNEY INTERCHANGE
 RLS+13+7'       				(13 = disconnect, 7 = timing between services) 
-TCE+30+X02'       				x02 normally guaranteed            Netex 	<MinimumTransferTime>,<ConnectionCertainty>normallyGuaranteed 
+TCE+30+X02'       				TapTsi B.4.4049  x02 = normally guaranteed            Netex 	<MinimumTransferTime>,<ConnectionCertainty>normallyGuaranteed 
 
-RFR+AUE:75'                                    					TM   SERVICE JOURNEY INTERCHANGE
+RFR+AUE:75'                     					TM   SERVICE JOURNEY INTERCHANGE
 RLS+13+7'       				(13 = disconnect, 7 = timing between services) 
-TCE++X04'						x04 never Guaranteed           Netex 	<MinimumTransferTime>,<ConnectionCertainty>normallyGuaranteed 
+TCE++X04'						TapTsi B.4.4049 x04 = never Guaranteed          Netex 	<MinimumTransferTime>,<ConnectionCertainty>normallyGuaranteed 
 
 POR+006070016+0500+'											TM  CALL etc as above Arrival time 
 MES+200:KMT'                     							    TM  SERVICE LINK  .Distance       Static? , or can us OnwardServiceLink /LinkView/DIstance
-ASD+45:0540’                    								TM  CHECK CONSTRAINT  unloading time.  NB Netex shows duration, not time
+ASD+45:0540’                      						TM  CHECK CONSTRAINT  unloading time.  NB Netex shows duration, not time
+								  TAPTSI B.7161 (45 = CHeckout)
 
-ODI+006070001*006070016+1*3'                           		    TM JOURNEY PART 
-ASD+30'     					(30 Nursery   service)          TM FACILITY SET	<FamilyFacilityList>nurseryService
-ODI+006070001*006070016+1*3'									TM JOURNEY PART 
-ASD+46'                          (46 Pullman Coach)
-ODI+006070001*006070016+1*3'									TM JOURNEY PART 	
-ASD+5'  						 (5 Breakfast) 				TM FACILITY SET	 <MealFacilityList>breakfast
+ODI+006070001*006070016+1*3'                           		   				 TM JOURNEY PART 
+ASD+30'     					  TAPTSI B.7161   (30 = Nursery   service)          TM FACILITY SET	<FamilyFacilityList>nurseryService
+ODI+006070001*006070016+1*3'													TM JOURNEY PART 
+ASD+46'                           TAPTSI B.7161 (46  =Pullman Coach)
+ODI+006070001*006070016+1*3'													TM JOURNEY PART 	
+ASD+5'  						  TAPTSI B.7161 (5 = Breakfast) 				TM FACILITY SET	 <MealFacilityList>breakfast
 
 ODI+006070001*006070016+1*3'   		
-SER+26' 					     (26	Bicycle transport) TM FACILITY SET	 <LuggageCarriageFacilityList>cyclesAllowed
+SER+26' 					      TAPTSI B.9039  (26 = Bicycle transport) TM FACILITY SET	 <LuggageCarriageFacilityList>cyclesAllowed
 
-ODI+006070001*006070016+1*3'   
-SER+4:::13'								(4	First-class seats)    TM FACILITY SET	 <FareClasses>firstClass secondClass<
+ODI+006070001*006070016+1*3'   													TM JOURNEY PART 
+SER+4:::13'						  TAPTSI B.9039  	(4 = First-class seats)   TM FACILITY SET	 <FareClasses>firstClass secondClass<
+	
+ODI+006070001*006070016+1*3'   												TM JOURNEY PART  	 
+SER+5:::12'						   TAPTSI B.9039  	(5 = Second-class seats) 	TM FACILITY SET	<FareClasses>firstClass secondClass<
 
-ODI+006070001*006070016+1*3'    		(5 Second-class seats) 		TM FACILITY SET	<FareClasses>firstClass secondClass<
-SER+5:::12'
 
-
+				 
 A TAPTSI Train is represented as a DATED VEHICLE JOURNEY, a DATED JOURNEY that runs on a specific day.
 
 -->
@@ -96,7 +99,7 @@ ERA/TD/2012-16/INT Annex B.50 of TAP TSI Page 40-41
 8.3 Usage of SKDUPD
 Summary of the segments used in SKDUPD and corresponding abbreviations
 
-TafTSI B4.5263
+TapTsi B4.5263
 
 	NO	Normal
 	RE	Discount in train other than TGV
@@ -105,7 +108,7 @@ TafTSI B4.5263
 
 
 ASD Service details
-	TafTSI B4.7161
+	TapTsi B4.7161
 	 3 Additional loading 
 	 4 Additional  unloading of vehicles from a train of accompanied motorcars 
 	 5 Breakfast  
@@ -174,7 +177,7 @@ RLS Relationship
 	12 = number change
 	13 = disconnect
  
-taf tsi B.4.4049 - Name: Certainty description code
+TapTsi B.4.4049 - Name: Certainty description code
 1 Connection guaranteed  
 X02 Connection normally guaranteed
 X03 Connection not guaranteed  
@@ -205,7 +208,7 @@ Reservation R  TafTs B.4.7037
 
 
 SER Facility information
-    TafTsi B.4.9039
+    TapTsi B.4.9039
 	Value	Name
 	2	First-class sleepers
 	3	Standard class sleepers
@@ -258,14 +261,14 @@ SER Facility information
  
 TCE Time and certainty
 TFF Tariff information
-    Taf TSI B4.7139
+    TapTsi B4.7139
 	1	TCV
 	2	(Global price) All inclusive tariff
 	3	East-West tariff
 	4	Train with TCV and Market Price
 	5	No published tariff
 
-   P TafTsi B.4.5263
+   P TapTsi B.4.5263
 	NO	Normal
 	RE	Discount in train other than TGV
 	SF	Special fare
@@ -443,60 +446,33 @@ Data is selected just for the stops for a single journey
 				<DefaultCodespaceRef ref="op_cs"/>
 			</FrameDefaults>
 			<frames>
-				<ServiceFrame version="any" id="uic:SKDUPD_basic_example">
-					<!--  Narrative:  The SERVICE FRAME provides a container to organise stop (TAPSI Location) and related data -->
-					<!--- comment: A TAPTSI data stream doe snot normalloy incldue location (ie stop) definitions, just a refernce to  their codes. 
-                  In NETEX They could normally likewise just be an external reference . Howver to define stop to stop links (SERVICE LINKS)  to capture static distance -->
-					<Name>Location / STation SKDUPD_example example </Name>
-					<scheduledStopPoints>
-						<!--  Narrative:  Here we declare the stops  in the network so that we can declare links between them.
-							This also allows an XML validator to cross check the  internal refernces for referential integrity -->
-						<ScheduledStopPoint version="any" id="006070001">
-							<Name lang="en">Station 1</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="006070013">
-							<Name lang="en">Station 2</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-						<ScheduledStopPoint version="any" id="006070016">
-							<Name lang="en">Station 3</Name>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
-					</scheduledStopPoints>
-					<serviceLinks>
-						<!-- Narrative: SERVICE LINKs declare the topology of the network and can hold attributes such as distance -->
-						<ServiceLink version="any" id="006070001+006070013">
-							<!--  MES+190:KMT'		 -->
-							<Distance>190</Distance>
-							<FromPointRef version="any" ref="006070001"/>
-							<ToPointRef version="any" ref="006070013"/>
-						</ServiceLink>
-						<ServiceLink version="any" id="u006070013+006070016">
-							<!--  MES+200:KMT'		 -->
-							<Distance>200</Distance>
-							<FromPointRef version="any" ref="006070013"/>
-							<ToPointRef version="any" ref="006070016"/>
-						</ServiceLink>
-					</serviceLinks>
-				</ServiceFrame>
 				<TimetableFrame version="any" id="SKDUPD_basic_example">
 					<!--  Narrative:  The TIMETABLE  FRAME provides a container to organise journey (TAPTSI train)  related data -->
 					<Name>Uic Example of a very simple train timetable</Name>
+					<!-- Narrative:  can be used to indicate the  overral contents of frame are all rail by default  -->
 					<VehicleModes>rail</VehicleModes>
 					<vehicleJourneys>
-						<DatedServiceJourney version="any" id="3">
+						<DatedServiceJourney version="any" id="3" responsibilitySetRef="3">
+							<!-- Narrative: the unique ideentifer within the opeartor's namespace is "3" -->
 							<!-- PRD+3:11:1:3:::ALPHA TANGO+0060**80' -->
 							<Name>ALPHA TANGO</Name>
-							<TypeOfProductCategoryRef versionRef="EXTERNAL" ref="84"/>
-							<TypeOfServiceRef versionRef="EXTERNAL" ref="3"/>
+							<!-- Narrative:   MERTIST product and service categories can be handled  by a fixed translation table to eNeTEx enum values
+for mode, submode etc. 
+                                      To simplify round trip processing  could also encode UIC codes as    TypeOfProductCategoryRef TypeOfServiceRef
+NOTE however at present this can only be done for the whole journey , nor for each part. A Simple  Gap to fix. -->
 							<!--  PRD+3:11:1:3:::ALPHA TANGO+0060**80'	 (3: 	tAF tsu 7009 (Item description code) -->
-							<!-- ODI+006070001*006070013+1*2'    	
+							<!-- ODI+006070001*006070013+1*2'   
 								PDT++:::84:::'     ( TAPTSI B.4.7009  84 regional train)								
 								ODI+006070013*006070016+2*3'
 								PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) 
-								POSSIBLE GAP -->
-							<!--  Narrative: Overall Departure times from firts stop-->
+								 -->
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>longDistance</RailSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef versionRef="EXTERNAL" ref="84"/>
+							<TypeOfServiceRef versionRef="EXTERNAL" ref="3"/>
+							<!--  Narrative: Overall Departure times from first stop.   -->
 							<!-- PRD+3:11:1:3:::ALPHA TANGO+0060**80' -->
 							<DepartureTime>05:03:00</DepartureTime>
 							<!--  Narrative: Operator of service (ie TAPTSI  RU.)  This is an external reference -->
@@ -506,7 +482,7 @@ Data is selected just for the stops for a single journey
 								<!--  Narrative: One or more train numbers may be associated with Journey. These are declared separately
 								as entities in their own right and referenced from the joruney or joruney part with which they are associated  -->
 								<!-- RFR+AVI:33' -->
-								<TrainNumberRef version="any" ref="3">Advertised as 33</TrainNumberRef>
+								<TrainNumberRef version="any" ref="3">Advertised as 3</TrainNumberRef>
 							</trainNumbers>
 							<parts>
 								<JourneyPart version="any" id="3@006070001+006070016" order="1">
@@ -515,30 +491,33 @@ Data is selected just for the stops for a single journey
 									<ParentJourneyRef version="any" ref="3">Alpha Tango</ParentJourneyRef>
 									<MainPartRef version="any" ref="3@006070001+006070016"/>
 									<!--  Narrative: span of journey part  -->
-									<FromStopPointRef version="any" ref="006070001"/>
-									<ToStopPointRef version="any" ref="006070016"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:006070001"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:006070016"/>
 									<!--  Narrative:  The stated times allows indication to be given whether part begins at arrival,
 									 departure or other time
 									currently a start time is mandatory - Would be more efficient if optional  and assumed to be from departure till arrival -->
 									<StartTime>05:03:00</StartTime>
 									<EndTime>05:00:00</EndTime>
-									<!--  Narrative:  We can indicate that the portpos of teh part is to specify which facilities are available -->
+									<!-- Narrative: offset indicates Next Day -->
+									<EndTimeDayOffset>1</EndTimeDayOffset>
+									<!--  Narrative:  We can indicate that the portpos of the part is to specify which facilities are available -->
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
 									<facilities>
 										<ServiceFacilitySet version="any" id="Facilities-006070001+00607001-1*3">
 											<!-- ODI+006070001*006070016+1*3'      -->
 											<FamilyFacilityList>nurseryService</FamilyFacilityList>
-											<!-- ASD+30'    (30 Nursery  service) -->
+											<!-- ASD+30'   TAPTSI B.7161   (30 Nursery  service) -->
 											<FareClasses>firstClass secondClass</FareClasses>
-											<!-- SER+4:::13', SER+5:::12'(4	First-class seats) (5	Second-class seats) -->
+											<!-- SER+4:::13', TAPTSI B.9039  (4	First-class seats) 
+												SER+5:::12' TAPTSI B.9039  (5	Second-class seats) -->
 											<MealFacilityList>breakfast</MealFacilityList>
-											<!-- ASD+5'  (5 Breakfast>M) -->
+											<!-- ASD+5'  TAPTSI B.7161  (5 Breakfast) -->
 											<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
-											<!-- SER+26'  (26	Bicycle transport) -->
+											<!-- SER+26' TAPTSI B.9039  (26	Bicycle transport) -->
 											<accommodations>
 												<Accommodation version="any" id="Facilities-006070001+00607001-1*3">
 													<AccommodationFacility>pullmanCoach</AccommodationFacility>
-													<!-- ASD+46'   (46	Pullmann coach) -->
+													<!-- ASD+46'  TAPTSI B.7161  (46	Pullmann coach) -->
 												</Accommodation>
 											</accommodations>
 										</ServiceFacilitySet>
@@ -548,10 +527,11 @@ Data is selected just for the stops for a single journey
 									<!-- ODI+006070001*006070016+1*3'      -->
 									<ParentJourneyRef version="any" ref="3">Alpha Tango</ParentJourneyRef>
 									<MainPartRef version="any" ref="3@006070001+006070013"/>
-									<FromStopPointRef version="any" ref="006070001"/>
-									<ToStopPointRef version="any" ref="006070013"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:006070001"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:006070013"/>
 									<StartTime>05:03:00</StartTime>
 									<EndTime>04:45:00</EndTime>
+									<EndTimeDayOffset>1</EndTimeDayOffset>
 									<PurposeOfJourneyPartitionRef versionRef="EXTERNAL" ref="facilities"/>
 									<!-- ODI+006070001*006070013+1*2'    	TM Facility available between
 PDT++:::84:::'     ( TAPTSI B.4.7009  84 regional train)			
@@ -566,8 +546,8 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 											ASD+45:0505'			45	Power supply  -->
 									<ParentJourneyRef version="any" ref="3">Alpha Tango</ParentJourneyRef>
 									<MainPartRef version="any" ref="3@006070001+006070016"/>
-									<FromStopPointRef version="any" ref="006070013"/>
-									<ToStopPointRef version="any" ref="006070016"/>
+									<FromStopPointRef versionRef="EXTERNAL" ref="uic:006070013"/>
+									<ToStopPointRef versionRef="EXTERNAL" ref="uic:006070016"/>
 									<StartTime>04:45:00</StartTime>
 									<EndTime>04:00:00</EndTime>
 									<EndTimeDayOffset>1</EndTimeDayOffset>
@@ -576,9 +556,10 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 										<ServiceFacilitySet version="any" id="Facilities">
 											<!-- POR+006070013+0445:::1*0400:::1+3*3 -->
 											<CateringFacilityList>restaurant</CateringFacilityList>
-											<!-- 	ASD+9'  (9 restaurant) -->
+											<!-- 	ASD+9'   TAPTSI B.7161  (9 restaurant) -->
 											<PassengerCommsFacilityList>powerSupplySockets  telephone</PassengerCommsFacilityList>
-											<!-- 	ASD+44' , ASD+45' (44 Power supply, 45 telephone)    -->
+											<!-- 	ASD+44' , TAPTSI B.7161   ASD+45' (44 Power supply)    -->
+													<!-- 	 ASD+45'  TAPTSI B.7161  ( 45 telephone)    -->
 										</ServiceFacilitySet>
 									</facilities>
 								</JourneyPart>
@@ -588,12 +569,15 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 								<Call version="any" id="3" order="1">
 									<!-- 	POR+006070001+*0503+*1+5'			-->
 									<!--  (POR+UIC+ARRIVAL::OFFSET_A*DEPARTURE::OFFSET_D+PLATFORM_A*PLATFORM_D+PROPERTY) -->
-									<ScheduledStopPointRef version="any" ref="006070001"/>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:006070001"/>
 									<OnwardServiceLinkView>
-										<ToPointRef version="any" ref="006070013"/>
+										<!-- Narrative: In the NeTEX model, distances are stored separately on a SERVICE LINK,
+                                      for convenience we can embed the link details inline -->
+										<ServiceLinkRef versionRef="EXTERNAL" ref="006070001+006070013"/>
 										<Distance>190</Distance>
 										<!--  MES+190:KMT' -->
 									</OnwardServiceLinkView>
+									<!-- TODO What property is the 5 at the end ? POR+006070001+*0503+*1+5' -->
 									<Arrival>
 										<!-- TRF+1’					TRF+1 boarding only -->
 										<ForAlighting>false</ForAlighting>
@@ -608,19 +592,21 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 									</Departure>
 								</Call>
 								<Call version="any" id="3" order="2">
-									<ScheduledStopPointRef version="any" ref="006070013"/>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:006070013"/>
 									<!-- POR+006070013+0445:::1*0400:::1+3*3+17' 
 										TRF+4'      	-->
 									<OnwardServiceLinkView>
-										<ToPointRef version="any" ref="006070016"/>
-										<Distance>200</Distance>
-										<!--  MES+200:KMT' -->
+										<ServiceLinkRef versionRef="EXTERNAL" ref="006070013+006070016"/>
+										<!-- NB in MERiTS distances are cumulative - NeTEx  distances are atomic 
+ so incremental  distance is 200 - 190 (previous) = 10 -->
+										<Distance>10</Distance>
+										<!--  MES+200:KMT'    -->
 									</OnwardServiceLinkView>
 									<Arrival>
 										<Time>04:45:00</Time>
 										<!--  Narrative: Next day-->
 										<DayOffset>1</DayOffset>
-										<!-- TRF+1’					TRF+1 boarding only -->
+										<!-- TRF+4’					TRF+4 bPass through -->
 										<ForAlighting>false</ForAlighting>
 										<QuayAssignmentView>
 											<Label>3</Label>
@@ -629,6 +615,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 									<Departure>
 										<Time>04:00:00</Time>
 										<DayOffset>1</DayOffset>
+											<!-- TRF+4’					TRF+4 bPass through -->
 										<ForBoarding>false</ForBoarding>
 										<QuayAssignmentView>
 											<Label>3</Label>
@@ -637,24 +624,24 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 								</Call>
 								<Call version="any" id="3" order="3">
 									<!-- POR+006070016+0500+'		-->
-									<ScheduledStopPointRef version="any" ref="006070016"/>
+									<ScheduledStopPointRef versionRef="EXTERNAL" ref="uic:006070016"/>
 									<Arrival>
 										<Time>05:00:00</Time>
 										<!--  Narrative: NB Next day as relative to day of start of journey, not day at previous stop-->
 										<DayOffset>1</DayOffset>
 									</Arrival>
-									<Departure>
-										<ForBoarding>false</ForBoarding>
-									</Departure>
+								 
 								</Call>
 							</calls>
 							<facilities>
 								<ServiceFacilitySet version="any" id="1@reservation">
-									<TypeOfFacilityRef versionRef="EXTERNAL" ref="R11"/>
-									<ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
-									<!--	R11 TafTsi B.4.7037: 11	Reservation possible -->
+								<!-- Narrative : Reservation options are treated as a facility -->
+									<!-- PRD+3:11:1:3:::ALPHA TANGO+0060**80' --> 
+									<TypeOfFacilityRef versionRef="EXTERNAL" ref="11"/>
+									<ServiceReservationFacilityList>reservationsPossible</ServiceReservationFacilityList>
+									<!--	R11 TapTsi B.4.7037: 11	Reservation possible -->
 									<UicProductCharacteristicList>tariffCommunVoyageurs</UicProductCharacteristicList>
-									<!-- Tariff 1 Taf TSI B4.7139: 	1	TCV -->
+									<!-- Tariff 1 TapTsi B4.7139: 	1	TCV -->
 								</ServiceFacilitySet>
 							</facilities>
 							<checkConstraints>
@@ -662,7 +649,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 									<!-- 	POR+006070001+*0503+*1+5'					 
 									?   ASD+7'		(7 -   Loading of vehicles on a train of accompanied motorcars   -->
 									<Name>Vehicle Loading</Name>
-									<PlaceRef version="any" ref="006070001"/>
+									<PlaceRef version="any" ref="uic:006070001"/>
 									<CheckProcess>vehicleLoading</CheckProcess>
 									<delays>
 										<CheckConstraintDelay version="any" id="3@006070001">
@@ -691,7 +678,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 									<!-- 	POR+006070016+0500+'					 
 									?  ASD+45:0540’  	(7 -   Loading of vehicles on a train of accompanied motorcars   -->
 									<Name>Vehicle Unloading</Name>
-									<PlaceRef version="any" ref="006070016"/>
+									<PlaceRef version="any" ref="uic:006070016"/>
 									<CheckProcess>vehicleUnloading</CheckProcess>
 									<delays>
 										<CheckConstraintDelay version="any" id="3@006070016">
@@ -709,13 +696,17 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 					</vehicleJourneys>
 					<trainNumbers>
 						<TrainNumber version="any" id="3">
+							<!--Narrative: More than one train number can be coded if desired. 
+							We will use the  Fo rADvertisement for teh rservation code   COuld add a separate ForReserbation in future?-->
 							<!-- RFR+AVI:33' -->
 							<ForAdvertisement>33</ForAdvertisement>
+							<!-- PRD+3:11:1:3:::ALPHA TANGO+0060**80' -->
 							<ForProduction>3</ForProduction>
 						</TrainNumber>
 					</trainNumbers>
 					<journeyMeetings>
 						<JourneyMeeting version="any" id="3@02">
+						<!-- Narrative: this is how we might show where  a join or split is taking place -->
 							<!--	RFR+AUE:02'     -->
 							<FromJourneyRef version="any" ref="3">ALPHA TANGO</FromJourneyRef>
 							<ToJourneyRef versionRef="EXTERNAL" ref="02"/>
@@ -732,16 +723,20 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 					</journeyMeetings>
 					<journeyInterchanges>
 						<ServiceJourneyInterchange version="any" id="3@45">
+						
+						<!-- Narrative: here we show transfer times bewteen specifc  services -->
 							<!-- POR+006070013+0445:::1*0400:::1+3*3+17' 
 						RFR+AUE:45'
 						RLS+13+7'     					(13 = disconnect, 7 = timing between services) 
 						TCE+10+1'-->
+							<!-- Narrative: Stay seaded and not guranteed  has been inferred :  could be ommitted -->
 							<StaySeated>false</StaySeated>
+						
 							<ConnectionCertainty>notGuaranteed</ConnectionCertainty>
 							<!-- 	TCE+10+1' -->
 							<MinimumTransferTime>PT10M</MinimumTransferTime>
 							<!-- 	TCE+10+1' -->
-							<FromPointRef version="any" ref="006070013"/>
+							<FromPointRef version="any" ref="uic:006070013"/>
 							<ToPointRef version="any" ref="006070013"/>
 							<FromJourneyRef version="any" ref="3">ALPHA TANGO</FromJourneyRef>
 							<ToJourneyRef versionRef="EXTERNAL" ref="45"/>
@@ -751,7 +746,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 							<!--					POR+006070013+0445:::1*0400:::1+3*3+17' 
 						RFR+AUE:60'     
 						RLS+13+7'     		(13 = disconnect, 7 = timing between services) 
-						TCE+30+X02'  (taf tsi B.4.4049 -  x02 normally guaranteed  ) -->
+						TCE+30+X02'  (TapTsi B.4.4049 -  x02 normally guaranteed  ) -->
 							<StaySeated>false</StaySeated>
 							<ConnectionCertainty>normallyGuaranteed</ConnectionCertainty>
 							<!-- 	TCE+30+X02'  -->
@@ -781,9 +776,29 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 						</ServiceJourneyInterchange>
 					</journeyInterchanges>
 				</TimetableFrame>
+				<ResourceFrame version="any" id="SKDUPD_basic_example">
+					<responsibilitySets>
+						<!-- Narrative: Here we can specify additional responsibilities.
+                        In this case it is the responsibility of one operator 0060  to rune the journey and another 0080 take reservations 
+                             the journey references this  declaration -->
+						<ResponsibilitySet version="any" id="3" responsibilitySetRef="3">
+							<!-- PRD+3:11:1:3:::ALPHA TANGO+0060**80' -->
+							<roles>
+								<ResponsibilityRoleAssignment version="any" id="3@Reservation">
+									<StakeholderRoleType>Reservation</StakeholderRoleType>
+									<ResponsibleOrganisationRef versionRef="EXTERNAL" ref="uic:0080"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment version="any" id="3@Operation">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef versionRef="EXTERNAL" ref="uic:0060"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+				</ResourceFrame>
 				<FareFrame version="any" id="uic:SKDUPD_basic_example">
-					<!-- NARRATIVE - bORDER POINTS ARE A SEPARATE LAYER -->
-					<Name>Border points are noted for fares</Name>
+					<!-- NARRATIVE - Border points are a separate layer - a border point may be other than a station location  -->
+					<Name>Exact Border points are noted for the purpose of fares s</Name>
 					<borderPoints>
 						<BorderPoint version="any" id="uic:006070013_border">
 							<!-- POR+006070013+0445:::1*0400:::1+3*3+17'     -->
@@ -792,6 +807,7 @@ PDT++:::58:::'     (TAPTSI B.4.7009  58 TRN Intercités) -->
 					</borderPoints>
 					<fareScheduledStopPoints>
 						<FareScheduledStopPoint version="any" id="uic:006070013">
+											<!-- Narrative: this links the scheduled stop point to the border point -->
 							<Name>Station 2</Name>
 							<StopType>railStation</StopType>
 							<BorderPointRef version="any" ref="uic:006070013_border"/>
