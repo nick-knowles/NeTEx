@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2.2" id="netex_vehicleType_version">
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_vehicleType_version">
 	<xsd:include schemaLocation="netex_vehicleType_support.xsd"/>
 	<xsd:include schemaLocation="netex_nm_fleetEquipment_support.xsd"/>
 	<xsd:include schemaLocation="netex_nm_fleet_support.xsd"/>
@@ -505,19 +505,19 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	<xsd:element name="AcceptedDriverPermit" substitutionGroup="DataManagedObject">
+	<xsd:element name="AcceptedDriverPermit" substitutionGroup="VersionedChild">
 		<xsd:annotation>
 			<xsd:documentation>Accepted TYPE OF DRIVER PERMIT for a given SIMPLE VEHICLE TYPE. +V2.0</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:complexContent>
-				<xsd:restriction base="AcceptedDriverPermit_VersionStructure">
+				<xsd:restriction base="AcceptedDriverPermit_VersionedChildStructure">
 					<xsd:sequence>
 						<xsd:sequence>
 							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
 						</xsd:sequence>
 						<xsd:sequence>
-							<xsd:group ref="DataManagedObjectGroup"/>
+							<xsd:group ref="VersionedChildGroup"/>
 						</xsd:sequence>
 						<xsd:group ref="AcceptedDriverPermitGroup"/>
 					</xsd:sequence>
@@ -530,12 +530,12 @@
 			</xsd:complexContent>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:complexType name="AcceptedDriverPermit_VersionStructure" abstract="false">
+	<xsd:complexType name="AcceptedDriverPermit_VersionedChildStructure" abstract="false">
 		<xsd:annotation>
 			<xsd:documentation>Type for a ACCEPTED DRIVER PERMIT.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexContent>
-			<xsd:extension base="DataManagedObjectStructure">
+			<xsd:extension base="VersionedChildStructure">
 				<xsd:group ref="AcceptedDriverPermitGroup">
 					<xsd:annotation>
 						<xsd:documentation>Elements for an ACCEPTED DRIVER PERMIT.</xsd:documentation>
@@ -656,6 +656,7 @@
 			<xsd:group ref="VehicleAccessibilityRequirementsGroup"/>
 		</xsd:sequence>
 	</xsd:group>
+	<!-- ====== PASSENGER CAPACITY =================================== -->
 	<xsd:complexType name="passengerCapacities_RelStructure">
 		<xsd:annotation>
 			<xsd:documentation>Type for a list of PASSENGER CAPACITY REQUIREMENTs.</xsd:documentation>
@@ -1254,7 +1255,7 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:complexContent>
-				<xsd:restriction base="VehicleEquipmentProfileMember_VersionStructure">
+				<xsd:restriction base="VehicleEquipmentProfileMember_VersionedChildStructure">
 					<xsd:sequence>
 						<xsd:sequence>
 							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
@@ -1273,7 +1274,7 @@
 			</xsd:complexContent>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:complexType name="VehicleEquipmentProfileMember_VersionStructure" abstract="false">
+	<xsd:complexType name="VehicleEquipmentProfileMember_VersionedChildStructure" abstract="false">
 		<xsd:annotation>
 			<xsd:documentation>Type for a VEHICLE EQUIPMENT PROFILE MEMBER.</xsd:documentation>
 		</xsd:annotation>
@@ -1327,7 +1328,7 @@
 					</xsd:sequence>
 					<xsd:attribute name="id" type="PurposeOfEquipmentProfileIdType">
 						<xsd:annotation>
-							<xsd:documentation>Identifier of PURPOSE OF EQUIMENT PROFILE.</xsd:documentation>
+							<xsd:documentation>Identifier of PURPOSE OF EQUIPMENT PROFILE.</xsd:documentation>
 						</xsd:annotation>
 					</xsd:attribute>
 				</xsd:restriction>
@@ -1336,7 +1337,7 @@
 	</xsd:element>
 	<xsd:complexType name="PurposeOfEquipmentProfile_ValueStructure" abstract="false">
 		<xsd:annotation>
-			<xsd:documentation>Type for a PURPOSE OF EQUIPMENT.</xsd:documentation>
+			<xsd:documentation>Type for a PURPOSE OF EQUIPMENT PROFILE.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="TypeOfValue_VersionStructure"/>
@@ -1364,7 +1365,7 @@
 					</xsd:sequence>
 					<xsd:attribute name="id" type="TypeOfDriverPermitIdType">
 						<xsd:annotation>
-							<xsd:documentation>Identifier of PURPOSE OF EQUIMENT PROFILE.</xsd:documentation>
+							<xsd:documentation>Identifier of TYPE OF DRIVER PERMIT.</xsd:documentation>
 						</xsd:annotation>
 					</xsd:attribute>
 				</xsd:restriction>
