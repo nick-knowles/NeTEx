@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Rossella Panero (5T S.r.l.) -->
 <!--
 
 
@@ -15,7 +14,7 @@ The Topographic Areas were not be being used - I have added soem refernces to th
 
 
 NeTEX italian Profile EPIP + Level 2 + Fare-->
-<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="any" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="any" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2021-01-01T12:00:00.000+02:00</PublicationTimestamp>
 	<ParticipantRef>RAP</ParticipantRef>
 	<Description>Esempio di profilo italiano del NeTEx EPIP + Livello 2 + Fare</Description>
@@ -45,11 +44,12 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 						<!-- =====contratto Piemonte ===== -->
 						<JourneyAccounting id="IT:ITC1:busATS:JourneyAccounting:1A" version="any">
 							<validityConditions>
-								<!-- NJSK add version to ref -->  <ValidityConditionRef versionRef="ERROR-MISSING"  ref="IT:ITC1:busATS:vc:1"/>
+								<!-- NJSK add version to ref -->
+								<ValidityConditionRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:vc:1"/>
 							</validityConditions>
 							<Name>Contratto Piemonte</Name>
 							<Description>Contratto Piemonte</Description>
-								<!-- NJSK add version to ref ERROR TYPE change authoty to Authority--> 
+							<!-- NJSK add version to ref ERROR TYPE change authoty to Authority-->
 							<OrganisationRef ref="IT:ITC1:busATS:Authority:AMP"/>
 							<AccountingCode>CDS0001</AccountingCode>
 							<AccountingType>contract</AccountingType>
@@ -57,11 +57,12 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 						<!-- =====contratto Lombardia===== -->
 						<JourneyAccounting id="IT:ITC1:busATS:JourneyAccounting:1B" version="any">
 							<validityConditions>
-								<!-- NJSK add version to ref -->  <ValidityConditionRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:vc:1"/>
+								<!-- NJSK add version to ref -->
+								<ValidityConditionRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:vc:1"/>
 							</validityConditions>
 							<Name>Contratto Lombardia</Name>
 							<Description>Contratto Lombardia</Description>
-														<!-- NJSK add version to ref ERROR TYPE change authoty to Authority--> 
+							<!-- NJSK add version to ref ERROR TYPE change authoty to Authority-->
 							<OrganisationRef ref="IT:ITC1:busATS:Authority:RL"/>
 							<AccountingCode>CDS0001</AccountingCode>
 							<AccountingType>contract</AccountingType>
@@ -75,7 +76,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<Description>Contratto di servizio</Description>
 							<AccountedObjectRef ref="IT:ITC1:trenoFS:sjpf:1"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:FI"/>
-							<!--  NJSK mark external reference  as external--> <SupplyContractRef versionRef="EXTERNAL"  ref="IT:ITC1:trenoFS:supcon:1"/>
+							<!--  NJSK mark external reference  as external-->
+							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
 							<AccountingCode>00001</AccountingCode>
 							<AccountingType>contract</AccountingType>
 						</JourneyAccounting>
@@ -87,7 +89,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<Description>Contratto di servizio</Description>
 							<AccountedObjectRef ref="IT:ITC1:trenoFS:sjpf:1"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:AT"/>
-							<!--  NJSK mark external reference  as external--> <SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
+							<!--  NJSK mark external reference  as external-->
+							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
 							<AccountingCode>00001</AccountingCode>
 							<AccountingType>contract</AccountingType>
 						</JourneyAccounting>
@@ -99,7 +102,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<Description>Contratto di servizio</Description>
 							<AccountedObjectRef ref="IT:ITC1:trenoFS:sjpf:2"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:FI"/>
-						<!--  NJSK mark external reference  as external--> <SupplyContractRef versionRef="EXTERNAL"  ref="IT:ITC1:trenoFS:supcon:1"/>
+							<!--  NJSK mark external reference  as external-->
+							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
 							<AccountingCode>00001</AccountingCode>
 							<AccountingType>contract</AccountingType>
 						</JourneyAccounting>
@@ -111,14 +115,16 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<Description>Contratto di servizio</Description>
 							<AccountedObjectRef ref="IT:ITC1:trenoFS:sjpf:2"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:AT"/>
-							<!--  NJSK mark external reference  as external--> <SupplyContractRef versionRef="EXTERNAL"  ref="IT:ITC1:trenoFS:supcon:1"/>
+							<!--  NJSK mark external reference  as external-->
+							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
 							<AccountingCode>00001</AccountingCode>
 							<AccountingType>contract</AccountingType>
 						</JourneyAccounting>
 						<!--=====contratto Ferro ATV Movalia===== -->
 						<JourneyAccounting version="any" id="IT:ITC1:busATV:JourneyAccounting:1VR">
 							<validityConditions>
-							<!-- NJSK add version to ref -->  <ValidityConditionRef versionRef="ERROR-MISSING"  ref="IT:ITC1:busATV:vc:1"/>
+								<!-- NJSK add version to ref -->
+								<ValidityConditionRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATV:vc:1"/>
 							</validityConditions>
 							<Name>Contratto Verona</Name>
 							<Description>Contratto Verona</Description>
@@ -24213,7 +24219,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 										<FromDate>2021-01-01T00:00:00</FromDate>
 										<ToDate>2099-12-31T00:00:00</ToDate>
 									</ValidBetween>
-									<!--  NJSK mark external reference  as external--> <SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:metroATMMILANO:CON:ATMMILANO">ATMMilano</SupplyContractRef>
+									<!--  NJSK mark external reference  as external-->
+									<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:metroATMMILANO:CON:ATMMILANO">ATMMilano</SupplyContractRef>
 									<AccountingCode>ATMMilano</AccountingCode>
 									<Distance>39837.806501608</Distance>
 								</JourneyAccounting>
@@ -24426,8 +24433,10 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<FromPointRef version="any" ref="IT:ITC1:trenoFS:stp:milanocentrale"/>
 							<!-- NJSK add version to ref -->
 							<ToPointRef version="any" ref="IT:ITC1:trenoFS:stp:milanocentrale"/>
-							<!-- NJSK add version to ref --> <FromJourneyRef version="any"  ref="IT:ITC1:trenoFS:sj:1"/>
-							<!-- NJSK add version to ref --> <ToJourneyRef version="any" ref="IT:ITC1:trenoFS:sj:2"/>
+							<!-- NJSK add version to ref -->
+							<FromJourneyRef version="any" ref="IT:ITC1:trenoFS:sj:1"/>
+							<!-- NJSK add version to ref -->
+							<ToJourneyRef version="any" ref="IT:ITC1:trenoFS:sj:2"/>
 						</ServiceJourneyInterchange>
 					</journeyInterchanges>
 				</TimetableFrame>
@@ -24544,13 +24553,16 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 									</fareStructureElementsInSequence>
 								</FareStructureElement>
 								<FareStructureElement id="IT:ITC1:busATS:distanceMatrix1_1" version="any">
-									<!-- NJSK add version to ref -->  <DistanceMatrixElementRef version="any"  ref="IT:ITC1:busATS:dm:1"/>
+									<!-- NJSK add version to ref -->
+									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:1"/>
 								</FareStructureElement>
 								<FareStructureElement id="IT:ITC1:busATS:distanceMatrix1_2" version="any">
-									<!-- NJSK add version to ref -->  <DistanceMatrixElementRef version="any"  ref="IT:ITC1:busATS:dm:2"/>
+									<!-- NJSK add version to ref -->
+									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:2"/>
 								</FareStructureElement>
 								<FareStructureElement id="IT:ITC1:busATS:distanceMatrix1_3" version="any">
-									<!-- NJSK add version to ref -->  <DistanceMatrixElementRef version="any"  ref="IT:ITC1:busATS:dm:3"/>
+									<!-- NJSK add version to ref -->
+									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:3"/>
 								</FareStructureElement>
 								<FareStructureElement id="IT:ITC1:busATS:geographicalInterval0-5" version="any">
 									<GeographicalIntervalRef ref="IT:ITC1:busATS:gi:0-5"/>
@@ -25127,7 +25139,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							</timeIntervals>
 							<ParkingStayType>midTerm</ParkingStayType>
 							<appliesTo>
-										<!-- NJSK add version to ref --> <ParkingRef version="any"  ref="IT:ITC1:parcheggiTorino:p:Porta_Nuova"/>
+								<!-- NJSK add version to ref -->
+								<ParkingRef version="any" ref="IT:ITC1:parcheggiTorino:p:Porta_Nuova"/>
 							</appliesTo>
 						</ParkingTariff>
 					</parkingTariffs>
@@ -25194,17 +25207,21 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 					</modesOfOperation>
 					<mobilityServices>
 						<VehicleSharingService id="IT:ITC1:CarSharingTorino:VSS:1" version="any">
-							<!-- NJSK add version to ref -->  <VehicleSharingRef version="any"  ref="IT:ITC1:CarSharingTorino:VS:1"/>
+							<!-- NJSK add version to ref -->
+							<VehicleSharingRef version="any" ref="IT:ITC1:CarSharingTorino:VS:1"/>
 							<FloatingVehicles>true</FloatingVehicles>
 							<fleets>
-								<!-- NJSK add version to ref -->  <FleetRef version="any"  ref="IT:ITC1:CarSharingTorino:fleet:1"/>
+								<!-- NJSK add version to ref -->
+								<FleetRef version="any" ref="IT:ITC1:CarSharingTorino:fleet:1"/>
 							</fleets>
 						</VehicleSharingService>
 						<VehicleSharingService id="IT:ITC1:BikeSharingTorino:VSS:1" version="any">
-							<!-- NJSK add version to ref -->  <VehicleSharingRef version="any"  ref="IT:ITC1:BikeSharingTorino:VS:1"/>
+							<!-- NJSK add version to ref -->
+							<VehicleSharingRef version="any" ref="IT:ITC1:BikeSharingTorino:VS:1"/>
 							<FloatingVehicles>false</FloatingVehicles>
 							<fleets>
-								<!-- NJSK add version to ref -->  <FleetRef version="any"  ref="IT:ITC1:BikeSharingTorino:fleet:1"/>
+								<!-- NJSK add version to ref -->
+								<FleetRef version="any" ref="IT:ITC1:BikeSharingTorino:fleet:1"/>
 							</fleets>
 						</VehicleSharingService>
 					</mobilityServices>

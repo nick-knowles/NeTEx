@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Rossella Panero (5T S.r.l.) -->
 <!--
 NeTEX italian Profile EPIP + Level 2 + Fare-->
-<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="any" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="any" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2021-01-01T12:00:00.000+02:00</PublicationTimestamp>
 	<ParticipantRef>RAP</ParticipantRef>
 	<Description>Esempio di profilo italiano del NeTEx EPIP + Livello 2 + Fare</Description>
@@ -1557,7 +1556,8 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 											<gml:pos srsName="ITA">7.657829 45.070304</gml:pos>
 										</Location>
 									</Centroid>
-									<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:001_Lvl_G0"/>
+									<!-- NJSK add version -->
+									<LevelRef version="any" ref="IT:ITC1:busATS:Level:001_Lvl_G0"/>
 									<Label>TO-MI</Label>
 									<destinations>
 										<DestinationDisplayView>
@@ -2620,8 +2620,10 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 							<AccessModes>foot</AccessModes>
 							<!-- ============LEVELS ===================- -->
 							<levels>
-								<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
-								<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:0001_Lvl_UG0"/>
+								<!-- NJSK add version -->
+								<LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
+								<!-- NJSK add version -->
+								<LevelRef version="any" ref="IT:ITC1:busATS:Level:0001_Lvl_UG0"/>
 							</levels>
 							<PublicCode>MI-Lampugnano</PublicCode>
 							<TransportMode>other</TransportMode>
@@ -2645,8 +2647,10 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 							<AccessModes>foot</AccessModes>
 							<!-- ============LEVELS ===================- -->
 							<levels>
-								<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
-								<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:0001_Lvl_UG0"/>
+								<!-- NJSK add version -->
+								<LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
+								<!-- NJSK add version -->
+								<LevelRef version="any" ref="IT:ITC1:busATS:Level:0001_Lvl_UG0"/>
 							</levels>
 							<PublicCode>MI-Centrale</PublicCode>
 							<TransportMode>other</TransportMode>
@@ -2661,7 +2665,8 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 											<gml:pos srsName="ITA">7.657829 45.070304</gml:pos>
 										</Location>
 									</Centroid>
-									<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
+									<!-- NJSK add version -->
+									<LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
 									<Label>TO-MI</Label>
 									<destinations>
 										<DestinationDisplayView>
@@ -2706,7 +2711,8 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 											<gml:pos srsName="ITA">7.657829 45.070304</gml:pos>
 										</Location>
 									</Centroid>
-									<!-- NJSK add version --> <LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
+									<!-- NJSK add version -->
+									<LevelRef version="any" ref="IT:ITC1:busATS:Level:00023_Lvl_G0"/>
 									<Label>TO-MI</Label>
 									<destinations>
 										<DestinationDisplayView>
@@ -2749,7 +2755,8 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 											<gml:pos srsName="ITA">7.657829 45.070304</gml:pos>
 										</Location>
 									</Centroid>
-									<!-- NJSK add version --> <LevelRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:busATS:Level:00023_Lvl_U1"/>
+									<!-- NJSK add version -->
+									<LevelRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:busATS:Level:00023_Lvl_U1"/>
 									<Label>LAMPUGNANO</Label>
 									<destinations>
 										<DestinationDisplayView>
@@ -2766,7 +2773,8 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 											<gml:pos srsName="ITA">7.657829 45.070304</gml:pos>
 										</Location>
 									</Centroid>
-									<!-- NJSK add version --> <LevelRef versionRef="EXTERNAL-MISSING"  ref="IT:ITC1:busATS:Level:00023_Lvl_U1"/>
+									<!-- NJSK add version -->
+									<LevelRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:busATS:Level:00023_Lvl_U1"/>
 									<Label>LAMPUGNANO</Label>
 									<destinations>
 										<DestinationDisplayView>
@@ -2795,7 +2803,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 									</AccessibilityLimitation>
 								</limitations>
 							</AccessibilityAssessment>
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:milanocentrale"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:milanocentrale"/>
 							<!-- NJSK add version ref -->
 							<ParentSiteRef version="any" ref="IT:ITC1:busATS:StopPlace:001MI"/>
 							<TransportMode>rail</TransportMode>
@@ -2846,7 +2854,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 									</AccessibilityLimitation>
 								</limitations>
 							</AccessibilityAssessment>
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:rhofiera"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:rhofiera"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -2896,7 +2904,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:magenta"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:magenta"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -2946,7 +2954,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:novara"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:novara"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -2996,7 +3004,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:vercelli"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:vercelli"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3046,7 +3054,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:santhia"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:santhia"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3096,7 +3104,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:chivasso"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:chivasso"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3146,7 +3154,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:torino_tutti"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:torino_tutti"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3196,7 +3204,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:torino_tutti"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:torino_tutti"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3246,7 +3254,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:milano_tutti"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:milano_tutti"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3296,7 +3304,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:milano_tutti"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:milano_tutti"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3346,7 +3354,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:treviglio"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:treviglio"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
@@ -3396,7 +3404,7 @@ USe STOP AREA for group of SCHEDULED STOP POINTS-->
 								</limitations>
 							</AccessibilityAssessment>
 							<!-- NJSK Can Associate with topo place -->
-							<TopographicPlaceRef version="any"  ref="IT:ITC1:trenoFS:tppl:romano"/>
+							<TopographicPlaceRef version="any" ref="IT:ITC1:trenoFS:tppl:romano"/>
 							<TransportMode>rail</TransportMode>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>

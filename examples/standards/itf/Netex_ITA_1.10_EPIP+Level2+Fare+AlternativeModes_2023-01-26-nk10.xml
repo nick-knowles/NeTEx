@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Rossella Panero (5T S.r.l.) -->
 <!--
 
 NJSK 
@@ -68,7 +67,7 @@ Parking product
 
 
 NeTEX italian Profile EPIP + Level 2 + Fare-->
-<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="any" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="any" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2021-01-01T12:00:00.000+02:00</PublicationTimestamp>
 	<ParticipantRef>RAP</ParticipantRef>
 	<Description>Esempio di profilo italiano del NeTEx EPIP + Livello 2 + Fare</Description>
@@ -12637,7 +12636,7 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 						<Tariff id="IT:ITC1:metroATMMILANO:SPL" version="any">
 							<Description>Single ticket -Validity: 90 minutes after stamping. It will be possible to move along more routes and combining more vehicles, either continuously or with several intermediate stops; therefore, it’s possible to make return journeys with the same ticket, always within 90 minutes from the validation, even by making multiple entries on the subway. Price: 2,00 €. You can buy this ticket via sms, by sending a message to 48444 and typing ATM. This ticket is valid now also to reach Rho Fieramilano, located outside the inner city area.
 
-Milan City Pass - available for 1day or 3days and valid for unlimited access on all means of public transport (metro, trams, buses) within the Milan urban area and airports shuttle (in option). Free or discounted access to museums, tours, restaurants, tourist attractions, Milan City Sightseeing, Airport Bus and much more are included in the price. Prices: 12,50 € (1day); 17,50€ (2days); 19,50 € (3days). BUY NOW >>
+Milan City Pass - available for 1day or 3days and valid for unlimited access on all means of public transport (metro, trams, buses) within the Milan urban area and airports shuttle (in option). Free or discounted access to museums, tours, restaurants, tourist attractions, Milan City Sightseeing, Airport Bus and much more are included in the price. Prices: 12,50 € (1day); 17,50€ (2days); 19,50 € (3days). BUY NOW &gt;&gt;
 
 Carnet of 10 Standard tickets - Validity: 10 journeys, 90 minuteseach after stamping. Each ticket is valid for a single journey on the underground or rail network. The ticket is personal and non-transferable. Price: 18,00 €
 
@@ -25067,23 +25066,20 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 										<TimeIntervalRef version="any" ref="IT:ITC1:busATS:ti:3"/>
 									</timeIntervals>
 								</FareStructureElement>
-
-<FareStructureElement id="IT:ITC1:busATS:8-timed_zone@conditions_of_use" version="any">
+								<FareStructureElement id="IT:ITC1:busATS:8-timed_zone@conditions_of_use" version="any">
 									<Name>Eligible users</Name>
 									<GenericParameterAssignment id="IT:ITC1:busATS:8-timed_zone@conditions_of_use" version="any" order="1">
 										<limitations>
-									 
 											<Transferability id="IT:ITC1:busATS:up:8-timed_zone@conditions_of_use@round_trip" version="any">
 												<CanTransfer>false</CanTransfer>
 											</Transferability>
 											<StepLimit id="IT:ITC1:busATS:up:8-timed_zone@conditions_of_use@step_limit" version="any">
-											<MaximumNumberOfSteps>2</MaximumNumberOfSteps>
-											<MaximumNumberOfTrips>1</MaximumNumberOfTrips>
+												<MaximumNumberOfSteps>2</MaximumNumberOfSteps>
+												<MaximumNumberOfTrips>1</MaximumNumberOfTrips>
 											</StepLimit>
 										</limitations>
 									</GenericParameterAssignment>
-								</FareStructureElement>					
-					
+								</FareStructureElement>
 							</fareStructureElements>
 						</Tariff>
 					</tariffs>
@@ -25159,9 +25155,9 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 							<Description>1 bus _ 1 metro  tariff with  timed travel travel</Description>
 							<ChargingMomentType>beforeTravel</ChargingMomentType>
 							<GenericParameterAssignment id="IT:ITC1:busATS:8-timed_zone:8" version="any" order="1">
-							<Name>Overall time must be one of the permitted two  durations </Name>
-										 		<FareStructureElementRef version="any"  ref="IT:ITC1:busATS:8-timed_zone@durations" />
-									</GenericParameterAssignment>
+								<Name>Overall time must be one of the permitted two  durations </Name>
+								<FareStructureElementRef version="any" ref="IT:ITC1:busATS:8-timed_zone@durations"/>
+							</GenericParameterAssignment>
 							<validableElements>
 								<!-- NJSK add version to ref -->
 								<ValidableElement id="IT:ITC1:busATS:ve:8-timed_zone@corsa_urbana@bus" version="any">
@@ -25171,7 +25167,6 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:8-timed_zone@access_bus"/>
 										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:1-point_to_point@eligibility"/>
 										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:8-timed_zone@conditions_of_use"/>
-										
 									</fareStructureElements>
 								</ValidableElement>
 								<!-- NJSK add version to ref -->
@@ -25181,7 +25176,7 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 										<!-- NJSK add version to ref -->
 										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:8-timed_zone@access_metro"/>
 										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:1-point_to_point@eligibility"/>
-												<FareStructureElementRef version="any" ref="IT:ITC1:busATS:1-point_to_point@conditions_of_use"/>
+										<FareStructureElementRef version="any" ref="IT:ITC1:busATS:1-point_to_point@conditions_of_use"/>
 									</fareStructureElements>
 								</ValidableElement>
 							</validableElements>
@@ -25257,8 +25252,7 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 								</SalesOfferPackageElement>
 							</salesOfferPackageElements>
 						</SalesOfferPackage>
-					
-			<SalesOfferPackage id="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point+parcheggio@paper_ticket" version="any">
+						<SalesOfferPackage id="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point+parcheggio@paper_ticket" version="any">
 							<Name>Parking + Distance based fare </Name>
 							<distributionAssignments>
 								<DistributionAssignment id="IT:ITC1:busATS:da:1-biglietto_urbano@point_to_point+parcheggio@paper_ticke" version="any" order="1">
@@ -25267,24 +25261,22 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 								</DistributionAssignment>
 							</distributionAssignments>
 							<salesOfferPackageElements>
-							<SalesOfferPackageElement id="IT:ITC1:busATS:sope:1-biglietto_urban@point_to_point+parcheggi@paper_ticket@parcheggi" version="any" order="1">
-							<Name>>Parchegio ></Name>
+								<SalesOfferPackageElement id="IT:ITC1:busATS:sope:1-biglietto_urban@point_to_point+parcheggi@paper_ticket@parcheggi" version="any" order="1">
+									<Name>&gt;Parchegio &gt;</Name>
 									<!-- NJSK add Type Of Travel Document-->
 									<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:paper_ticket"/>
 									<!-- NJSK add Fare Product -->
 									<PreassignedFareProductRef ref="IT:ITC1:busATS:pfp:1-point_to_point@corsa_urbana" version="any"/>
-								</SalesOfferPackageElement> 
+								</SalesOfferPackageElement>
 								<SalesOfferPackageElement id="IT:ITC1:busATS:sope:1-biglietto_urban@point_to_point+parcheggi@paper_ticket@corso" version="any" order="1">
-								<Name> Parking + bus ride </Name>
-									 
+									<Name> Parking + bus ride </Name>
 									<!-- NJSK add Type Of Travel Document-->
 									<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:paper_ticket"/>
 									<!-- NJSK add Fare Product -->
-										<PreassignedFareProductRef version="any" ref="IT:ITC1:parcheggiTorino:pfp:1-timed_stay"/>
+									<PreassignedFareProductRef version="any" ref="IT:ITC1:parcheggiTorino:pfp:1-timed_stay"/>
 								</SalesOfferPackageElement>
 							</salesOfferPackageElements>
 						</SalesOfferPackage>
-								
 						<SalesOfferPackage id="IT:ITC1:busATS:sop:1-biglietto_urbano-point_to_point@smart_card" version="any">
 							<Name>Local ticket - smartcard</Name>
 							<distributionAssignments>
@@ -25320,12 +25312,11 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 									<fareTables>
 										<!-- NJSK add version to ref -->
 										<FareTableRef version="any" ref="IT:ITC1:busATS:ft:geographicalIntervals"/>
-										
 									</fareTables>
 									<!-- NJSK add Type Of Travel Document-->
-										<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:paper_ticket"/>
-										<!-- NJSK add Fare Product -->
-										<PreassignedFareProductRef ref="IT:ITC1:busATS:pfp:2-distance@corsa_urbana" version="any"/>
+									<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:paper_ticket"/>
+									<!-- NJSK add Fare Product -->
+									<PreassignedFareProductRef ref="IT:ITC1:busATS:pfp:2-distance@corsa_urbana" version="any"/>
 								</SalesOfferPackageElement>
 							</salesOfferPackageElements>
 						</SalesOfferPackage>
@@ -25340,7 +25331,7 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 								<SalesOfferPackageElement id="IT:ITC1:busATS:sope:2-solo-parcheggio" version="any" order="1">
 									<fareTables>
 										<!-- NJSK reuse arlikng tab;e ref -->
-										<FareTableRef version="any" ref="IT:ITC1:parcheggiTorino_prices:timed_stay"/> 
+										<FareTableRef version="any" ref="IT:ITC1:parcheggiTorino_prices:timed_stay"/>
 									</fareTables>
 									<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:paper_ticket"/>
 									<PreassignedFareProductRef version="any" ref="IT:ITC1:parcheggiTorino:pfp:1-timed_stay"/>
@@ -25374,9 +25365,9 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 								<!-- NJSK add version to ref -->
 								<DistributionAssignmentRef version="any" ref="IT:ITC1:busATS:dc:1"/>
 							</distributionAssignments>
-							<salesOfferPackageElements> 
+							<salesOfferPackageElements>
 								<SalesOfferPackageElement id="IT:ITC1:busATS:sope:dm" version="any" order="1">
-								 	<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:smart_card"/>
+									<TypeOfTravelDocumentRef version="any" ref="IT:ITC1:busATS:ttd:smart_card"/>
 									<!-- NJSK FARE CORRECTION - Add reference to FARE PRODUCT -->
 									<PreassignedFareProductRef version="any" ref="IT:ITC1:busATS:pfp:8-timed_zone@corsa_urbana"/>
 								</SalesOfferPackageElement>
@@ -25388,70 +25379,69 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 					<Name>Prices for BusesG</Name>
 					<fareTables>
 						<FareTable id="IT:ITC1:busATS:ft:1-biglietto_urbano" version="any">
-						<FareTable id="IT:ITC1:busATS:ft:1-biglietto_urbano@point_to_point" version="any">
-									<pricesFor>
-								<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point@paper_ticket"/>
-											<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point@smart_card"/>
-							</pricesFor>
-							<prices>
-								<!-- NSJK FARE REVISION Merge three separate FARE TABLes for  DISTANCE MATRIX PRICEs into single table -->
-								<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:1" version="any">
-									<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
-									<Name>Tariffa Torino - Carisio</Name>
-									<Description>Tariffa Torino - Carisio</Description>
-									<Amount>6.00</Amount>
-									<CanBeCumulative>false</CanBeCumulative>
-									<!-- NJSK add version to ref -->
-									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:1"/>
-								</DistanceMatrixElementPrice>
-								<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:2" version="any">
-									<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
-									<Name>Tariffa Carisio - Milano</Name>
-									<Description>Tariffa Carisio - Milano</Description>
-									<Amount>7.00</Amount>
-									<CanBeCumulative>false</CanBeCumulative>
-									<!-- NJSK add version to ref -->
-									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:2"/>
-								</DistanceMatrixElementPrice>
-								<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:3" version="any">
-									<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
-									<Name>Tariffa Torino - Milano</Name>
-									<Description>Tariffa Torino - Milano</Description>
-									<Amount>13.00</Amount>
-									<CanBeCumulative>false</CanBeCumulative>
-									<!-- NJSK add version to ref -->
-									<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:3"/>
-								</DistanceMatrixElementPrice>
-							</prices>
-						</FareTable>
-						<FareTable id="IT:ITC1:busATS:ft:2-biglietto_urbano@distance" version="any">
-						<!-- NSJK  Add back link -->
-							<pricesFor>
-								<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:2-biglietto_urbano@distance@paper_ticket"/>
-							</pricesFor>
-							<!-- NSJK FARE REVISION Merge two  separate FARE TABLes for  GEOGRAPHICAL INTERVALs into single table -->
-							<prices>
-								<GeographicalIntervalPrice id="IT:ITC1:busATS:gip:0-5" version="any">
-									<!-- NJSK FARE REVISION - Change FARE STRUCTURE PRICE to  GEOGRAPHICAL INTERVAL PRICE -->
-									<Name>Tariffa 0-5km</Name>
-									<Description>Tariffa 0-5km</Description>
-									<Amount>10.00</Amount>
-									<CanBeCumulative>false</CanBeCumulative>
-									<!-- NJSK add version to ref -->
-									<GeographicalIntervalRef version="any" ref="IT:ITC1:busATS:gi:0-5"/>
-								</GeographicalIntervalPrice>
-								<GeographicalIntervalPrice id="IT:ITC1:busATS:gip:5-10" version="any">
-									<!-- NJSK FARE REVISION - Change FARE STRUCTURE PRICE to  GEOGRAPHICAL INTERVAL PRICE -->
-									<Name>Tariffa 5.1-10km</Name>
-									<Description>Tariffa 5-1-10km</Description>
-									<Amount>11.00</Amount>
-									<CanBeCumulative>false</CanBeCumulative>
-									<!-- NJSK add version to ref -->
-									<GeographicalIntervalRef version="any" ref="IT:ITC1:busATS:gi:5-10"/>
-								</GeographicalIntervalPrice>
-							</prices>
-						</FareTable>
-
+							<FareTable id="IT:ITC1:busATS:ft:1-biglietto_urbano@point_to_point" version="any">
+								<pricesFor>
+									<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point@paper_ticket"/>
+									<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:1-biglietto_urbano@point_to_point@smart_card"/>
+								</pricesFor>
+								<prices>
+									<!-- NSJK FARE REVISION Merge three separate FARE TABLes for  DISTANCE MATRIX PRICEs into single table -->
+									<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:1" version="any">
+										<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
+										<Name>Tariffa Torino - Carisio</Name>
+										<Description>Tariffa Torino - Carisio</Description>
+										<Amount>6.00</Amount>
+										<CanBeCumulative>false</CanBeCumulative>
+										<!-- NJSK add version to ref -->
+										<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:1"/>
+									</DistanceMatrixElementPrice>
+									<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:2" version="any">
+										<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
+										<Name>Tariffa Carisio - Milano</Name>
+										<Description>Tariffa Carisio - Milano</Description>
+										<Amount>7.00</Amount>
+										<CanBeCumulative>false</CanBeCumulative>
+										<!-- NJSK add version to ref -->
+										<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:2"/>
+									</DistanceMatrixElementPrice>
+									<DistanceMatrixElementPrice id="IT:ITC1:busATS:dmp:3" version="any">
+										<!-- NJSK FARE REVISION - Change FARE STRUCTURE ELEMENT PRICE  to  DISTANCE MATRIX PRICE-->
+										<Name>Tariffa Torino - Milano</Name>
+										<Description>Tariffa Torino - Milano</Description>
+										<Amount>13.00</Amount>
+										<CanBeCumulative>false</CanBeCumulative>
+										<!-- NJSK add version to ref -->
+										<DistanceMatrixElementRef version="any" ref="IT:ITC1:busATS:dm:3"/>
+									</DistanceMatrixElementPrice>
+								</prices>
+							</FareTable>
+							<FareTable id="IT:ITC1:busATS:ft:2-biglietto_urbano@distance" version="any">
+								<!-- NSJK  Add back link -->
+								<pricesFor>
+									<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:2-biglietto_urbano@distance@paper_ticket"/>
+								</pricesFor>
+								<!-- NSJK FARE REVISION Merge two  separate FARE TABLes for  GEOGRAPHICAL INTERVALs into single table -->
+								<prices>
+									<GeographicalIntervalPrice id="IT:ITC1:busATS:gip:0-5" version="any">
+										<!-- NJSK FARE REVISION - Change FARE STRUCTURE PRICE to  GEOGRAPHICAL INTERVAL PRICE -->
+										<Name>Tariffa 0-5km</Name>
+										<Description>Tariffa 0-5km</Description>
+										<Amount>10.00</Amount>
+										<CanBeCumulative>false</CanBeCumulative>
+										<!-- NJSK add version to ref -->
+										<GeographicalIntervalRef version="any" ref="IT:ITC1:busATS:gi:0-5"/>
+									</GeographicalIntervalPrice>
+									<GeographicalIntervalPrice id="IT:ITC1:busATS:gip:5-10" version="any">
+										<!-- NJSK FARE REVISION - Change FARE STRUCTURE PRICE to  GEOGRAPHICAL INTERVAL PRICE -->
+										<Name>Tariffa 5.1-10km</Name>
+										<Description>Tariffa 5-1-10km</Description>
+										<Amount>11.00</Amount>
+										<CanBeCumulative>false</CanBeCumulative>
+										<!-- NJSK add version to ref -->
+										<GeographicalIntervalRef version="any" ref="IT:ITC1:busATS:gi:5-10"/>
+									</GeographicalIntervalPrice>
+								</prices>
+							</FareTable>
 							<prices>
 								<FareStructureElementPrice id="IT:ITC1:busATS:cep:8" version="any">
 									<Name>Tariffa urbano</Name>
@@ -25477,8 +25467,7 @@ DO CHILDREN NEED TO BUY A TICKET TO USE THE MEANS OF PUBLIC TRANSPORT IN MILAN? 
 									<FareStructureElementRef version="any" ref="IT:ITC1:busATS:fse:1"/>
 								</FareStructureElementPrice>
 							</prices>
-						</FareTable>				
-				
+						</FareTable>
 					</fareTables>
 				</FareFrame>
 			</frames>
@@ -26317,9 +26306,8 @@ N.B. With a "mobile" subscription you will not receive any physical card.  </Des
 					<TypeOfFrameRef versionRef="any" ref="epip:EU_PI_STOP"/>
 					<parkings>
 						<Parking id="IT:ITC1:parcheggiTorino:p:Porta_Nuova" version="any">
-							<Name>Parcheggio Porta Nuova</Name> 
-									<ShortName>Porta Nuova</ShortName>
-							
+							<Name>Parcheggio Porta Nuova</Name>
+							<ShortName>Porta Nuova</ShortName>
 							<Centroid>
 								<Location>
 									<Longitude>7.67798</Longitude>
@@ -26337,48 +26325,41 @@ N.B. With a "mobile" subscription you will not receive any physical card.  </Des
 									</gml:LinearRing>
 								</gml:exterior>
 							</gml:Polygon>
-							
 							<!-- NJSK Added -->
 							<Url>https://www.parkinstation.it/en/eccellenze/351749-torino-porta-nuova?isTypical</Url>
 							<RoadAddress id="IT:ITC1:parcheggiTorino:RoadAddress:Porta_Nuova" version="any">
 								<RoadNumber>1</RoadNumber>
 								<RoadName>via Sacchi</RoadName>
 							</RoadAddress>
-							
-				 				
 							<!-- NJSK Added -->
-					 <Covered>indoors</Covered>
-					 <Gated>gatedArea</Gated>
-					 <Lighting>unlit</Lighting>
- 	<OperatorRef version="any" ref="IT:ITC1:parcheggiTorino:OP:parcheggiTorino" />
-						 
-
+							<Covered>indoors</Covered>
+							<Gated>gatedArea</Gated>
+							<Lighting>unlit</Lighting>
+							<OperatorRef version="any" ref="IT:ITC1:parcheggiTorino:OP:parcheggiTorino"/>
 							<ParkingLayout>multistorey</ParkingLayout>
-								<PrincipalCapacity>242</PrincipalCapacity>
+							<PrincipalCapacity>242</PrincipalCapacity>
 							<TotalCapacity>248</TotalCapacity>
 							<PaymentMethods>cashAndCard</PaymentMethods>
 							<FreeParkingOutOfHours>false</FreeParkingOutOfHours>
-																	
-
 							<parkingProperties>
 								<ParkingProperties id="IT:ITC1:parcheggiTorino:RoadAddress:Porta_Nuova" version="any">
-								<ParkingUserTypes>all</ParkingUserTypes>
-								<areas>
-									<ParkingAreaRef version="any" ref="IT:ITC1:parcheggiTorino:Entrance:Porta_Nuova@01"/>
-								</areas>
-								<spaces>
-									<ParkingCapacity id="IT:ITC1:parcheggiTorino:RoadAddress:Porta_Nuova@disabled" version="any"> 
-									<ParkingUserType>impairedMobility</ParkingUserType>
-									<ParkingStayType>shortStay</ParkingStayType>
-									<NumberOfSpaces>6</NumberOfSpaces>
-									</ParkingCapacity>
-								</spaces>
+									<ParkingUserTypes>all</ParkingUserTypes>
+									<areas>
+										<ParkingAreaRef version="any" ref="IT:ITC1:parcheggiTorino:Entrance:Porta_Nuova@01"/>
+									</areas>
+									<spaces>
+										<ParkingCapacity id="IT:ITC1:parcheggiTorino:RoadAddress:Porta_Nuova@disabled" version="any">
+											<ParkingUserType>impairedMobility</ParkingUserType>
+											<ParkingStayType>shortStay</ParkingStayType>
+											<NumberOfSpaces>6</NumberOfSpaces>
+										</ParkingCapacity>
+									</spaces>
 								</ParkingProperties>
 							</parkingProperties>
 							<parkingAreas>
-								<ParkingArea   id="IT:ITC1:parcheggiTorino:Entrance:Porta_Nuova@01" version="any">
+								<ParkingArea id="IT:ITC1:parcheggiTorino:Entrance:Porta_Nuova@01" version="any">
 								
-								</ParkingArea >
+								</ParkingArea>
 							</parkingAreas>
 							<vehicleEntrances>
 								<ParkingEntranceForVehicles id="IT:ITC1:parcheggiTorino:Entrance:Porta_Nuova" version="any">
@@ -26388,7 +26369,6 @@ N.B. With a "mobile" subscription you will not receive any physical card.  </Des
 									</RoadAddress>
 								</ParkingEntranceForVehicles>
 							</vehicleEntrances>
-						
 						</Parking>
 					</parkings>
 				</SiteFrame>
@@ -26672,13 +26652,12 @@ N.B. With a "mobile" subscription you will not receive any physical card.  </Des
 							<Description>Tariffa biglietto Tariffa Corso Singola</Description>
 							<pricesFor>
 								<SalesOfferPackageRef version="any" ref="IT:ITC1:parcheggiTorino:sop:1-timed_stay:paper_ticket"/>
-									<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:2-solo-parcheggio"/>
+								<SalesOfferPackageRef version="any" ref="IT:ITC1:busATS:sop:2-solo-parcheggio"/>
 							</pricesFor>
-				 
 							<prices>
 								<!-- torinopn -->
 								<ParkingPrice id="IT:ITC1:parcheggiTorino:sop:timed_stay:30M" version="any">
-								<Name>Charge per half hour</Name>
+									<Name>Charge per half hour</Name>
 									<Amount>2.20</Amount>
 									<ParkingChargeBand id="IT:ITC1:parcheggiTorino:pcb:30M" version="any">
 										<TimeIntervalRef version="any" ref="IT:ITC1:parcheggiTorino:ti:30M"/>

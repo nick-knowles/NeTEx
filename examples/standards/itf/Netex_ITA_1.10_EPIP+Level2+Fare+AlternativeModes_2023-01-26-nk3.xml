@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Rossella Panero (5T S.r.l.) -->
 <!--
 
 NJSK 
@@ -47,7 +46,7 @@ NJSK General revisions
                 - Change FARE STRUCTURE ELEMENT prices for distance matrix elements  to GEOGRAPHICAL INTERVAL PRICEs
              - Merge three separate FARE TABLes for  GEOGRAPHICAL INTERVAL PRICEsinto single table 
 NeTEX italian Profile EPIP + Level 2 + Fare-->
-<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="any" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="any" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2021-01-01T12:00:00.000+02:00</PublicationTimestamp>
 	<ParticipantRef>RAP</ParticipantRef>
 	<Description>Esempio di profilo italiano del NeTEx EPIP + Livello 2 + Fare</Description>
@@ -107,7 +106,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ToDate>2021-12-31T00:00:00Z</ToDate>
 							</ValidBetween>
 							<Description>Contratto di servizio</Description>
-							<!-- NJSK add version to ref --> <AccountedObjectRef version="any"  ref="IT:ITC1:trenoFS:sjpf:1"/>
+							<!-- NJSK add version to ref -->
+							<AccountedObjectRef version="any" ref="IT:ITC1:trenoFS:sjpf:1"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:FI"/>
 							<!--  NJSK mark external reference  as external-->
 							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
@@ -120,7 +120,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ToDate>2021-12-31T00:00:00Z</ToDate>
 							</ValidBetween>
 							<Description>Contratto di servizio</Description>
-							<!-- NJSK add version to ref --> <AccountedObjectRef version="any"  ref="IT:ITC1:trenoFS:sjpf:1"/>
+							<!-- NJSK add version to ref -->
+							<AccountedObjectRef version="any" ref="IT:ITC1:trenoFS:sjpf:1"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:AT"/>
 							<!--  NJSK mark external reference  as external-->
 							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
@@ -133,7 +134,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ToDate>2021-12-31T00:00:00Z</ToDate>
 							</ValidBetween>
 							<Description>Contratto di servizio</Description>
-							<!-- NJSK add version to ref --> <AccountedObjectRef version="any"  ref="IT:ITC1:trenoFS:sjpf:2"/>
+							<!-- NJSK add version to ref -->
+							<AccountedObjectRef version="any" ref="IT:ITC1:trenoFS:sjpf:2"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:FI"/>
 							<!--  NJSK mark external reference  as external-->
 							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
@@ -146,7 +148,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ToDate>2021-12-31T00:00:00Z</ToDate>
 							</ValidBetween>
 							<Description>Contratto di servizio</Description>
-							<!-- NJSK add version to ref --> <AccountedObjectRef version="any"  ref="IT:ITC1:trenoFS:sjpf:2"/>
+							<!-- NJSK add version to ref -->
+							<AccountedObjectRef version="any" ref="IT:ITC1:trenoFS:sjpf:2"/>
 							<OrganisationRef versionRef="EXTERNAL-MISSING" ref="IT:ITC1:trenoFS:org:AT"/>
 							<!--  NJSK mark external reference  as external-->
 							<SupplyContractRef versionRef="EXTERNAL" ref="IT:ITC1:trenoFS:supcon:1"/>
@@ -428,26 +431,34 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Affidante" version="any">
 									<StakeholderRoleType>Control</StakeholderRoleType>
 									<!--<TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:AFFIDANTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATS:Authority:AMP"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATS:Authority:AMP"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Affidatario" version="any">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:AFFIDATARIO"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef versionRef="ERROR-MISSING"  ref="IT:ITC1:busATS:Consortium:RP"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:Consortium:RP"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Esercente:01" version="any">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATS:Operator:11"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATS:Operator:11"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Esercente:02" version="any">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef  versionRef="ERROR-MISSING"   ref="IT:ITC1:busATS:Operator:43"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:Operator:43"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1A"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -456,26 +467,34 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1B:Affidante" version="any">
 									<StakeholderRoleType>Control</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:AFFIDANTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATS:Authority:AMP"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATS:Authority:AMP"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1B:Affidatario" version="any">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:AFFIDATARIO"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef  versionRef="ERROR-MISSING"  ref="IT:ITC1:busATS:Consortium:RP"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:Consortium:RP"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1B:Esercente:01" version="any">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATS:Operator:11"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATS:Operator:11"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:busATS:ResponsibilityRoleAssignment:JourneyAccounting:1B:Esercente:02" version="any">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:busATS:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef  versionRef="ERROR-MISSING"   ref="IT:ITC1:busATS:Operator:43" xsi:type="OperatorRefStructure"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef versionRef="ERROR-MISSING" ref="IT:ITC1:busATS:Operator:43" xsi:type="OperatorRefStructure"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATS:JourneyAccounting:1B"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -485,20 +504,26 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ResponsibilityRoleAssignment id="IT:ITC1:trenoFS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Affidante" version="any">
 									<StakeholderRoleType>Control</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:trenoFS:typeOfResponsibilityRole:AFFIDANTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:trenoFS:org:AT"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:trenoFS:jacc:1"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:trenoFS:org:AT"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:trenoFS:jacc:1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:trenoFS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Affidatario" version="any">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:trenoFS:typeOfResponsibilityRole:AFFIDATARIO"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:trenoFS:org:TI"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:trenoFS:jacc:1"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:trenoFS:org:TI"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:trenoFS:jacc:1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="IT:ITC1:trenoFS:ResponsibilityRoleAssignment:JourneyAccounting:1A:Esercente:01" version="any">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!--<TypeOfResponsibilityRoleRef ref="IT:ITC1:trenoFS:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:trenoFS:org:TI"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:trenoFS:jacc:1"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:trenoFS:org:TI"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:trenoFS:jacc:1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -508,14 +533,18 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								<ResponsibilityRoleAssignment version="any" id="IT:ITC1:busATV:ResponsibilityRoleAssignment:JourneyAccounting:1VR:Affidante">
 									<StakeholderRoleType>Control</StakeholderRoleType>
 									<!--								<TypeOfResponsibilityRoleRef ref="IT:ITC1:busATV:typeOfResponsibilityRole:AFFIDANTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATV:Authority:EGV"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATV:JourneyAccounting:1VR"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATV:Authority:EGV"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATV:JourneyAccounting:1VR"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment version="any" id="IT:ITC1:busATV:ResponsibilityRoleAssignment:JourneyAccounting:1VR:Esercente">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!--								<TypeOfResponsibilityRoleRef ref="IT:ITC1:busATV:typeOfResponsibilityRole:ESERCENTE"/>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:busATV:Operator:ATV"/>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:busATV:JourneyAccounting:1VR"/>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:busATV:Operator:ATV"/>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:busATV:JourneyAccounting:1VR"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -533,8 +562,10 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 									</ValidBetween>
 									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<!-- <TypeOfResponsibilityRoleRef ref="IT:ITC1:metroATMMILANO:RIC:ESER_4">ESER_4</TypeOfResponsibilityRoleRef>-->
-									<!-- NJSK add version to ref --> <ResponsibleOrganisationRef version="any"  ref="IT:ITC1:metroATMMILANO:OP:ATMMILANO">ATMMilano</ResponsibleOrganisationRef>
-									<!-- NJSK add version to ref --> <ResponsiblePartRef versionRef="ERROR-BOGUS"  ref="IT:ITC1:metroATMMILANO:CON:ATMMILANO">ATMMilano</ResponsiblePartRef>
+									<!-- NJSK add version to ref -->
+									<ResponsibleOrganisationRef version="any" ref="IT:ITC1:metroATMMILANO:OP:ATMMILANO">ATMMilano</ResponsibleOrganisationRef>
+									<!-- NJSK add version to ref -->
+									<ResponsiblePartRef versionRef="ERROR-BOGUS" ref="IT:ITC1:metroATMMILANO:CON:ATMMILANO">ATMMilano</ResponsiblePartRef>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -22695,9 +22726,9 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<TransportMode>rail</TransportMode>
 							<journeyAccountings>
 								<!-- NJSK add version to ref ERROR CORRECT REFERENCE from IT:ITC1:jouacc:1 to IT:ITC1:trenoFS:jacc:1_1-->
-								 <JourneyAccountingRef version="any"  ref="IT:ITC1:trenoFS:jacc:1"/>
-										<!-- NJSK add version to ref ERROR CORRECT REFERENCE from IT:ITC1:jouacc:2 to IT:ITC1:trenoFS:jacc:1_1-->
-										 <JourneyAccountingRef version="any"  ref="IT:ITC1:trenoFS:jacc:2_1"/>
+								<JourneyAccountingRef version="any" ref="IT:ITC1:trenoFS:jacc:1"/>
+								<!-- NJSK add version to ref ERROR CORRECT REFERENCE from IT:ITC1:jouacc:2 to IT:ITC1:trenoFS:jacc:1_1-->
+								<JourneyAccountingRef version="any" ref="IT:ITC1:trenoFS:jacc:2_1"/>
 							</journeyAccountings>
 							<DepartureTime>06:54:00Z</DepartureTime>
 							<JourneyDuration>PT1H51M0S</JourneyDuration>
@@ -22876,7 +22907,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 									<ArrivalTime>10:50:00</ArrivalTime>
 								</TimetabledPassingTime>
 							</passingTimes>
-							<facilities> <!-- NJSK add version to ref -->
+							<facilities>
+								<!-- NJSK add version to ref -->
 								<ServiceFacilitySetRef version="any" ref="IT:ITC1:trenoFS:svfct:1"/>
 							</facilities>
 						</ServiceJourney>
@@ -24523,13 +24555,13 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 									<StartGeographicalValue>0</StartGeographicalValue>
 									<EndGeographicalValue>5</EndGeographicalValue>
 									<!-- NJSK CORRECTION to ERROR in REF  from <GeographicalUnitRef ref="">IT:ITC1:busATS:gu:1</GeographicalUnitRef> -->
-									<GeographicalUnitRef version="any" ref="IT:ITC1:busATS:gu:1"></GeographicalUnitRef>
+									<GeographicalUnitRef version="any" ref="IT:ITC1:busATS:gu:1"/>
 								</GeographicalInterval>
 								<GeographicalInterval id="IT:ITC1:busATS:gi:5-10" version="any">
 									<StartGeographicalValue>5.1</StartGeographicalValue>
 									<EndGeographicalValue>10</EndGeographicalValue>
-												<!-- NJSK CORRECTION to ERROR in REF  from <GeographicalUnitRef ref="">IT:ITC1:busATS:gu:1</GeographicalUnitRef> -->
-									<GeographicalUnitRef version="any" ref="IT:ITC1:busATS:gu:1"></GeographicalUnitRef>
+									<!-- NJSK CORRECTION to ERROR in REF  from <GeographicalUnitRef ref="">IT:ITC1:busATS:gu:1</GeographicalUnitRef> -->
+									<GeographicalUnitRef version="any" ref="IT:ITC1:busATS:gu:1"/>
 								</GeographicalInterval>
 							</geographicalIntervals>
 							<timeIntervals>
@@ -24758,7 +24790,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 							<Description>Tariffa parcheggio</Description>
 							<ChargingMomentType>atEndOfChargePeriod</ChargingMomentType>
 							<validableElements>
-								<!-- NJSK add version to ref --> <ValidableElementRef version="any"  ref="IT:ITC1:busATS:ve:1-Parcheggio"/>
+								<!-- NJSK add version to ref -->
+								<ValidableElementRef version="any" ref="IT:ITC1:busATS:ve:1-Parcheggio"/>
 							</validableElements>
 							<tariffs>
 								<!-- NJSK add version to ref -->
@@ -24835,8 +24868,10 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								</GenericParameterAssignment>
 							</validityParameterAssignments>
 							<validableElements>
-								<!-- NJSK add version to ref --> <ValidableElementRef version="any"  ref="IT:ITC1:busATS:ve:1-Parcheggio"/>
-								<!-- NJSK add version to ref --> <ValidableElementRef version="any"  ref="IT:ITC1:busATS:ve:8"/>
+								<!-- NJSK add version to ref -->
+								<ValidableElementRef version="any" ref="IT:ITC1:busATS:ve:1-Parcheggio"/>
+								<!-- NJSK add version to ref -->
+								<ValidableElementRef version="any" ref="IT:ITC1:busATS:ve:8"/>
 							</validableElements>
 							<tariffs>
 								<!-- NJSK add version to ref -->
@@ -24913,7 +24948,8 @@ NeTEX italian Profile EPIP + Level 2 + Fare-->
 								</GenericParameterAssignment>
 							</validityParameterAssignments>
 							<validableElements>
-								<!-- NJSK add version to ref --> <ValidableElementRef version="any"  ref="IT:ITC1:busATS:ve:8"/>
+								<!-- NJSK add version to ref -->
+								<ValidableElementRef version="any" ref="IT:ITC1:busATS:ve:8"/>
 							</validableElements>
 						</PreassignedFareProduct>
 						<PreassignedFareProduct id="IT:ITC1:BikeSharingTorino:pfp:1" version="any">
