@@ -774,6 +774,12 @@
 					<File FilePath="examples\standards\era_uic\Netex_Eurostar mapping_era_2.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\era_uic\Netex_Eurostar_stations.xml" HomeFolder="Yes"/>
 				</Folder>
+				<Folder FolderName="epip">
+					<File FilePath="examples\standards\epip\epip_common_profile.xml" HomeFolder="Yes"/>
+				</Folder>
+				<Folder FolderName="efp">
+					<File FilePath="examples\standards\efp\VVS_Fares_V1-nk1.xml" HomeFolder="Yes"/>
+				</Folder>
 				<Folder FolderName="gtfs">
 					<File FilePath="examples\standards\gtfs\Netex_gtfs_exm1_Agency_1.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\gtfs\Netex_gtfs_exm1_Calendar_1.xml" HomeFolder="Yes"/>
@@ -906,12 +912,10 @@
 					<File FilePath="examples\standards\txc\uk_txc_SCWW-86_extract1-with-sections.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\txc\uk_txc_SCWW-86_extract2-simplified.xml" HomeFolder="Yes"/>
 				</Folder>
-				<Folder FolderName="epip">
-					<File FilePath="examples\standards\epip\epip_common_profile.xml" HomeFolder="Yes"/>
-				</Folder>
 				<Folder FolderName="fxc">
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_AMSY_NETWORK_FARE_Arriva-pass_20200417.xml" HomeFolder="Yes"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_AMSY_NETWORK_FARE_Arriva-trip_20200417.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\fxc\FX-PI-01_UK_FBRI_LINE-FARE_WOE-Bristol-Line-48-trip-(stage)_2017-01-01.xml"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_FBRI_NETWORK-FARE_WOE-Bristol-(mixed)_2017-01-01 (5).xml"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_FBRI_NETWORK-FARE_WOE-Bristol-pass-(Z2Z)_2017-01-01.xml"/>
 					<File FilePath="examples\standards\fxc\FX-PI-01_UK_FSYO_NETWORK_FARE_FirstSheffield-pass-by-period_20200310.xml" HomeFolder="Yes"/>
@@ -946,6 +950,13 @@
 				</Folder>
 				<Folder FolderName="gbfs">
 					<File FilePath="examples\standards\gbfs\Netex_gbfs_exm1.xml" HomeFolder="Yes"/>
+				</Folder>
+				<Folder FolderName="itf">
+					<File FilePath="examples\standards\itf\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2023-01-26-nk1.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\itf\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2023-01-26-nk6.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\itf\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2023-01-26-nk7.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\itf\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2023-01-26-nk8.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\itf\Netex_ITA_1.10_EPIP+Level2+Fare+AlternativeModes_2023-01-26-nk9.xml" HomeFolder="Yes"/>
 				</Folder>
 			</Folder>
 		</Folder>
