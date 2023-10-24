@@ -779,6 +779,8 @@
 				</Folder>
 				<Folder FolderName="efp">
 					<File FilePath="examples\standards\efp\VVS_Fares_V1-nk1.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\efp\VVS_Fares_V1-nk2.xml" HomeFolder="Yes"/>
+					<File FilePath="examples\standards\efp\VVS_Fares_V1.xml" HomeFolder="Yes"/>
 				</Folder>
 				<Folder FolderName="gtfs">
 					<File FilePath="examples\standards\gtfs\Netex_gtfs_exm1_Agency_1.xml" HomeFolder="Yes"/>
