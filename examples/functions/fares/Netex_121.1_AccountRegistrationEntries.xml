@@ -1548,20 +1548,20 @@ Tickets will be issued for the distance traveled by a single train and the conti
 							</ConditionSummary>
 							<distributionAssignments>
 								<DistributionAssignment id="tfc:TFC@Trip_Common-GSOP@online@post" version="01" order="1">
-									<Name>On line Sales></Name>
+									<Name>On line Sales&gt;</Name>
 									<DistributionChannelRef ref="eura:online" version="01"/>
 									<PaymentMethods>cardsOnly</PaymentMethods>
 									<FulfilmentMethodRef ref="eura:post" version="01"/>
 								</DistributionAssignment>
 								<DistributionAssignment id="tfc:TFC@Trip_Common-GSOP@ticket_machine@collect" version="01" order="2">
-									<Name>On line Sales></Name>
+									<Name>On line Sales&gt;</Name>
 									<Description> 4. From ticket vending machines installed in Gara de Nord (near the TFC Ticket Office), Mizil station (waiting room), Braila station  and Oradea station . Payment is made exclusively with the bank card. The types of tickets that can be bought from the vending machines are: full price tickets, reduced tickets 50% students, free student tickets (based on ID created at a TFC ticket house), children tickets, subscriptions, round trip established.</Description>
 									<DistributionChannelRef ref="tfc:TFC@Common@self_service_ticket_machine" version="01"/>
 									<PaymentMethods>cardsOnly</PaymentMethods>
 									<FulfilmentMethodRef ref="eura:collect_from_machine" version="01"/>
 								</DistributionAssignment>
 								<DistributionAssignment id="tfc:TFC@Trip_Common-GSOP@at_counter@issue" version="01" order="3">
-									<Name>At Counter  Sales></Name>
+									<Name>At Counter  Sales&gt;</Name>
 									<DistributionChannelRef ref="eura:at_counter" version="01"/>
 									<PaymentMethods>cashAndCard</PaymentMethods>
 									<FulfilmentMethodRef ref="eura:collect_at_counter" version="01"/>
@@ -4106,7 +4106,7 @@ Dear travelers, we inform you that no reservations are made at this time. Thank 
 								</FareTable>
 								<!-- C2 -->
 								<FareTable id="tfc:Single@onboard@C2@full" version="01">
-									<Name lang="ro">>Clasa 2</Name>
+									<Name lang="ro">&gt;Clasa 2</Name>
 									<specifics>
 										<ClassOfUseRef ref="eura:second" version="any"/>
 									</specifics>
@@ -5724,11 +5724,11 @@ Dear travelers, we inform you that no reservations are made at this time. Thank 
 							</validityParameterAssignments>
 							<distributionAssignments>
 								<DistributionAssignment id="tfc:TFC@Season_pass-SOP@online" version="01" order="1">
-									<Name>On line Sales></Name>
+									<Name>On line Sales&gt;</Name>
 									<DistributionChannelRef ref="eura:online" version="01"/>
 								</DistributionAssignment>
 								<DistributionAssignment id="tfc:TFC@Season_pass-SOP@counter" version="01" order="2">
-									<Name>At Counter  Sales></Name>
+									<Name>At Counter  Sales&gt;</Name>
 									<DistributionChannelRef ref="eura:online" version="01"/>
 								</DistributionAssignment>
 							</distributionAssignments>
@@ -5945,7 +5945,7 @@ Dear travelers, we inform you that no reservations are made at this time. Thank 
 								</FareTable>
 								<!-- C2 -->
 								<FareTable id="tfc:Pass@Season@adult@1M@C2@Interregio-IR" version="01">
-									<Name lang="ro">>Clasa 2</Name>
+									<Name lang="ro">&gt;Clasa 2</Name>
 									<specifics>
 										<ClassOfUseRef ref="eura:second" version="any"/>
 										<TypeOfProductCategoryRef ref="eura:interregional" version="any"/>
@@ -6253,7 +6253,7 @@ Dear travelers, we inform you that no reservations are made at this time. Thank 
 								</FareTable>
 								<!-- C2 -->
 								<FareTable id="tfc:Pass@Season@student@1M@C2@Interregio-IR" version="01">
-									<Name lang="ro">>Clasa 2</Name>
+									<Name lang="ro">&gt;Clasa 2</Name>
 									<specifics>
 										<ClassOfUseRef ref="eura:second" version="any"/>
 										<TypeOfProductCategoryRef ref="eura:interregional" version="any"/>
@@ -6552,7 +6552,7 @@ Dear travelers, we inform you that no reservations are made at this time. Thank 
 								</FareTable>
 								<!-- C2 -->
 								<FareTable id="tfc:Pass@Season@adult@1W@C2@Interregio-IR" version="01">
-									<Name lang="ro">>Clasa 2</Name>
+									<Name lang="ro">&gt;Clasa 2</Name>
 									<specifics>
 										<ClassOfUseRef ref="eura:second" version="any"/>
 										<TypeOfProductCategoryRef ref="eura:interregional" version="any"/>
@@ -6847,7 +6847,7 @@ State Secretariat for Revolutionary Issues in December 1989: : 12 free roun
 							<Description lang="en">Certain classes of user have the righto a number of free or discounted tickets per year</Description>
 							<distributionAssignments>
 								<DistributionAssignment id="tfc:TFC@Discount@Pass@Statutory_Right+Travel-SOP@counter" version="01" order="2">
-									<Name>At Counter  Sales></Name>
+									<Name>At Counter  Sales&gt;</Name>
 									<DistributionChannelRef ref="eura:online" version="01"/>
 								</DistributionAssignment>
 							</distributionAssignments>
@@ -8689,12 +8689,12 @@ c
 						<priceUnits>
 							<PriceUnit id="eura:EUR" version="any">
 								<Name>Euro</Name>
-								<PrivateCode>&#8364;</PrivateCode>
+								<PrivateCode>€</PrivateCode>
 								<Precision>2</Precision>
 							</PriceUnit>
 							<PriceUnit id="eura:GBP" version="any">
 								<Name>Pound Sterling</Name>
-								<PrivateCode>&#163;</PrivateCode>
+								<PrivateCode>£</PrivateCode>
 								<Precision>2</Precision>
 							</PriceUnit>
 							<PriceUnit id="eura:SFR" version="any">

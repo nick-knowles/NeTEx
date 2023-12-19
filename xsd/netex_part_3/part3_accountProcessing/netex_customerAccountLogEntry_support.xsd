@@ -9,8 +9,7 @@
 				<Audience>e-service developers</Audience>
 				<Coverage>Europe</Coverage>
 				<Creator>Arne Seime</Creator>
-				<Date>
-					<Created>2020-11-20</Created>
+				<Date><Created>2020-11-20</Created>
 					Align with TM
 					Add CustomerAccountEntry as a base type for Customer Account log entries
 					Add CustomerRegistrationEntry and CustomerDeregistrationEntry as concrete CustomerAccountEntries

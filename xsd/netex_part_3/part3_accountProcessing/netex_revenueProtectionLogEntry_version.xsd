@@ -12,13 +12,11 @@
 				<Audience>e-service developers</Audience>
 				<Coverage>Europe</Coverage>
 				<Creator>Nick Knowles</Creator>
-				<Date>
-					<Created>2023-12-15</Created>
+				<Date><Created>2023-12-15</Created>
 					Split out from REVENUE PROTECTION log entries, and  align names with Transmodel
 					 And other REVENUE PROTECTION ENTRIES
 				</Date>
-				<Date>
-					<Modified>2023-13-14</Modified> 
+				<Date><Modified>2023-13-14</Modified> 
 					Revise for inclusion in NeTEx
 				</Date>
 				<Description>
