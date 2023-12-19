@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1" id="netex_accessRightParameter_support">
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_accessRightParameter_support">
 	<!-- ======================================================================= -->
 	<xsd:include schemaLocation="netex_farePrice_support.xsd"/>
 	<xsd:include schemaLocation="../../netex_framework/netex_genericFramework/netex_assignment_support.xsd"/>
@@ -15,9 +15,14 @@
 				<Date>
 					<Created>2010-09-04</Created>
 				</Date>
-				<Date><Modified>2011-02-05</Modified>Name Space changes
+				<Date>
+					<Modified>2011-02-05</Modified>Name Space changes
 				</Date>
-				<Date><Modified>2019-04-18</Modified>FIX  - SUpport Place to Place travel (ADDRESS and TOPOGRAPHICAL PLACE) : Add PlaceUse enum 
+				<Date>
+					<Modified>2019-04-18</Modified>FIX  - SUpport Place to Place travel (ADDRESS and TOPOGRAPHICAL PLACE) : Add PlaceUse enum 
+				</Date>
+				<Date>
+					<Modified>2023-12-15</Modified>FMove DEvcie PARAMETER and CONTROL PARAMETER ASSIGNMENTS to correct files.
 				</Date>
 				<Description>
 					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
@@ -35,7 +40,7 @@
 					<Requires>http://www.netex.org.uk/schemas/1.0/PATH/netex_prereqfile.xsd</Requires>
 				</Relation>
 				<Rights>Unclassified
-					 <Copyright>CEN, Crown Copyright 2009-2019</Copyright>
+					 <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
 				</Rights>
 				<Source>
 					<ul>
@@ -142,48 +147,6 @@ Rail transport, Roads and Road transport
 				<xsd:attribute name="ref" type="GenericParameterAssignmentIdType" use="required">
 					<xsd:annotation>
 						<xsd:documentation>Identifier of a GENERIC PARAMETER.</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-			</xsd:restriction>
-		</xsd:simpleContent>
-	</xsd:complexType>
-	<!-- === VALIDITY PARAMETER====================================================== -->
-	<xsd:simpleType name="ControlParameterAssignmentIdType">
-		<xsd:annotation>
-			<xsd:documentation>Type for identifier of a CONTROL PARAMETER.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:restriction base="AccessRightParameterAssignmentIdType"/>
-	</xsd:simpleType>
-	<xsd:complexType name="ControlParameterAssignmentRefStructure">
-		<xsd:annotation>
-			<xsd:documentation>Type for Reference to a CONTROL PARAMETER.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:simpleContent>
-			<xsd:restriction base="AccessRightParameterAssignmentRefStructure">
-				<xsd:attribute name="ref" type="ControlParameterAssignmentIdType" use="required">
-					<xsd:annotation>
-						<xsd:documentation>Identifier of a CONTROL PARAMETER.</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-			</xsd:restriction>
-		</xsd:simpleContent>
-	</xsd:complexType>
-	<!-- === DEVICE PARAMETER====================================================== -->
-	<xsd:simpleType name="DeviceParameterAssignmentIdType">
-		<xsd:annotation>
-			<xsd:documentation>Type for identifier of a DEVICE PARAMETER.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:restriction base="AccessRightParameterAssignmentIdType"/>
-	</xsd:simpleType>
-	<xsd:complexType name="DeviceParameterAssignmentRefStructure">
-		<xsd:annotation>
-			<xsd:documentation>Type for Reference to a DEVICE PARAMETER.</xsd:documentation>
-		</xsd:annotation>
-		<xsd:simpleContent>
-			<xsd:restriction base="AccessRightParameterAssignmentRefStructure">
-				<xsd:attribute name="ref" type="DeviceParameterAssignmentIdType" use="required">
-					<xsd:annotation>
-						<xsd:documentation>Identifier of a DEVICE PARAMETER.</xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
 			</xsd:restriction>
