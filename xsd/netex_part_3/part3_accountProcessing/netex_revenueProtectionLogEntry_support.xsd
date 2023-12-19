@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_revenueProtectionLogEntries_support">
+	<xsd:include schemaLocation="../part3_salesTransactions/netex_salesContract_support.xsd"/>
+	<!-- =============================================================== -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Arne Seime</Creator>
+				<Date>
+					<Created>2020-11-20</Created>
+					Align with TM
+					Add CustomerAccountEntry as a base type for Customer Account log entries
+					Add CustomerRegistrationEntry and CustomerDeregistrationEntry as concrete CustomerAccountEntries
+				</Date>
+				<Date>
+					<Modifed>2023-12-14</Modifed>Separate out from Customer account entries
+					Align with TM - add other Revenue Protection entries 
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the REVENUE PROTECTION LOG ENTRY types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					 <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel,   standards.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+Air transport, Airports,
+Ports and maritime transport, Ferries (marine),
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+Rail transport, Roads and Road transport
+</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx REVENUE PROTECTION ENTRY identifier types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: REVENUE PROTECTION ENTRY identifier types.</xsd:documentation>
+	</xsd:annotation>
+	<!-- ==== REVENUE PROTECTION ENTRY ======================================= -->
+	<xsd:complexType name="revenueProtectionEntryRefs_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of REVENU PROTECTION ENTRies.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="oneToManyRelationshipStructure">
+				<xsd:sequence>
+					<xsd:element ref="RevenueProtectionEntryRef" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:simpleType name="RevenueProtectionEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="FareContractEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="RevenueProtectionEntryRef" type="RevenueProtectionEntryRefStructure" substitutionGroup="FareContractEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="RevenueProtectionEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="FareContractEntryRefStructure">
+				<xsd:attribute name="ref" type="RevenueProtectionEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a REVENUE PROTECTION ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== INSUFFICIENT ACCESS RIGHTS ENTRY.======================================================== -->
+	<xsd:simpleType name="InsufficientAccessRightsEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a INSUFFICIENT ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="InsufficientAccessRightsEntryRef" type="InsufficientAccessRightsEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a INSUFFICIENT ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="InsufficientAccessRightsEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a INSUFFICIENT ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="InsufficientAccessRightsEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a INSUFFICIENT ACCESS RIGHTS ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== NO ACCESS RIGHTS ENTRY.======================================================== -->
+	<xsd:simpleType name="NoAccessRightsEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="NoAccessRightsEntryRef" type="NoAccessRightsEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="NoAccessRightsEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="NoAccessRightsEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====NO ACCESS RIGHTS ENTRY.======================================================== -->
+	<xsd:simpleType name="NoProofOnPersonEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a NO PROOF ON PERSON ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="NoProofOnPersonEntryRef" type="NoProofOnPersonEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a NO PROOF ON PERSON ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="NoProofOnPersonEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a NO PROOF ON PERSON ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="NoProofOnPersonEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a NO PROOF ON PERSON ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====TRAVEL DOCUMENT CONFISCATION ENTRY.======================================================== -->
+	<xsd:simpleType name="TravelDocumentConfiscationEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="TravelDocumentConfiscationEntryRef" type="TravelDocumentConfiscationEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="TravelDocumentConfiscationEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="TravelDocumentConfiscationEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== SUSPICIOUS BEHAVIOUR ENTRY.======================================================== -->
+	<xsd:simpleType name="SuspiciousBehaviourEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="SuspiciousBehaviourEntryRef" type="SuspiciousBehaviourEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="SuspiciousBehaviourEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="SuspiciousBehaviourEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== ECURITY LIST CHECK FAIL ENTRY.======================================================== -->
+	<xsd:simpleType name="SecurityListCheckFailEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RevenueProtectionEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="SecurityListCheckFailEntryRef" type="SecurityListCheckFailEntryRefStructure" abstract="false" substitutionGroup="RevenueProtectionEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="SecurityListCheckFailEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="RevenueProtectionEntryRefStructure">
+				<xsd:attribute name="ref" type="SecurityListCheckFailEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

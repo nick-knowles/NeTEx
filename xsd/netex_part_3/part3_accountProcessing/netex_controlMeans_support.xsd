@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_controlMeans_support">
+	<xsd:include schemaLocation="../part3_fares/netex_accessRightParameter_support.xsd"/>
+	<!-- =============================================================== -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Provide basic CONTROL MEANS  elements
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the CONTROL MEANStypes.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					 <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel  standard.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+Air transport, Airports,
+Ports and maritime transport, Ferries (marine),
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+Rail transport, Roads and Road transport
+</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx CONTROL MEANS identifier types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: CONTROL MEANS identifier types.</xsd:documentation>
+	</xsd:annotation>
+	<!-- ====CONTROL MEANS ======================================= -->
+	<xsd:simpleType name="ControlMeansIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ObjectIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="ControlMeansRef" type="ControlMeansRefStructure" substitutionGroup="VersionOfObjectRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL MEANS.  +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ControlMeansRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="VersionOfObjectRefStructure">
+				<xsd:attribute name="ref" type="ControlMeansIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL MEANS.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====DEVICE RELATED CONTROL MEANS ================================== -->
+	<xsd:simpleType name="DeviceRelatedControlMeansIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a DEVICE RELATED CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ControlMeansIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="DeviceRelatedControlMeansRef" type="DeviceRelatedControlMeansRefStructure" substitutionGroup="ControlMeansRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a DEVICE RELATED CONTROL MEANS. +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="DeviceRelatedControlMeansRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a DEVICE RELATED CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="ControlMeansRefStructure">
+				<xsd:attribute name="ref" type="DeviceRelatedControlMeansIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a DEVICE RELATED CONTROL MEANS.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====OTHER CONTROL MEANS ================================== -->
+	<xsd:simpleType name="OtherControlMeansIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a OTHER CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ControlMeansIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="OtherControlMeansRef" type="OtherControlMeansRefStructure" substitutionGroup="ControlMeansRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a OTHER CONTROL MEANS. +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="OtherControlMeansRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a OTHER CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="ControlMeansRefStructure">
+				<xsd:attribute name="ref" type="OtherControlMeansIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a OTHER CONTROL MEANS.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====CONTROL TYPE ================================================== -->
+	<xsd:complexType name="TypeOfControlMeansRefs_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of TYPEs OF OFFENCE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="oneToManyRelationshipStructure">
+				<xsd:sequence>
+					<xsd:element ref="TypeOfControlMeansRef" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:simpleType name="TypeOfControlMeansIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL TYPE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="TypeOfValueIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="TypeOfControlMeansRef" type="TypeOfControlMeansRefStructure" substitutionGroup="TypeOfEntityRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL TYPE. +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="TypeOfControlMeansRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL TYPE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="TypeOfValueRefStructure">
+				<xsd:attribute name="ref" type="TypeOfControlMeansIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL TYPE.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- === DEVICE PARAMETER====================================================== -->
+	<xsd:simpleType name="DeviceParameterAssignmentIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a DEVICE PARAMETER.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="AccessRightParameterAssignmentIdType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="DeviceParameterAssignmentRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a DEVICE PARAMETER.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="AccessRightParameterAssignmentRefStructure">
+				<xsd:attribute name="ref" type="DeviceParameterAssignmentIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a DEVICE PARAMETER.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

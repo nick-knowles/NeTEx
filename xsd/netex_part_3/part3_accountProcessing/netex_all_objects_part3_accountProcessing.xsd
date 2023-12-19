@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_all_objects_part3_accountProcessing">
+	<!-- ===Dependencies ======================================= -->
+	<xsd:include schemaLocation="netex_controlMeans_support.xsd"/>
+	<xsd:include schemaLocation="netex_controlMeans_version.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightControl_support.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightControl_version.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightValidation_support.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightValidation_version.xsd"/>
+	<xsd:include schemaLocation="netex_customerAccountLogEntry_support.xsd"/>
+	<xsd:include schemaLocation="netex_customerAccountLogEntry_version.xsd"/>
+	<xsd:include schemaLocation="netex_travelControlLogEntry_support.xsd"/>
+	<xsd:include schemaLocation="netex_travelControlLogEntry_version.xsd"/>
+	<xsd:include schemaLocation="netex_revenueProtectionLogEntry_support.xsd"/>
+	<xsd:include schemaLocation="netex_revenueProtectionLogEntry_version.xsd"/>
+</xsd:schema>

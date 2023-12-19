@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_accessRightControl_support">
+	<xsd:include schemaLocation="../part3_salesTransactions/netex_salesContract_support.xsd"/>
+	<xsd:include schemaLocation="../part3_fares/netex_accessRightParameter_support.xsd"/>
+	<!-- =============================================================== -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Provide basic access right control  elements
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the ACCESS RIGHT CONTROL types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					 <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel  standard.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+Air transport, Airports,
+Ports and maritime transport, Ferries (marine),
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+Rail transport, Roads and Road transport
+</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx ACCESS RIGHT CONTROL identifier types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: ACCESS RIGHT CONTROL identifier types.</xsd:documentation>
+	</xsd:annotation>
+	<!-- ====CONTROL RECORD ======================================= -->
+	<xsd:simpleType name="ControlRecordIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL RECORD.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="FareContractEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="ControlRecordRef" type="ControlRecordRefStructure" substitutionGroup="FareContractEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL RECORD.  +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ControlRecordRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL RECORD.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="FareContractEntryRefStructure">
+				<xsd:attribute name="ref" type="ControlRecordIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL RECORD.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====CONTROL ENTRY ================================== -->
+	<xsd:simpleType name="ControlEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ControlRecordIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="ControlEntryRef" type="ControlEntryRefStructure" substitutionGroup="ControlRecordRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL ENTRY. +v2.0</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ControlEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="ControlRecordRefStructure">
+				<xsd:attribute name="ref" type="ControlEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- === CONTROL PARAMETER ASSIGNMENT =========================================== -->
+	<xsd:simpleType name="ControlParameterAssignmentIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="AccessRightParameterAssignmentIdType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="ControlParameterAssignmentRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="AccessRightParameterAssignmentRefStructure">
+				<xsd:attribute name="ref" type="ControlParameterAssignmentIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL PARAMETER.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

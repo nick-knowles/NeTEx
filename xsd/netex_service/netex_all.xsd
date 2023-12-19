@@ -14,6 +14,8 @@
 	<!-- ===Dependencies ======================================= -->
 	<xsd:include schemaLocation="../netex_part_5/netex_all_objects_part5_newModes.xsd"/>
 	<xsd:include schemaLocation="../netex_part_5/netex_all_frames_part5.xsd"/>
+	<!-- ===Dependencies ======================================= -->
+	<xsd:include schemaLocation="../netex_part_3/part3_accountProcessing/netex_all_objects_part3_accountProcessing.xsd"/>
 	<!-- ===Filters ======================================= -->
 	<xsd:include schemaLocation="netex_filter_frame.xsd"/>
 	<xsd:include schemaLocation="netex_filter_object.xsd"/>

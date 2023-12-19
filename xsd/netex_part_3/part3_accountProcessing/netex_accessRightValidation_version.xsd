@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_customerAccountLogEntries_version">
+	<xsd:include schemaLocation="netex_accessRightValidation_support.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightControl_version.xsd"/>
+	<!-- ======================================================================= -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Provide basic validation elements
+				</Date>
+				<Date>
+					<Modified>2023-12-15</Modified>
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the ACCESS RIGHT VALIDATION types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					<Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel standard.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+						Air transport, Airports,
+						Ports and maritime transport, Ferries (marine),
+						Public transport, Bus services, Coach services, Bus stops and stations,
+						Rail transport, Railway stations and track, Train services, Underground trains,
+						Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+						Rail transport, Roads and Road transport
+					</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx ACCESS RIGHT VALIDATION types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: ACCESS RIGHT VALIDATION types. </xsd:documentation>
+	</xsd:annotation>
+	<xsd:group name="ValidationEntriesInFrameGroup">
+		<xsd:annotation>
+			<xsd:documentation>Sales Description Model Elements for a CONTROL AND VALIDATION FRAME.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="validationEntries" type="validationEntries_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>VALIDATION ENTRies  in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="typesOfOffence" type="typesOfOffence_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>TYPES OF OFFENCEs  in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="offences" type="offences_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>OFFENCEs  in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="controlledAccesses" type="controlledAccesses_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROLLED ACCESSES  in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====  CONTROLLED ACCESS  ========================================== -->
+	<xsd:complexType name="controlledAccesses_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of CONTROLLED ACCESSES.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="ControlledAccess" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ControlledAccess" abstract="false" substitutionGroup="ControlRecord_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A validated use of a CONTROLLABLE ELEMENT.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlledAccess_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ControlledAccessIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ControlledAccess_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for CONTROLLED ACCESS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ControlRecord_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ControlledAccessGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ControlledAccessGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for CONTROLLED ACCESS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element name="validationParameterAssignments" type="validationParameterAssignments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL PARAMETER ASSIGNMENTs relating to CONTROL ENTRY.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== VALIDATION ENTRY ========================================== -->
+	<xsd:complexType name="validationEntries_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of VALIDATION ENTRies.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="ValidationEntry_DummyType" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ValidationEntry_DummyType" type="DataManagedObjectStructure" abstract="true" substitutionGroup="DataManagedObject">
+		<xsd:annotation>
+			<xsd:documentation>Dummy type for VALIDATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ValidationEntry" abstract="true" substitutionGroup="ValidationEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>The result of the comparison between one or several CONTROL ENTRies and the theoretical access rights attached to the TRAVEL DOCUMENT controlled, validating the right to consume and possibly providing a DEBIT or one or more OFFENCEs.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ValidationEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ValidationEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ValidationEntryIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of ENTITY.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ValidationEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for VALIDATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="FareContractEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ValidationEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ValidationEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for VALIDATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="CustomerAccountRef" minOccurs="0"/>
+			<xsd:element name="offences" type="offenceRefs_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>OFFENCES associated with to VALIDATION ENTRY</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====  VALIDATED  ACCESS  ========================================== -->
+	<xsd:element name="ValidatedAccess" abstract="false" substitutionGroup="ControlRecord_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A validated use of a VALIDABLE ELEMENT, composed of ACCESSED FARE STRUCTURE ELEMENTs.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ValidatedAccess_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlRecordGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ValidatedAccessGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="OffenceIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ValidatedAccess_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for VALIDATED ACCESS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ControlRecord_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ValidatedAccessGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ValidatedAccessGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for VALIDATED ACCESS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element ref="ValidableElementRef"/>
+			<xsd:group ref="ValidatedEntriesGroup"/>
+			<xsd:element name="validationParameterAssignments" type="validationParameterAssignments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>FARE STRUCTURE ELEMENTs accessed fro validation,</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="ValidatedEntriesGroup">
+		<xsd:annotation>
+			<xsd:documentation>VALIDATION ENTRY elements for VALIDATED ACCESS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element name="CreatingValidationEntryRef" type="ValidationEntryRefStructure">
+				<xsd:annotation>
+					<xsd:documentation>VALIDATION ENTRY that created Validated Access.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="completingValidationEntries" type="validationEntryRefs_RelStructure" minOccurs="0"/>
+			<xsd:element name="CancellingValidationEntryRef" type="ValidationEntryRefStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>VALIDATION ENTRY  that cancelled  Validated Access</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="accessedFareStructureElements_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of ACCESSED FARE STRUCTURE ELEMENTs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="AccessedFareStructureElementRef" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- ====  ACCESSED FARE STRUCTURE ELEMENT ========================================== -->
+	<xsd:element name="AccessedFareStructureElement" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A log entry providing data on a violation of fare rules.
+		</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="AccessedFareStructureElement_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="VersionedChildGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="AccessedFareStructureElementGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="AccessedFareStructureElementIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of ACCESSED FARE STRUCTURE ELEMENT.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="AccessedFareStructureElement_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for ACCESSED FARE STRUCTURE ELEMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="VersionedChildStructure">
+				<xsd:sequence>
+					<xsd:group ref="AccessedFareStructureElementGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="AccessedFareStructureElementGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for ACCESSED FARE STRUCTURE ELEMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="ValidatedAccessRef" minOccurs="0"/>
+			<xsd:element name="validationParameterAssignments" type="validationParameterAssignments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>VALIDATION PARAMETER ASSIGNMENTs relating toACCESSED FARE STRUCTURE ELEMENT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="controlledAccesses" type="controlledAccesses_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>VALIDATION PARAMETER ASSIGNMENTs relating toACCESSED FARE STRUCTURE ELEMENT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== CONTROL PARAMETER ASSIGNMENT ===================================== -->
+	<xsd:complexType name="validationParameterAssignments_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of VALIDATION PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="ValidationParameterAssignment" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ValidationParameterAssignment" abstract="false" substitutionGroup="AccessRightParameterAssignment_">
+		<xsd:annotation>
+			<xsd:documentation>An ACCESS RIGHT PARAMETER ASSIGNMENT relating a fare collection parameter to a theoretical FARE PRODUCT (or one of its components) or a SALES OFFER PACKAGE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ValidationParameterAssignment_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="DataManagedObjectGroup"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="AssignmentGroup"/>
+							</xsd:sequence>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="AccessRightParameterAssignmentGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ValidationParameterAssignmentGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ValidationParameterAssignmentIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ValidationParameterAssignment_VersionStructure" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation>Type for VALIDATION PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="AccessRightParameterAssignment_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ValidationParameterAssignmentGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ValidationParameterAssignmentGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for VALIDATION PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence/>
+	</xsd:group>
+	<!-- ==== OFFENCE ========================================== -->
+	<xsd:complexType name="offences_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of OFFENCEs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="Offence" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="Offence" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>A log entry providing data on a violation of fare rules.
+		</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="Offence_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="OffenceGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="OffenceIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of OFFENCE.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Offence_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for OFFENCE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="FareContractEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="OffenceGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="OffenceGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for OFFENCE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="ValidationEntryRef" minOccurs="0"/>
+			<xsd:element ref="CustomerAccountRef" minOccurs="0"/>
+			<xsd:element ref="TypeOfOffenceRef" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A classification of OFFENCEs.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====TYPE OFOFFENCE  ======================================== -->
+	<xsd:complexType name="typesOfOffence_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of TYPE OF OFFENCEs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element ref="TypeOfOffenceRef"/>
+					<xsd:element ref="TypeOfOffence"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TypeOfOffence_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for TYPE OF OFFENCE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="TypeOfEntity_VersionStructure"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="TypeOfOffence" abstract="false" substitutionGroup="TypeOfEntity">
+		<xsd:annotation>
+			<xsd:documentation>A classification of OFFENCE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="TypeOfOffence_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="TypeOfValueGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="TypeOfOffenceIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

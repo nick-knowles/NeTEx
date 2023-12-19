@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_accessRightControl_version">
+	<xsd:include schemaLocation="netex_accessRightControl_support.xsd"/>
+	<xsd:include schemaLocation="netex_controlMeans_support.xsd"/>
+	<xsd:include schemaLocation="../part3_salesTransactions/netex_salesContract_version.xsd"/>
+	<xsd:include schemaLocation="../part3_fares/netex_accessRightParameter_version.xsd"/>
+	<!-- ======================================================================= -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Provide basic access right control  elements
+				</Date>
+				<Date>
+					<Modified>2023-12-15</Modified>
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the ACCESS RIGHT CONTROl types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					<Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel standard.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+						Air transport, Airports,
+						Ports and maritime transport, Ferries (marine),
+						Public transport, Bus services, Coach services, Bus stops and stations,
+						Rail transport, Railway stations and track, Train services, Underground trains,
+						Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+						Rail transport, Roads and Road transport
+					</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx CUSTOMER ACCOUNT LOG ENTRY types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: ACCESS RIGHT CONTROl types.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:group name="ControlEntriesInFrameGroup">
+		<xsd:annotation>
+			<xsd:documentation>Control Model Elements for a FRAME.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="fareContractEntries" type="fareContractEntries_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL ENTRies in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="controlEntries" type="controlEntries_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL ENTRies in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== CONTROL RECORD ========================================== -->
+	<xsd:complexType name="controlRecords_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of CONTROL RECORDs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:choice>
+					<xsd:element ref="ControlRecord_DummyType" maxOccurs="unbounded"/>
+					<xsd:element ref="ControlRecordRef" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ControlRecord_DummyType" type="DataManagedObjectStructure" abstract="true" substitutionGroup="DataManagedObject">
+		<xsd:annotation>
+			<xsd:documentation>Dummy type for CONTROL RECORD.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ControlRecord" abstract="true" substitutionGroup="ControlRecord_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A LOG ENTRY recording general audit properties of a validation or control action.		</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlRecord_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlRecordGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ControlRecordIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of a CONTROL RECORD.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ControlRecord_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for CONTROL RECORD.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="LogEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ControlRecordGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ControlRecordGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for CONTROL RECORD.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence/>
+	</xsd:group>
+	<!-- ====  CONTROL ENTRY ========================================== -->
+	<xsd:complexType name="controlEntries_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of CONTROL ENTRies.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="ControlEntry" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ControlEntry" abstract="false" substitutionGroup="FareContractEntry_">
+		<xsd:annotation>
+			<xsd:documentation>The description of a fare control action, i.e. the comparison of actual and current parameters (time, location, etc.) to the access rights to which the holder of a TRAVEL DOCUMENT is entitled.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlRecord_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlRecordGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ControlEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ControlEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for CONTROL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ControlRecord_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ControlEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ControlEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for CONTROL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element ref="ControlMeansRef"/>
+			<xsd:element name="controlParameterAssignments" type="controlParameterAssignments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL PARAMETER ASSIGNMENTs relating to CONTROL ENTRY.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== CONTROL PARAMETER ASSIGNMENT ===================================== -->
+	<xsd:complexType name="controlParameterAssignments_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of CONTROL PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="ControlParameterAssignment" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ControlParameterAssignment" abstract="false" substitutionGroup="AccessRightParameterAssignment_">
+		<xsd:annotation>
+			<xsd:documentation>An ACCESS RIGHT PARAMETER ASSIGNMENT relating a fare collection parameter to a theoretical FARE PRODUCT (or one of its components) or a SALES OFFER PACKAGE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlParameterAssignment_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="DataManagedObjectGroup"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="AssignmentGroup"/>
+							</xsd:sequence>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="AccessRightParameterAssignmentGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlParameterAssignmentGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ControlParameterAssignmentIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ControlParameterAssignment_VersionStructure" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation>Type for CONTROL PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="AccessRightParameterAssignment_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="ControlParameterAssignmentGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ControlParameterAssignmentGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for CONTROL PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence/>
+	</xsd:group>
+</xsd:schema>

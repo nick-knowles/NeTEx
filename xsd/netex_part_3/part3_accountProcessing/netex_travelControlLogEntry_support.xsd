@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_PassengerTravelLogEntry_support">
+	<xsd:include schemaLocation="netex_accessRightValidation_support.xsd"/>
+	<!-- =============================================================== -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-18</Created>
+					Create 
+				</Date>basic version
+				<Date>
+					<Modifed>2023-12-18</Modifed>
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the PASSENGER TRAVEL LOG ENTRY types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					 <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel,   standards.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+Air transport, Airports,
+Ports and maritime transport, Ferries (marine),
+Public transport, Bus services, Coach services, Bus stops and stations,
+Rail transport, Railway stations and track, Train services, Underground trains,
+Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+Rail transport, Roads and Road transport
+</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx  PASSENGER TRAVEL identifier types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx:  PASSENGER TRAVEL identifier types.</xsd:documentation>
+	</xsd:annotation>
+	<!-- ==== PASSENGER TRAVEL ENTRY ======================================= -->
+	<xsd:simpleType name="PassengerTravelEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a PASSENGER TRAVEL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ValidationEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="PassengerTravelEntryRef" type="PassengerTravelEntryRefStructure" substitutionGroup="ValidationEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a PASSENGER TRAVEL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PassengerTravelEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a PASSENGER TRAVEL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="ValidationEntryRefStructure">
+				<xsd:attribute name="ref" type="PassengerTravelEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a PASSENGER TRAVEL ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== FARE TRIP ACTIVATION ENTRY ======================================================== -->
+	<xsd:simpleType name="FareTripActivationEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a FARE TRIP ACTIVATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="FareTripActivationEntryRef" type="FareTripActivationEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a FARE TRIP ACTIVATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="FareTripActivationEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a FARE TRIP ACTIVATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="FareTripActivationEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a FARE TRIP ACTIVATION ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== PASSENGER CHECK IN ENTRY ======================================================== -->
+	<xsd:simpleType name="PassengerCheckInEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a PASSENGER CHECK IN ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="PassengerCheckInEntryRef" type="PassengerCheckInEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a PASSENGER CHECK IN ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PassengerCheckInEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a PASSENGER CHECK IN ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="PassengerCheckInEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a PASSENGER CHECK IN.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== PASSENGER WAY POINT ENTRY ======================================================== -->
+	<xsd:simpleType name="PassengerWayPointEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a PASSENGER WAY POINT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="PassengerWayPointEntryRef" type="PassengerWayPointEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a PASSENGER WAY POINT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PassengerWayPointEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a PASSENGER WAY POINT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="PassengerWayPointEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a PASSENGER WAY POINT ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ====PASSENGER CHECK OUT ENTRY.======================================================== -->
+	<xsd:simpleType name="PassengerCheckOutEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a PASSENGER CHECK OUT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="PassengerCheckOutEntryRef" type="PassengerCheckOutEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a PASSENGER CHECK OUT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PassengerCheckOutEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a PASSENGER CHECK OUT ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="PassengerCheckOutEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a PASSENGER CHECK OUT ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== CONTROL PASSENGER TRIP ENTRY ===================================================== -->
+	<xsd:simpleType name="ControlPassengerTripEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL PASSENGER TRIP ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="ControlPassengerTripEntryRef" type="ControlPassengerTripEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL PASSENGER TRIP ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ControlPassengerTripEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL PASSENGER TRIP ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="ControlPassengerTripEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL PASSENGER TRIP ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- ==== CONTROL FARE REVERSION ENTRY ======================================================== -->
+	<xsd:simpleType name="ControlFareReversionEntryIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a CONTROL FARE REVERSION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="PassengerTravelEntryIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="ControlFareReversionEntryRef" type="ControlFareReversionEntryRefStructure" abstract="false" substitutionGroup="PassengerTravelEntryRef">
+		<xsd:annotation>
+			<xsd:documentation>Reference to a CONTROL FARE REVERSION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ControlFareReversionEntryRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for Reference to a CONTROL FARE REVERSION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="PassengerTravelEntryRefStructure">
+				<xsd:attribute name="ref" type="ControlFareReversionEntryIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of a CONTROL FARE REVERSION ENTRY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

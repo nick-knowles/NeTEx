@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_revenueProtectionLogEntry_version">
+	<xsd:include schemaLocation="netex_revenueProtectionLogEntry_support.xsd"/>
+	<xsd:include schemaLocation="netex_accessRightValidation_support.xsd"/>
+	<xsd:include schemaLocation="../part3_salesTransactions/netex_travelDocument_support.xsd"/>
+	<xsd:include schemaLocation="../part3_salesTransactions/netex_salesContract_version.xsd"/>
+	<!-- ======================================================================= -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Split out from REVENUE PROTECTION log entries, and  align names with Transmodel
+					 And other REVENUE PROTECTION ENTRIES
+				</Date>
+				<Date>
+					<Modified>2023-13-14</Modified> 
+					Revise for inclusion in NeTEx
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the REVENUE PROTECTION LOG ENTRY types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					<Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel, VDV, TransXChange, NEPTUNE, BISON and Trident standards.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+						Air transport, Airports,
+						Ports and maritime transport, Ferries (marine),
+						Public transport, Bus services, Coach services, Bus stops and stations,
+						Rail transport, Railway stations and track, Train services, Underground trains,
+						Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+						Rail transport, Roads and Road transport
+					</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx REVENUE PROTECTION LOG ENTRY types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: REVENUE PROTECTION LOG ENTRY types.</xsd:documentation>
+	</xsd:annotation>
+	<!---
+	<xsd:group name="RevenueProtectionEntryLocationGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements specifying where event originated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="StopPlaceRef">
+				<xsd:annotation>
+					<xsd:documentation>StopPlace where activitiy leading to event happened</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="ServiceJourneyRef">
+				<xsd:annotation>
+					<xsd:documentation>ServiceJourney where activitiy leading to event happened</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="DistanceMatrixElementRef">
+				<xsd:annotation>
+					<xsd:documentation>DistanceMatrixElement where activitiy leading to event happened</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+-->
+	<!-- ====REVENUE PROTECTION ENTRY ========================================== -->
+	<xsd:complexType name="revenueProtectionEntries_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of REVENUE PROTECTION ENTRies.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:choice>
+					<xsd:element ref="RevenueProtectionEntry_DummyType" maxOccurs="unbounded"/>
+					<xsd:element ref="RevenueProtectionEntryRef" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="RevenueProtectionEntry_DummyType" type="DataManagedObjectStructure" abstract="true" substitutionGroup="FareContractEntry_">
+		<xsd:annotation>
+			<xsd:documentation>Dummy type for REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RevenueProtectionEntry" abstract="true" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>An abstract FARE CONTRACT ENTRY representing the recording of an event relating to revenue protection.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="RevenueProtectionEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="RevenueProtectionEntryIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of REVENUE PROTECTION ENTITY.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="RevenueProtectionEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="FareContractEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="RevenueProtectionEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="RevenueProtectionEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for REVENUE PROTECTION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="CustomerAccountRef" minOccurs="0"/>
+			<xsd:element ref="ValidationEntryRef" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== NO ACCESS RIGHTS ENTRY =========================================== -->
+	<xsd:element name="NoAccessRightsEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION ENTRY recording the detection of a TRANSPORT CUSTOMER travelling without having purchased access rights.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="NoAccessRightsEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="NoAccessRightsEntryGroup"/>
+							<!--		<xsd:group ref="RevenueProtectionEntryLocationGroup"/> -->
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="NoAccessRightsEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="NoAccessRightsEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="NoAccessRightsEntryGroup"/>
+					<!--		<xsd:group ref="RevenueProtectionEntryLocationGroup"/> -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="NoAccessRightsEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element ref="TravelDocumentRef" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== INSUFFICIENT ACCESS RIGHTS ENTRY =========================================== -->
+	<xsd:element name="InsufficientAccessRightsEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION ENTRY recording the result of the comparison between one or several CONTROL ENTRies and the theoretical access rights attached to the TRAVEL DOCUMENT controlled, detecting insufficient rights to consume and possibly giving rise to a FARE DEBIT or one or more OFFENCEs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="InsufficientAccessRightsEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="InsufficientAccessRightsEntryGroup"/>
+							<!--	<xsd:group ref="RevenueProtectionEntryLocationGroup"/> -->
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="InsufficientAccessRightsEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="InsufficientAccessRightsEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="InsufficientAccessRightsEntryGroup"/>
+					<!--	<xsd:group ref="RevenueProtectionEntryLocationGroup"/> -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="InsufficientAccessRightsEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for NO ACCESS RIGHTS ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="TravelDocumentRef"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== NO PROOF ON PERSON ENTRY =========================================== -->
+	<xsd:element name="NoProofOnPersonEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION ENTRY recording the detection of a TRANSPORT CUSTOMER travelling without having purchased access rights.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="NoProofOnPersonEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="NoProofOnPersonEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="NoProofOnPersonEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="NoProofOnPersonEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for NO PROOF ON PERSON ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="NoProofOnPersonEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="NoProofOnPersonEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for NO PROOF ON PERSON ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence/>
+	</xsd:group>
+	<!-- ==== TRAVEL DOCUMENT CONFISCATION ENTRY =========================================== -->
+	<xsd:element name="TravelDocumentConfiscationEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION ENTRY recording the detection of a TRANSPORT CUSTOMER travelling without having purchased access rights.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="TravelDocumentConfiscationEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="TravelDocumentConfiscationEntryGroup"/>
+							<!--		<xsd:group ref="RevenueProtectionEntryLocationGroup"/> -->
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="TravelDocumentConfiscationEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="TravelDocumentConfiscationEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="TravelDocumentConfiscationEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="TravelDocumentConfiscationEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for TRAVEL DOCUMENT CONFISCATION ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="TravelDocumentRef"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== SUSPICIOUS BEHAVIOUR ENTRY =========================================== -->
+	<xsd:element name="SuspiciousBehaviourEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION EVENT recording the detection of suspicious behaviour.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="SuspiciousBehaviourEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="SuspiciousBehaviourEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="SuspiciousBehaviourEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="SuspiciousBehaviourEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="SuspiciousBehaviourEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="SuspiciousBehaviourEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for SUSPICIOUS BEHAVIOUR ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element name="indicatiedByEntries" type="revenueProtectionEntryRefs_RelStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== SECURITY LIST CHECK FAIL ENTRY =========================================== -->
+	<xsd:element name="SecurityListCheckFailEntry" abstract="false" substitutionGroup="RevenueProtectionEntry_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A REVENUE PROTECTION ENTRY recording the failure to pass a security check, either through being on a BLACKLIST being or not on a required WHITE LIST.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="SecurityListCheckFailEntry_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="LogEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="FareContractEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="RevenueProtectionEntryGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="SecurityListCheckFailEntryGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="SecurityListCheckFailEntryIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="SecurityListCheckFailEntry_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="RevenueProtectionEntry_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="SecurityListCheckFailEntryGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="SecurityListCheckFailEntryGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element ref="SecurityListRef"/>
+			<xsd:element ref="SecurityListingRef" minOccurs="0"/>
+			<xsd:group ref="SecurityListParametersGroup">
+				<xsd:annotation>
+					<xsd:documentation>Elements that failed check </xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="SecurityListParametersGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for SECURITY LIST CHECK FAIL ENTRY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<!-- No specific content -->
+			<xsd:element ref="CustomerRef"/>
+			<xsd:element ref="CustomerAccountRef"/>
+			<xsd:element ref="FareContractRef"/>
+			<xsd:element ref="TravelDocumentRef"/>
+			<xsd:element ref="MediumAccessDeviceRef"/>
+		</xsd:choice>
+	</xsd:group>
+</xsd:schema>

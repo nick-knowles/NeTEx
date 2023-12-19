@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" id="netex_accessRightControl_version">
+	<xsd:include schemaLocation="netex_controlMeans_support.xsd"/>
+	<xsd:include schemaLocation="../../netex_framework/netex_reusableComponents/netex_equipment_support.xsd"/>
+	<xsd:include schemaLocation="../part3_fares/netex_accessRightParameter_version.xsd"/>
+	<!-- ======================================================================= -->
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/CM/gms-xs">
+				<Aggregation>main schema</Aggregation>
+				<Audience>e-service developers</Audience>
+				<Coverage>Europe</Coverage>
+				<Creator>Nick Knowles</Creator>
+				<Date>
+					<Created>2023-12-15</Created>
+					Provide basic CONTROL MEANS  elements
+				</Date>
+				<Date>
+					<Modified>2023-12-15</Modified>
+				</Date>
+				<Description>
+					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
+					<p>This sub-schema describes the CONTROL MEANS types.</p>
+				</Description>
+				<Format>
+					<MediaType>text/xml</MediaType>
+					<Syntax>http://www.w3.org/2001/XMLSchema</Syntax>
+					<Description>XML schema, W3C Recommendation 2001</Description>
+				</Format>
+				<Language>[ISO 639-2/B] ENG</Language>
+				<Rights>Unclassified
+					<Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
+				<Source>
+					<ul>
+						<li>Derived from the Transmodel standard.</li>
+					</ul>
+				</Source>
+				<Status>Version 1.0 Draft for approval</Status>
+				<Subject>
+					<Category>Arts, recreation and travel, Tourism, Travel (tourism), Transport,
+						Air transport, Airports,
+						Ports and maritime transport, Ferries (marine),
+						Public transport, Bus services, Coach services, Bus stops and stations,
+						Rail transport, Railway stations and track, Train services, Underground trains,
+						Business and industry, Transport, Air transport , Ports and maritime transport, Public transport,
+						Rail transport, Roads and Road transport
+					</Category>
+					<Project>CEN TC278 WG3 SG9.</Project>
+				</Subject>
+				<Title>NeTEx CUSTOMER ACCOUNT LOG ENTRY types.</Title>
+				<Type>Standard</Type>
+			</Metadata>
+		</xsd:appinfo>
+		<xsd:documentation>NeTEx: CONTROL MEANS types.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:group name="ControlMeansInFrameGroup">
+		<xsd:annotation>
+			<xsd:documentation>Additional descriptive properties of a FARE FRAME.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="controlMeans" type="controlMeans_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL MEANS in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="typesOfControlMeans" type="typesOfControlMeans_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>CONTROL MEANs in FRAME.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ==== CONTROL MEANS ========================================== -->
+	<xsd:complexType name="controlMeans_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of CONTROL MEANSs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:choice>
+					<xsd:element ref="ControlMeans_DummyType" maxOccurs="unbounded"/>
+					<xsd:element ref="ControlMeansRef" maxOccurs="unbounded"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ControlMeans_DummyType" type="DataManagedObjectStructure" abstract="true" substitutionGroup="DataManagedObject">
+		<xsd:annotation>
+			<xsd:documentation>Dummy type for CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ControlMeans" abstract="true" substitutionGroup="ControlMeans_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A particular means (control device or manual control procedure) used to control TRAVEL DOCUMENTs.	</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlMeans_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlMeansGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="ControlMeansIdType" use="optional">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of CONTROL MEANs.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ControlMeans_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="DataManagedObject_ViewStructure">
+				<xsd:sequence>
+					<xsd:group ref="ControlMeansGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="ControlMeansGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Name" type="MultilingualString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Name of Multilingual string.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="TypeOfControlMeansRef" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====  DEVICE RELATED CONTROL MEANS  =================================== -->
+	<xsd:element name="DeviceRelatedControlMeans" abstract="false" substitutionGroup="ControlMeans_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A specific device constituting the CONTROL MEANS to control TRAVEL DOCUMENTs.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlMeans_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlMeansGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="DeviceRelatedControlMeansIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="DeviceRelatedControlMeans_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for DEVICE RELATED CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ControlMeans_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="DeviceRelatedControlMeansGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="DeviceRelatedControlMeansGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for DEVICE RELATED CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+			<xsd:element name="deviceParameterAssignments" type="deviceParameterAssignments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Parameter assignments for control device.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="equipments" type="equipments_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>EQUIPMENTS associated with DEVICE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====  OTHER CONTROL MEANS ========================================== -->
+	<xsd:element name="OtherControlMeans" abstract="false" substitutionGroup="ControlMeans_DummyType">
+		<xsd:annotation>
+			<xsd:documentation>A particular means other than a control device, for example a manual procedure, used to control apply control processesA particular means other than a control device, for example a manual procedure, used to control apply control processes.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="ControlMeans_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="ControlMeansGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="OtherControlMeansIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="OtherControlMeans_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for OTHER CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="ControlMeans_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="OtherControlMeansGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="OtherControlMeansGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for OTHER CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- No specific content -->
+		</xsd:sequence>
+	</xsd:group>
+	<!-- ====DEVICE PARAMETER ASSIGNMENT ===================================== -->
+	<xsd:complexType name="deviceParameterAssignments_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of DEVICE PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="DeviceParameterAssignment" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="DeviceParameterAssignment" abstract="false" substitutionGroup="AccessRightParameterAssignment_">
+		<xsd:annotation>
+			<xsd:documentation>An ACCESS RIGHT PARAMETER ASSIGNMENT relating a fare collection parameter to a theoretical FARE PRODUCT (or one of its components) or a SALES OFFER PACKAGE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="DeviceParameterAssignment_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="DataManagedObjectGroup"/>
+							</xsd:sequence>
+							<xsd:sequence>
+								<xsd:group ref="AssignmentGroup"/>
+							</xsd:sequence>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="AccessRightParameterAssignmentGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DeviceParameterAssignmentGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="DeviceParameterAssignmentIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="DeviceParameterAssignment_VersionStructure" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation>Type for DEVICE PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="AccessRightParameterAssignment_VersionStructure">
+				<xsd:sequence>
+					<xsd:group ref="DeviceParameterAssignmentGroup"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:group name="DeviceParameterAssignmentGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for DEVICE PARAMETER ASSIGNMENT.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence/>
+	</xsd:group>
+	<!-- ====TYPE OFCONTROL MEANS  ======================================== -->
+	<xsd:complexType name="typesOfControlMeans_RelStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a list of TYPES OF CONTROL MEANs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="containmentAggregationStructure">
+				<xsd:sequence>
+					<xsd:element ref="TypeOfControlMeans" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TypeOfControlMeans_VersionStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type forTYPES OF CONTROL MEANs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="TypeOfEntity_VersionStructure"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="TypeOfControlMeans" abstract="false" substitutionGroup="TypeOfEntity">
+		<xsd:annotation>
+			<xsd:documentation>A classification of CONTROL MEANS.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:restriction base="TypeOfControlMeans_VersionStructure">
+					<xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="EntityInVersionGroup" minOccurs="0"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="DataManagedObjectGroup"/>
+						</xsd:sequence>
+						<xsd:sequence>
+							<xsd:group ref="TypeOfValueGroup"/>
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:attribute name="id" type="TypeOfControlMeansIdType"/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
