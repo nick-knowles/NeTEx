@@ -252,8 +252,8 @@
 							<TicketingServiceFacilityList>purchase</TicketingServiceFacilityList>
 							<LuggageCarriageFacilityList>noCycles </LuggageCarriageFacilityList>
 						</ServiceFacilitySet>
-							<ServiceFacilitySet version="any" id="rsw_facilities">
-							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList> 
+						<ServiceFacilitySet version="any" id="rsw_facilities">
+							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList>
 							<LuggageCarriageFacilityList>noCycles </LuggageCarriageFacilityList>
 						</ServiceFacilitySet>
 					</serviceFacilitySets>
@@ -278,13 +278,10 @@
 							<Height>4</Height>
 							<Weight>2000</Weight>
 						</VehicleType>
-						 
 					</vehicleTypes>
 					<deckPlans>
-				 
-				
-			<DeckPlan version="any" id="double_decker_bus">
-						<Name>Double decker bus</Name>
+						<DeckPlan version="any" id="double_decker_bus">
+							<Name>Double decker bus</Name>
 							<deckLevels>
 								<DeckLevel version="any" id="dd@level_1">
 									<Label>Lower</Label>
@@ -1626,8 +1623,6 @@
 								</Deck>
 							</decks>
 						</DeckPlan>
-							
-				
 					</deckPlans>
 					<schematicMaps>
 						<SchematicMap version="any" id="dd">
@@ -1658,20 +1653,9 @@
 						</SchematicMap>
 					</schematicMaps>
 				</ResourceFrame>
-	
-	
-	
-	
-		<ResourceFrame version="1.0" id="mb:deck_plan_example_coach" responsibilitySetRef="mb:vehicle_data">
+				<ResourceFrame version="1.0" id="mb:deck_plan_example_coach" responsibilitySetRef="mb:vehicle_data">
 					<Name>Sleeping wagon</Name>
-				 
-			 
-				 
-			 
-				 
 					<!--==== CODE VALUES  ==== -->
-				 
-				 
 					<!-- ==== EQUIPMENT ==== -->
 					<equipments>
 						<SeatEquipment version="any" id="sleeper_bottom_seat">
@@ -1681,27 +1665,24 @@
 							<SeatDepth>0.50</SeatDepth>
 							<IsFoldup>false</IsFoldup>
 						</SeatEquipment>
-				 
-					 
 					</equipments>
 					<serviceFacilitySets>
 						<ServiceFacilitySet version="any" id="sw_facilities">
-							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList> 
-							
-						<SanitaryFacilityList>toilet</SanitaryFacilityList>
+							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList>
+							<SanitaryFacilityList>toilet</SanitaryFacilityList>
 							<LuggageCarriageFacilityList>noCycles luggageRacks</LuggageCarriageFacilityList>
 						</ServiceFacilitySet>
 					</serviceFacilitySets>
 					<vehicleTypes>
-				 			<VehicleType version="any" id="sw:rail_sleeper_coach">
+						<VehicleType version="any" id="sw:rail_sleeper_coach">
 							<Name>rail_coach</Name>
 							<Description>Sleeper coach with cabins.</Description>
 							<ReversingDirection>true</ReversingDirection>
 							<SelfPropelled>false</SelfPropelled>
-							<PropulsionType>human</PropulsionType> 
+							<PropulsionType>human</PropulsionType>
 							<TransportMode>rail</TransportMode>
 							<PassengerCapacity version="any" id="rail_sleeper_coach">
-								<SeatingCapacity>60</SeatingCapacity> 
+								<SeatingCapacity>60</SeatingCapacity>
 							</PassengerCapacity>
 							<LowFloor>false</LowFloor>
 							<BoardingHeight>0.15</BoardingHeight>
@@ -1712,14 +1693,12 @@
 					</vehicleTypes>
 					<deckPlans>
 						<DeckPlan version="any" id="sleeper_wagon">
-						<Name>Double decker bus</Name>
-						 
+							<Name>Double decker bus</Name>
 							<decks>
 								<Deck version="any" id="sw@deck_1">
 									<Name>Lower Deck</Name>
-									<Label>1</Label> 
+									<Label>1</Label>
 									<deckSpaces>
-									 
 										<PassengerSpace version="any" id="dd@deck_1@seating">
 											<ServiceFacilitySetRef version="any" ref="dd_facilities"/>
 											<Name>Lower Deck seating area</Name>
@@ -2230,7 +2209,6 @@
 										<SpotRow version="any" id="dd@l1@r2">
 											<Label>Row 2</Label>
 										</SpotRow>
-				
 									</spotRows>
 									<spotColumns>
 										<SpotColumn version="any" id="dd@l1@c1">
@@ -2245,23 +2223,21 @@
 										<SpotColumn version="any" id="dd@l1@c4">
 											<Label>Column D</Label>
 										</SpotColumn>
-							 		</spotColumns>
+									</spotColumns>
 								</Deck>
 							</decks>
 						</DeckPlan>
-				
-			<DeckPlan version="any" id="rail_sleeper_coach">
-					 
+						<DeckPlan version="any" id="rail_sleeper_coach">
 							<decks>
 								<Deck version="any" id="rsw@deck_1">
 									<Name>Lower Deck</Name>
-									<Label>1</Label> 
+									<Label>1</Label>
 									<deckSpaces>
 										<OtherDeckSpace version="any" id="rsw@deck_1@toilet">
 											<actualVehicleEquipments>
 												<ActualVehicleEquipment version="any" id="rsw@deck_1@driver_area">
 													<Units>1</Units>
-													<SanitaryEquipmentRef  versionRef="TODO" ref="rsw_toilet"/>
+													<SanitaryEquipmentRef versionRef="TODO" ref="rsw_toilet"/>
 												</ActualVehicleEquipment>
 											</actualVehicleEquipments>
 											<Name>WS</Name>
@@ -2290,7 +2266,7 @@
 											<AirConditioned>true</AirConditioned>
 											<SmokingAllowed>false</SmokingAllowed>
 											<deckEntrances>
-											<!-- external doors to next carriage -->		
+												<!-- external doors to next carriage -->
 												<PassengerEntrance version="any" id="rsw@deck_1@front_external_left">
 													<Label>D1</Label>
 													<Width>1.00</Width>
@@ -2304,7 +2280,7 @@
 															<Units>1</Units>
 															<EntranceSensorRef version="any" ref="door_sensor"/>
 														</ActualVehicleEquipment>
-																	<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
 															<!-- ROO -->
 														</ActualVehicleEquipment>
 													</actualVehicleEquipments>
@@ -2319,11 +2295,6 @@
 													</sensorsInEntrance>
 												</PassengerEntrance>
 												<PassengerEntrance version="any" id="rsw@deck_1@rear_external_left">
-												
-												
-												
-												
-												
 													<Label>D2</Label>
 													<Width>0.95</Width>
 													<Height>1.90</Height>
@@ -2349,7 +2320,6 @@
 														</SensorInEntrance>
 													</sensorsInEntrance>
 												</PassengerEntrance>
-				
 												<PassengerEntrance version="any" id="rsw@deck_1@front_external_right">
 													<Label>D1</Label>
 													<Width>1.00</Width>
@@ -2363,11 +2333,10 @@
 															<Units>1</Units>
 															<EntranceSensorRef version="any" ref="door_sensor"/>
 														</ActualVehicleEquipment>
-															<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@entrance">
-																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@entrance">
+															<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
 														</ActualVehicleEquipment>
-																<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
-																
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
 															<!-- TODO ENTRANCE ATTENTION -->
 														</ActualVehicleEquipment>
 													</actualVehicleEquipments>
@@ -2382,11 +2351,6 @@
 													</sensorsInEntrance>
 												</PassengerEntrance>
 												<PassengerEntrance version="any" id="rsw@deck_1@rear_external_right">
-												
-												
-												
-												
-												
 													<Label>D2</Label>
 													<Width>0.95</Width>
 													<Height>1.90</Height>
@@ -2399,15 +2363,11 @@
 															<EntranceSensorRef version="any" ref="door_sensor"/>
 														</ActualVehicleEquipment>
 														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@entrance">
-																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
+															<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
 														</ActualVehicleEquipment>
-																<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@door_button">
-																
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@door_button">
 															<!-- TODO ENTRANCE ATTENTION -->
 														</ActualVehicleEquipment>
-														
-														
-														
 													</actualVehicleEquipments>
 													<Name>Rear Right External Door</Name>
 													<DeckEntranceType>external</DeckEntranceType>
@@ -2419,9 +2379,7 @@
 														</SensorInEntrance>
 													</sensorsInEntrance>
 												</PassengerEntrance>
-				
-				
-<!-- end doors to next carriage -->				
+												<!-- end doors to next carriage -->
 												<PassengerEntrance version="any" id="rsw@deck_1@front_end_connecting">
 													<Label>Fronti</Label>
 													<Width>0.80</Width>
@@ -2434,44 +2392,36 @@
 													<Name>Front end door connecting to next carriage</Name>
 													<DeckEntranceType>internal</DeckEntranceType>
 													<EntranceSide>front</EntranceSide>
-													
-												<IsAutomatic>true</IsAutomatic>
-												
+													<IsAutomatic>true</IsAutomatic>
 													<sensorsInEntrance>
 														<SensorInEntrance version="any" id="rsw@deck_1@front_end_connecting@sensor">
 															<EntranceSensorRef version="any" ref="entrance_sensor"/>
 														</SensorInEntrance>
 													</sensorsInEntrance>
 												</PassengerEntrance>
-							 		
 												<PassengerEntrance version="any" id="rsw@deck_1@rear_end_connecting">
 													<Label>Fronti</Label>
 													<Width>0.80</Width>
 													<Height>1.90</Height>
 													<actualVehicleEquipments>
 														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_end_connecting@sensor">
-														
-																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/> 
+															<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
 														</ActualVehicleEquipment>
-														
-															<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_end_connecting@sensor"> 
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_end_connecting@sensor">
 															<EntranceSensorRef version="any" ref="entrance_sensor"/>
 														</ActualVehicleEquipment>
 													</actualVehicleEquipments>
 													<Name>Front end door connecting to next carriage</Name>
 													<DeckEntranceType>internal</DeckEntranceType>
-															<EntranceSide>back</EntranceSide>
-															<IsAutomatic>true</IsAutomatic>
+													<EntranceSide>back</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
 													<sensorsInEntrance>
 														<SensorInEntrance version="any" id="rsw@deck_1@rear_end_connecting@sensor">
 															<EntranceSensorRef version="any" ref="entrance_sensor"/>
 														</SensorInEntrance>
 													</sensorsInEntrance>
-												</PassengerEntrance>							
-				
-				
-				
-				<!--Compratment door in carriage -->				
+												</PassengerEntrance>
+												<!--Compratment door in carriage -->
 												<PassengerEntrance version="any" id="rsw@deck_1@compartment_1">
 													<Label>Fronti</Label>
 													<Width>0.80</Width>
@@ -2483,8 +2433,7 @@
 													</actualVehicleEquipments>
 													<Name>Compartment door end door connecting to next carriage</Name>
 													<DeckEntranceType>internal</DeckEntranceType>
-												 
-												</PassengerEntrance>			
+												</PassengerEntrance>
 											</deckEntrances>
 											<deckEntranceUsages>
 												<DeckEntranceUsage version="any" id="rsw@deck_1@front">
@@ -2496,22 +2445,18 @@
 											</deckEntranceUsages>
 											<TotalCapacity>6</TotalCapacity>
 											<deckSpaceCapacities>
-												<DeckSpaceCapacity version="any" id="rsw@deck_1@seats"> 
-												<LocatableSpotType>seatOrBed</LocatableSpotType>
+												<DeckSpaceCapacity version="any" id="rsw@deck_1@seats">
+													<LocatableSpotType>seatOrBed</LocatableSpotType>
 													<Capacity>80</Capacity>
 												</DeckSpaceCapacity>
-												
-													<DeckSpaceCapacity version="any" id="rsw@deck_1@beds"> 
-												<LocatableSpotType>bed</LocatableSpotType>
-												<Capacity>60</Capacity>
+												<DeckSpaceCapacity version="any" id="rsw@deck_1@beds">
+													<LocatableSpotType>bed</LocatableSpotType>
+													<Capacity>60</Capacity>
 												</DeckSpaceCapacity>
-											 
 												<DeckSpaceCapacity version="any" id="rsw@deck_1@standingSpace">
 													<LocatableSpotType>standingSpace</LocatableSpotType>
 													<Capacity>20</Capacity>
 												</DeckSpaceCapacity>
-												 
-												 
 											</deckSpaceCapacities>
 											<passengerSpots>
 												<!--  ==Row 1 -->
@@ -2853,7 +2798,6 @@
 										</PassengerSpace>
 										<PassengerSpace version="any" id="rsw@deck_1@corridor">
 											<ServiceFacilitySetRef version="any" ref="rsw_facilities"/>
-										 
 											<Name>Corridor</Name>
 											<SmokingAllowed>true</SmokingAllowed>
 											<StandingAllowed>false</StandingAllowed>
@@ -2866,14 +2810,12 @@
 													<DeckEntranceType>internal</DeckEntranceType>
 													<IsAutomatic>true</IsAutomatic>
 												</DeckVehicleEntrance>
-												 
 											</deckEntrances>
 											<deckEntranceCouples>
 												<DeckEntranceCouple version="any" id="rsw@deck_1@corridor@base">
 													<FromDeckEntranceRef ref="rsw@deck_1@corridor@compartment_1"/>
 													<ToDeckEntranceRef ref="rsw@deck_1@compartment_1"/>
 												</DeckEntranceCouple>
-											 
 											</deckEntranceCouples>
 											<deckEntranceUsages>
 												<DeckEntranceUsage version="any" id="rsw@stairwell@top">
@@ -2892,8 +2834,6 @@
 										<SpotRow version="any" id="rsw@l1@r2">
 											<Label>Row 2</Label>
 										</SpotRow>
-									 
-										 
 									</spotRows>
 									<spotColumns>
 										<SpotColumn version="any" id="rsw@l1@c1">
@@ -2908,12 +2848,10 @@
 										<SpotColumn version="any" id="rsw@l1@c4">
 											<Label>Column D</Label>
 										</SpotColumn>
-								 	</spotColumns>
+									</spotColumns>
 								</Deck>
-			 				</decks>
+							</decks>
 						</DeckPlan>
-							
-				
 					</deckPlans>
 					<schematicMaps>
 						<SchematicMap version="any" id="rsw">
@@ -2944,8 +2882,6 @@
 						</SchematicMap>
 					</schematicMaps>
 				</ResourceFrame>
-				
-		
 				<ServiceFrame version="1.0" id="mb:deck_plan_example" responsibilitySetRef="mb:vehicle_data">
 					<Name>Deck Plan  Assignment   Example</Name>
 					<Description>This is an example showing how one might assign a Deck Entrance to a journey so as to state which entrance will be at which point on teh platform .  More sense for a train of ferry .</Description>
