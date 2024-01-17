@@ -252,6 +252,10 @@
 							<TicketingServiceFacilityList>purchase</TicketingServiceFacilityList>
 							<LuggageCarriageFacilityList>noCycles </LuggageCarriageFacilityList>
 						</ServiceFacilitySet>
+							<ServiceFacilitySet version="any" id="rsw_facilities">
+							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList> 
+							<LuggageCarriageFacilityList>noCycles </LuggageCarriageFacilityList>
+						</ServiceFacilitySet>
 					</serviceFacilitySets>
 					<vehicleTypes>
 						<VehicleType version="any" id="double_decker">
@@ -274,9 +278,13 @@
 							<Height>4</Height>
 							<Weight>2000</Weight>
 						</VehicleType>
+						 
 					</vehicleTypes>
 					<deckPlans>
-						<DeckPlan version="any" id="double_decker_bus">
+				 
+				
+			<DeckPlan version="any" id="double_decker_bus">
+						<Name>Double decker bus</Name>
 							<deckLevels>
 								<DeckLevel version="any" id="dd@level_1">
 									<Label>Lower</Label>
@@ -1618,6 +1626,8 @@
 								</Deck>
 							</decks>
 						</DeckPlan>
+							
+				
 					</deckPlans>
 					<schematicMaps>
 						<SchematicMap version="any" id="dd">
@@ -1648,6 +1658,1294 @@
 						</SchematicMap>
 					</schematicMaps>
 				</ResourceFrame>
+	
+	
+	
+	
+		<ResourceFrame version="1.0" id="mb:deck_plan_example_coach" responsibilitySetRef="mb:vehicle_data">
+					<Name>Sleeping wagon</Name>
+				 
+			 
+				 
+			 
+				 
+					<!--==== CODE VALUES  ==== -->
+				 
+				 
+					<!-- ==== EQUIPMENT ==== -->
+					<equipments>
+						<SeatEquipment version="any" id="sleeper_bottom_seat">
+							<Name>bottom seat</Name>
+							<HeightFromFloor>0.48</HeightFromFloor>
+							<SeatBackHeight>0.50</SeatBackHeight>
+							<SeatDepth>0.50</SeatDepth>
+							<IsFoldup>false</IsFoldup>
+						</SeatEquipment>
+				 
+					 
+					</equipments>
+					<serviceFacilitySets>
+						<ServiceFacilitySet version="any" id="sw_facilities">
+							<PassengerCommsFacilityList>freeWifi</PassengerCommsFacilityList> 
+							
+						<SanitaryFacilityList>toilet</SanitaryFacilityList>
+							<LuggageCarriageFacilityList>noCycles luggageRacks</LuggageCarriageFacilityList>
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
+					<vehicleTypes>
+				 			<VehicleType version="any" id="sw:rail_sleeper_coach">
+							<Name>rail_coach</Name>
+							<Description>Sleeper coach with cabins.</Description>
+							<ReversingDirection>true</ReversingDirection>
+							<SelfPropelled>false</SelfPropelled>
+							<PropulsionType>human</PropulsionType> 
+							<TransportMode>rail</TransportMode>
+							<PassengerCapacity version="any" id="rail_sleeper_coach">
+								<SeatingCapacity>60</SeatingCapacity> 
+							</PassengerCapacity>
+							<LowFloor>false</LowFloor>
+							<BoardingHeight>0.15</BoardingHeight>
+							<Length>10</Length>
+							<Height>4</Height>
+							<Weight>2000</Weight>
+						</VehicleType>
+					</vehicleTypes>
+					<deckPlans>
+						<DeckPlan version="any" id="sleeper_wagon">
+						<Name>Double decker bus</Name>
+						 
+							<decks>
+								<Deck version="any" id="sw@deck_1">
+									<Name>Lower Deck</Name>
+									<Label>1</Label> 
+									<deckSpaces>
+									 
+										<PassengerSpace version="any" id="dd@deck_1@seating">
+											<ServiceFacilitySetRef version="any" ref="dd_facilities"/>
+											<Name>Lower Deck seating area</Name>
+											<PublicUse>true</PublicUse>
+											<FareClass>standardClass</FareClass>
+											<AccessibilityAssessment version="any" id="dd@deck_1@seating">
+												<MobilityImpairedAccess>true</MobilityImpairedAccess>
+												<limitations>
+													<AccessibilityLimitation>
+														<WheelchairAccess>true</WheelchairAccess>
+														<StepFreeAccess>false</StepFreeAccess>
+														<AudibleSignalsAvailable>true</AudibleSignalsAvailable>
+													</AccessibilityLimitation>
+												</limitations>
+											</AccessibilityAssessment>
+											<AirConditioned>true</AirConditioned>
+											<SmokingAllowed>false</SmokingAllowed>
+											<deckEntrances>
+												<PassengerEntrance version="any" id="dd@deck_1@front">
+													<Label>D1</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@front@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@front@sensor">
+															<Units>1</Units>
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Front Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>left</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="dd@deck_1@front">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+												<PassengerEntrance version="any" id="dd@deck_1@rear">
+													<Label>D2</Label>
+													<Width>0.95</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@rear@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@rear@sensor">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@rear@stop_button">
+															<HelpPointEquipmentRef version="any" ref="stop_button"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Rear Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>left</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="dd@deck_1@rear">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+												<PassengerEntrance version="any" id="dd@deck_1@stairs">
+													<Label>Ii</Label>
+													<Width>0.80</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@stairs@sensor">
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Entrance to stairs</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="dd@deck_1@stairs">
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+											</deckEntrances>
+											<deckEntranceUsages>
+												<DeckEntranceUsage version="any" id="dd@deck_1@front">
+													<UsageType>entry</UsageType>
+												</DeckEntranceUsage>
+												<DeckEntranceUsage version="any" id="dd@deck_1@rear">
+													<UsageType>exit</UsageType>
+												</DeckEntranceUsage>
+											</deckEntranceUsages>
+											<TotalCapacity>43</TotalCapacity>
+											<deckSpaceCapacities>
+												<DeckSpaceCapacity version="any" id="dd@deck_1@seat">
+													<LocatableSpotType>seat</LocatableSpotType>
+													<Capacity>22</Capacity>
+												</DeckSpaceCapacity>
+												<DeckSpaceCapacity version="any" id="dd@deck_1@standingSpace">
+													<LocatableSpotType>standingSpace</LocatableSpotType>
+													<Capacity>20</Capacity>
+												</DeckSpaceCapacity>
+												<DeckSpaceCapacity version="any" id="dd@deck_1@wheelchair">
+													<LocatableSpotType>wheelchairSpace</LocatableSpotType>
+													<Capacity>1</Capacity>
+												</DeckSpaceCapacity>
+												<DeckSpaceCapacity version="any" id="dd@deck_1@pushchair">
+													<LocatableSpotType>pushchairSpace</LocatableSpotType>
+													<Capacity>2</Capacity>
+												</DeckSpaceCapacity>
+											</deckSpaceCapacities>
+											<passengerSpots>
+												<!--  ==Row 1 -->
+												<PassengerSpot version="any" id="dd@deck_1@1A">
+													<Label>1A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@1A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r1"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@1D">
+													<Label>1D</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@1D">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r1"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 2 -->
+												<PassengerSpot version="any" id="dd@deck_1@2A">
+													<Label>2A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@2A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r2"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@2D">
+													<Label>2D</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@2D">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r2"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 3 -->
+												<PassengerSpot version="any" id="dd@deck_1@3A">
+													<Label>3A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@3A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r3"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@3D">
+													<Label>Wheelchair space</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@3D">
+															<Units>1</Units>
+															<WheelchairVehicleEquipmentRef version="any" ref="wheelchair_space"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r3"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 4 -->
+												<PassengerSpot version="any" id="dd@deck_1@4A">
+													<Label>4A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@4A">
+															<SeatEquipmentRef version="any" ref="single_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r4"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 5 -->
+												<PassengerSpot version="any" id="dd@deck_1@5A">
+													<Label>5A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@5A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r5"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@5B">
+													<Label>5A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@5B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r5"/>
+													<SpotColumnRef version="any" ref="dd@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@5C">
+													<Label>5C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@5C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r5"/>
+													<SpotColumnRef version="any" ref="dd@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@5D">
+													<Label>5D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@5D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r5"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 6 -->
+												<PassengerSpot version="any" id="dd@deck_1@6A">
+													<Label>6A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@6A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r6"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@6B">
+													<Label>6A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@6B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r6"/>
+													<SpotColumnRef version="any" ref="dd@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@6C">
+													<Label>6C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@6C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r6"/>
+													<SpotColumnRef version="any" ref="dd@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@6D">
+													<Label>6D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@6D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r6"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 7 -->
+												<PassengerSpot version="any" id="dd@deck_1@7A">
+													<Label>7A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@7A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r7"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@7B">
+													<Label>7A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@7B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r7"/>
+													<SpotColumnRef version="any" ref="dd@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@7C">
+													<Label>7C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@7C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r7"/>
+													<SpotColumnRef version="any" ref="dd@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@7D">
+													<Label>7D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@7C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r7"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 8 -->
+												<PassengerSpot version="any" id="dd@deck_1@8A">
+													<Label>8A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@8A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r8"/>
+													<SpotColumnRef version="any" ref="dd@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@8B">
+													<Label>8B</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@8B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r8"/>
+													<SpotColumnRef version="any" ref="dd@l1@c2"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@8E">
+													<Label>8E</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@8E">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r8"/>
+													<SpotColumnRef version="any" ref="dd@l1@c5"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@8C">
+													<Label>8C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@8C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r8"/>
+													<SpotColumnRef version="any" ref="dd@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="dd@deck_1@8D">
+													<Label>8D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@8D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r8"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+											</passengerSpots>
+											<luggageSpots>
+												<!--  ==Row 4 -->
+												<LuggageSpot version="any" id="dd@deck_1@4B">
+													<Label>4B</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="dd@deck_1@4B">
+															<LuggageBayEquipmentRef version="any" ref="luggage_space"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="dd@l1@r4"/>
+													<SpotColumnRef version="any" ref="dd@l1@c4"/>
+												</LuggageSpot>
+											</luggageSpots>
+										</PassengerSpace>
+										<PassengerSpace version="any" id="dd@stairwell">
+											<ServiceFacilitySetRef version="any" ref="dd_facilities"/>
+											<actualVehicleEquipments>
+												<ActualVehicleEquipment version="any" id="dd@stairwell@staircase">
+													<Units>1</Units>
+													<StaircaseEquipmentRef version="any" ref="dd_staircase"/>
+												</ActualVehicleEquipment>
+												<ActualVehicleEquipment version="any" id="dd@stairwell@stop_button">
+													<Name>Stop button at top of stairs</Name>
+													<HelpPointEquipmentRef version="any" ref="stop_button"/>
+												</ActualVehicleEquipment>
+											</actualVehicleEquipments>
+											<Name>Stairwell to upper deck</Name>
+											<SmokingAllowed>false</SmokingAllowed>
+											<deckEntrances>
+												<DeckVehicleEntrance version="any" id="dd@stairwell@base">
+													<Label>Up</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<Name>Bottom of stairwell</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+													<IsAutomatic>true</IsAutomatic>
+												</DeckVehicleEntrance>
+												<DeckVehicleEntrance version="any" id="dd@stairwell@top">
+													<Label>Down</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<Name>Top of Stairwell</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+													<IsAutomatic>true</IsAutomatic>
+												</DeckVehicleEntrance>
+											</deckEntrances>
+											<deckEntranceCouples>
+												<DeckEntranceCouple version="any" id="dd@stairwell@base">
+													<FromDeckEntranceRef ref="dd@deck_1@stairs"/>
+													<ToDeckEntranceRef ref="dd@stairwell@base"/>
+												</DeckEntranceCouple>
+												<DeckEntranceCouple version="any" id="dd@stairwell@top">
+													<FromDeckEntranceRef ref="dd@stairwell@top"/>
+													<ToDeckEntranceRef ref="dd@deck_2@stairs"/>
+												</DeckEntranceCouple>
+											</deckEntranceCouples>
+											<deckEntranceUsages>
+												<DeckEntranceUsage version="any" id="dd@stairwell@top">
+													<UsageType>entryAndExit</UsageType>
+												</DeckEntranceUsage>
+												<DeckEntranceUsage version="any" id="dd@stairwell@base">
+													<UsageType>entryAndExit</UsageType>
+												</DeckEntranceUsage>
+											</deckEntranceUsages>
+										</PassengerSpace>
+									</deckSpaces>
+									<spotRows>
+										<SpotRow version="any" id="dd@l1@r1">
+											<Label>Row 1</Label>
+										</SpotRow>
+										<SpotRow version="any" id="dd@l1@r2">
+											<Label>Row 2</Label>
+										</SpotRow>
+				
+									</spotRows>
+									<spotColumns>
+										<SpotColumn version="any" id="dd@l1@c1">
+											<Label>Column A</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="dd@l1@c2">
+											<Label>Column B</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="dd@l1@c3">
+											<Label>Column C</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="dd@l1@c4">
+											<Label>Column D</Label>
+										</SpotColumn>
+							 		</spotColumns>
+								</Deck>
+							</decks>
+						</DeckPlan>
+				
+			<DeckPlan version="any" id="rail_sleeper_coach">
+					 
+							<decks>
+								<Deck version="any" id="rsw@deck_1">
+									<Name>Lower Deck</Name>
+									<Label>1</Label> 
+									<deckSpaces>
+										<OtherDeckSpace version="any" id="rsw@deck_1@toilet">
+											<actualVehicleEquipments>
+												<ActualVehicleEquipment version="any" id="rsw@deck_1@driver_area">
+													<Units>1</Units>
+													<SanitaryEquipmentRef  versionRef="TODO" ref="rsw_toilet"/>
+												</ActualVehicleEquipment>
+											</actualVehicleEquipments>
+											<Name>WS</Name>
+											<PublicUse>true</PublicUse>
+											<AirConditioned>true</AirConditioned>
+											<SmokingAllowed>false</SmokingAllowed>
+											<TotalCapacity>1</TotalCapacity>
+										</OtherDeckSpace>
+										<PassengerSpace version="any" id="rsw@deck_1@compartment_1">
+											<ServiceFacilitySetRef versionRef="TODO" ref="rsw_facilities"/>
+											<Name>Compartment 1 a</Name>
+											<PublicUse>true</PublicUse>
+											<FareClass>standardClass</FareClass>
+											<AccessibilityAssessment version="any" id="rsw@deck_1@compartment_1">
+												<MobilityImpairedAccess>true</MobilityImpairedAccess>
+												<limitations>
+													<AccessibilityLimitation>
+														<WheelchairAccess>true</WheelchairAccess>
+														<StepFreeAccess>false</StepFreeAccess>
+														<AudibleSignalsAvailable>true</AudibleSignalsAvailable>
+													</AccessibilityLimitation>
+												</limitations>
+											</AccessibilityAssessment>
+											<SmokingAllowed>false</SmokingAllowed>
+											<StandingAllowed>false</StandingAllowed>
+											<AirConditioned>true</AirConditioned>
+											<SmokingAllowed>false</SmokingAllowed>
+											<deckEntrances>
+											<!-- external doors to next carriage -->		
+												<PassengerEntrance version="any" id="rsw@deck_1@front_external_left">
+													<Label>D1</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@sensor">
+															<Units>1</Units>
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+																	<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
+															<!-- ROO -->
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Front Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>left</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@front_external_left">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+												<PassengerEntrance version="any" id="rsw@deck_1@rear_external_left">
+												
+												
+												
+												
+												
+													<Label>D2</Label>
+													<Width>0.95</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_left@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_left@sensor">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_left@door_button">
+															<!-- ROO -->
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Rear External Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>left</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@rear_external_left">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+				
+												<PassengerEntrance version="any" id="rsw@deck_1@front_external_right">
+													<Label>D1</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@sensor">
+															<Units>1</Units>
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+															<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@entrance">
+																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
+														</ActualVehicleEquipment>
+																<ActualVehicleEquipment version="any" id="rsw@deck_1@front_external@door_button">
+																
+															<!-- TODO ENTRANCE ATTENTION -->
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Front Right  External  Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>right</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@front_external_right">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+												<PassengerEntrance version="any" id="rsw@deck_1@rear_external_right">
+												
+												
+												
+												
+												
+													<Label>D2</Label>
+													<Width>0.95</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@door">
+															<Units>1</Units>
+															<EntranceEquipmentRef version="any" ref="automatic_door"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@sensor">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</ActualVehicleEquipment>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@entrance">
+																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/>
+														</ActualVehicleEquipment>
+																<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_external_right@door_button">
+																
+															<!-- TODO ENTRANCE ATTENTION -->
+														</ActualVehicleEquipment>
+														
+														
+														
+													</actualVehicleEquipments>
+													<Name>Rear Right External Door</Name>
+													<DeckEntranceType>external</DeckEntranceType>
+													<EntranceSide>right</EntranceSide>
+													<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@rear_external_right">
+															<EntranceSensorRef version="any" ref="door_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+				
+				
+<!-- end doors to next carriage -->				
+												<PassengerEntrance version="any" id="rsw@deck_1@front_end_connecting">
+													<Label>Fronti</Label>
+													<Width>0.80</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_end_connecting@sensor">
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Front end door connecting to next carriage</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+													<EntranceSide>front</EntranceSide>
+													
+												<IsAutomatic>true</IsAutomatic>
+												
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@front_end_connecting@sensor">
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>
+							 		
+												<PassengerEntrance version="any" id="rsw@deck_1@rear_end_connecting">
+													<Label>Fronti</Label>
+													<Width>0.80</Width>
+													<Height>1.90</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_end_connecting@sensor">
+														
+																<EntranceEquipmentRef versionRef="TODO" ref="rear_end_connecting@entrance"/> 
+														</ActualVehicleEquipment>
+														
+															<ActualVehicleEquipment version="any" id="rsw@deck_1@rear_end_connecting@sensor"> 
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Front end door connecting to next carriage</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+															<EntranceSide>back</EntranceSide>
+															<IsAutomatic>true</IsAutomatic>
+													<sensorsInEntrance>
+														<SensorInEntrance version="any" id="rsw@deck_1@rear_end_connecting@sensor">
+															<EntranceSensorRef version="any" ref="entrance_sensor"/>
+														</SensorInEntrance>
+													</sensorsInEntrance>
+												</PassengerEntrance>							
+				
+				
+				
+				<!--Compratment door in carriage -->				
+												<PassengerEntrance version="any" id="rsw@deck_1@compartment_1">
+													<Label>Fronti</Label>
+													<Width>0.80</Width>
+													<Height>1.80</Height>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@front_end_connecting@sensor">
+															<EntranceEquipmentRef versionRef="TODO" ref="compartment_entrance"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<Name>Compartment door end door connecting to next carriage</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+												 
+												</PassengerEntrance>			
+											</deckEntrances>
+											<deckEntranceUsages>
+												<DeckEntranceUsage version="any" id="rsw@deck_1@front">
+													<UsageType>entry</UsageType>
+												</DeckEntranceUsage>
+												<DeckEntranceUsage version="any" id="rsw@deck_1@rear">
+													<UsageType>exit</UsageType>
+												</DeckEntranceUsage>
+											</deckEntranceUsages>
+											<TotalCapacity>6</TotalCapacity>
+											<deckSpaceCapacities>
+												<DeckSpaceCapacity version="any" id="rsw@deck_1@seats"> 
+												<LocatableSpotType>seatOrBed</LocatableSpotType>
+													<Capacity>80</Capacity>
+												</DeckSpaceCapacity>
+												
+													<DeckSpaceCapacity version="any" id="rsw@deck_1@beds"> 
+												<LocatableSpotType>bed</LocatableSpotType>
+												<Capacity>60</Capacity>
+												</DeckSpaceCapacity>
+											 
+												<DeckSpaceCapacity version="any" id="rsw@deck_1@standingSpace">
+													<LocatableSpotType>standingSpace</LocatableSpotType>
+													<Capacity>20</Capacity>
+												</DeckSpaceCapacity>
+												 
+												 
+											</deckSpaceCapacities>
+											<passengerSpots>
+												<!--  ==Row 1 -->
+												<PassengerSpot version="any" id="rsw@deck_1@1A">
+													<Label>1A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@1A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r1"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@1D">
+													<Label>1D</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@1D">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r1"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 2 -->
+												<PassengerSpot version="any" id="rsw@deck_1@2A">
+													<Label>2A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@2A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r2"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@2D">
+													<Label>2D</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@2D">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r2"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 3 -->
+												<PassengerSpot version="any" id="rsw@deck_1@3A">
+													<Label>3A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@3A">
+															<SeatEquipmentRef version="any" ref="pulldown_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r3"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@3D">
+													<Label>Wheelchair space</Label>
+													<Orientation>rightwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@3D">
+															<Units>1</Units>
+															<WheelchairVehicleEquipmentRef version="any" ref="wheelchair_space"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r3"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 4 -->
+												<PassengerSpot version="any" id="rsw@deck_1@4A">
+													<Label>4A</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@4A">
+															<SeatEquipmentRef version="any" ref="single_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r4"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 5 -->
+												<PassengerSpot version="any" id="rsw@deck_1@5A">
+													<Label>5A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@5A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r5"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@5B">
+													<Label>5A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@5B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r5"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@5C">
+													<Label>5C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@5C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r5"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@5D">
+													<Label>5D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@5D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r5"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 6 -->
+												<PassengerSpot version="any" id="rsw@deck_1@6A">
+													<Label>6A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@6A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r6"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@6B">
+													<Label>6A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@6B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r6"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@6C">
+													<Label>6C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@6C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r6"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@6D">
+													<Label>6D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@6D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r6"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 7 -->
+												<PassengerSpot version="any" id="rsw@deck_1@7A">
+													<Label>7A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@7A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r7"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@7B">
+													<Label>7A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@7B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r7"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c2"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@7C">
+													<Label>7C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@7C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r7"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@7D">
+													<Label>7D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@7C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r7"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<!--  ==Row 8 -->
+												<PassengerSpot version="any" id="rsw@deck_1@8A">
+													<Label>8A</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@8A">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r8"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c1"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@8B">
+													<Label>8B</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@8B">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r8"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c2"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@8E">
+													<Label>8E</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@8E">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r8"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c5"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>true</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@8C">
+													<Label>8C</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@8C">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r8"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c3"/>
+													<ByAisle>true</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+												<PassengerSpot version="any" id="rsw@deck_1@8D">
+													<Label>8D</Label>
+													<Orientation>forwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@8D">
+															<SeatEquipmentRef version="any" ref="bench_seat"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r8"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+													<ByAisle>false</ByAisle>
+													<ByWindow>false</ByWindow>
+												</PassengerSpot>
+											</passengerSpots>
+											<luggageSpots>
+												<!--  ==Row 4 -->
+												<LuggageSpot version="any" id="rsw@deck_1@4B">
+													<Label>4B</Label>
+													<Orientation>leftwards</Orientation>
+													<actualVehicleEquipments>
+														<ActualVehicleEquipment version="any" id="rsw@deck_1@4B">
+															<LuggageBayEquipmentRef version="any" ref="luggage_space"/>
+														</ActualVehicleEquipment>
+													</actualVehicleEquipments>
+													<SpotRowRef version="any" ref="rsw@l1@r4"/>
+													<SpotColumnRef version="any" ref="rsw@l1@c4"/>
+												</LuggageSpot>
+											</luggageSpots>
+										</PassengerSpace>
+										<PassengerSpace version="any" id="rsw@deck_1@corridor">
+											<ServiceFacilitySetRef version="any" ref="rsw_facilities"/>
+										 
+											<Name>Corridor</Name>
+											<SmokingAllowed>true</SmokingAllowed>
+											<StandingAllowed>false</StandingAllowed>
+											<deckEntrances>
+												<DeckVehicleEntrance version="any" id="rsw@deck_1@corridor@compartment1">
+													<Label>Up</Label>
+													<Width>1.00</Width>
+													<Height>1.90</Height>
+													<Name>BEntrance to compartment l</Name>
+													<DeckEntranceType>internal</DeckEntranceType>
+													<IsAutomatic>true</IsAutomatic>
+												</DeckVehicleEntrance>
+												 
+											</deckEntrances>
+											<deckEntranceCouples>
+												<DeckEntranceCouple version="any" id="rsw@deck_1@corridor@base">
+													<FromDeckEntranceRef ref="rsw@deck_1@corridor@compartment_1"/>
+													<ToDeckEntranceRef ref="rsw@deck_1@compartment_1"/>
+												</DeckEntranceCouple>
+											 
+											</deckEntranceCouples>
+											<deckEntranceUsages>
+												<DeckEntranceUsage version="any" id="rsw@stairwell@top">
+													<UsageType>entryAndExit</UsageType>
+												</DeckEntranceUsage>
+												<DeckEntranceUsage version="any" id="rsw@stairwell@base">
+													<UsageType>entryAndExit</UsageType>
+												</DeckEntranceUsage>
+											</deckEntranceUsages>
+										</PassengerSpace>
+									</deckSpaces>
+									<spotRows>
+										<SpotRow version="any" id="rsw@l1@r1">
+											<Label>Row 1</Label>
+										</SpotRow>
+										<SpotRow version="any" id="rsw@l1@r2">
+											<Label>Row 2</Label>
+										</SpotRow>
+									 
+										 
+									</spotRows>
+									<spotColumns>
+										<SpotColumn version="any" id="rsw@l1@c1">
+											<Label>Column A</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="rsw@l1@c2">
+											<Label>Column B</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="rsw@l1@c3">
+											<Label>Column C</Label>
+										</SpotColumn>
+										<SpotColumn version="any" id="rsw@l1@c4">
+											<Label>Column D</Label>
+										</SpotColumn>
+								 	</spotColumns>
+								</Deck>
+			 				</decks>
+						</DeckPlan>
+							
+				
+					</deckPlans>
+					<schematicMaps>
+						<SchematicMap version="any" id="rsw">
+							<Name>Basic Elements for  map of bus</Name>
+							<ImageUri>http:erebus.eu/plans/double_decker_floor_plan</ImageUri>
+							<members>
+								<SchematicMapMember version="any" id="rsw@deck_1@">
+									<Name>Bottom Deck</Name>
+									<DeckRef version="any" ref="rsw@deck_1"/>
+								</SchematicMapMember>
+								<SchematicMapMember version="any" id="rsw@deck_1@front_entrance">
+									<Name>Forward Entrance</Name>
+									<PassengerEntranceRef version="any" ref="rsw@deck_1@front"/>
+								</SchematicMapMember>
+								<SchematicMapMember version="any" id="rsw@deck_1@rear_entrance">
+									<Name>Rear Entrance</Name>
+									<PassengerEntranceRef version="any" ref="rsw@deck_1@rear"/>
+								</SchematicMapMember>
+								<SchematicMapMember version="any" id="rsw@deck_1@stairs">
+									<Name>Stairs </Name>
+									<PassengerEntranceRef version="any" ref="rsw@deck_1@stairs"/>
+								</SchematicMapMember>
+								<SchematicMapMember version="any" id="rsw@deck_2@">
+									<Name>Top Deck</Name>
+									<DeckRef version="any" ref="rsw@deck_2"/>
+								</SchematicMapMember>
+							</members>
+						</SchematicMap>
+					</schematicMaps>
+				</ResourceFrame>
+				
+		
 				<ServiceFrame version="1.0" id="mb:deck_plan_example" responsibilitySetRef="mb:vehicle_data">
 					<Name>Deck Plan  Assignment   Example</Name>
 					<Description>This is an example showing how one might assign a Deck Entrance to a journey so as to state which entrance will be at which point on teh platform .  More sense for a train of ferry .</Description>
