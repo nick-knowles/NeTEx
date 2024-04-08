@@ -4,6 +4,7 @@
 	<xsd:include schemaLocation="netex_seatingPlan_support.xsd"/>
 	<xsd:include schemaLocation="netex_sensorEquipment_version.xsd"/>
 	<xsd:include schemaLocation="netex_equipmentVehiclePassenger_version.xsd"/>
+	<xsd:include schemaLocation="../netex_genericFramework/netex_zone_version.xsd"/>
 	<!-- ======================================================================= -->
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -16,7 +17,8 @@
 				<Date>
 					<Created>2023-01-30</Created>
 				</Date>
-				<Date><Modified>2024-02-18</Modified>Norway review comment - Revise AIsle /Window to use enumeration. Add  TableType enum.
+				<Date>
+					<Modified>2024-02-18</Modified>Norway review comment - Revise AIsle /Window to use enumeration. Add  TableType enum.
 				</Date>
 				<Description>
 					<p>NeTEx is a European CEN standard for the exchange of Public Transport data including timetables.</p>
@@ -211,7 +213,7 @@
 			<xsd:documentation>Type for a EQUIPABLE SPACE.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexContent>
-			<xsd:extension base="DataManagedObjectStructure">
+			<xsd:extension base="Zone_VersionStructure">
 				<xsd:sequence>
 					<xsd:group ref="EquipableSpaceGroup">
 						<xsd:annotation>
@@ -230,16 +232,6 @@
 			<xsd:element name="Label" type="MultilingualString" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>Lavel of EQUIPABLE SPACE. e.g. seat number.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="Name" type="MultilingualString" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>Name of DECK COMPONENT.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="Description" type="MultilingualString" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>Description of EQUIPABLE SPACE.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="Orientation" type="ComponentOrientationEnumeration" default="forwards" minOccurs="0">

@@ -29,7 +29,8 @@
 				<Language>[ISO 639-2/B] ENG</Language>
 				<Publisher>Kizoom Software Ltd, 16 High Holborn, London WC1V 6BX</Publisher>
 				<Rights>Unclassified
- <Copyright>CEN, Crown Copyright 2009-2023</Copyright></Rights>
+ <Copyright>CEN, Crown Copyright 2009-2023</Copyright>
+				</Rights>
 				<Source>
 					<ul>
 						<li>Derived from the Transmodel, VDV, TransXChange, NaPTAN, NOPTIS, BISON and Trident standards.</li>
@@ -60,12 +61,12 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="GroupOfPointsIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="ZoneRef" type="ZoneRefStructure" substitutionGroup="GroupOfPointsRef_">
+	<xsd:element name="ZoneRef" type="ZoneRefStructure" abstract="true" substitutionGroup="GroupOfPointsRef_">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a ZONE.</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
-	<xsd:complexType name="ZoneRefStructure" abstract="false">
+	<xsd:complexType name="ZoneRefStructure" abstract="true">
 		<xsd:annotation>
 			<xsd:documentation>Type for a reference to a ZONE.</xsd:documentation>
 		</xsd:annotation>
