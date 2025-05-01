@@ -408,7 +408,7 @@ Changes
 						<GeneralOrganisation version="any" id="nptg:Org_TL001">
 							<Name>Travellne</Name>
 							<parts>
-								<OrganisationPart version="any" id="nptg:GL">
+								<OrganisationalUnit version="any" id="nptg:GL">
 									<Name>Greater London</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone version="any" id="nptg:Administrative_Zone@82">
@@ -422,13 +422,13 @@ Changes
 											</codespaceAssignments>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 						<GeneralOrganisation version="any" id="nptg:Org_TD002">
 							<Name>Dft</Name>
 							<parts>
-								<OrganisationPart version="any" id="nptg:Org_TD002_1">
+								<OrganisationalUnit version="any" id="nptg:Org_TD002_1">
 									<Name>Transport Direct</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone version="any" id="nptg:Administrative_Zone@UK">
@@ -471,7 +471,7 @@ Changes
 											</codespaceAssignments>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
+								</OrganisationalUnit >
 							</parts>
 						</GeneralOrganisation>
 						<Authority version="any" id="nptg:Org_Tfl">
