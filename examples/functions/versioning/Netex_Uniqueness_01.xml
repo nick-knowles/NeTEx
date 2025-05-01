@@ -29,15 +29,16 @@ This is part 1 of a multistep example on versioning
 			<frames>
 				<!---  ==== RESOURCE FRAME ====  -->
 				<ResourceFrame version="001" id="bar:foo">
-				<layers> 
-					<LayerRef  versionRef="EXTERNA" ref="bar:foo"></LayerRef>
-				</layers>
-				<contacts>
-					<Contact version="001" id="bar:foo">
-					<ContactDetails><Email>foo@bar.com</Email>
-					</ContactDetails>
-					</Contact>
-				</contacts>
+					<layers>
+						<LayerRef versionRef="EXTERNA" ref="bar:foo"/>
+					</layers>
+					<contacts>
+						<Contact version="001" id="bar:foo">
+							<ContactDetails>
+								<Email>foo@bar.com</Email>
+							</ContactDetails>
+						</Contact>
+					</contacts>
 					<organisations>
 						<!--  Organisation elements must have different ids -->
 						<Operator version="001" id="bar:foo_org1"/>
@@ -129,9 +130,9 @@ This is part 1 of a multistep example on versioning
 					</operationalContexts>
 					<controlCentres>
 						<ControlCentre version="001" id="bar:foo">
-						<administrativeZones>
-							<AdministrativeZoneRef  version="001" ref="bar:foo"></AdministrativeZoneRef>
-						</administrativeZones>
+							<administrativeZones>
+								<AdministrativeZoneRef version="001" ref="bar:foo"/>
+							</administrativeZones>
 						</ControlCentre>
 					</controlCentres>
 					<vehicleTypes>
@@ -217,7 +218,7 @@ This is part 1 of a multistep example on versioning
 									<ProjectToPointRef ref="bar:foo" version="001"/>
 								</PointProjection>
 								<ZoneProjection version="001" id="bar:foo_zone3">
-									<ProjectedZoneRef version="001" ref="bar:foo_zone10" />
+									<ProjectedZoneRef version="001" ref="bar:foo_zone10"/>
 								</ZoneProjection>
 							</projections>
 						</GeneralZone>
@@ -444,7 +445,7 @@ This is part 1 of a multistep example on versioning
 						<ServiceJourney version="001" id="bar:foo_journey2">
 							<Name>JOURNEY</Name>
 							<trainNumbers>
-								<TrainNumberRef ref=""></TrainNumberRef>
+								<TrainNumberRef ref=""/>
 							</trainNumbers>
 							<runTimes>
 								<VehicleJourneyRunTime version="001" id="bar:foo_journey2">
@@ -453,8 +454,8 @@ This is part 1 of a multistep example on versioning
 							</runTimes>
 							<parts>
 								<JourneyPart version="001" id="bar:foo_journey2">
-								<StartTime>10:00:00</StartTime>
-								<EndTime>12:00:00</EndTime>
+									<StartTime>10:00:00</StartTime>
+									<EndTime>12:00:00</EndTime>
 								</JourneyPart>
 							</parts>
 						</ServiceJourney>

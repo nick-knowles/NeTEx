@@ -17,8 +17,7 @@
 				<Date>
 					<Modified>2011-02-05</Modified>
 				</Date>
-				<Date>
-					<Modified>2020-07-12</Modified>Fix for Issue  OrganisationalUnit> 
+				<Date><Modified>2020-07-12</Modified>Fix for Issue  OrganisationalUnit&gt; 
 					 Correct the Susbtitution group on OrganisationUnit to be OrganizationPart 
 				</Date>
 				<Date>
@@ -30,17 +29,13 @@
 					<Modified>2020-11-06 New Modes (Norway): Add related organisations.
 								Add external Contact details</Modified>
 				</Date>
-				<Date>
-					<Modified>2023-11-07</Modified>CR0544 Deprecate PrivateCode.
+				<Date><Modified>2023-11-07</Modified>CR0544 Deprecate PrivateCode.
 				</Date>
-				<Date>
-					<Modified>2023-11-21</Modified>CR0545 Organisation: add VATNumber.
+				<Date><Modified>2023-11-21</Modified>CR0545 Organisation: add VATNumber.
 				</Date>
-				<Date>
-					<Modified>2024-06-26</Modified>CR0594 Deprecate ExternalOperatorRef.
+				<Date><Modified>2024-06-26</Modified>CR0594 Deprecate ExternalOperatorRef.
 				</Date>
-				<Date>
-					<Modified>2025-05-01</Modified>Make OrganisationPart abstract
+				<Date><Modified>2025-05-01</Modified>Make OrganisationPart abstract
 				</Date>
 				<Description>
 					<p>NeTEx - Network Exchange. This subschema defines ORGANISATION types.</p>

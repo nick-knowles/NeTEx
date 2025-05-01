@@ -774,8 +774,8 @@ v1.1 revised ids
 						<CommonSection version="any" responsibilitySetRef="hde:RS_22" id="hde:CSc001i_JP">
 							<Name>C - B - A Common Section: Journey {atterb</Name>
 							<usedIn>
-								<JourneyPatternRef version="any"   ref="hde:JP001i"/>
-								<JourneyPatternRef version="any"   ref="hde:JP002i"/>
+								<JourneyPatternRef version="any" ref="hde:JP001i"/>
+								<JourneyPatternRef version="any" ref="hde:JP002i"/>
 							</usedIn>
 							<pointsOnSection>
 								<PointOnSection version="1" id="hde:CSc001i_JP-1">
