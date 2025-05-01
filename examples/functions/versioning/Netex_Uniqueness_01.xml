@@ -130,9 +130,6 @@ This is part 1 of a multistep example on versioning
 					</operationalContexts>
 					<controlCentres>
 						<ControlCentre version="001" id="bar:foo">
-						<administrativeZones>
-							<AdministrativeZoneRef  version="001" ref="bar:foo"></AdministrativeZoneRef>
-						</administrativeZones>
 							<administrativeZones>
 								<AdministrativeZoneRef version="001" ref="bar:foo"/>
 							</administrativeZones>
