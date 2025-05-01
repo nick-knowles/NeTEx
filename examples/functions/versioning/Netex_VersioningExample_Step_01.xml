@@ -18,7 +18,7 @@ This is part 1 of a multistep example on versioning
 		<topics>
 			<NetworkFrameTopic>
 				<Current/>
-				<ServiceFrameRef ref="mybus:ntwkf001">REQUEST</ServiceFrameRef>
+				<ServiceFrameRef versionRef="TO_FIND"  ref="mybus:ntwkf001">REQUEST</ServiceFrameRef>
 			</NetworkFrameTopic>
 		</topics>
 	</PublicationRequest>
@@ -39,7 +39,7 @@ This is part 1 of a multistep example on versioning
 			<!--- =======FRAME DEFAULTS======== -->
 			<FrameDefaults>
 				<DefaultCodespaceRef ref="mybus"/>
-				<DefaultResponsibilitySetRef ref="mybus:RS_10">EXTERNAL</DefaultResponsibilitySetRef>
+				<DefaultResponsibilitySetRef versionRef="EXTERNAL" ref="mybus:RS_10">EXTERNAL</DefaultResponsibilitySetRef>
 			</FrameDefaults>
 			<frames>
 				<ServiceFrame version="001" created="2010-05-17T09:30:47.0Z" responsibilitySetRef="mybus:RS_10" id="mybus:ntwkf001@service">

@@ -16,10 +16,10 @@
 					<Name>SL78</Name>
 					<RegistrationNumber>unknown</RegistrationNumber>
 					<OperationalNumber>X4533</OperationalNumber>
-					<OperatorRef ref="or:ruter">Ruter</OperatorRef>
-					<VehicleTypeRef ref="vtr:SL78">SL78</VehicleTypeRef>
+					<OperatorRef versionRef="EXTERNAL" ref="or:ruter">Ruter</OperatorRef>
+					<VehicleTypeRef versionRef="EXTERNAL" ref="vtr:SL78">SL78</VehicleTypeRef>
 					<actualVehicleEquipments>
-						<AccessVehicleEquipmentRef ref="aver:tramSL78"/>
+						<AccessVehicleEquipmentRef versionRef="EXTERNAL" ref="aver:tramSL78"/>
 						<PassengerEquipmentRef xsi:type="WheelchairVehicleRefStructure" ref="per:wheelchair"/>
 					</actualVehicleEquipments>
 				</Vehicle>

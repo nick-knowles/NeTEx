@@ -444,7 +444,7 @@ This is part 1 of a multistep example on versioning
 						<ServiceJourney version="001" id="bar:foo_journey2">
 							<Name>JOURNEY</Name>
 							<trainNumbers>
-								<TrainNumberRef ref=""></TrainNumberRef>
+								<TrainNumberRef version="001" ref="bar:foo"/>
 							</trainNumbers>
 							<runTimes>
 								<VehicleJourneyRunTime version="001" id="bar:foo_journey2">
@@ -474,6 +474,9 @@ This is part 1 of a multistep example on versioning
 							<Name>JOURNEY</Name>
 						</DeadRun>
 					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber version="001" id="bar:foo"/>
+					</trainNumbers>
 					<serviceFacilitySets>
 						<ServiceFacilitySet version="001" id="bar:foo2">
 							<Description>FACILITY SET</Description>
