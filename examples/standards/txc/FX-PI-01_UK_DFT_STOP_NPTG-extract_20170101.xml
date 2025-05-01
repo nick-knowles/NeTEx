@@ -1127,7 +1127,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<!--  LONDON REGION -->
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:L">
 									<!-- NPTG 							
@@ -1434,7 +1434,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:NE">
 									<Name>North East</Name>
 									<PublicCode type="nptg:RegionCode">NE</PublicCode>
@@ -1924,7 +1924,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<!--  OTHER  REGION -->
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:NW">
 									<Name>North West</Name>
@@ -2587,7 +2587,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:S">
 									<Name>Scotland</Name>
 									<PublicCode type="nptg:RegionCode">S</PublicCode>
@@ -3590,7 +3590,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:SE">
 									<Name>South East</Name>
 									<PublicCode type="nptg:RegionCode">SE</PublicCode>
@@ -5002,7 +5002,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:SW">
 									<Name>South West</Name>
 									<PublicCode type="nptg:RegionCode">SW</PublicCode>
@@ -6060,7 +6060,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:W">
 									<Name>Wales</Name>
 									<PublicCode type="nptg:RegionCode">SW</PublicCode>
@@ -6730,7 +6730,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:WM">
 									<Name>West Midlands</Name>
 									<PublicCode type="nptg:RegionCode">WM</PublicCode>
@@ -7348,7 +7348,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:Y">
 									<Name>Yorkshire</Name>
 									<PublicCode type="nptg:RegionCode">Y</PublicCode>
@@ -7715,7 +7715,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:EA">
 									<Name>East Anglia</Name>
 									<PublicCode type="nptg:RegionCode">EA</PublicCode>
@@ -8036,7 +8036,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2006-01-25T07:54:31" changed="2006-01-25T07:54:31" version="0" id="nptgUkRegion:EM">
 									<Name>East Midlands</Name>
 									<PrivateCode type="nptg:RegionCode">EM</PrivateCode>
@@ -8809,7 +8809,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 					</organisations>
@@ -9657,7 +9657,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 					</organisations>

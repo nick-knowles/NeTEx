@@ -2745,7 +2745,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
 									<Name lang="EN">Leinster</Name>
 									<administrativeZones>
@@ -2812,7 +2812,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
 									<Name lang="EN">Munster</Name>
 									<administrativeZones>
@@ -2862,7 +2862,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS">
 									<Name lang="EN">Ulster</Name>
 									<administrativeZones>
@@ -2889,7 +2889,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
 									<Name lang="EN">Ulster_NI</Name>
 									<administrativeZones>
@@ -2928,7 +2928,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 					</organisations>
