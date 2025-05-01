@@ -15,7 +15,8 @@
 				<Date>
 					<Modified>2011-02-05</Modified>
 				</Date>
-				<Date><Modified>2017-05-09</Modified>  CR041 Add support  to associate COMMON SECTIONS with LinkSequences
+				<Date>
+					<Modified>2017-05-09</Modified>  CR041 Add support  to associate COMMON SECTIONS with LinkSequences
 				</Date>
 				<Description>
 					<p>NeTEx - Network Exchange. This subschema defines POINT AND LINK SEQUENCE types.</p>
@@ -77,7 +78,7 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="ObjectIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="LinkSequenceRef" type="LinkSequenceRefStructure" substitutionGroup="VersionOfObjectRef">
+	<xsd:element name="LinkSequenceRef" type="LinkSequenceRefStructure" abstract="true" substitutionGroup="VersionOfObjectRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a LINK SEQUENCE.</xsd:documentation>
 		</xsd:annotation>
