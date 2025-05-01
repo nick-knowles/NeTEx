@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
 	<Folder FolderName="NeTEx Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<Folder FolderName="NeTEx_top_level Schema">
+			<File FilePath="xsd\ifopt.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NeTEx_publication-NoConstraint.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NeTEx_publication.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NeTEx_publication_timetable.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NeTEx_siri.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NeTEx_siri_SG.xsd" HomeFolder="Yes"/>
+			<File FilePath="xsd\NX.xsd" HomeFolder="Yes"/>
+		</Folder>
 		<Folder FolderName="netex_framework_TM_CC">
-			<Folder FolderName="NeTEx_top_level Schema">
-				<File FilePath="xsd\ifopt.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NeTEx_publication-NoConstraint.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NeTEx_publication.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NeTEx_publication_timetable.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NeTEx_siri.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NeTEx_siri_SG.xsd" HomeFolder="Yes"/>
-				<File FilePath="xsd\NX.xsd" HomeFolder="Yes"/>
-			</Folder>
 			<Folder FolderName="netex_utility_TM_CC">
 				<File FilePath="xsd\netex_framework\netex_utility\netex_location_types.xsd" HomeFolder="Yes"/>
 				<File FilePath="xsd\netex_framework\netex_utility\netex_units.xsd" HomeFolder="Yes"/>
