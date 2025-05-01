@@ -19,14 +19,18 @@
 				<Date>
 					<Modified>2011-12-16</Modified>
 				</Date>
-				<Date><Modified>2017-06-13</Modified>CR046 Add BusPlatform to enum
+				<Date>
+					<Modified>2017-06-13</Modified>CR046 Add BusPlatform to enum
 				</Date>
-				<Date><Modified>2019-03-25</Modified>CR055 CD Change #52 Add new attribute  ___StopPlaceWeight___  to ___StopPlace__ with values _international, national, regional, local_. 
+				<Date>
+					<Modified>2019-03-25</Modified>CR055 CD Change #52 Add new attribute  ___StopPlaceWeight___  to ___StopPlace__ with values _international, national, regional, local_. 
 						NJSK Review: Make  values lowerCamelCase consistent with NeTEx conventions.
 				</Date>
-				<Date><Modified>2017-06-13</Modified>Issue #125 Add Multimodal to QuayType  enums
+				<Date>
+					<Modified>2017-06-13</Modified>Issue #125 Add Multimodal to QuayType  enums
 				</Date>
-				<Date><Modified>2023-11-07</Modified>CR0544 Deprecate PrivateCode.
+				<Date>
+					<Modified>2023-11-07</Modified>CR0544 Deprecate PrivateCode.
 				</Date>
 				<Description>
 					<p>NeTEx - Network Exchange. This subschema defines STOP PLACE base types.</p>
@@ -40,7 +44,8 @@
 				<Language>[ISO 639-2/B] ENG</Language>
 				<Publisher>Kizoom Software Ltd, 16 High Holborn, London WC1V 6BX</Publisher>
 				<Rights>Unclassified
-					 <Copyright>CEN, Crown Copyright 2009-2019</Copyright></Rights>
+					 <Copyright>CEN, Crown Copyright 2009-2019</Copyright>
+				</Rights>
 				<Source>
 					<ul>
 						<li>Derived from the SIRI standards.</li>
@@ -71,10 +76,21 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="SiteIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="StopPlaceRef" type="StopPlaceRefStructure" substitutionGroup="SiteRef">
+	<xsd:element name="StopPlaceRef" substitutionGroup="SiteRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a STOP PLACE.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="StopPlaceRefStructure">
+					<xsd:attribute name="ref" type="StopPlaceIdType" use="required">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of a STOP PLACE.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:complexType name="StopPlaceRefStructure">
 		<xsd:annotation>
@@ -129,12 +145,32 @@ Rail transport, Roads and Road transport
 		</xsd:simpleContent>
 	</xsd:complexType>
 	<!-- ======================================================================= -->
-	<xsd:element name="StopPlaceSpaceRef" type="StopPlaceSpaceRefStructure" substitutionGroup="SiteComponentRef">
+	<xsd:simpleType name="StopPlaceSpaceIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of STOP PLACE SPACE.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="SiteComponentIdType"/>
+	</xsd:simpleType>
+	<xsd:element name="StopPlaceSpaceRef" abstract="true" substitutionGroup="SiteComponentRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a STOP PLACE SPACE.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="StopPlaceSpaceRefStructure">
+					<xsd:attribute name="ref" use="required">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of a SITE COMPONENT.</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="StopPlaceSpaceIdType"/>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
-	<xsd:complexType name="StopPlaceSpaceRefStructure">
+	<xsd:complexType name="StopPlaceSpaceRefStructure" abstract="true">
 		<xsd:annotation>
 			<xsd:documentation>Type for reference a STOP PLACE SPACE.</xsd:documentation>
 		</xsd:annotation>
@@ -147,25 +183,30 @@ Rail transport, Roads and Road transport
 		<xsd:annotation>
 			<xsd:documentation>Type for identifier of a QUAY.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:restriction base="SiteComponentIdType"/>
+		<xsd:restriction base="StopPlaceSpaceIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="QuayRef" type="QuayRefStructure" substitutionGroup="StopPlaceSpaceRef">
+	<xsd:element name="QuayRef" abstract="false" substitutionGroup="SiteComponentRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a QUAY.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="QuayRefStructure">
+					<xsd:attribute name="ref" type="QuayIdType" use="required">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of a QUAY.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:complexType name="QuayRefStructure">
 		<xsd:annotation>
 			<xsd:documentation>Type for reference to a QUAY.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:simpleContent>
-			<xsd:restriction base="StopPlaceSpaceRefStructure">
-				<xsd:attribute name="ref" type="QuayIdType" use="required">
-					<xsd:annotation>
-						<xsd:documentation>Identifier of a QUAY.</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-			</xsd:restriction>
+			<xsd:restriction base="StopPlaceSpaceRefStructure"/>
 		</xsd:simpleContent>
 	</xsd:complexType>
 	<xsd:complexType name="quayRefs_RelStructure">
@@ -185,12 +226,17 @@ Rail transport, Roads and Road transport
 		<xsd:annotation>
 			<xsd:documentation>Type for identifier of an ACCESS SPACE.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:restriction base="SiteComponentIdType"/>
+		<xsd:restriction base="StopPlaceSpaceIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="AccessSpaceRef" type="AccessSpaceRefStructure" substitutionGroup="StopPlaceSpaceRef">
+	<xsd:element name="AccessSpaceRef" abstract="false" substitutionGroup="SiteComponentRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to an ACCESS SPACE.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="AccessSpaceRefStructure"/>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:complexType name="AccessSpaceRefStructure">
 		<xsd:annotation>
@@ -200,7 +246,7 @@ Rail transport, Roads and Road transport
 			<xsd:restriction base="StopPlaceSpaceRefStructure">
 				<xsd:attribute name="ref" type="AccessSpaceIdType" use="required">
 					<xsd:annotation>
-						<xsd:documentation>Identifier of an ACCESS SPACE.</xsd:documentation>
+						<xsd:documentation>Identifier of a SITE COMPONENT.</xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
 			</xsd:restriction>
@@ -223,25 +269,30 @@ Rail transport, Roads and Road transport
 		<xsd:annotation>
 			<xsd:documentation>Type for identifier of a BOARDING POSITION.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:restriction base="SiteComponentIdType"/>
+		<xsd:restriction base="StopPlaceSpaceIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="BoardingPositionRef" type="BoardingPositionRefStructure" substitutionGroup="StopPlaceSpaceRef">
+	<xsd:element name="BoardingPositionRef" abstract="false" substitutionGroup="SiteComponentRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a BOARDING POSITION.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="BoardingPositionRefStructure">
+					<xsd:attribute name="ref" type="BoardingPositionIdType" use="required">
+						<xsd:annotation>
+							<xsd:documentation>Identifier of a BOARDING POSITION.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:restriction>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:complexType name="BoardingPositionRefStructure">
 		<xsd:annotation>
 			<xsd:documentation>Type for reference to a BOARDING POSITION.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:simpleContent>
-			<xsd:restriction base="StopPlaceSpaceRefStructure">
-				<xsd:attribute name="ref" type="BoardingPositionIdType" use="required">
-					<xsd:annotation>
-						<xsd:documentation>Identifier of a BOARDING POSITION.</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-			</xsd:restriction>
+			<xsd:extension base="StopPlaceSpaceRefStructure"/>
 		</xsd:simpleContent>
 	</xsd:complexType>
 	<!-- ======================================================================= -->

@@ -471,7 +471,7 @@ Changes
 											</codespaceAssignments>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationalUnit >
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 						<Authority version="any" id="nptg:Org_Tfl">
@@ -5719,7 +5719,7 @@ Changes
 									</AccessibilityAssessment>
 									<Covered>covered</Covered>
 									<!-- 	<NptgLocalityRef>E0034695</NptgLocalityRef> -->
-									<SiteRef version="001" ref="naptStop:490G00272P"/>
+									<StopPlaceRef version="001" ref="naptStop:490G00272P"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -5774,7 +5774,7 @@ Changes
 										</limitations>
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
-									<SiteRef version="001" ref="naptStop:490G00272P"/>
+									<StopPlaceRef version="001" ref="naptStop:490G00272P"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -5820,7 +5820,7 @@ Changes
 										</limitations>
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
-									<SiteRef version="001" ref="naptStop:490G00272P"/>
+									<StopPlaceRef version="001" ref="naptStop:490G00272P"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -5866,7 +5866,7 @@ Changes
 										</limitations>
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
-									<SiteRef version="001" ref="naptStop:490G00272P"/>
+									<StopPlaceRef version="001" ref="naptStop:490G00272P"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -6430,7 +6430,7 @@ Changes
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
 									<!-- 	<NptgLocalityRef>E0034695</NptgLocalityRef> -->
-									<SiteRef version="001" ref="naptStop:490G0019043"/>
+									<StopPlaceRef version="001" ref="naptStop:490G0019043"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -6475,7 +6475,7 @@ Changes
 										</limitations>
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
-									<SiteRef version="001" ref="naptStop:490G0019043"/>
+									<StopPlaceRef version="001" ref="naptStop:490G0019043"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>
@@ -6563,7 +6563,7 @@ Changes
 									</AccessibilityAssessment>
 									<Covered>outdoors</Covered>
 									<!-- 	<NptgLocalityRef>E0034695</NptgLocalityRef> -->
-									<SiteRef version="001" ref="naptStop:490G0019043"/>
+									<StopPlaceRef version="001" ref="naptStop:490G0019043"/>
 									<LevelRef version="001" ref="nptg:9100WIMBLDN_Lvl_ST"/>
 									<BoardingUse>true</BoardingUse>
 									<AlightingUse>true</AlightingUse>

@@ -276,7 +276,7 @@ v1.1 revised ids and corrections
 									<delays>
 										<CheckConstraintDelay version="any" id="mypark:PP01@EV11@Entrance@peak">
 											<validityConditions>
-												<ValidityTriggerRef ref="mypark:Peek"/>
+												<ValidityTriggerRef versionRef="EXTERNAL" ref="mypark:Peek"/>
 											</validityConditions>
 											<Name>pek delay</Name>
 											<CheckConstraintRef version="any" ref="mypark:PP01@EV11@Entrance"/>
@@ -286,7 +286,7 @@ v1.1 revised ids and corrections
 										</CheckConstraintDelay>
 										<CheckConstraintDelay version="any" id="mypark:PP01@EV11@Entrance@off_peak">
 											<validityConditions>
-												<ValidityTriggerRef ref="mypark:Off_peak"/>
+												<ValidityTriggerRef versionRef="EXTERNAL" ref="mypark:Off_peak"/>
 											</validityConditions>
 											<Name>Off peak delay</Name>
 											<CheckConstraintRef version="any" ref="mypark:PP01@EV11@Entrance"/>
@@ -341,17 +341,17 @@ v1.1 revised ids and corrections
 												<ValidityTriggerRef ref="mypark:Peek"/>
 											</validityConditions>
 											<Name>pek delay</Name>
-											<CheckConstraintRef ref="mypark:PP01@EV12@Exit"/>
+											<CheckConstraintRef version="any" ref="mypark:PP01@EV12@Exit"/>
 											<MinimumLikelyDelay>PT5M</MinimumLikelyDelay>
 											<AverageDelay>PT7M</AverageDelay>
 											<MaximumLikelyDelay>PT15M</MaximumLikelyDelay>
 										</CheckConstraintDelay>
 										<CheckConstraintDelay version="any" id="mypark:PP01@EV12@Exit@Off_peak">
 											<validityConditions>
-												<ValidityTriggerRef ref="mypark:Off_peak"/>
+												<ValidityTriggerRef versionRef="EXTERNAL" ref="mypark:Off_peak"/>
 											</validityConditions>
 											<Name>Off peak delay</Name>
-											<CheckConstraintRef ref="mypark:PP01@EV12@Exit"/>
+											<CheckConstraintRef version="any" ref="mypark:PP01@EV12@Exit"/>
 											<MinimumLikelyDelay>PT1M</MinimumLikelyDelay>
 											<AverageDelay>PT2M</AverageDelay>
 											<MaximumLikelyDelay>PT5M</MaximumLikelyDelay>
@@ -359,7 +359,7 @@ v1.1 revised ids and corrections
 									</delays>
 									<throughput>
 										<CheckConstraintThroughput version="any" id="mypark:PP01@EV12@Exit">
-											<CheckConstraintRef ref="mypark:PP01@EV12@Exit"/>
+											<CheckConstraintRef version="any" ref="mypark:PP01@EV12@Exit"/>
 											<Period>PT10M</Period>
 											<MaximumPassengers>20</MaximumPassengers>
 											<AveragePassengers>15</AveragePassengers>
@@ -495,14 +495,14 @@ v1.1 revised ids and corrections
 							<MaximumStay>PT48H</MaximumStay>
 							<spaces>
 								<ParkingCapacity version="any" id="mypark:PP01@C01_disabled">
-									<ParkingRef version="any" ref="mypark:PP01"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PP01"/>
 									<ParkingUserType>registeredDisabled</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>unlimited</ParkingStayType>
 									<NumberOfSpaces>30</NumberOfSpaces>
 								</ParkingCapacity>
 								<ParkingCapacity version="any" id="mypark:PP01@C02_other">
-									<ParentRef version="any" ref="mypark:PP01"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PP01"/>
 									<ParkingUserType>allUsers</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>unlimited</ParkingStayType>
@@ -515,8 +515,8 @@ v1.1 revised ids and corrections
 						<ParkingArea version="any" id="mypark:PP01@A01">
 							<Name>Barcester CIty Centre  Car Park - Street Level</Name>
 							<ShortName>Street Level</ShortName>
-							<SiteRef ref="mypark:PP01"/>
-							<LevelRef ref="mypark:PP01@Level@01"/>
+							<ParkingRef version="any" ref="mypark:PP01"/>
+							<LevelRef version="any" ref="mypark:PP01@Level@01"/>
 							<Label>S1</Label>
 							<MaximumLength>8</MaximumLength>
 							<MaximumWidth>3</MaximumWidth>
@@ -528,13 +528,13 @@ v1.1 revised ids and corrections
 								<MaximumStay>PT48H</MaximumStay>
 								<spaces>
 									<ParkingCapacity version="any" id="mypark:PP01@01_01">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PP01@A01"/>
 										<ParkingUserType>all</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>85</NumberOfSpaces>
 									</ParkingCapacity>
 									<ParkingCapacity version="any" id="mypark:PP01@01_02">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PP01@A01"/>
 										<ParkingUserType>registeredDisabled</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>15</NumberOfSpaces>
@@ -552,8 +552,8 @@ v1.1 revised ids and corrections
 						<ParkingArea version="any" id="mypark:PP01@A02">
 							<Name>Barcester City Centret Car Park - Mezzanine  Level</Name>
 							<ShortName>Mezzanine</ShortName>
-							<SiteRef ref="mypark:PP01"/>
-							<LevelRef ref="mypark:PP01@Level@012"/>
+							<ParkingRef version="any" ref="mypark:PP01"/>
+							<LevelRef version="any" ref="mypark:PP01@Level@02"/>
 							<Label>Parking 1</Label>
 							<MaximumLength>8</MaximumLength>
 							<MaximumWidth>3</MaximumWidth>
@@ -565,7 +565,7 @@ v1.1 revised ids and corrections
 								<MaximumStay>PT48H</MaximumStay>
 								<spaces>
 									<ParkingCapacity version="any" id="mypark:PP01@A02@C01">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PP01@A02"/>
 										<ParkingUserType>all</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>50</NumberOfSpaces>
@@ -582,8 +582,8 @@ v1.1 revised ids and corrections
 						<ParkingArea version="any" id="mypark:PP01@A03">
 							<Name>Barchester City Centret Car Park - Store  Level</Name>
 							<ShortName>Parking 2</ShortName>
-							<SiteRef ref="mypark:PP01"/>
-							<LevelRef ref="mypark:PP01@Level@03"/>
+							<ParkingRef version="any" ref="mypark:PP01"/>
+							<LevelRef version="any" ref="mypark:PP01@Level@03"/>
 							<Label>Parking 2</Label>
 							<MaximumLength>8</MaximumLength>
 							<MaximumWidth>3</MaximumWidth>
@@ -595,13 +595,13 @@ v1.1 revised ids and corrections
 								<MaximumStay>PT48H</MaximumStay>
 								<spaces>
 									<ParkingCapacity version="any" id="mypark:PP01@A03@C01">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PP01@A03"/>
 										<ParkingUserType>all</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>85</NumberOfSpaces>
 									</ParkingCapacity>
 									<ParkingCapacity version="any" id="mypark:PP01@A03@C02">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PP01@A03"/>
 										<ParkingUserType>registeredDisabled</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>15</NumberOfSpaces>
@@ -640,7 +640,6 @@ v1.1 revised ids and corrections
 										</PropertyOfDay>
 									</properties>
 								</DayType>
-								<DayTypeRef ref=""/>
 							</dayTypes>
 							<timebands>
 								<Timeband version="any" id="mypark:Parking_Charge_Hours">
@@ -729,14 +728,14 @@ v1.1 revised ids and corrections
 							<ParkingStayList>unlimited</ParkingStayList>
 							<spaces>
 								<ParkingCapacity version="any" id="mypark:PS22@01_disabled">
-									<ParentRef version="any" ref="mypark:PS22"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PS22"/>
 									<ParkingUserType>registeredDisabled</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>unlimited</ParkingStayType>
 									<NumberOfSpaces>5</NumberOfSpaces>
 								</ParkingCapacity>
 								<ParkingCapacity version="any" id="mypark:PS22@01_other">
-									<ParentRef version="any" ref="mypark:PS22"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PS22"/>
 									<ParkingUserType>allUsers</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>unlimited</ParkingStayType>
@@ -749,7 +748,7 @@ v1.1 revised ids and corrections
 						<ParkingArea version="any" id="mypark:PS22@01">
 							<Name>Street Level</Name>
 							<ShortName>S1</ShortName>
-							<SiteRef ref="mypark:PS22"/>
+							<ParkingRef version="any" ref="mypark:PS22"/>
 							<ParkingPaymentCode>ABCD</ParkingPaymentCode>
 							<MaximumLength>8</MaximumLength>
 							<MaximumWidth>3</MaximumWidth>
@@ -795,7 +794,7 @@ v1.1 revised ids and corrections
 							<ParkingStayList>unlimited</ParkingStayList>
 							<spaces>
 								<ParkingCapacity version="any" id="mypark:PS44@C01_disabled">
-									<ParentRef version="any" ref="mypark:PB44"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PB44"/>
 									<ParkingUserType>registeredDisabled</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>shortStay</ParkingStayType>
@@ -816,13 +815,13 @@ v1.1 revised ids and corrections
 								<MaximumStay>PT3H</MaximumStay>
 								<spaces>
 									<ParkingCapacity version="any" id="mypark:PB44@A01@C01">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PB44@01"/>
 										<ParkingUserType>all</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>85</NumberOfSpaces>
 									</ParkingCapacity>
 									<ParkingCapacity version="any" id="mypark:PB44@A01@C02">
-										<ParentRef ref=""/>
+										<ParkingPropertiesRef version="any" ref="mypark:PB44@01"/>
 										<ParkingUserType>registeredDisabled</ParkingUserType>
 										<ParkingVehicleType>passengerCar</ParkingVehicleType>
 										<NumberOfSpaces>15</NumberOfSpaces>
@@ -1115,7 +1114,7 @@ v1.1 revised ids and corrections
 							<MaximumStay>PT48H</MaximumStay>
 							<spaces>
 								<ParkingCapacity version="any" id="mypark:PNR01@C01_all">
-									<ParentRef ref="mypark:PNR01"/>
+									<ParkingPropertiesRef version="any" ref="mypark:PNR01"/>
 									<ParkingUserType>all</ParkingUserType>
 									<ParkingVehicleType>passengerCar</ParkingVehicleType>
 									<ParkingStayType>unlimited</ParkingStayType>

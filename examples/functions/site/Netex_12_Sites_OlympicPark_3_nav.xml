@@ -473,7 +473,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 										<Town>Stratford</Town>
 										<PostCode>E15</PostCode>
 									</PostalAddress>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 									<checkConstraints>
 										<CheckConstraint version="any" id="naptPoi:8100OPK_E1_C1" order="1">
@@ -664,7 +664,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 										<Town>Stratford</Town>
 										<PostCode>E15</PostCode>
 									</PostalAddress>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 									<checkConstraints>
 										<CheckConstraint version="any" id="naptPoi:8100OPK_E2_C1" order="1">
@@ -852,7 +852,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 										<Town>Stratford</Town>
 										<PostCode>E15</PostCode>
 									</PostalAddress>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 									<checkConstraints>
 										<CheckConstraint version="any" id="naptPoi:8100OPK_E3_C1" order="1">
@@ -1040,7 +1040,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 										<Town>Stratford</Town>
 										<PostCode>E15</PostCode>
 									</PostalAddress>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 									<checkConstraints>
 										<CheckConstraint version="any" id="naptPoi:8100OPK_E4_C1" order="1">
@@ -1967,7 +1967,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 									<PublicUse>authorisedPublicOnly</PublicUse>
 									<Covered>covered</Covered>
 									<Gated>gatedArea</Gated>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 								</PointOfInterestSpace>
 								<PointOfInterestSpace version="any" id="naptPoi:8100OPK_V10_PRSC_S2">
@@ -1984,7 +1984,7 @@ nptg:PoiCat_Sports_WarmUp	 -  Athletics warm up area :	Warm up area
 									<PublicUse>authorisedPublicOnly</PublicUse>
 									<Covered>covered</Covered>
 									<Gated>gatedArea</Gated>
-									<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
+									<PointOfInterestRef version="any" xsi:type="PointOfInterestRefStructure" ref="naptPoi:8100OPK"/>
 									<LevelRef version="any" ref="naptPoi:8100OPK_Lvl_01"/>
 								</PointOfInterestSpace>
 							</spaces>

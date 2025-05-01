@@ -4932,7 +4932,7 @@
 		<!-- =====SITE Constraints========================= -->
 		<!-- =====Site============================== -->
 		<xsd:keyref name="Site_AnyKeyRef" refer="netex:Site_AnyVersionedKey">
-			<xsd:selector xpath=".//netex:SiteRef"/>
+			<xsd:selector xpath=".//netex:SiteRef | .//netex:ParentSiteRef"/>
 			<xsd:field xpath="@ref"/>
 			<xsd:field xpath="@version"/>
 		</xsd:keyref>

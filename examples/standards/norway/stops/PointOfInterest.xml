@@ -199,7 +199,7 @@ The example  comprises
 								</suitabilities>
 							</AccessibilityAssessment>
 							<PublicUse>all</PublicUse>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 							<checkConstraints>
 								<CheckConstraint version="any" id="tbd:POI_23_A1-E1_C1" order="1">
@@ -286,7 +286,7 @@ The example  comprises
 								</suitabilities>
 							</AccessibilityAssessment>
 							<PublicUse>all</PublicUse>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 							<checkConstraints>
 								<CheckConstraint version="any" id="tbd:POI_23_A1_E2_C1" order="1">
@@ -380,7 +380,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</PointOfInterestSpace>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_A2">
@@ -409,7 +409,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</PointOfInterestSpace>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_A3">
@@ -438,7 +438,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_02_upper"/>
 						</PointOfInterestSpace>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_B1">
@@ -467,7 +467,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</PointOfInterestSpace>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_B2">
@@ -496,7 +496,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</PointOfInterestSpace>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_B3">
@@ -523,7 +523,7 @@ The example  comprises
 							<Covered>covered</Covered>
 							<Gated>gatedArea</Gated>
 							<Lighting>wellLit</Lighting>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_02_upper"/>
 						</PointOfInterestSpace>
 					</spaces>
@@ -564,7 +564,7 @@ The example  comprises
 								<DefaultDuration>PT1M</DefaultDuration>
 								<MobilityRestrictedTravellerDuration>PT5M</MobilityRestrictedTravellerDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</SitePathLink>
 						<SitePathLink version="any" id="tbd:POI_23_pl_A1-J1_to_A2">
@@ -601,7 +601,7 @@ The example  comprises
 								<DefaultDuration>PT1M</DefaultDuration>
 								<MobilityRestrictedTravellerDuration>PT5M</MobilityRestrictedTravellerDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</SitePathLink>
 						<SitePathLink version="any" id="tbd:POI_23_pl_A1-J1_to_A3">
@@ -637,7 +637,7 @@ The example  comprises
 							<TransferDuration>
 								<DefaultDuration>PT2M</DefaultDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 						</SitePathLink>
 						<SitePathLink version="any" id="tbd:POI_23_pl_B1-E1_to_B1-J1">
 							<Name>From entrance A to main concourse J1</Name>
@@ -674,7 +674,7 @@ The example  comprises
 								<DefaultDuration>PT1M</DefaultDuration>
 								<MobilityRestrictedTravellerDuration>PT5M</MobilityRestrictedTravellerDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</SitePathLink>
 						<SitePathLink version="any" id="tbd:POI_23_pl_B1-J1_to_B2">
@@ -711,7 +711,7 @@ The example  comprises
 								<DefaultDuration>PT1M</DefaultDuration>
 								<MobilityRestrictedTravellerDuration>PT5M</MobilityRestrictedTravellerDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 							<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 						</SitePathLink>
 						<SitePathLink version="any" id="tbd:POI_23_pl_B1-J1_to_B3">
@@ -747,7 +747,7 @@ The example  comprises
 							<TransferDuration>
 								<DefaultDuration>PT2M</DefaultDuration>
 							</TransferDuration>
-							<SiteRef version="any" xsi:type="PointOfInterestRefStructure" ref="tbd:POI_23"/>
+							<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 						</SitePathLink>
 					</pathLinks>
 					<pathJunctions>
