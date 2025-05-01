@@ -1235,7 +1235,7 @@ At the end are shown some sample transactions showing the parameters that define
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<journeyPatterns>
-						<JourneyPattern version="1.0" id="frst:WoE@48@inbound">
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@inbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<sectionsInSequence>
 								<SectionInSequence version="1.0" id="frst:WoE@Bristol@48@inbound@-1">
@@ -1393,8 +1393,8 @@ At the end are shown some sample transactions showing the parameters that define
 									<ScheduledStopPointRef version="any" ref="naptStop:0100BRA16910">Rupert Street</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
-						<JourneyPattern version="1.0" id="frst:WoE@48@outbound">
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@outbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<sectionsInSequence>
 								<SectionInSequence version="1.0" id="frst:WoE@Bristol@48@outbound@-1">
@@ -1552,7 +1552,7 @@ At the end are shown some sample transactions showing the parameters that define
 									<ScheduledStopPointRef version="any" ref="naptStop:017000062">Emersons Green</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<FareFrame version="1.0" id="epd:UK:FBRI:FareFrame_UK_PI_FARE_NETWORK:WoE_Distance@Trip@Bristol@48:frst">
@@ -6819,7 +6819,7 @@ ______	______	________	|	Adult		Child	 	Student		| Family	| 	Group 	||	Adult		Ch
 						<!-- MORE TO ADD -->
 					</scheduledStopPoints>
 					<journeyPatterns>
-						<JourneyPattern version="1.0" id="frst:@Bath@X31@inbound">
+						<ServiceJourneyPattern version="1.0" id="frst:@Bath@X31@inbound">
 							<Name>BATH - CHIPPENHAM Via Box, Rudloe, Corsham</Name>
 							<sectionsInSequence>
 								<SectionInSequence version="1.0" id="frst:WoE@Bath@X31@inbound@-1">
@@ -6837,7 +6837,7 @@ ______	______	________	|	Adult		Child	 	Student		| Family	| 	Group 	||	Adult		Ch
 								</StopPointInJourneyPattern>
 								<!-- MORE TO ADD -->
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<ServiceFrame version="1.0" id="epd:UK:FBRI:ServiceFrame_UK_PI_NETWORK:WoE@Bristol:frst">

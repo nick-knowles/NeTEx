@@ -1176,7 +1176,7 @@ At the end are shown some sample transactions showing the parameters that define
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<journeyPatterns>
-						<JourneyPattern version="1.0" id="frst:WoE@48@inbound">
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@inbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<DirectionType>inbound</DirectionType>
 							<DirectionRef ref="frst:WoE@Bristol@towards_centre" version="1.0"/>
@@ -1305,8 +1305,8 @@ At the end are shown some sample transactions showing the parameters that define
 									<ScheduledStopPointRef version="any" ref="naptanStop:0100BRA16910">Rupert Street</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
-						<JourneyPattern version="1.0" id="frst:WoE@48@outbound">
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@outbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<DirectionType>outbound</DirectionType>
 							<DirectionRef ref="frst:WoE@Bristol@from_centre" version="1.0"/>
@@ -1438,7 +1438,7 @@ At the end are shown some sample transactions showing the parameters that define
 									<ScheduledStopPointRef version="any" ref="naptanStop:017000062">Emersons Green</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<FareFrame version="1.0" id="epd:UK:FBRI:FareFrame_UK_PI_FARE_NETWORK:WoE_Distance@Trip@Bristol@48:frst">

@@ -1976,7 +1976,7 @@ Over 12 miles (within West of England area) 		£5.50
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<journeyPatterns>
-						<JourneyPattern version="1.0" id="frst:WoE@48@inbound">
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@inbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<sectionsInSequence>
 								<SectionInSequence version="1.0" id="frst:WoE@L48@inbound@-1">
@@ -2134,8 +2134,8 @@ Over 12 miles (within West of England area) 		£5.50
 									<ScheduledStopPointRef version="any" ref="naptanStop:0100BRA16910">Rupert Street</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
-						<JourneyPattern version="1.0" id="frst:WoE@48@outbound">
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern version="1.0" id="frst:WoE@48@outbound">
 							<Name>Emersons Green - Rupert Street</Name>
 							<sectionsInSequence>
 								<SectionInSequence version="1.0" id="frst:WoE@L48@outbound@-1">
@@ -2293,7 +2293,7 @@ Over 12 miles (within West of England area) 		£5.50
 									<ScheduledStopPointRef version="any" ref="naptanStop:017000062">Emersons Green</ScheduledStopPointRef>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<!--  Zone   -->

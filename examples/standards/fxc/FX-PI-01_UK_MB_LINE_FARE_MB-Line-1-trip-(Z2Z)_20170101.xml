@@ -2893,7 +2893,7 @@ This Shows  sample Purchases
 							<Name>Department for Transport</Name>
 							<ShortName>DfT</ShortName>
 							<parts>
-								<OrganisationPart version="any" id="nptg:DfT">
+								<OrganisationalUnit version="any" id="nptg:DfT">
 									<Name>Transport Direct</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone version="nptg:v2.1" id="nptgAdminArea:UK">
@@ -2961,7 +2961,7 @@ This Shows  sample Purchases
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 					</organisations>
