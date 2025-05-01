@@ -15579,7 +15579,7 @@ For more information on National Rail services see the
 						<GeneralGroupOfEntities version="any" id="tfl:Registered_Educational_Establishments" nameOfMemberClass="OtherOrganisation">
 							<Name>List of registered universties</Name>
 							<members>
-									<GeneralOrganisationRef versionRef="EXTERNAL" ref="tfl:University_of_London"/>
+								<GeneralOrganisationRef versionRef="EXTERNAL" ref="tfl:University_of_London"/>
 								<!--  etc etc -->
 							</members>
 						</GeneralGroupOfEntities>
