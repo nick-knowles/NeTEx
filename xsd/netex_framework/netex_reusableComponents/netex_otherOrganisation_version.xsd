@@ -55,7 +55,7 @@ Rail transport, Roads and Road transport
 		<xsd:documentation>NetEX:OTHER ORGANISATION  types for NeTEx Network Exchange.</xsd:documentation>
 	</xsd:annotation>
 	<!-- ======================================================================= -->
-	<xsd:element name="OtherOrganisation" substitutionGroup="Organisation_">
+	<xsd:element name="OtherOrganisation" abstract="true" substitutionGroup="Organisation_">
 		<xsd:annotation>
 			<xsd:documentation>Generic ORGANISATION being neither an AUTHORITY, neither a public transport OPERATOR (TRAVEL AGENT, MANAGEMENT AGENT, etc.).</xsd:documentation>
 		</xsd:annotation>
