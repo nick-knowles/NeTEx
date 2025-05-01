@@ -35,8 +35,7 @@ This is part 1 of a multistep example on versioning
 						<Authority version="001" id="bar:foo2"/>
 						<ServicedOrganisation version="001" id="bar:foo3"/>
 						<TravelAgent version="001" id="bar:foo4"/>
-						<ManagementAgent version="001" id="bar:foo5"/>
-						<OtherOrganisation version="001" id="bar:foo5">
+						<GeneralOrganisation version="001" id="bar:foo5">
 							<validityConditions>
 								<!-- ValidityCOnditipon, AvailabilityCOndition, AVailabilityCondution -->
 								<ValidityCondition version="001" id="bar:foo">
@@ -93,7 +92,21 @@ This is part 1 of a multistep example on versioning
 									</roles>
 								</ResponsibilitySet>
 							</ownResponsibilitySets>
-						</OtherOrganisation>
+						</GeneralOrganisation>
+						<OnlineServiceOperator version="001" id="bar:foo6"/>
+						<RetailConsortium version="001" id="bar:foo7">
+							<blacklistRefs>
+								<BlacklistRef version="001" ref="bar:foo"/>
+							</blacklistRefs>
+							<whitelistRefs>
+								<WhitelistRef version="001" ref="bar:foo"/>
+							</whitelistRefs>
+							<retailDevices>
+								<RetailDevice version="001" id="bar:foo">
+								</RetailDevice>
+							</retailDevices>
+						</RetailConsortium>
+						<ManagementAgent version="001" id="bar:foo8"/>
 					</organisations>
 					<groupsOfOperators>
 						<GroupOfOperators version="001" id="bar:foo">
@@ -106,15 +119,26 @@ This is part 1 of a multistep example on versioning
 						<OperationalContext version="001" id="bar:foo"/>
 					</operationalContexts>
 					<vehicleTypes>
-						<Train version="001" id="bar:foo">
+						<SimpleVehicleType version="001" id="bar:foo1">
+							<acceptedDriverPermits>
+								<AcceptedDriverPermit version="001" id="bar:foo1"/>
+							</acceptedDriverPermits>
+						</SimpleVehicleType>
+						<VehicleType version="001" id="bar:foo2">
+							<capacities>
+								<PassengerCapacity version="001" id="bar:foo"/>
+							</capacities>
+						</VehicleType>
+						<Train version="001" id="bar:foo3">
 							<satisfiesFacilityRequirements>
-								<FacilityRequirement version="001" id="bar:foo"/>
+								<FacilityRequirement version="001" id="bar:foo3"/>
 							</satisfiesFacilityRequirements>
 							<components>
-								<TrainComponent version="001" id="bar:foo-1">
-									<TrainElement version="001" id="bar:foo">
+								<TrainComponent version="001" id="bar:foo3-1">
+									<TrainElement version="001" id="bar:foo3-1-1">
 										<capacities>
-											<PassengerCapacity version="001" id="bar:foo"/>
+											<PassengerCapacity version="001" id="bar:foo3-1-1">
+											</PassengerCapacity>
 										</capacities>
 										<facilities>
 											<ServiceFacilitySet version="001" id="bar:foo">
@@ -127,7 +151,18 @@ This is part 1 of a multistep example on versioning
 								</TrainComponent>
 							</components>
 						</Train>
-						<CompoundTrain version="001" id="bar:foo"/>
+						<PoweredTrain version="001" id="bar:foo2"/>
+						<UnpoweredTrain version="001" id="bar:foo4"/>
+						<CompoundTrain version="001" id="bar:foo">
+							<satisfiesFacilityRequirements>
+								<FacilityRequirement version="001" id="bar:foo"/>
+							</satisfiesFacilityRequirements>
+							<components>
+								<TrainInCompoundTrain version="001" id="bar:foo@1">
+									<UnpoweredTrainRef version="001" ref="bar:foo4"/>
+								</TrainInCompoundTrain>
+							</components>
+						</CompoundTrain>
 					</vehicleTypes>
 					<vehicleModels>
 						<VehicleModel version="001" id="bar:foo"/>
@@ -142,6 +177,9 @@ This is part 1 of a multistep example on versioning
 					<vehicles>
 						<Vehicle version="001" id="bar:foo10"/>
 					</vehicles>
+					<rollingStockInventories>
+						<RollingStockInventory version="001" id="bar:foo"/>
+					</rollingStockInventories>
 					<schematicMaps>
 						<SchematicMap version="001" id="bar:foo">
 							<members>
