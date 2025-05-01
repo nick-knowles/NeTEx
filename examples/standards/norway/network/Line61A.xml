@@ -267,7 +267,7 @@
 					</stopAssignments>
 					<!-- Dette er alle JourneyPatterns linje 61A kjører. Akkurat for denne linjen finnes det bare ett slikt "kjøremønster" -->
 					<journeyPatterns>
-						<JourneyPattern version="any" id="RUT:JourneyPattern:0061101">
+						<ServiceJourneyPattern version="any" id="RUT:JourneyPattern:0061101">
 							<RouteRef version="any" ref="RUT:Route:0061101"/>
 							<!-- Rekkefølge på stopp -->
 							<pointsInSequence>
@@ -304,7 +304,7 @@
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 					<notices>
 						<!-- Denne fotnoten er modellert for hele linjen, ikke relatert spesifikt til noe stopp eller turer -->

@@ -3141,7 +3141,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 						<GeneralOrganisation id="nptg:NPTG" version="nptg:v2.1">
 							<Name>Overall Management of Nptg codes</Name>
 							<parts>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:CON">
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:CON">
 									<Name lang="EN">Connaught</Name>
 									<PublicCode type="nptg:RegionCode">CON</PublicCode>
 									<administrativeZones>
@@ -3315,8 +3315,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
+								</OrganisationalUnit>
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
 									<Name lang="EN">Leinster</Name>
 									<PublicCode type="nptg:RegionCode">LEI</PublicCode>
 									<administrativeZones>
@@ -3706,8 +3706,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
+								</OrganisationalUnit>
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
 									<Name lang="EN">Munster</Name>
 									<PublicCode type="nptg:RegionCode">MUN</PublicCode>
 									<administrativeZones>
@@ -3968,8 +3968,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS">
+								</OrganisationalUnit>
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS">
 									<Name lang="EN">Ulster</Name>
 									<PublicCode type="nptg:RegionCode">ULS</PublicCode>
 									<administrativeZones>
@@ -4070,8 +4070,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
+								</OrganisationalUnit>
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
 									<Name lang="EN">Ulster_NI</Name>
 									<PublicCode type="nptg:RegionCode">ULS_NI</PublicCode>
 									<administrativeZones>
@@ -4244,7 +4244,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
+								</OrganisationalUnit>
 							</parts>
 						</GeneralOrganisation>
 					</organisations>

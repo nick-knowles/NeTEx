@@ -29,27 +29,36 @@ This is part 1 of a multistep example on versioning
 			<frames>
 				<!---  ==== RESOURCE FRAME ====  -->
 				<ResourceFrame version="001" id="bar:foo">
+				<layers> 
+					<LayerRef  versionRef="EXTERNA" ref="bar:foo"></LayerRef>
+				</layers>
+				<contacts>
+					<Contact version="001" id="bar:foo">
+					<ContactDetails><Email>foo@bar.com</Email>
+					</ContactDetails>
+					</Contact>
+				</contacts>
 					<organisations>
 						<!--  Organisation elements must have different ids -->
-						<Operator version="001" id="bar:foo"/>
-						<Authority version="001" id="bar:foo2"/>
-						<ServicedOrganisation version="001" id="bar:foo3"/>
-						<TravelAgent version="001" id="bar:foo4"/>
-						<GeneralOrganisation version="001" id="bar:foo5">
+						<Operator version="001" id="bar:foo_org1"/>
+						<Authority version="001" id="bar:foo_org2"/>
+						<ServicedOrganisation version="001" id="bar:foo_org3"/>
+						<TravelAgent version="001" id="bar:foo_org4"/>
+						<GeneralOrganisation version="001" id="bar:foo_org5">
 							<validityConditions>
 								<!-- ValidityCOnditipon, AvailabilityCOndition, AVailabilityCondution -->
-								<ValidityCondition version="001" id="bar:foo">
+								<ValidityCondition version="001" id="bar:foo_org5@condition1">
 								</ValidityCondition>
-								<ValidityTrigger version="001" id="bar:foo1">
+								<ValidityTrigger version="001" id="bar:foo_org5">
 								</ValidityTrigger>
-								<AvailabilityCondition version="001" id="bar:foo3">
+								<AvailabilityCondition version="001" id="bar:foo_org5@condition2">
 									<timebands>
-										<Timeband version="001" id="bar:foo">
+										<Timeband version="001" id="bar:foo_org5">
 											<StartTime>00:00:00</StartTime>
 										</Timeband>
 									</timebands>
 									<operatingDays>
-										<OperatingDay version="001" id="bar:foo">
+										<OperatingDay version="001" id="bar:foo_org5">
 											<CalendarDate>2001-01-01</CalendarDate>
 										</OperatingDay>
 									</operatingDays>
@@ -58,43 +67,43 @@ This is part 1 of a multistep example on versioning
 								<ValidBetween version="001" id="bar:foo2"/>
 							</validityConditions>
 							<alternativeTexts>
-								<AlternativeText version="001" id="bar:foo" attributeName="Name-1">
+								<AlternativeText version="001" id="bar:foo_org5" attributeName="Name-1">
 									<Text>Fum</Text>
 								</AlternativeText>
 							</alternativeTexts>
 							<keyList>
-								<KeyValue typeOfKey="bar:foo">
+								<KeyValue typeOfKey="bar:foo_org5">
 									<Key>bar</Key>
 									<Value>foo</Value>
 								</KeyValue>
 							</keyList>
 							<Extensions/>
 							<alternativeNames>
-								<AlternativeName version="001" id="bar:foo-1">
-									<Name>Foo</Name>
+								<AlternativeName version="001" id="bar:foo_org5">
+									<Name lang="de">Foo</Name>
 								</AlternativeName>
 							</alternativeNames>
 							<parts>
-								<OrganisationPart version="001" id="bar:foo">
+								<OrganisationalUnit version="001" id="bar:foo_org5">
 									<administrativeZones>
-										<AdministrativeZone version="001" id="bar:foo"/>
+										<AdministrativeZone version="001" id="bar:foo_org5"/>
 									</administrativeZones>
-								</OrganisationPart>
-								<ControlCentre version="001" id="bar:foo"/>
+								</OrganisationalUnit>
+								<ControlCentre version="001" id="bar:foo_org5"/>
 								<!-- Department and operating department must be unique -->
-								<Department version="001" id="bar:foo"/>
-								<OperatingDepartment version="001" id="bar:foo1"/>
+								<Department version="001" id="bar:foo_org5@1"/>
+								<OperatingDepartment version="001" id="bar:foo_org5@2"/>
 							</parts>
 							<ownResponsibilitySets>
-								<ResponsibilitySet version="001" id="bar:foo">
+								<ResponsibilitySet version="001" id="bar:foo_org5">
 									<roles>
-										<ResponsibilityRoleAssignment version="001" id="bar:foo"/>
+										<ResponsibilityRoleAssignment version="001" id="bar:foo_org5"/>
 									</roles>
 								</ResponsibilitySet>
 							</ownResponsibilitySets>
 						</GeneralOrganisation>
-						<OnlineServiceOperator version="001" id="bar:foo6"/>
-						<RetailConsortium version="001" id="bar:foo7">
+						<OnlineServiceOperator version="001" id="bar:foo_org6"/>
+						<RetailConsortium version="001" id="bar:foo_org7">
 							<blacklistRefs>
 								<BlacklistRef version="001" ref="bar:foo"/>
 							</blacklistRefs>
@@ -102,22 +111,29 @@ This is part 1 of a multistep example on versioning
 								<WhitelistRef version="001" ref="bar:foo"/>
 							</whitelistRefs>
 							<retailDevices>
-								<RetailDevice version="001" id="bar:foo">
+								<RetailDevice version="001" id="bar:foo_org6">
 								</RetailDevice>
 							</retailDevices>
 						</RetailConsortium>
-						<ManagementAgent version="001" id="bar:foo8"/>
+						<ManagementAgent version="001" id="bar:foo_org8"/>
 					</organisations>
 					<groupsOfOperators>
 						<GroupOfOperators version="001" id="bar:foo">
 							<members>
-								<OperatorRef version="001" ref="bar:foo"/>
+								<OperatorRef version="001" ref="bar:foo_org1"/>
 							</members>
 						</GroupOfOperators>
 					</groupsOfOperators>
 					<operationalContexts>
 						<OperationalContext version="001" id="bar:foo"/>
 					</operationalContexts>
+					<controlCentres>
+						<ControlCentre version="001" id="bar:foo">
+						<administrativeZones>
+							<AdministrativeZoneRef  version="001" ref="bar:foo"></AdministrativeZoneRef>
+						</administrativeZones>
+						</ControlCentre>
+					</controlCentres>
 					<vehicleTypes>
 						<SimpleVehicleType version="001" id="bar:foo1">
 							<acceptedDriverPermits>
@@ -175,7 +191,7 @@ This is part 1 of a multistep example on versioning
 						<CycleModelProfile version="001" id="bar:foo"/>
 					</vehicleModelProfiles>
 					<vehicles>
-						<Vehicle version="001" id="bar:foo10"/>
+						<Vehicle version="001" id="bar:foo_zone10"/>
 					</vehicles>
 					<rollingStockInventories>
 						<RollingStockInventory version="001" id="bar:foo"/>
@@ -189,19 +205,19 @@ This is part 1 of a multistep example on versioning
 						</SchematicMap>
 					</schematicMaps>
 					<groupsOfEntities>
-						<Zone version="001" id="bar:foo10"/>
+						<Zone version="001" id="bar:foo_zone10"/>
 					</groupsOfEntities>
 					<zones>
-						<GeneralZone version="001" id="bar:foo3">
+						<GeneralZone version="001" id="bar:foo_zone3">
 							<members>
 								<WirePointRef ref="bar:foo" version="001"/>
 							</members>
 							<projections>
-								<PointProjection version="001" id="bar:foo">
+								<PointProjection version="001" id="bar:foo_zone3">
 									<ProjectToPointRef ref="bar:foo" version="001"/>
 								</PointProjection>
-								<ZoneProjection version="001" id="bar:foo">
-									<ProjectedZoneRef ref="bar:foo" version="001"/>
+								<ZoneProjection version="001" id="bar:foo_zone3">
+									<ProjectedZoneRef version="001" ref="bar:foo_zone10" />
 								</ZoneProjection>
 							</projections>
 						</GeneralZone>
@@ -405,7 +421,7 @@ This is part 1 of a multistep example on versioning
 						<StopArea version="001" id="bar:foo"/>
 					</stopAreas>
 					<journeyPatterns>
-						<JourneyPattern version="001" id="bar:foo2">
+						<ServiceJourneyPattern version="001" id="bar:foo2">
 							<Name>JOURNEY PATTERN</Name>
 							<pointsInSequence>
 								<TimingPointInJourneyPattern version="001" id="bar:foo2-1">
@@ -415,32 +431,46 @@ This is part 1 of a multistep example on versioning
 									<ScheduledStopPointRef version="001" ref="bar:foo5"/>
 								</TimingPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<!--- ==== TIMETABLE FRAME ====  -->
 				<TimetableFrame version="001" id="bar:foo">
 					<Name>FRAME </Name>
 					<vehicleJourneys>
-						<VehicleJourney version="001" id="bar:foo">
+						<VehicleJourney version="001" id="bar:foo_journey1">
 							<Name>JOURNEY</Name>
 						</VehicleJourney>
-						<ServiceJourney version="001" id="bar:foo1">
+						<ServiceJourney version="001" id="bar:foo_journey2">
 							<Name>JOURNEY</Name>
+							<trainNumbers>
+								<TrainNumberRef ref=""></TrainNumberRef>
+							</trainNumbers>
+							<runTimes>
+								<VehicleJourneyRunTime version="001" id="bar:foo_journey2">
+									<RunTime>PT1H</RunTime>
+								</VehicleJourneyRunTime>
+							</runTimes>
+							<parts>
+								<JourneyPart version="001" id="bar:foo_journey2">
+								<StartTime>10:00:00</StartTime>
+								<EndTime>12:00:00</EndTime>
+								</JourneyPart>
+							</parts>
 						</ServiceJourney>
-						<TemplateServiceJourney version="001" id="bar:foo2">
+						<TemplateServiceJourney version="001" id="bar:foo_journey3">
 							<Name>JOURNEY</Name>
 						</TemplateServiceJourney>
-						<SpecialService version="001" id="bar:foo3">
+						<SpecialService version="001" id="bar:foo_journey4">
 							<Name>JOURNEY</Name>
 						</SpecialService>
-						<DatedServiceJourney version="001" id="bar:foo4">
+						<DatedServiceJourney version="001" id="bar:foo_journey5">
 							<Name>JOURNEY</Name>
 							<OperatingDayView>
 								<CalendarDate>2024-11-30</CalendarDate>
 							</OperatingDayView>
 						</DatedServiceJourney>
-						<DeadRun version="001" id="bar:foo5">
+						<DeadRun version="001" id="bar:foo_journey6">
 							<Name>JOURNEY</Name>
 						</DeadRun>
 					</vehicleJourneys>

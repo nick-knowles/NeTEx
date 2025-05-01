@@ -973,9 +973,9 @@
 							<ShortName>DfT</ShortName>
 							<OrganisationType>statutoryBody</OrganisationType>
 							<parts>
-								<OrganisationPart id="TC278_WG3_SG9" version="epip:1.0">
+								<OrganisationalUnit id="TC278_WG3_SG9" version="epip:1.0">
 									<Name>Netex SUbgroup</Name>
-								</OrganisationPart>
+								</OrganisationalUnit >
 							</parts>
 						</GeneralOrganisation>
 						<!-- === UIC RUs ==== -->

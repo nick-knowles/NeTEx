@@ -291,7 +291,7 @@ Changes
 						<Authority version="any" id="tfl:TfL">
 							<Name>NPTG organisation data </Name>
 							<parts>
-								<OrganisationPart version="any" id="tfl:GL">
+								<OrganisationalUnit version="any" id="tfl:GL">
 									<Name>Greater London</Name>
 									<administrativeZones>
 										<AdministrativeZoneRef version="nptg:v2.1" ref="nptgAdminArea:082"/>
@@ -309,7 +309,7 @@ Changes
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
+								</OrganisationalUnit>
 							</parts>
 						</Authority>
 						<Operator version="any" id="noc:LULD">
@@ -8755,7 +8755,7 @@ Changes
 							<Name>Department for Transport</Name>
 							<ShortName>DfT</ShortName>
 							<parts>
-								<OrganisationPart version="any" id="nptg:DfT">
+								<OrganisationalUnit version="any" id="nptg:DfT">
 									<Name>Transport Direct</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone version="nptg:v2.1" id="nptgAdminArea:UK">
@@ -8823,7 +8823,7 @@ Changes
 											</roles>
 										</ResponsibilitySet>
 									</ownResponsibilitySets>
-								</OrganisationPart>
+								</OrganisationalUnit >
 							</parts>
 						</GeneralOrganisation>
 					</organisations>

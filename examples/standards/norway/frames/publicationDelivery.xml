@@ -111,7 +111,7 @@
 					</stopAssignments>
 					<!-- Turmønster -->
 					<journeyPatterns>
-						<JourneyPattern version="any" id="NRH:JourneyPattern:NUMBER"/>
+						<ServiceJourneyPattern version="any" id="NRH:JourneyPattern:NUMBER"/>
 					</journeyPatterns>
 				</ServiceFrame>
 				<!-- ServiceCalendarFrame definerer kalenderobjekter (dager, dagtyper, operasjonsperioder, tidspunkt etc.) -->

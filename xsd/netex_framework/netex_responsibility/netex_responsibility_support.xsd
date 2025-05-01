@@ -19,8 +19,10 @@
 				<Date>
 					<Modified>2017-12-01 Add FareManagement Data Roles and   SecurityManagement, Data Regfistrat secures etc</Modified>
 				</Date>
-				<Date><Modified>2020-10-04</Modified>NewModes: Add DataRoleType and StakholderRole enum values 				</Date>
-				<Date><Modified>2024-03-01</Modified>TM Contract - split into ResponsibilitySet_support
+				<Date>
+					<Modified>2020-10-04</Modified>NewModes: Add DataRoleType and StakholderRole enum values 				</Date>
+				<Date>
+					<Modified>2024-03-01</Modified>TM Contract - split into ResponsibilitySet_support
 				</Date>
 				<Description>
 					<p>NeTEx - Network Exchange. This subschema defines RESPONSIBILITY data administration base types.</p>
@@ -107,7 +109,6 @@ Rail transport, Roads and Road transport
 			<xsd:enumeration value="facilityManagement"/>
 			<xsd:enumeration value="lessor"/>
 			<xsd:enumeration value="other"/>
-			<!-- DEPRECATED Upper case values kept for the time being. -v.2.0  -->
 			<xsd:enumeration value="Planning"/>
 			<xsd:enumeration value="Operation"/>
 			<xsd:enumeration value="Control"/>
@@ -131,6 +132,7 @@ Rail transport, Roads and Road transport
 			<xsd:enumeration value="Lessor"/>
 			<xsd:enumeration value="DataRegistrar"/>
 			<xsd:enumeration value="Other"/>
+			<!-- DEPRECATED Upper case values kept for the time being. -v.2.0  -->
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="StakeholderRoleTypeListOfEnumerations">
@@ -266,7 +268,7 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="ObjectIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="OrganisationPartRef" type="OrganisationPartRefStructure" substitutionGroup="VersionOfObjectRef">
+	<xsd:element name="OrganisationPartRef" type="OrganisationPartRefStructure" abstract="true" substitutionGroup="VersionOfObjectRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to an ORGANISATION PART.</xsd:documentation>
 		</xsd:annotation>

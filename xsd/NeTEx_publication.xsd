@@ -1518,45 +1518,26 @@
 			<xsd:field xpath="@id"/>
 			<xsd:field xpath="@version"/>
 		</xsd:key>
-		<!-- =====OrganisationPart============================== -->
-		<!-- =====OrganisationPart unique========================== -->
-		<xsd:unique name="OrganisationPart_UniqueBy_Id_Version">
-			<xsd:annotation>
-				<xsd:documentation>Every [OrganisationPart Id + Version] must be unique within document.</xsd:documentation>
-			</xsd:annotation>
-			<xsd:selector xpath=".//netex:OrganisationPart"/>
-			<xsd:field xpath="@id"/>
-			<xsd:field xpath="@version"/>
-		</xsd:unique>
-		<!-- =====OrganisationPart Key ========================== -->
-		<xsd:keyref name="OrganisationPart_KeyRef" refer="netex:OrganisationPart_AnyVersionedKey">
-			<xsd:selector xpath=".//netex:OrganisationPartRef | .//netex:ResponsibilityRoleAssignment/netex:ResponsiblePartRef"/>
-			<xsd:field xpath="@ref"/>
-			<xsd:field xpath="@version"/>
-		</xsd:keyref>
-		<xsd:key name="OrganisationPart_AnyVersionedKey">
-			<xsd:selector xpath=".//netex:OrganisationPart"/>
-			<xsd:field xpath="@id"/>
-			<xsd:field xpath="@version"/>
-		</xsd:key>
+		
+		<!-- =====OrganisationalUnit============================== -->
 		<!-- =====Department============================== -->
 		<!-- =====Department unique========================== -->
 		<xsd:unique name="Department_UniqueBy_Id_Version">
 			<xsd:annotation>
 				<xsd:documentation>Every [Department Id + Version] must be unique within document.</xsd:documentation>
 			</xsd:annotation>
-			<xsd:selector xpath=".//netex:Department"/>
+			<xsd:selector xpath=".//netex:Department | .//netex:OrganisationalUnit  | .//netex:OperatingDepartment "/>
 			<xsd:field xpath="@id"/>
 			<xsd:field xpath="@version"/>
 		</xsd:unique>
 		<!-- =====Department Key ========================== -->
 		<xsd:keyref name="Department_KeyRef" refer="netex:Department_AnyVersionedKey">
-			<xsd:selector xpath=".//netex:DepartmentRef"/>
+			<xsd:selector xpath=".//netex:DepartmentRef | .//netex:OrganisationalUnitRef | .//netex:OperatingDepartmentRef |.//netex:ResponsibilityRoleAssignment/netex:ResponsiblePartRef"/>
 			<xsd:field xpath="@ref"/>
 			<xsd:field xpath="@version"/>
 		</xsd:keyref>
 		<xsd:key name="Department_AnyVersionedKey">
-			<xsd:selector xpath=".//netex:Department | .//netex:OperatingDepartment"/>
+			<xsd:selector xpath=".//netex:Department | .//netex:OperatingDepartment | .//netex:OrganisationalUnit "/>
 			<xsd:field xpath="@id"/>
 			<xsd:field xpath="@version"/>
 		</xsd:key>

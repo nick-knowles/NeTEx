@@ -114,7 +114,7 @@
 						</Line>
 					</lines>
 					<journeyPatterns>
-						<JourneyPattern version="any" id="RUT:JourneyPattern:default"/>
+						<ServiceJourneyPattern version="any" id="RUT:ServiceJourneyPattern:default"/>
 					</journeyPatterns>
 				</ServiceFrame>
 				<TimetableFrame version="any" id="RUT:tf:1">

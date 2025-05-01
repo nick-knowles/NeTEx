@@ -2717,7 +2717,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 						<GeneralOrganisation id="nptg:NPTG" version="nptg:v2.1">
 							<Name>Overall Management of Nptg codes</Name>
 							<parts>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:CON">
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:CON">
 									<Name lang="EN">Connaught</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:CON">
@@ -2745,8 +2745,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
+								</OrganisationalUnit >
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
 									<Name lang="EN">Leinster</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:LEI">
@@ -2812,8 +2812,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
+								</OrganisationalUnit >
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
 									<Name lang="EN">Munster</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:MUN">
@@ -2862,8 +2862,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS">
+								</OrganisationalUnit >
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS">
 									<Name lang="EN">Ulster</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:nptgRegion:ULS">
@@ -2889,8 +2889,8 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
-								<OrganisationPart created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
+								</OrganisationalUnit >
+								<OrganisationalUnit created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
 									<Name lang="EN">Ulster_NI</Name>
 									<administrativeZones>
 										<TransportAdministrativeZone created="2011-01-18T11:54:31" changed="2011-01-18T11:54:31" version="0" id="nptgRegion:ULS_NI">
@@ -2928,7 +2928,7 @@ NeTEx separates  organisational structure (ORGANISATION, ORGANISATION PART)  fro
 											</subzones>
 										</TransportAdministrativeZone>
 									</administrativeZones>
-								</OrganisationPart>
+								</OrganisationalUnit >
 							</parts>
 						</GeneralOrganisation>
 					</organisations>
