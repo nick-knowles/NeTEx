@@ -11,7 +11,8 @@
 				<Audience>e-service developers</Audience>
 				<Coverage>Europe</Coverage>
 				<Creator>First drafted for version 1.0 CEN TC278 WG3 SG6 Editor Nicholas Knowles.</Creator>
-				<Date><Created>2024-01-05</Created>Factored out of Ifopt path
+				<Date>
+					<Created>2024-01-05</Created>Factored out of Ifopt path
 				</Date>
 				<Date>
 					<Modified>2024-01-05</Modified>
@@ -129,10 +130,15 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="PlaceIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="GenericPathJunctionRef" type="GenericPathJunctionRefStructure" substitutionGroup="PlaceRef_">
+	<xsd:element name="GenericPathJunctionRef" substitutionGroup="PlaceRef_">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a PATH JUNCTION.</xsd:documentation>
 		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:restriction base="GenericPathJunctionRefStructure"/>
+			</xsd:simpleContent>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:complexType name="GenericPathJunctionRefStructure">
 		<xsd:annotation>

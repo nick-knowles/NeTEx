@@ -23,17 +23,20 @@
 				<Date>
 					<Modified>2007-03-22</Modified>
 				</Date>
-				<Date><Modified>2019-03-25</Modified>FR49 CD #65  Accessibility changes
+				<Date>
+					<Modified>2019-03-25</Modified>FR49 CD #65  Accessibility changes
 					 CD add new attributes to PathLink : Width, FlooringType,  RightSideBorder,  LeftSideBordert, TiltAngle, CodedTilt, TactileWarningStrip,  TactileGuidingStrip
 					 NK Review: Reorder so as to place like elements toigether, add sub Groups to organize  
  				</Date>
-				<Date><Modified>2019-03-28</Modified>FR49 CD #65  Accessibility changes
+				<Date>
+					<Modified>2019-03-28</Modified>FR49 CD #65  Accessibility changes
 					 NJSK Doc rewviewe 
 					 Revise name of ___PathLink___   ___Width___ to ___MinimumWidth__, add enw attribute ___MinimumHeight___
 					 Revise name of  ___PathLink___  new attribute ___CodedTilt___ to ___TiltType___ to be consistent 				
  				    Also add new attributes ___MaximumGradient___ and MaximumGradientType___ to  ___PathLink___   	
  				</Date>
-				<Date><Modified>2024-02-05</Modified>Revise to share common features with DECK PATH LINK, add OffSItePathLink
+				<Date>
+					<Modified>2024-02-05</Modified>Revise to share common features with DECK PATH LINK, add OffSItePathLink
 				</Date>
 				<Description>
 					<Title>NeTEx Network Exchange - PATH types.</Title>
@@ -99,11 +102,7 @@ Rail transport, Roads and Road transport
 		<xsd:sequence>
 			<xsd:choice>
 				<xsd:element ref="SiteElementRef"/>
-				<xsd:element name="PlaceRef" type="PlaceRefStructure">
-					<xsd:annotation>
-						<xsd:documentation>DEPRECATED: Reference to a PLACE, including QUAY, ACCESS SPACE, BOARDING POSITION or other node of a SITE.  Use more specifc SITE COMPONENT. -v2.0 </xsd:documentation>
-					</xsd:annotation>
-				</xsd:element>
+				<xsd:element ref="PlaceRef"/>
 			</xsd:choice>
 			<xsd:element name="LevelRef" type="LevelRefStructure" minOccurs="0">
 				<xsd:annotation>

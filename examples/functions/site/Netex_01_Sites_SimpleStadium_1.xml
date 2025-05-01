@@ -363,7 +363,7 @@ The example  comprises
 						</PointOfInterestEntrance>
 					</entrances>
 					<classifications>
-						<PointOfInterestClassificationRef versionRef="EXTERNAL" ref="tbd:Class_476">EXTERNAL</PointOfInterestClassificationRef>
+						<PointOfInterestClassificationRef ref="tbd:Class_476">EXTERNAL</PointOfInterestClassificationRef>
 					</classifications>
 					<spaces>
 						<PointOfInterestSpace version="any" id="tbd:POI_23_A1">
@@ -544,7 +544,7 @@ The example  comprises
 							<Name>From entrance A to main concourse J1</Name>
 							<Distance>20</Distance>
 							<From>
-								<PlaceRef version="any" ref="tbd:POI_23"/>
+								<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 								<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 								<EntranceRef version="any" ref="tbd:POI_23_A1-E1"/>
 							</From>
@@ -655,7 +655,7 @@ The example  comprises
 							<Name>From entrance A to main concourse J1</Name>
 							<Distance>20</Distance>
 							<From>
-								<PlaceRef version="any" ref="tbd:POI_23"/>
+								<PointOfInterestRef version="any" ref="tbd:POI_23"/>
 								<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 								<EntranceRef version="any" ref="tbd:POI_23_B1-E1"/>
 							</From>
@@ -697,7 +697,7 @@ The example  comprises
 								<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 							</From>
 							<To>
-								<PlaceRef version="any" xsi:type="PointOfInterestSpaceRefStructure" ref="tbd:POI_23_B2"/>
+								<PointOfInterestSpaceRef version="any" xsi:type="PointOfInterestSpaceRefStructure" ref="tbd:POI_23_B2"/>
 								<LevelRef version="any" ref="tbd:POI_23_Lvl_01_lower"/>
 							</To>
 							<AccessibilityAssessment version="any" id="tbd:POI_23_pl_B1-J1_to_B2">

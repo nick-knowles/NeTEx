@@ -162,11 +162,11 @@ Overview
 							<BothWays>true</BothWays>
 							<From>
 								<TransportMode>rail</TransportMode>
-								<PlaceRef versionRef="EXTERNAL" ref="napt:9100:00476"/>
+								<StopPlaceRef versionRef="EXTERNAL" ref="napt:9100:00476"/>
 							</From>
 							<To>
 								<TransportMode>selfDrive</TransportMode>
-								<PlaceRef version="any" ref="pkg:PP01" xsi:type="ParkingRefStructure"/>
+								<ParkingRef version="any" ref="pkg:PP01" xsi:type="ParkingRefStructure"/>
 							</To>
 						</Access>
 					</accesses>
@@ -259,11 +259,11 @@ Overview
 							<BothWays>true</BothWays>
 							<From>
 								<TransportMode>rail</TransportMode>
-								<PlaceRef versionRef="EXTERNAL" ref="napt:9100:00476"/>
+								<StopPlaceRef versionRef="EXTERNAL" ref="napt:9100:00476"/>
 							</From>
 							<To>
 								<TransportMode>selfDrive</TransportMode>
-								<PlaceRef version="any" ref="pkg:PS22" xsi:type="ParkingRefStructure"/>
+								<ParkingRef version="any" ref="pkg:PS22" xsi:type="ParkingRefStructure"/>
 							</To>
 						</Access>
 					</accesses>
