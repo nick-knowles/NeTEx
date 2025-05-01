@@ -77,7 +77,7 @@ Rail transport, Roads and Road transport
 		</xsd:annotation>
 		<xsd:restriction base="LogEntryIdType"/>
 	</xsd:simpleType>
-	<xsd:element name="FareDebitRef" type="FareDebitRefStructure" abstract="false" substitutionGroup="LogEntryRef">
+	<xsd:element name="FareDebitRef" type="FareDebitRefStructure" abstract="true" substitutionGroup="LogEntryRef">
 		<xsd:annotation>
 			<xsd:documentation>Reference to a FARE DEBIT.</xsd:documentation>
 		</xsd:annotation>
